@@ -8,7 +8,12 @@ Repozytorium do testowania:
 
 ## Struktura
 
-- `examples/` - surowe pliki `.md` z przykladami.
+- `examples/` - surowe pliki `.md` z przykladami:
+  - `basic.md` — skladnia podstawowa
+  - `extended.md` — tabele, obrazy, HTML
+  - `code-showcase.md` — fragmenty kodu w wielu jezykach
+  - `mvp-taskflow.md` — przykladowa dokumentacja MVP projektu
+  - `documentation-patterns.md` — wzorce dokumentacji technicznej
 - `playground/index.html` - strona testowa z wyrenderowanymi elementami HTML.
 - `playground/markdown.css` - style dla przegladarki.
 - `playground/cursor-preview.css` - style dla bocznego podgladu Cursora (`Ctrl+K V`).
@@ -26,13 +31,9 @@ Repozytorium do testowania:
 
 Przykladowe pliki zawieraja m.in.:
 
-- naglowki,
-- cytaty,
-- listy,
-- checklisty,
-- tabele,
-- kod inline i bloki kodu,
-- obrazki,
-- separatory,
-- linki,
-- elementy HTML osadzane w Markdown.
+- naglowki, cytaty, listy, checklisty,
+- tabele, kod inline i bloki kodu,
+- obrazki, separatory, linki,
+- elementy HTML osadzane w Markdown,
+- dokumentacje API, architekture, roadmape (MVP TaskFlow),
+- snippety w JS/TS, Python, Rust, SQL, YAML, Docker i inne.
