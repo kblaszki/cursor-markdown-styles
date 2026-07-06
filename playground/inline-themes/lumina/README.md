@@ -8,11 +8,12 @@ Sygnaturowy motyw inline preview z gradientami i kolorowymi elementami.
 |------|--------|------|
 | `cursor-inline-lumina-v1-neon.css` | v1 | Pierwsza wersja — jaskrawa paleta, mocne glow |
 | `cursor-inline-lumina-v2-muted.css` | v2 | Stonowana — przygaszone kolory, subtelne cienie |
-| `cursor-inline-lumina-v3-balanced.css` | v3 | Zbalansowana — srodek miedzy v1 a v2 **(rekomendowana)** |
+| `cursor-inline-lumina-v3-balanced.css` | v3 | Zbalansowana — srodek miedzy v1 a v2 |
+| `cursor-inline-lumina-v4-neon-blue.css` | v4 | Neon Blue — jednolita niebieska paleta **(rekomendowana)** |
 
 ## Skrot
 
-`../cursor-inline-lumina.css` to kopia **v3** — wygodny domyslny plik do kopiowania do Cursora.
+`../cursor-inline-lumina.css` to kopia **v4** — wygodny domyslny plik do kopiowania do Cursora.
 
 ## Instalacja
 
