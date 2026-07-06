@@ -18,7 +18,7 @@ Repozytorium do testowania:
 - `playground/markdown.css` - style dla przegladarki.
 - `playground/cursor-preview.css` - style dla bocznego podgladu Cursora (`Ctrl+K V`).
 - `playground/cursor-inline-preview.css` - domyslny motyw GitHub dla inline preview.
-- `playground/inline-themes/` - gotowe motywy CSS dla inline preview (`Preview | Markdown`), w tym sygnaturowy **Lumina**.
+- `playground/inline-themes/lumina/` - wersje motywu Lumina (v1 Neon, v2 Muted, v3 Balanced)
 
 ## Jak tego uzywac
 

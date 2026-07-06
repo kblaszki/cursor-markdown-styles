@@ -16,7 +16,8 @@ Style dla widoku **Preview | Markdown** (inline preview). Kazdy plik jest samodz
 | `cursor-inline-bear.css` | Cieply, kremowe tlo (Bear Notes) |
 | `cursor-inline-docs.css` | Dokumentacja techniczna (Stack Overflow) |
 | `cursor-inline-catppuccin.css` | Catppuccin Mocha |
-| `cursor-inline-lumina.css` | **Lumina** — sygnaturowy, kolorowy, dopasowany do tla Cursora |
+| `cursor-inline-lumina.css` | **Lumina v3** (skrot) — sygnaturowy, zbalansowany |
+| `lumina/` | Historia Lumina: v1 Neon, v2 Muted, v3 Balanced |
 
 Plik `_shared-rules.css` zawiera wspolne reguly — jest juz wlaczony w kazdy motyw. Nie kopiuj go osobno.
 
