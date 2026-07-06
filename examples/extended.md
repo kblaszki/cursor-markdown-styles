@@ -27,17 +27,18 @@ To jest przyklad osadzonego HTML w Markdown.
 
 </details>
 
-## Kod w innych jezykach
+## Kod C++
 
-```css
-.markdown-body blockquote {
-  border-left: 4px solid #d0d7de;
-  padding-left: 1rem;
-  color: #57606a;
-}
+```cpp
+// Przyklad naglowka z guardem i atrybutami [[nodiscard]]
+#pragma once
+
+#include <string>
+#include <vector>
+
+[[nodiscard]] std::vector<std::string> split(std::string_view text, char delim);
 ```
 
 ```bash
-git init
-git status
+cmake -S . -B build && cmake --build build
 ```

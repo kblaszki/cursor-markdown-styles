@@ -57,14 +57,14 @@ Zespoly developerskie traca czas na przełaczanie sie miedzy Jira, Slackiem i no
 ## Architektura
 
 ```
-┌─────────────┐     HTTPS      ┌─────────────┐
-│  Web App    │ ◄────────────► │  API (Node) │
-│  (React)    │                │  Express    │
-└─────────────┘                └──────┬──────┘
-                                      │
-                               ┌──────▼──────┐
-                               │ PostgreSQL  │
-                               └─────────────┘
+┌─────────────┐     HTTPS      ┌─────────────────┐
+│  Web App    │ ◄────────────► │  API (C++20)    │
+│  (React)    │                │  Drogon + pqxx  │
+└─────────────┘                └────────┬────────┘
+                                        │
+                                 ┌──────▼──────┐
+                                 │ PostgreSQL  │
+                                 └─────────────┘
 ```
 
 ### Stos technologiczny
@@ -72,45 +72,56 @@ Zespoly developerskie traca czas na przełaczanie sie miedzy Jira, Slackiem i no
 | Warstwa | Technologia | Uzasadnienie |
 |---------|-------------|--------------|
 | Frontend | React + Vite | Szybki dev, znany zespolowi |
-| Backend | Node.js 20 + Express | Proste REST, jeden jezyk z FE |
-| Baza | PostgreSQL 16 | Relacje, JSONB na przyszlosc |
-| Auth | JWT + bcrypt | Wystarczajace na MVP |
+| Backend | C++20 + Drogon | Wydajnosc, niskie opoznienia REST |
+| Baza | PostgreSQL 16 + libpqxx | Sprawdzone transakcje, JSONB |
+| Auth | JWT (jwt-cpp) | Lekka biblioteka header-only |
+| Build | CMake + vcpkg | Reprodukowalne zaleznosci |
 | Deploy | Docker + Fly.io | Niski koszt, szybki start |
 
 ---
 
 ## Model danych
 
-```typescript
-// src/types/domain.ts
+```cpp
+// include/taskflow/domain.hpp
 
-export type TaskStatus = "todo" | "in_progress" | "done";
+#pragma once
 
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  createdAt: Date;
-}
+#include <chrono>
+#include <optional>
+#include <string>
 
-export interface Project {
-  id: string;
-  name: string;
-  ownerId: string;
-  createdAt: Date;
-}
+namespace taskflow {
 
-export interface Task {
-  id: string;
-  projectId: string;
-  title: string;
-  description?: string;
-  status: TaskStatus;
-  assigneeId?: string;
-  dueDate?: string; // ISO 8601
-  createdAt: Date;
-  updatedAt: Date;
-}
+enum class TaskStatus { Todo, InProgress, Done };
+
+struct User {
+    std::string id;
+    std::string email;
+    std::string name;
+    std::chrono::system_clock::time_point created_at;
+};
+
+struct Project {
+    std::string id;
+    std::string name;
+    std::string owner_id;
+    std::chrono::system_clock::time_point created_at;
+};
+
+struct Task {
+    std::string id;
+    std::string project_id;
+    std::string title;
+    std::optional<std::string> description;
+    TaskStatus status{TaskStatus::Todo};
+    std::optional<std::string> assignee_id;
+    std::optional<std::string> due_date; // ISO 8601
+    std::chrono::system_clock::time_point created_at;
+    std::chrono::system_clock::time_point updated_at;
+};
+
+} // namespace taskflow
 ```
 
 ### Relacje (uproszczone)
@@ -176,39 +187,49 @@ Content-Type: application/json
 
 ### Handler (fragment backendu)
 
-```typescript
-// src/routes/tasks.ts
-import { Router } from "express";
-import { z } from "zod";
-import { requireAuth } from "../middleware/auth";
-import { taskService } from "../services/taskService";
+```cpp
+// src/routes/tasks.cpp
+#include <drogon/drogon.h>
+#include <nlohmann/json.hpp>
 
-const createTaskSchema = z.object({
-  title: z.string().min(1).max(200),
-  description: z.string().max(2000).optional(),
-  status: z.enum(["todo", "in_progress", "done"]).default("todo"),
-  assigneeId: z.string().uuid().optional(),
-  dueDate: z.string().datetime().optional(),
-});
+#include "taskflow/auth.hpp"
+#include "taskflow/services/task_service.hpp"
 
-export const taskRouter = Router({ mergeParams: true });
+using json = nlohmann::json;
 
-taskRouter.post("/", requireAuth, async (req, res, next) => {
-  try {
-    const body = createTaskSchema.parse(req.body);
-    const projectId = req.params.id;
+void create_task(
+    const drogon::HttpRequestPtr& req,
+    std::function<void(const drogon::HttpResponsePtr&)>&& respond,
+    const std::string& project_id) {
 
-    const task = await taskService.create({
-      projectId,
-      ...body,
-      createdBy: req.user!.id,
-    });
+    const auto user = taskflow::require_auth(req);
+    if (!user) {
+        respond(drogon::HttpResponse::newHttpJsonResponse(
+            json{{"error", "unauthorized"}}));
+        return;
+    }
 
-    res.status(201).json(task);
-  } catch (err) {
-    next(err);
-  }
-});
+    const auto body = json::parse(req->body());
+    if (!body.contains("title") || body["title"].get<std::string>().empty()) {
+        respond(drogon::HttpResponse::newHttpJsonResponse(
+            json{{"error", "title is required"}}));
+        return;
+    }
+
+    taskflow::CreateTaskRequest request{
+        .project_id = project_id,
+        .title = body["title"].get<std::string>(),
+        .description = body.value("description", std::optional<std::string>{}),
+        .status = body.value("status", "todo"),
+        .created_by = user->id,
+    };
+
+    auto task = taskflow::TaskService::instance().create(request);
+
+    auto res = drogon::HttpResponse::newHttpJsonResponse(task.to_json());
+    res->setStatusCode(drogon::k201Created);
+    respond(res);
+}
 ```
 
 ### Kody bledow
@@ -227,9 +248,10 @@ taskRouter.post("/", requireAuth, async (req, res, next) => {
 
 ### Wymagania
 
-- Node.js **20+**
+- **C++20** (GCC 13+, Clang 17+ lub MSVC 19.38+)
+- **CMake** 3.20+
+- **vcpkg** lub Conan (zaleznosci)
 - Docker (opcjonalnie, do PostgreSQL)
-- `npm` lub `pnpm`
 
 ### Kroki
 
@@ -238,31 +260,33 @@ taskRouter.post("/", requireAuth, async (req, res, next) => {
 git clone https://github.com/example/taskflow.git
 cd taskflow
 
-# 2. Zaleznosci
-npm install
+# 2. Zaleznosci (vcpkg)
+vcpkg install drogon libpqxx nlohmann-json jwt-cpp
 
 # 3. Baza danych (Docker)
 docker compose up -d postgres
 
 # 4. Konfiguracja
-cp .env.example .env
-# Edytuj .env — ustaw DATABASE_URL i JWT_SECRET
+cp config/app.example.json config/app.json
+export JWT_SECRET=$(openssl rand -hex 32)
 
 # 5. Migracje
-npm run db:migrate
+./build/taskflow-migrate --config config/app.json
 
 # 6. Seed (dane demo)
-npm run db:seed
+./build/taskflow-seed --config config/app.json
 
-# 7. Uruchomienie dev
-npm run dev
+# 7. Kompilacja i uruchomienie
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
+cmake --build build
+./build/taskflow_api --config config/app.json
 ```
 
 Aplikacja:
 
-- **API:** `http://localhost:3000`
+- **API:** `http://localhost:8080`
 - **Web:** `http://localhost:5173`
-- **OpenAPI:** `http://localhost:3000/docs`
+- **OpenAPI:** `http://localhost:8080/docs`
 
 ### Docker Compose (fragment)
 
@@ -289,21 +313,27 @@ volumes:
 
 | Zmienna | Wymagana | Domyslnie | Opis |
 |---------|----------|-----------|------|
-| `NODE_ENV` | nie | `development` | `development` / `production` |
-| `PORT` | nie | `3000` | Port API |
+| `TASKFLOW_ENV` | nie | `development` | `development` / `production` |
+| `TASKFLOW_PORT` | nie | `8080` | Port API |
 | `DATABASE_URL` | **tak** | — | Connection string PostgreSQL |
 | `JWT_SECRET` | **tak** | — | Min. 32 znaki, losowy |
 | `JWT_EXPIRES_IN` | nie | `7d` | Czas zycia tokenu |
 | `CORS_ORIGIN` | nie | `http://localhost:5173` | Dozwolony origin FE |
 
-Przyklad `.env`:
+Przyklad `config/app.json`:
 
-```env
-NODE_ENV=development
-PORT=3000
-DATABASE_URL=postgresql://taskflow:taskflow@localhost:5432/taskflow_dev
-JWT_SECRET=zmien_to_na_losowy_ciag_min_32_znaki
-CORS_ORIGIN=http://localhost:5173
+```json
+{
+  "server": { "host": "0.0.0.0", "port": 8080 },
+  "database": {
+    "url": "postgresql://taskflow:taskflow@localhost:5432/taskflow_dev"
+  },
+  "jwt": {
+    "secret_env": "JWT_SECRET",
+    "expires_in": "7d"
+  },
+  "cors": { "origin": "http://localhost:5173" }
+}
 ```
 
 ---
@@ -346,7 +376,7 @@ Role pojawia sie w v1.0.
   <summary>Jak wygenerowac JWT_SECRET?</summary>
 
 ```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+openssl rand -hex 32
 ```
 
 </details>

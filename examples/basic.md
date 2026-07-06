@@ -33,10 +33,12 @@ Zwykly akapit z **pogrubieniem**, *kursywa*, ~~przekresleniem~~ i `kodem inline`
 
 ## Kod
 
-```js
-function hello(name) {
-  console.log(`Hello, ${name}!`);
-}
+```cpp
+#include <iostream>
+#include <string>
 
-hello("Markdown");
+int main() {
+    std::string name = "Markdown";
+    std::cout << "Hello, " << name << "!\n";
+}
 ```
