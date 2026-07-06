@@ -11,14 +11,15 @@ Repozytorium do testowania:
 - `examples/` - surowe pliki `.md` z przykladami:
   - `basic.md` — skladnia podstawowa
   - `extended.md` — tabele, obrazy, HTML
-  - `code-showcase.md` — fragmenty kodu w wielu jezykach
-  - `mvp-taskflow.md` — przykladowa dokumentacja MVP projektu
-  - `documentation-patterns.md` — wzorce dokumentacji technicznej
+  - `code-showcase.md` — fragmenty kodu C++ (szablony, CMake, SQL)
+  - `mvp-taskflow.md` — dokumentacja MVP projektu (backend C++)
+  - `documentation-patterns.md` — wzorce dokumentacji C++
 - `playground/index.html` - strona testowa z wyrenderowanymi elementami HTML.
 - `playground/markdown.css` - style dla przegladarki.
 - `playground/cursor-preview.css` - style dla bocznego podgladu Cursora (`Ctrl+K V`).
 - `playground/cursor-inline-preview.css` - domyslny motyw GitHub dla inline preview.
-- `playground/inline-themes/lumina/` - wersje motywu Lumina (v1 Neon, v2 Muted, v3 Balanced)
+- `playground/inline-themes/cpp-modern/` - C++ Modern v1/v2 (v2 Readable = domyslny)
+- `playground/inline-themes/lumina/` - wersje motywu Lumina (v4 Neon Blue = aktualny Lumina)
 
 ## Jak tego uzywac
 
@@ -35,5 +36,5 @@ Przykladowe pliki zawieraja m.in.:
 - tabele, kod inline i bloki kodu,
 - obrazki, separatory, linki,
 - elementy HTML osadzane w Markdown,
-- dokumentacje API, architekture, roadmape (MVP TaskFlow),
-- snippety w JS/TS, Python, Rust, SQL, YAML, Docker i inne.
+- dokumentacje API, architekture, roadmape (MVP TaskFlow w C++),
+- snippety C++20, CMake, SQL, JSON, Docker i bash.
