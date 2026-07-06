@@ -1,5 +1,5 @@
 /* Motyw: Lumina — sygnaturowy styl pod Cursora
-   Tlo zgodne z edytorem, kolorowe naglowki, wyrazne listy, tabele i kod.
+   Stonowana paleta, gradienty i wyrazne bloki kodu.
    Inline preview Cursor: Preview | Markdown */
 
 .anysphere-markdown-container-root,
@@ -8,29 +8,37 @@
   --lum-bg: var(--vscode-editor-background, #1e1e1e);
   --lum-text: var(--vscode-editor-foreground, #d4d4d4);
   --lum-muted: var(--vscode-descriptionForeground, #9d9d9d);
-  --lum-panel: color-mix(in srgb, var(--lum-bg) 82%, #6366f1 18%);
-  --lum-panel-deep: color-mix(in srgb, var(--lum-bg) 70%, #1a1a2e 30%);
-  --lum-border: color-mix(in srgb, var(--lum-text) 18%, transparent);
+  --lum-panel: color-mix(in srgb, var(--lum-bg) 94%, #8b8fa8 6%);
+  --lum-panel-deep: color-mix(in srgb, var(--lum-bg) 90%, #6b6e82 10%);
+  --lum-border: color-mix(in srgb, var(--lum-text) 14%, transparent);
 
-  /* Paleta akcentow */
-  --lum-pink: #ff6b9d;
-  --lum-purple: #c084fc;
-  --lum-blue: #60a5fa;
-  --lum-cyan: #22d3ee;
-  --lum-green: #4ade80;
-  --lum-amber: #fbbf24;
-  --lum-coral: #fb7185;
-  --lum-violet: #a78bfa;
+  /* Paleta akcentow — przytlumione, zgaszone */
+  --lum-rose: #b8a0a6;
+  --lum-mauve: #9d94ad;
+  --lum-slate: #8a9bb0;
+  --lum-teal: #7f9e9e;
+  --lum-sage: #8da896;
+  --lum-warm: #b8a888;
+  --lum-dust: #a89494;
+
+  /* Aliasy (kompatybilnosc w regulach ponizej) */
+  --lum-pink: var(--lum-rose);
+  --lum-purple: var(--lum-mauve);
+  --lum-blue: var(--lum-slate);
+  --lum-cyan: var(--lum-teal);
+  --lum-green: var(--lum-sage);
+  --lum-amber: var(--lum-warm);
+  --lum-coral: var(--lum-dust);
 
   --md-bg: var(--lum-bg);
   --md-text: var(--lum-text);
   --md-heading: var(--lum-text);
   --md-border: var(--lum-border);
-  --md-accent: var(--lum-cyan);
+  --md-accent: color-mix(in srgb, var(--lum-slate) 75%, var(--lum-text));
   --md-quote: var(--lum-muted);
   --md-panel: var(--lum-panel-deep);
-  --md-code-bg: color-mix(in srgb, var(--lum-purple) 22%, var(--lum-bg));
-  --md-code-text: #fda4af;
+  --md-code-bg: color-mix(in srgb, var(--lum-mauve) 12%, var(--lum-bg));
+  --md-code-text: color-mix(in srgb, var(--lum-rose) 70%, var(--lum-text));
   --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
   --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", "Fira Code", Consolas, monospace);
   --md-line-height: 1.75;
@@ -77,46 +85,51 @@
 .anysphere-markdown-container-root h1,
 .markdown-editor-react__richtext-content h1 {
   font-size: 2em !important;
-  background: linear-gradient(120deg, var(--lum-pink), var(--lum-purple), var(--lum-blue)) !important;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--lum-rose) 80%, var(--lum-text)),
+    color-mix(in srgb, var(--lum-mauve) 75%, var(--lum-text)),
+    color-mix(in srgb, var(--lum-slate) 70%, var(--lum-text))
+  ) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   padding-bottom: 0.35em !important;
-  border-bottom: 2px solid color-mix(in srgb, var(--lum-purple) 45%, transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lum-mauve) 28%, transparent) !important;
 }
 
 .anysphere-markdown-container-root h2,
 .markdown-editor-react__richtext-content h2 {
   font-size: 1.55em !important;
-  color: var(--lum-purple) !important;
-  border-bottom: 2px solid color-mix(in srgb, var(--lum-purple) 35%, transparent) !important;
+  color: color-mix(in srgb, var(--lum-mauve) 65%, var(--lum-text)) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lum-mauve) 22%, transparent) !important;
   padding-bottom: 0.25em !important;
 }
 
 .anysphere-markdown-container-root h3,
 .markdown-editor-react__richtext-content h3 {
   font-size: 1.3em !important;
-  color: var(--lum-cyan) !important;
+  color: color-mix(in srgb, var(--lum-teal) 55%, var(--lum-text)) !important;
 }
 
 .anysphere-markdown-container-root h4,
 .markdown-editor-react__richtext-content h4 {
   font-size: 1.12em !important;
-  color: var(--lum-green) !important;
+  color: color-mix(in srgb, var(--lum-sage) 50%, var(--lum-text)) !important;
 }
 
 .anysphere-markdown-container-root h5,
 .markdown-editor-react__richtext-content h5 {
   font-size: 1em !important;
-  color: var(--lum-amber) !important;
+  color: color-mix(in srgb, var(--lum-warm) 55%, var(--lum-text)) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.05em !important;
 }
 
 .anysphere-markdown-container-root h6,
 .markdown-editor-react__richtext-content h6 {
   font-size: 0.92em !important;
-  color: var(--lum-coral) !important;
+  color: color-mix(in srgb, var(--lum-dust) 50%, var(--lum-muted)) !important;
   font-weight: 600 !important;
 }
 
@@ -124,13 +137,13 @@
 
 .anysphere-markdown-container-root strong,
 .markdown-editor-react__richtext-content strong {
-  color: var(--lum-amber) !important;
+  color: color-mix(in srgb, var(--lum-warm) 45%, var(--lum-text)) !important;
   font-weight: 700 !important;
 }
 
 .anysphere-markdown-container-root em,
 .markdown-editor-react__richtext-content em {
-  color: var(--lum-cyan) !important;
+  color: color-mix(in srgb, var(--lum-teal) 40%, var(--lum-text)) !important;
   font-style: italic !important;
 }
 
@@ -142,16 +155,16 @@
 
 .anysphere-markdown-container-root a,
 .markdown-editor-react__richtext-content a {
-  color: var(--lum-blue) !important;
+  color: color-mix(in srgb, var(--lum-slate) 70%, var(--lum-text)) !important;
   text-decoration: none !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--lum-blue) 40%, transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lum-slate) 30%, transparent) !important;
   transition: color 0.15s, border-color 0.15s !important;
 }
 
 .anysphere-markdown-container-root a:hover,
 .markdown-editor-react__richtext-content a:hover {
-  color: var(--lum-cyan) !important;
-  border-bottom-color: var(--lum-cyan) !important;
+  color: color-mix(in srgb, var(--lum-teal) 60%, var(--lum-text)) !important;
+  border-bottom-color: color-mix(in srgb, var(--lum-teal) 35%, transparent) !important;
 }
 
 /* === Listy — kolorowe markery === */
@@ -182,22 +195,19 @@
   width: 8px !important;
   height: 8px !important;
   border-radius: 50% !important;
-  background: var(--lum-pink) !important;
-  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-pink) 60%, transparent) !important;
+  background: color-mix(in srgb, var(--lum-rose) 75%, var(--lum-muted)) !important;
 }
 
 .anysphere-markdown-container-root ul ul > li::before,
 .markdown-editor-react__richtext-content ul ul > li::before {
-  background: var(--lum-cyan) !important;
-  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-cyan) 60%, transparent) !important;
+  background: color-mix(in srgb, var(--lum-teal) 70%, var(--lum-muted)) !important;
   width: 6px !important;
   height: 6px !important;
 }
 
 .anysphere-markdown-container-root ul ul ul > li::before,
 .markdown-editor-react__richtext-content ul ul ul > li::before {
-  background: var(--lum-green) !important;
-  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-green) 60%, transparent) !important;
+  background: color-mix(in srgb, var(--lum-sage) 70%, var(--lum-muted)) !important;
 }
 
 .anysphere-markdown-container-root ol,
@@ -226,9 +236,10 @@
   align-items: center !important;
   justify-content: center !important;
   font-size: 0.72em !important;
-  font-weight: 700 !important;
-  color: var(--lum-bg) !important;
-  background: linear-gradient(135deg, var(--lum-purple), var(--lum-blue)) !important;
+  font-weight: 600 !important;
+  color: color-mix(in srgb, var(--lum-text) 90%, var(--lum-mauve)) !important;
+  background: color-mix(in srgb, var(--lum-mauve) 18%, var(--lum-bg)) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-mauve) 28%, transparent) !important;
   border-radius: 6px !important;
 }
 
@@ -252,7 +263,7 @@
 
 .anysphere-markdown-container-root input[type="checkbox"],
 .markdown-editor-react__richtext-content input[type="checkbox"] {
-  accent-color: var(--lum-purple) !important;
+  accent-color: var(--lum-mauve) !important;
   margin-right: 0.45rem !important;
   transform: scale(1.15) !important;
 }
@@ -264,9 +275,14 @@
   margin-left: 0 !important;
   padding: 0.65rem 1.2rem !important;
   border-left: 4px solid transparent !important;
-  border-image: linear-gradient(180deg, var(--lum-pink), var(--lum-purple), var(--lum-cyan)) 1 !important;
-  background: color-mix(in srgb, var(--lum-purple) 10%, var(--lum-bg)) !important;
-  color: color-mix(in srgb, var(--lum-text) 85%, var(--lum-purple)) !important;
+  border-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--lum-rose) 60%, var(--lum-muted)),
+    color-mix(in srgb, var(--lum-mauve) 55%, var(--lum-muted)),
+    color-mix(in srgb, var(--lum-teal) 50%, var(--lum-muted))
+  ) 1 !important;
+  background: color-mix(in srgb, var(--lum-mauve) 6%, var(--lum-bg)) !important;
+  color: color-mix(in srgb, var(--lum-text) 92%, var(--lum-mauve)) !important;
   border-radius: 0 10px 10px 0 !important;
   font-style: italic !important;
 }
@@ -279,10 +295,9 @@
   border-radius: 6px !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.88em !important;
-  color: #fda4af !important;
-  background: color-mix(in srgb, var(--lum-purple) 25%, var(--lum-bg)) !important;
-  border: 1px solid color-mix(in srgb, var(--lum-pink) 35%, transparent) !important;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--lum-purple) 15%, transparent) !important;
+  color: var(--md-code-text) !important;
+  background: var(--md-code-bg) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-mauve) 20%, transparent) !important;
 }
 
 /* === Bloki kodu === */
@@ -293,11 +308,11 @@
   overflow-x: auto !important;
   border-radius: 12px !important;
   background: var(--lum-panel-deep) !important;
-  border: 1px solid color-mix(in srgb, var(--lum-purple) 30%, transparent) !important;
-  border-left: 4px solid var(--lum-purple) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-mauve) 18%, transparent) !important;
+  border-left: none !important;
   box-shadow:
-    0 4px 24px color-mix(in srgb, var(--lum-purple) 12%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--lum-text) 6%, transparent) !important;
+    0 2px 12px color-mix(in srgb, var(--lum-mauve) 6%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--lum-text) 4%, transparent) !important;
   position: relative !important;
 }
 
@@ -308,9 +323,16 @@
   left: 0 !important;
   top: 0 !important;
   bottom: 0 !important;
-  width: 4px !important;
+  width: 3px !important;
   border-radius: 12px 0 0 12px !important;
-  background: linear-gradient(180deg, var(--lum-pink), var(--lum-purple), var(--lum-cyan), var(--lum-green)) !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--lum-rose) 70%, var(--lum-muted)),
+    color-mix(in srgb, var(--lum-mauve) 65%, var(--lum-muted)),
+    color-mix(in srgb, var(--lum-teal) 60%, var(--lum-muted)),
+    color-mix(in srgb, var(--lum-sage) 55%, var(--lum-muted))
+  ) !important;
+  opacity: 0.85 !important;
 }
 
 .anysphere-markdown-container-root pre code,
@@ -319,7 +341,7 @@
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: #e2e8f0 !important;
+  color: color-mix(in srgb, var(--lum-text) 95%, var(--lum-mauve)) !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
   line-height: 1.6 !important;
@@ -334,8 +356,8 @@
   border-spacing: 0 !important;
   border-radius: 10px !important;
   overflow: hidden !important;
-  border: 1px solid color-mix(in srgb, var(--lum-purple) 35%, transparent) !important;
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--lum-purple) 10%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-mauve) 20%, transparent) !important;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--lum-mauve) 5%, transparent) !important;
 }
 
 .anysphere-markdown-container-root :is(th, td),
@@ -347,25 +369,27 @@
 
 .anysphere-markdown-container-root th,
 .markdown-editor-react__richtext-content th {
-  background: linear-gradient(135deg,
-    color-mix(in srgb, var(--lum-purple) 55%, var(--lum-bg)),
-    color-mix(in srgb, var(--lum-blue) 45%, var(--lum-bg))) !important;
-  color: #f8fafc !important;
-  font-weight: 700 !important;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--lum-mauve) 14%, var(--lum-bg)),
+    color-mix(in srgb, var(--lum-slate) 12%, var(--lum-bg))
+  ) !important;
+  color: color-mix(in srgb, var(--lum-text) 95%, var(--lum-mauve)) !important;
+  font-weight: 600 !important;
   text-transform: uppercase !important;
   font-size: 0.78em !important;
-  letter-spacing: 0.05em !important;
-  border-bottom: 2px solid color-mix(in srgb, var(--lum-cyan) 40%, transparent) !important;
+  letter-spacing: 0.04em !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lum-teal) 22%, transparent) !important;
 }
 
 .anysphere-markdown-container-root tr:nth-child(even) td,
 .markdown-editor-react__richtext-content tr:nth-child(even) td {
-  background: color-mix(in srgb, var(--lum-purple) 6%, var(--lum-bg)) !important;
+  background: color-mix(in srgb, var(--lum-mauve) 4%, var(--lum-bg)) !important;
 }
 
 .anysphere-markdown-container-root tr:hover td,
 .markdown-editor-react__richtext-content tr:hover td {
-  background: color-mix(in srgb, var(--lum-cyan) 8%, var(--lum-bg)) !important;
+  background: color-mix(in srgb, var(--lum-teal) 5%, var(--lum-bg)) !important;
 }
 
 .anysphere-markdown-container-root tr:last-child td,
@@ -377,16 +401,18 @@
 
 .anysphere-markdown-container-root hr,
 .markdown-editor-react__richtext-content hr {
-  height: 2px !important;
+  height: 1px !important;
   border: 0 !important;
   margin: 2.2rem 0 !important;
-  background: linear-gradient(90deg,
+  background: linear-gradient(
+    90deg,
     transparent,
-    var(--lum-pink),
-    var(--lum-purple),
-    var(--lum-cyan),
-    transparent) !important;
-  opacity: 0.85 !important;
+    color-mix(in srgb, var(--lum-rose) 50%, var(--lum-border)),
+    color-mix(in srgb, var(--lum-mauve) 45%, var(--lum-border)),
+    color-mix(in srgb, var(--lum-teal) 40%, var(--lum-border)),
+    transparent
+  ) !important;
+  opacity: 0.7 !important;
 }
 
 /* === Obrazki === */
@@ -395,10 +421,8 @@
 .markdown-editor-react__richtext-content img {
   max-width: 100% !important;
   border-radius: 12px !important;
-  border: 1px solid color-mix(in srgb, var(--lum-purple) 30%, transparent) !important;
-  box-shadow:
-    0 8px 32px color-mix(in srgb, var(--lum-purple) 18%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--lum-cyan) 10%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-mauve) 18%, transparent) !important;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--lum-mauve) 8%, transparent) !important;
 }
 
 /* === Detale HTML (details/summary) === */
@@ -408,13 +432,13 @@
   padding: 0.5rem 0.8rem !important;
   border: 1px solid var(--lum-border) !important;
   border-radius: 8px !important;
-  background: color-mix(in srgb, var(--lum-purple) 5%, var(--lum-bg)) !important;
+  background: color-mix(in srgb, var(--lum-mauve) 4%, var(--lum-bg)) !important;
   margin-bottom: 1rem !important;
 }
 
 .anysphere-markdown-container-root summary,
 .markdown-editor-react__richtext-content summary {
-  color: var(--lum-purple) !important;
+  color: color-mix(in srgb, var(--lum-mauve) 55%, var(--lum-text)) !important;
   font-weight: 600 !important;
   cursor: pointer !important;
 }
