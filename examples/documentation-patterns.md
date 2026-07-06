@@ -1,43 +1,46 @@
-# Wzorce dokumentacji technicznej
+# Wzorce dokumentacji technicznej (C++)
 
-Przyklady typowych sekcji z dokumentacji bibliotek, API i narzedzi wewnetrznych.
+Przyklady typowych sekcji z dokumentacji bibliotek C++, API i narzedzi wewnetrznych.
 
 ## Admonitions (cytaty jako callouty)
 
-> **Uwaga:** Od wersji 2.0 `createClient()` jest asynchroniczne. Stary sync API zostanie usuniete w 3.0.
+> **Uwaga:** Od wersji 2.0 `TaskRepository::connect()` wymaga jawnego `ConnectionOptions`. Stary konstruktor z `const char*` zostanie usuniety w 3.0.
 
-> **Wskazowka:** Uzyj `dry-run` przed migracja na produkcji:
-> `npm run db:migrate -- --dry-run`
+> **Wskazowka:** Uruchom migracje w trybie podgladu przed produkcja:
+> `taskflow-migrate --dry-run --config config/app.json`
 
-> **Ostrzezenie:** Endpoint `/admin/*` nie jest chroniony rate limitem w trybie dev.
+> **Ostrzezenie:** Endpoint `/admin/*` nie jest chroniony rate limitem w trybie `TASKFLOW_ENV=development`.
 
 ## Definicje i skladnia
 
-### Funkcja `parseConfig`
+### Funkcja `parse_config`
 
-Parsuje plik konfiguracyjny i zwraca zwalidowany obiekt.
+Laduje plik JSON i zwraca zwalidowany obiekt konfiguracji.
 
 **Parametry:**
 
 | Nazwa | Typ | Domyslnie | Opis |
 |-------|-----|-----------|------|
-| `path` | `string` | — | Sciezka do pliku `.json` lub `.yaml` |
-| `options.strict` | `boolean` | `true` | Rzuca blad przy nieznanych kluczach |
-| `options.env` | `Record<string, string>` | `process.env` | Mapowanie zmiennych srodowiskowych |
+| `path` | `std::filesystem::path` | — | Sciezka do pliku `.json` |
+| `strict` | `bool` | `true` | Rzuca `ConfigError` przy nieznanych kluczach |
+| `env_prefix` | `std::string_view` | `"TASKFLOW_"` | Prefiks zmiennych srodowiskowych |
 
-**Zwraca:** `Promise<AppConfig>`
+**Zwraca:** `AppConfig`
 
-**Rzuca:** `ConfigError` gdy plik nie istnieje lub schema jest niepoprawna
+**Rzuca:** `ConfigError` gdy plik nie istnieje lub JSON jest niepoprawny
 
-```typescript
-import { parseConfig } from "@taskflow/config";
+```cpp
+#include "taskflow/config.hpp"
+#include <iostream>
 
-const config = await parseConfig("./config/app.yaml", {
-  strict: true,
-  env: { DATABASE_URL: process.env.DATABASE_URL! },
-});
+int main() {
+    auto config = taskflow::parse_config("config/app.json", {
+        .strict = true,
+        .env_prefix = "TASKFLOW_",
+    });
 
-console.log(config.server.port); // 3000
+    std::cout << "Port: " << config.server.port << '\n'; // 8080
+}
 ```
 
 ## Changelog (fragment)
@@ -51,57 +54,55 @@ console.log(config.server.port); // 3000
 
 #### Zmienione
 
-- **Breaking:** pole `userId` w odpowiedzi API przemianowane na `assigneeId`
+- **Breaking:** pole `user_id` w odpowiedzi API przemianowane na `assignee_id`
 - Domyslny timeout HTTP zwiekszony z 5s do 10s
+- Wymagany **C++20** (wczesniej C++17)
 
 #### Naprawione
 
 - `#142` — duplikaty zadan przy rownoleglym `POST`
-- `#156` — wyciek polaczen do bazy przy restarcie workera
+- `#156` — wyciek polaczen PostgreSQL przy restarcie workera
 
 ## Diagram sekwencji (tekstowy)
 
 ```
-Klient          API             Baza
-  │              │                │
-  │── POST /tasks ──────────────►│
-  │              │── INSERT ─────►│
-  │              │◄── OK ─────────│
-  │◄── 201 ──────│                │
-  │              │                │
-  │── GET /tasks ───────────────►│
-  │              │── SELECT ─────►│
-  │              │◄── rows ───────│
-  │◄── 200 ──────│                │
+Klient          API (C++)        PostgreSQL
+  │              │                    │
+  │── POST /tasks ────────────────►│
+  │              │── INSERT ────────►│
+  │              │◄── OK ─────────────│
+  │◄── 201 ──────│                    │
+  │              │                    │
+  │── GET /tasks ─────────────────►│
+  │              │── SELECT ──────────►│
+  │              │◄── rows ───────────│
+  │◄── 200 ──────│                    │
 ```
 
 ## Tabela kompatybilnosci
 
-| Wersja Node | TaskFlow API | Status |
-|-------------|--------------|--------|
-| 18.x | 0.1.x | Wspierane |
-| 20.x | 0.1.x | **Zalecane** |
-| 22.x | 0.1.x | Wspierane |
-| 16.x | 0.1.x | Nie wspierane |
+| Kompilator | Standard | TaskFlow API | Status |
+|------------|----------|--------------|--------|
+| GCC 13+ | C++20 | 0.1.x | **Zalecane** |
+| Clang 17+ | C++20 | 0.1.x | Wspierane |
+| MSVC 19.38+ | C++20 | 0.1.x | Wspierane |
+| GCC 11 | C++17 | 0.1.x | Nie wspierane |
 
 ## Snippety konfiguracyjne
 
-### ESLint (flat config)
+### CMake — opcje kompilacji
 
-```javascript
-// eslint.config.js
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
+```cmake
+# CMakeLists.txt (fragment)
+target_compile_features(taskflow_api PRIVATE cxx_std_20)
 
-export default tseslint.config(
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    rules: {
-      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    },
-  }
-);
+target_compile_options(taskflow_api PRIVATE
+    $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic>
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /permissive->
+)
+
+option(TASKFLOW_BUILD_TESTS "Build unit tests" ON)
+option(TASKFLOW_ENABLE_ASAN "Address sanitizer" OFF)
 ```
 
 ### Nginx (reverse proxy)
@@ -112,7 +113,7 @@ server {
     server_name api.taskflow.example;
 
     location / {
-        proxy_pass http://127.0.0.1:3000;
+        proxy_pass http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -127,62 +128,81 @@ server {
 livenessProbe:
   httpGet:
     path: /health
-    port: 3000
+    port: 8080
   initialDelaySeconds: 10
   periodSeconds: 15
 
 readinessProbe:
   httpGet:
     path: /ready
-    port: 3000
+    port: 8080
   initialDelaySeconds: 5
   periodSeconds: 10
 ```
 
 ## Lista kontrolna przed release
 
-- [x] Testy jednostkowe przechodza (`npm test`)
+- [x] Testy jednostkowe przechodza (`ctest --test-dir build`)
 - [x] Migracje przetestowane na staging
 - [x] CHANGELOG zaktualizowany
-- [x] Wersja w `package.json` podbita
+- [x] Wersja w `CMakeLists.txt` podbita
 - [ ] Tag git `v1.2.0`
 - [ ] Deploy na produkcje
 - [ ] Post na #releases w Slacku
 
 ## Porownanie opcji
 
-| Aspekt | REST | GraphQL | gRPC |
-|--------|------|---------|------|
-| Prostota MVP | ★★★★★ | ★★★ | ★★ |
-| Dokumentacja | OpenAPI | Schema | Proto |
-| Cache HTTP | Tak | Ograniczony | Nie |
-| Typowanie | Czesciowe | Silne | Bardzo silne |
+| Aspekt | REST + Drogon | gRPC | Wlasny socket |
+|--------|---------------|------|---------------|
+| Prostosc MVP | ★★★★☆ | ★★★ | ★★ |
+| Dokumentacja | OpenAPI | Proto | Brak |
+| Wydajnosc | Wysoka | Bardzo wysoka | Zalezna od impl. |
+| Typowanie | JSON + walidacja | Silne (proto) | Reczne |
 
 ## Kod z komentarzami (tutorial)
 
-```python
-# pipeline/etl.py — uproszczony ETL dzienny
+```cpp
+// src/etl/import_contacts.cpp — uproszczony import CSV
 
-import pandas as pd
-from sqlalchemy import create_engine
+#include <fstream>
+#include <pqxx/pqxx>
+#include <sstream>
+#include <string>
 
-def run_etl(source_csv: str, db_url: str) -> int:
-    """Laduje CSV, czysci dane, zapisuje do PostgreSQL."""
-    df = pd.read_csv(source_csv)
+// Laduje CSV, czysci e-mail i zapisuje do tabeli stagingowej.
+int run_etl(const std::string& source_csv, const std::string& db_url) {
+    std::ifstream in{source_csv};
+    if (!in) throw std::runtime_error("Nie mozna otworzyc pliku CSV");
 
-    # Normalizacja kolumn
-    df.columns = df.columns.str.strip().str.lower()
-    df = df.dropna(subset=["email"])
-    df["email"] = df["email"].str.lower()
+    pqxx::connection conn{db_url};
+    pqxx::work tx{conn};
+    int rows = 0;
 
-    engine = create_engine(db_url)
-    rows = df.to_sql("contacts_staging", engine, if_exists="replace", index=False)
-    return rows or len(df)
+    std::string line;
+    std::getline(in, line); // naglowek
+
+    while (std::getline(in, line)) {
+        std::istringstream ss{line};
+        std::string email;
+        std::getline(ss, email, ',');
+
+        // normalizacja
+        for (auto& c : email) c = static_cast<char>(std::tolower(c));
+        if (email.empty()) continue;
+
+        tx.exec_params(
+            "INSERT INTO contacts_staging (email) VALUES ($1)", email);
+        ++rows;
+    }
+
+    tx.commit();
+    return rows;
+}
 ```
 
 ## Linki i odniesienia
 
-- [OpenAPI Specification](https://swagger.io/specification/)
-- [Conventional Commits](https://www.conventionalcommits.org/)
+- [C++ Reference](https://en.cppreference.com/)
+- [CMake Documentation](https://cmake.org/documentation/)
 - Wewnetrzny runbook: `docs/runbooks/incident-response.md`
-- Kod zrodlowy modulu auth: `src/middleware/auth.ts`
+- Kod zrodlowy modulu auth: `src/middleware/auth_filter.cpp`
