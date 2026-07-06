@@ -1,0 +1,441 @@
+/* C++ Modern v1 — Syntax (wierne mapowanie tokenow skladni C++)
+   w VS Code: Default Dark Modern + Dark+ / Better C++ Syntax
+   Inline preview Cursor: Preview | Markdown */
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  /* Tlo i tekst z Modern Dark */
+  --cpp-bg: var(--vscode-editor-background, #1f1f1f);
+  --cpp-fg: var(--vscode-editor-foreground, #cccccc);
+  --cpp-muted: var(--vscode-descriptionForeground, #9d9d9d);
+  --cpp-panel: var(--vscode-textCodeBlock-background, #2b2b2b);
+  --cpp-panel-deep: color-mix(in srgb, var(--cpp-bg) 55%, #2b2b2b);
+  --cpp-border: color-mix(in srgb, var(--cpp-fg) 14%, transparent);
+  --cpp-preformat-bg: var(--vscode-textPreformat-background, #3c3c3c);
+
+  /* Tokeny skladni C++ (Dark+ / Modern Dark) */
+  --cpp-comment: #6a9955;
+  --cpp-keyword: #569cd6;
+  --cpp-control: #c586c0;
+  --cpp-type: #4ec9b0;
+  --cpp-function: #dcdcaa;
+  --cpp-string: #ce9178;
+  --cpp-number: #b5cea8;
+  --cpp-variable: #9cdcfe;
+  --cpp-constant: #4fc1ff;
+  --cpp-preprocessor: #569cd6;
+  --cpp-link: var(--vscode-textLink-foreground, #4daafc);
+  --cpp-accent: #0078d4;
+
+  --md-bg: var(--cpp-bg);
+  --md-text: var(--cpp-fg);
+  --md-border: var(--cpp-border);
+  --md-accent: var(--cpp-link);
+  --md-panel: var(--cpp-panel-deep);
+  --md-code-bg: var(--cpp-preformat-bg);
+  --md-code-text: var(--cpp-variable);
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+  --md-line-height: 1.75;
+  --md-padding: 20px 28px;
+}
+
+/* === Baza === */
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.anysphere-markdown-container-root {
+  padding: var(--md-padding) !important;
+}
+
+.anysphere-markdown-container-root :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-editor-react__richtext-content :is(p, ul, ol, blockquote, table, pre, hr) {
+  margin: 0 0 1.1rem !important;
+}
+
+/* === Naglowki — mapowanie na tokeny C++ === */
+
+.anysphere-markdown-container-root :is(h1, h2, h3, h4, h5, h6),
+.markdown-editor-react__richtext-content :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin: 1.6em 0 0.55em !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* H1: type -> keyword -> function (klasyczna trojka VS Code) */
+.anysphere-markdown-container-root h1,
+.markdown-editor-react__richtext-content h1 {
+  font-size: 2em !important;
+  background: linear-gradient(120deg, var(--cpp-type), var(--cpp-keyword), var(--cpp-function)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  padding-bottom: 0.35em !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--cpp-type) 40%, transparent) !important;
+}
+
+/* H2: typy (class, struct, template) */
+.anysphere-markdown-container-root h2,
+.markdown-editor-react__richtext-content h2 {
+  font-size: 1.55em !important;
+  color: var(--cpp-type) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--cpp-type) 35%, transparent) !important;
+  padding-bottom: 0.25em !important;
+}
+
+/* H3: slowa kluczowe */
+.anysphere-markdown-container-root h3,
+.markdown-editor-react__richtext-content h3 {
+  font-size: 1.3em !important;
+  color: var(--cpp-keyword) !important;
+}
+
+/* H4: kontrola przeplywu (if, for, return) */
+.anysphere-markdown-container-root h4,
+.markdown-editor-react__richtext-content h4 {
+  font-size: 1.12em !important;
+  color: var(--cpp-control) !important;
+}
+
+/* H5: funkcje / makra */
+.anysphere-markdown-container-root h5,
+.markdown-editor-react__richtext-content h5 {
+  font-size: 1em !important;
+  color: var(--cpp-function) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* H6: zmienne / parametry */
+.anysphere-markdown-container-root h6,
+.markdown-editor-react__richtext-content h6 {
+  font-size: 0.92em !important;
+  color: var(--cpp-variable) !important;
+  font-weight: 600 !important;
+}
+
+/* === Tekst inline === */
+
+.anysphere-markdown-container-root strong,
+.markdown-editor-react__richtext-content strong {
+  color: var(--cpp-function) !important;
+  font-weight: 700 !important;
+}
+
+.anysphere-markdown-container-root em,
+.markdown-editor-react__richtext-content em {
+  color: var(--cpp-type) !important;
+  font-style: italic !important;
+}
+
+.anysphere-markdown-container-root del,
+.markdown-editor-react__richtext-content del {
+  color: var(--cpp-comment) !important;
+  text-decoration-color: var(--cpp-string) !important;
+}
+
+.anysphere-markdown-container-root a,
+.markdown-editor-react__richtext-content a {
+  color: var(--cpp-link) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--cpp-link) 40%, transparent) !important;
+  transition: color 0.15s, border-color 0.15s !important;
+}
+
+.anysphere-markdown-container-root a:hover,
+.markdown-editor-react__richtext-content a:hover {
+  color: var(--cpp-constant) !important;
+  border-bottom-color: var(--cpp-constant) !important;
+}
+
+/* === Listy === */
+
+.anysphere-markdown-container-root :is(ul, ol),
+.markdown-editor-react__richtext-content :is(ul, ol) {
+  padding-left: 1.6rem !important;
+}
+
+.anysphere-markdown-container-root ul,
+.markdown-editor-react__richtext-content ul {
+  list-style: none !important;
+}
+
+.anysphere-markdown-container-root ul > li,
+.markdown-editor-react__richtext-content ul > li {
+  position: relative !important;
+  padding-left: 0.35rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.anysphere-markdown-container-root ul > li::before,
+.markdown-editor-react__richtext-content ul > li::before {
+  content: "" !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 0.62em !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 2px !important;
+  background: var(--cpp-type) !important;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--cpp-type) 45%, transparent) !important;
+}
+
+.anysphere-markdown-container-root ul ul > li::before,
+.markdown-editor-react__richtext-content ul ul > li::before {
+  background: var(--cpp-keyword) !important;
+  box-shadow: 0 0 5px color-mix(in srgb, var(--cpp-keyword) 40%, transparent) !important;
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.anysphere-markdown-container-root ul ul ul > li::before,
+.markdown-editor-react__richtext-content ul ul ul > li::before {
+  background: var(--cpp-variable) !important;
+  box-shadow: 0 0 5px color-mix(in srgb, var(--cpp-variable) 35%, transparent) !important;
+}
+
+.anysphere-markdown-container-root ol,
+.markdown-editor-react__richtext-content ol {
+  counter-reset: cpp-ol !important;
+  list-style: none !important;
+}
+
+.anysphere-markdown-container-root ol > li,
+.markdown-editor-react__richtext-content ol > li {
+  counter-increment: cpp-ol !important;
+  position: relative !important;
+  padding-left: 0.2rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.anysphere-markdown-container-root ol > li::before,
+.markdown-editor-react__richtext-content ol > li::before {
+  content: counter(cpp-ol) !important;
+  position: absolute !important;
+  left: -1.6rem !important;
+  top: 0.05em !important;
+  min-width: 1.35rem !important;
+  height: 1.35rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.72em !important;
+  font-weight: 700 !important;
+  font-family: var(--md-font-mono) !important;
+  color: var(--cpp-bg) !important;
+  background: linear-gradient(135deg, var(--cpp-type), var(--cpp-keyword)) !important;
+  border-radius: 4px !important;
+}
+
+.anysphere-markdown-container-root :is(ul, ol) li > :is(ul, ol),
+.markdown-editor-react__richtext-content :is(ul, ol) li > :is(ul, ol) {
+  margin-top: 0.45rem !important;
+}
+
+.anysphere-markdown-container-root li:has(input[type="checkbox"]),
+.markdown-editor-react__richtext-content li:has(input[type="checkbox"]) {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.anysphere-markdown-container-root li:has(input[type="checkbox"])::before,
+.markdown-editor-react__richtext-content li:has(input[type="checkbox"])::before {
+  display: none !important;
+}
+
+.anysphere-markdown-container-root input[type="checkbox"],
+.markdown-editor-react__richtext-content input[type="checkbox"] {
+  accent-color: var(--cpp-accent) !important;
+  margin-right: 0.45rem !important;
+  transform: scale(1.12) !important;
+}
+
+/* === Cytaty — jak komentarze // === */
+
+.anysphere-markdown-container-root blockquote,
+.markdown-editor-react__richtext-content blockquote {
+  margin-left: 0 !important;
+  padding: 0.65rem 1.2rem !important;
+  border-left: 4px solid var(--cpp-comment) !important;
+  background: color-mix(in srgb, var(--cpp-comment) 8%, var(--cpp-bg)) !important;
+  color: color-mix(in srgb, var(--cpp-comment) 75%, var(--cpp-fg)) !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-style: italic !important;
+}
+
+/* === Kod inline — zmienne / identyfikatory === */
+
+.anysphere-markdown-container-root :not(pre) > code,
+.markdown-editor-react__richtext-content :not(pre) > code {
+  padding: 0.16rem 0.42rem !important;
+  border-radius: 4px !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.88em !important;
+  color: var(--cpp-variable) !important;
+  background: var(--cpp-preformat-bg) !important;
+  border: 1px solid color-mix(in srgb, var(--cpp-keyword) 25%, transparent) !important;
+}
+
+/* === Bloki kodu — edytor / terminal === */
+
+.anysphere-markdown-container-root pre,
+.markdown-editor-react__richtext-content pre {
+  padding: 1rem 1.1rem !important;
+  overflow-x: auto !important;
+  border-radius: 6px !important;
+  background: var(--cpp-panel) !important;
+  border: 1px solid color-mix(in srgb, var(--cpp-fg) 12%, transparent) !important;
+  border-left: none !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cpp-type) 8%, transparent) !important;
+  position: relative !important;
+}
+
+/* Pasek: type | keyword | function — jak podswietlenie skladni */
+.anysphere-markdown-container-root pre::before,
+.markdown-editor-react__richtext-content pre::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  border-radius: 6px 0 0 6px !important;
+  background: linear-gradient(
+    180deg,
+    var(--cpp-type),
+    var(--cpp-keyword),
+    var(--cpp-function)
+  ) !important;
+}
+
+.anysphere-markdown-container-root pre code,
+.markdown-editor-react__richtext-content pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--cpp-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.6 !important;
+}
+
+/* === Tabele === */
+
+.anysphere-markdown-container-root table,
+.markdown-editor-react__richtext-content table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--cpp-border) !important;
+}
+
+.anysphere-markdown-container-root :is(th, td),
+.markdown-editor-react__richtext-content :is(th, td) {
+  padding: 0.7rem 0.9rem !important;
+  border-bottom: 1px solid var(--cpp-border) !important;
+  text-align: left !important;
+}
+
+.anysphere-markdown-container-root th,
+.markdown-editor-react__richtext-content th {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cpp-type) 22%, var(--cpp-panel)),
+    color-mix(in srgb, var(--cpp-keyword) 18%, var(--cpp-panel))
+  ) !important;
+  color: var(--cpp-fg) !important;
+  font-weight: 600 !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.8em !important;
+  letter-spacing: 0.03em !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--cpp-type) 50%, transparent) !important;
+}
+
+.anysphere-markdown-container-root tr:nth-child(even) td,
+.markdown-editor-react__richtext-content tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--cpp-keyword) 4%, var(--cpp-bg)) !important;
+}
+
+.anysphere-markdown-container-root tr:hover td,
+.markdown-editor-react__richtext-content tr:hover td {
+  background: color-mix(in srgb, var(--cpp-type) 6%, var(--cpp-bg)) !important;
+}
+
+.anysphere-markdown-container-root tr:last-child td,
+.markdown-editor-react__richtext-content tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* === Separator === */
+
+.anysphere-markdown-container-root hr,
+.markdown-editor-react__richtext-content hr {
+  height: 1px !important;
+  border: 0 !important;
+  margin: 2.2rem 0 !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cpp-type),
+    var(--cpp-keyword),
+    var(--cpp-function),
+    transparent
+  ) !important;
+  opacity: 0.85 !important;
+}
+
+/* === Obrazki === */
+
+.anysphere-markdown-container-root img,
+.markdown-editor-react__richtext-content img {
+  max-width: 100% !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--cpp-border) !important;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--cpp-bg) 30%, #000000) !important;
+}
+
+/* === Details — jak sekcja preprocessor === */
+
+.anysphere-markdown-container-root details,
+.markdown-editor-react__richtext-content details {
+  padding: 0.5rem 0.8rem !important;
+  border: 1px solid color-mix(in srgb, var(--cpp-preprocessor) 30%, transparent) !important;
+  border-radius: 4px !important;
+  background: color-mix(in srgb, var(--cpp-keyword) 5%, var(--cpp-bg)) !important;
+  margin-bottom: 1rem !important;
+}
+
+.anysphere-markdown-container-root summary,
+.markdown-editor-react__richtext-content summary {
+  color: var(--cpp-preprocessor) !important;
+  font-weight: 600 !important;
+  font-family: var(--md-font-mono) !important;
+  cursor: pointer !important;
+}
+
+/* Akcenty skladni w akapitach — opcjonalne klasy semantyczne */
+.anysphere-markdown-container-root .cpp-string,
+.markdown-editor-react__richtext-content .cpp-string,
+.anysphere-markdown-container-root code.cpp-string,
+.markdown-editor-react__richtext-content code.cpp-string {
+  color: var(--cpp-string) !important;
+}
+
+.anysphere-markdown-container-root .cpp-number,
+.markdown-editor-react__richtext-content .cpp-number {
+  color: var(--cpp-number) !important;
+}
+
+.anysphere-markdown-container-root .cpp-control,
+.markdown-editor-react__richtext-content .cpp-control {
+  color: var(--cpp-control) !important;
+}

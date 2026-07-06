@@ -16,8 +16,10 @@ Style dla widoku **Preview | Markdown** (inline preview). Kazdy plik jest samodz
 | `cursor-inline-bear.css` | Cieply, kremowe tlo (Bear Notes) |
 | `cursor-inline-docs.css` | Dokumentacja techniczna (Stack Overflow) |
 | `cursor-inline-catppuccin.css` | Catppuccin Mocha |
+| `cursor-inline-cpp-modern.css` | **C++ Modern v2** (skrot) — czytelny, spójny niebiesko-morski |
 | `cursor-inline-lumina.css` | **Lumina v4** (skrot) — Neon Blue |
 | `lumina/` | Historia Lumina: v1–v4 (aktualna: v4 Neon Blue) |
+| `cpp-modern/` | C++ Modern v1 Syntax, v2 Readable |
 
 Plik `_shared-rules.css` zawiera wspolne reguly — jest juz wlaczony w kazdy motyw. Nie kopiuj go osobno.
 
