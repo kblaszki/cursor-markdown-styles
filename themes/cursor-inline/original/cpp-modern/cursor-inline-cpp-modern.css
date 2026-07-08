@@ -1,6 +1,10 @@
 /* C++ Modern - readable, blue-teal palette
-   Based on Dark Modern / Dark+, with restrained syntax color usage.
-   Inline preview Cursor: Preview | Markdown */
+ * Built on the Dark Modern and Dark+ palette, with restrained syntax accents.
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ *
+ * Cursor inline preview: Preview | Markdown
+ */
 
 .anysphere-markdown-container-root,
 .markdown-editor-react__richtext-content {

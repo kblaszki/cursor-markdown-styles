@@ -1,6 +1,10 @@
 /* C++ Modern v1 - Syntax (faithful mapping of C++ syntax tokens)
-   In VS Code: Default Dark Modern + Dark+ / Better C++ Syntax
-   Inline preview Cursor: Preview | Markdown */
+ * Syntax colors mapped from VS Code Dark Modern, Dark+, and Better C++ Syntax.
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ *
+ * Cursor inline preview: Preview | Markdown
+ */
 
 .anysphere-markdown-container-root,
 .markdown-editor-react__richtext-content {

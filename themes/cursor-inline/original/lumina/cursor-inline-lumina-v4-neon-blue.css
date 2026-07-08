@@ -1,5 +1,9 @@
 /* Lumina v4 - Neon Blue (unified blue palette, neon feel)
-   Inline preview Cursor: Preview | Markdown */
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ *
+ * Cursor inline preview: Preview | Markdown
+ */
 
 .anysphere-markdown-container-root,
 .markdown-editor-react__richtext-content {

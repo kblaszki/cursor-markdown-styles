@@ -102,4 +102,8 @@ Important notes:
 
 ## License
 
-This project uses the MIT License. See `LICENSE`.
+This project is licensed under the [MIT License](LICENSE).
+
+- **Copyright (c) 2026 kblaszki**
+- Themes in `themes/cursor-inline/original/` are original work by kblaszki and are included under the same MIT license.
+- Themes in `themes/cursor-inline/popular/` are inspired by recognizable products and palettes; they are provided as stylistic references under the same MIT license.

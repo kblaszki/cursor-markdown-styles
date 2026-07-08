@@ -1,5 +1,9 @@
 /* Lumina v3 - Balanced (balanced former recommendation)
-   Inline preview Cursor: Preview | Markdown */
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ *
+ * Cursor inline preview: Preview | Markdown
+ */
 
 .anysphere-markdown-container-root,
 .markdown-editor-react__richtext-content {
