@@ -13,6 +13,7 @@ A public playground for experimenting with Markdown fixtures, browser preview st
 - `examples/`
   - `basic.md` - core Markdown syntax
   - `extended.md` - tables, images, embedded HTML, and code fences
+  - `checkboxes.md` - task lists and nested checklist patterns
   - `theme-preview.md` - a fixed comparison document for theme testing
   - `code-showcase.md` - C++-heavy snippets for technical theme testing
   - `documentation-patterns.md` - technical documentation patterns and release notes
@@ -31,8 +32,9 @@ A public playground for experimenting with Markdown fixtures, browser preview st
 ### Browser Preview
 
 1. Open `preview/index.html` in a browser.
-2. Edit `preview/markdown.css`, or use **Load CSS** / drag-and-drop to test a theme from `themes/cursor-inline/`.
-3. Refresh the page when editing `preview/markdown.css` directly.
+2. Switch between example fixtures with the tabs at the top of the page.
+3. Edit `preview/markdown.css`, or use **Load CSS** / drag-and-drop to test a theme from `themes/cursor-inline/`.
+4. Refresh the page when editing `preview/markdown.css` directly.
 
 ### Cursor Markdown Preview
 

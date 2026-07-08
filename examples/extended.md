@@ -9,7 +9,7 @@
 
 ## Image
 
-![Placeholder](https://via.placeholder.com/640x180.png?text=Markdown+Preview)
+![Markdown preview sample](../preview/preview-image.svg)
 
 ## Quote With A List
 
