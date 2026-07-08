@@ -1,0 +1,401 @@
+/* C++ Modern - readable, blue-teal palette
+   Based on Dark Modern / Dark+, with restrained syntax color usage.
+   Inline preview Cursor: Preview | Markdown */
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  --cpp-bg: var(--vscode-editor-background, #1f1f1f);
+  --cpp-fg: var(--vscode-editor-foreground, #cccccc);
+  --cpp-muted: var(--vscode-descriptionForeground, #9d9d9d);
+  --cpp-panel: #2b2b2b;
+  --cpp-panel-raised: #333333;
+  --cpp-border: #3c3c3c;
+  --cpp-border-subtle: color-mix(in srgb, var(--cpp-fg) 12%, transparent);
+
+  /* Consistent palette: blue-teal shades plus neutrals */
+  --cpp-primary: #4ec9b0;
+  --cpp-secondary: #569cd6;
+  --cpp-link: #4daafc;
+  --cpp-link-hover: #6cb6ff;
+  --cpp-accent: #0078d4;
+  --cpp-code-fg: #d4d4d4;
+  --cpp-code-inline: #9cdcfe;
+  --cpp-code-bg: #3c3c3c;
+
+  /* Code semantics belong in blocks and helper classes, not in headings */
+  --cpp-syntax-string: #ce9178;
+  --cpp-syntax-number: #b5cea8;
+  --cpp-syntax-comment: #6a9955;
+
+  --md-bg: var(--cpp-bg);
+  --md-text: var(--cpp-fg);
+  --md-border: var(--cpp-border-subtle);
+  --md-accent: var(--cpp-link);
+  --md-panel: var(--cpp-panel);
+  --md-code-bg: var(--cpp-code-bg);
+  --md-code-text: var(--cpp-code-inline);
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+  --md-line-height: 1.8;
+  --md-padding: 22px 30px;
+}
+
+/* === Base === */
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.anysphere-markdown-container-root {
+  padding: var(--md-padding) !important;
+}
+
+.anysphere-markdown-container-root :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-editor-react__richtext-content :is(p, ul, ol, blockquote, table, pre, hr) {
+  margin: 0 0 1.15rem !important;
+}
+
+.anysphere-markdown-container-root p,
+.markdown-editor-react__richtext-content p {
+  color: var(--cpp-fg) !important;
+}
+
+/* === Headings - hierarchy within one color family === */
+
+.anysphere-markdown-container-root :is(h1, h2, h3, h4, h5, h6),
+.markdown-editor-react__richtext-content :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  margin: 1.75em 0 0.6em !important;
+  letter-spacing: -0.015em !important;
+}
+
+.anysphere-markdown-container-root h1,
+.markdown-editor-react__richtext-content h1 {
+  font-size: 1.85em !important;
+  font-weight: 700 !important;
+  color: var(--cpp-fg) !important;
+  padding-bottom: 0.4em !important;
+  border-bottom: 2px solid var(--cpp-primary) !important;
+}
+
+.anysphere-markdown-container-root h2,
+.markdown-editor-react__richtext-content h2 {
+  font-size: 1.45em !important;
+  color: var(--cpp-primary) !important;
+  border-bottom: 1px solid var(--cpp-border) !important;
+  padding-bottom: 0.28em !important;
+}
+
+.anysphere-markdown-container-root h3,
+.markdown-editor-react__richtext-content h3 {
+  font-size: 1.22em !important;
+  color: color-mix(in srgb, var(--cpp-secondary) 80%, var(--cpp-fg)) !important;
+}
+
+.anysphere-markdown-container-root h4,
+.markdown-editor-react__richtext-content h4 {
+  font-size: 1.08em !important;
+  color: color-mix(in srgb, var(--cpp-secondary) 55%, var(--cpp-fg)) !important;
+}
+
+.anysphere-markdown-container-root h5,
+.markdown-editor-react__richtext-content h5 {
+  font-size: 0.95em !important;
+  color: var(--cpp-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  font-weight: 600 !important;
+}
+
+.anysphere-markdown-container-root h6,
+.markdown-editor-react__richtext-content h6 {
+  font-size: 0.9em !important;
+  color: var(--cpp-muted) !important;
+  font-weight: 600 !important;
+}
+
+/* === Inline text === */
+
+.anysphere-markdown-container-root strong,
+.markdown-editor-react__richtext-content strong {
+  color: var(--cpp-fg) !important;
+  font-weight: 700 !important;
+}
+
+.anysphere-markdown-container-root em,
+.markdown-editor-react__richtext-content em {
+  color: color-mix(in srgb, var(--cpp-primary) 65%, var(--cpp-fg)) !important;
+  font-style: italic !important;
+}
+
+.anysphere-markdown-container-root del,
+.markdown-editor-react__richtext-content del {
+  color: var(--cpp-muted) !important;
+  text-decoration-color: var(--cpp-border) !important;
+}
+
+.anysphere-markdown-container-root a,
+.markdown-editor-react__richtext-content a {
+  color: var(--cpp-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--cpp-link) 45%, transparent) !important;
+  text-underline-offset: 2px !important;
+  transition: color 0.12s !important;
+}
+
+.anysphere-markdown-container-root a:hover,
+.markdown-editor-react__richtext-content a:hover {
+  color: var(--cpp-link-hover) !important;
+}
+
+/* === Lists - consistent markers, no glow === */
+
+.anysphere-markdown-container-root :is(ul, ol),
+.markdown-editor-react__richtext-content :is(ul, ol) {
+  padding-left: 1.55rem !important;
+}
+
+.anysphere-markdown-container-root ul,
+.markdown-editor-react__richtext-content ul {
+  list-style: none !important;
+}
+
+.anysphere-markdown-container-root ul > li,
+.markdown-editor-react__richtext-content ul > li {
+  position: relative !important;
+  padding-left: 0.3rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.anysphere-markdown-container-root ul > li::before,
+.markdown-editor-react__richtext-content ul > li::before {
+  content: "" !important;
+  position: absolute !important;
+  left: -1.1rem !important;
+  top: 0.68em !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--cpp-primary) !important;
+}
+
+.anysphere-markdown-container-root ul ul > li::before,
+.markdown-editor-react__richtext-content ul ul > li::before {
+  background: var(--cpp-secondary) !important;
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.anysphere-markdown-container-root ul ul ul > li::before,
+.markdown-editor-react__richtext-content ul ul ul > li::before {
+  background: color-mix(in srgb, var(--cpp-secondary) 50%, var(--cpp-muted)) !important;
+}
+
+.anysphere-markdown-container-root ol,
+.markdown-editor-react__richtext-content ol {
+  counter-reset: cpp-ol !important;
+  list-style: none !important;
+}
+
+.anysphere-markdown-container-root ol > li,
+.markdown-editor-react__richtext-content ol > li {
+  counter-increment: cpp-ol !important;
+  position: relative !important;
+  padding-left: 0.15rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.anysphere-markdown-container-root ol > li::before,
+.markdown-editor-react__richtext-content ol > li::before {
+  content: counter(cpp-ol) "." !important;
+  position: absolute !important;
+  left: -1.45rem !important;
+  top: 0 !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  font-family: var(--md-font-mono) !important;
+  color: var(--cpp-primary) !important;
+  min-width: auto !important;
+  height: auto !important;
+  background: none !important;
+  border-radius: 0 !important;
+}
+
+.anysphere-markdown-container-root :is(ul, ol) li > :is(ul, ol),
+.markdown-editor-react__richtext-content :is(ul, ol) li > :is(ul, ol) {
+  margin-top: 0.5rem !important;
+}
+
+.anysphere-markdown-container-root li:has(input[type="checkbox"]),
+.markdown-editor-react__richtext-content li:has(input[type="checkbox"]) {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.anysphere-markdown-container-root li:has(input[type="checkbox"])::before,
+.markdown-editor-react__richtext-content li:has(input[type="checkbox"])::before {
+  display: none !important;
+}
+
+.anysphere-markdown-container-root input[type="checkbox"],
+.markdown-editor-react__richtext-content input[type="checkbox"] {
+  accent-color: var(--cpp-accent) !important;
+  margin-right: 0.45rem !important;
+}
+
+/* === Blockquotes - neutral and readable === */
+
+.anysphere-markdown-container-root blockquote,
+.markdown-editor-react__richtext-content blockquote {
+  margin-left: 0 !important;
+  padding: 0.7rem 1.15rem !important;
+  border-left: 3px solid var(--cpp-secondary) !important;
+  background: var(--cpp-panel) !important;
+  color: color-mix(in srgb, var(--cpp-fg) 88%, var(--cpp-muted)) !important;
+  border-radius: 0 4px 4px 0 !important;
+  font-style: normal !important;
+}
+
+/* === Inline code === */
+
+.anysphere-markdown-container-root :not(pre) > code,
+.markdown-editor-react__richtext-content :not(pre) > code {
+  padding: 0.14rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.87em !important;
+  color: var(--cpp-code-inline) !important;
+  background: var(--cpp-code-bg) !important;
+  border: 1px solid var(--cpp-border) !important;
+}
+
+/* === Code blocks - readable panel === */
+
+.anysphere-markdown-container-root pre,
+.markdown-editor-react__richtext-content pre {
+  padding: 1rem 1.15rem !important;
+  overflow-x: auto !important;
+  border-radius: 6px !important;
+  background: var(--cpp-panel) !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-left: 3px solid var(--cpp-primary) !important;
+  position: relative !important;
+}
+
+.anysphere-markdown-container-root pre::before,
+.markdown-editor-react__richtext-content pre::before {
+  display: none !important;
+}
+
+.anysphere-markdown-container-root pre code,
+.markdown-editor-react__richtext-content pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--cpp-code-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.65 !important;
+}
+
+/* === Tabele — proste, wysoki kontrast === */
+
+.anysphere-markdown-container-root table,
+.markdown-editor-react__richtext-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+
+.anysphere-markdown-container-root :is(th, td),
+.markdown-editor-react__richtext-content :is(th, td) {
+  padding: 0.65rem 0.85rem !important;
+  border-bottom: 1px solid var(--cpp-border) !important;
+  text-align: left !important;
+}
+
+.anysphere-markdown-container-root th,
+.markdown-editor-react__richtext-content th {
+  background: var(--cpp-panel-raised) !important;
+  color: var(--cpp-fg) !important;
+  font-weight: 600 !important;
+  font-size: 0.85em !important;
+  border-bottom: 2px solid var(--cpp-primary) !important;
+}
+
+.anysphere-markdown-container-root tr:nth-child(even) td,
+.markdown-editor-react__richtext-content tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--cpp-panel) 50%, var(--cpp-bg)) !important;
+}
+
+.anysphere-markdown-container-root tr:hover td,
+.markdown-editor-react__richtext-content tr:hover td {
+  background: color-mix(in srgb, var(--cpp-primary) 5%, var(--cpp-bg)) !important;
+}
+
+.anysphere-markdown-container-root tr:last-child td,
+.markdown-editor-react__richtext-content tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* === Divider === */
+
+.anysphere-markdown-container-root hr,
+.markdown-editor-react__richtext-content hr {
+  height: 1px !important;
+  border: 0 !important;
+  margin: 2rem 0 !important;
+  background: var(--cpp-border) !important;
+}
+
+/* === Images === */
+
+.anysphere-markdown-container-root img,
+.markdown-editor-react__richtext-content img {
+  max-width: 100% !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--cpp-border) !important;
+}
+
+/* === Details === */
+
+.anysphere-markdown-container-root details,
+.markdown-editor-react__richtext-content details {
+  padding: 0.55rem 0.85rem !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-radius: 4px !important;
+  background: var(--cpp-panel) !important;
+  margin-bottom: 1rem !important;
+}
+
+.anysphere-markdown-container-root summary,
+.markdown-editor-react__richtext-content summary {
+  color: var(--cpp-secondary) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+/* Code semantics - optional classes */
+.anysphere-markdown-container-root .cpp-string,
+.markdown-editor-react__richtext-content .cpp-string,
+.anysphere-markdown-container-root code.cpp-string,
+.markdown-editor-react__richtext-content code.cpp-string {
+  color: var(--cpp-syntax-string) !important;
+}
+
+.anysphere-markdown-container-root .cpp-number,
+.markdown-editor-react__richtext-content .cpp-number {
+  color: var(--cpp-syntax-number) !important;
+}
+
+.anysphere-markdown-container-root .cpp-comment,
+.markdown-editor-react__richtext-content .cpp-comment {
+  color: var(--cpp-syntax-comment) !important;
+}

@@ -1,37 +1,37 @@
-# Naglowek H1
+# Heading H1
 
-## Naglowek H2
+## Heading H2
 
-### Naglowek H3
+### Heading H3
 
-Zwykly akapit z **pogrubieniem**, *kursywa*, ~~przekresleniem~~ i `kodem inline`.
+A regular paragraph with **bold**, *italic*, ~~strikethrough~~, and `inline code`.
 
-[Przykladowy link](https://www.markdownguide.org/)
+[Example link](https://www.markdownguide.org/)
 
-> To jest cytat blokowy.
+> This is a blockquote.
 >
-> Moze miec wiele akapitow.
+> It can contain multiple paragraphs.
 
 ---
 
-## Listy
+## Lists
 
-- Element listy
-- Kolejny element
-  - Zagniezdzony element
-  - Jeszcze jeden
+- List item
+- Another item
+  - Nested item
+  - One more nested item
 
-1. Pierwszy krok
-2. Drugi krok
-3. Trzeci krok
+1. First step
+2. Second step
+3. Third step
 
-## Checklista
+## Checklist
 
-- [x] Skonfigurowac repo
-- [x] Dodac przyklady
-- [ ] Dopracowac CSS
+- [x] Configure the repository
+- [x] Add sample files
+- [ ] Refine the CSS
 
-## Kod
+## Code
 
 ```cpp
 #include <iostream>

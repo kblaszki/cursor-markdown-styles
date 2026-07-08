@@ -1,8 +1,8 @@
-# Showcase fragmentow kodu C++
+# C++ Code Showcase
 
-Plik do testowania motywu **C++ Modern** na roznych konstrukcjach jezyka.
+A fixture for testing the **C++ Modern** theme against a wide range of language constructs.
 
-## Klasa i szablony
+## Class And Templates
 
 ```cpp
 #pragma once
@@ -38,7 +38,7 @@ private:
 };
 ```
 
-## Implementacja serwisu
+## Service Implementation
 
 ```cpp
 #include "task_service.hpp"
@@ -51,7 +51,7 @@ public:
         : conn_string_{std::move(conn_string)} {}
 
     std::string next_id() {
-        // generowanie ULID / UUID w warstwie aplikacji
+        // generate the ULID / UUID in the application layer
         return "tsk_" + generate_short_id();
     }
 
@@ -77,7 +77,7 @@ private:
 };
 ```
 
-## Lambda i algorytmy STL
+## Lambdas And STL Algorithms
 
 ```cpp
 #include <algorithm>
@@ -98,7 +98,7 @@ int main() {
 }
 ```
 
-## SQL (migracja)
+## SQL Migration
 
 ```sql
 CREATE TYPE task_status AS ENUM ('todo', 'in_progress', 'done');
@@ -137,7 +137,7 @@ add_executable(taskflow_api
 target_link_libraries(taskflow_api PRIVATE Drogon::Drogon pqxx)
 ```
 
-## JSON / konfiguracja
+## JSON Configuration
 
 ```json
 {
@@ -156,7 +156,7 @@ target_link_libraries(taskflow_api PRIVATE Drogon::Drogon pqxx)
 }
 ```
 
-## Bash / budowanie
+## Bash Build Commands
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
@@ -164,13 +164,13 @@ cmake --build build
 ./build/taskflow_api --config config/app.json
 ```
 
-## Kod inline w akapicie
+## Inline Code In Text
 
-Uzyj `cmake --build build` aby skompilowac. Flaga `TASKFLOW_STRICT_CONFIG` wlacza walidacje schematu. W kodzie sprawdz `std::getenv("DATABASE_URL")`.
+Use `cmake --build build` to compile. The `TASKFLOW_STRICT_CONFIG` flag enables schema validation. In the code, check `std::getenv("DATABASE_URL")`.
 
-## Porownanie: przed / po refaktorze
+## Comparison: Before And After Refactoring
 
-**Przed:**
+**Before:**
 
 ```cpp
 Task* find_task(std::vector<Task>& tasks, const char* id) {
@@ -180,7 +180,7 @@ Task* find_task(std::vector<Task>& tasks, const char* id) {
 }
 ```
 
-**Po:**
+**After:**
 
 ```cpp
 std::optional<Task> find_task(const std::vector<Task>& tasks, std::string_view id) {
@@ -190,7 +190,7 @@ std::optional<Task> find_task(const std::vector<Task>& tasks, std::string_view i
 }
 ```
 
-## Blok bez jezyka (HTTP)
+## Plain Code Block (HTTP)
 
 ```
 POST /api/v1/tasks HTTP/1.1
@@ -198,7 +198,7 @@ Host: api.taskflow.example
 Content-Type: application/json
 
 {
-  "title": "Nowe zadanie",
+  "title": "New task",
   "priority": "high"
 }
 ```

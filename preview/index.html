@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Markdown CSS Playground</title>
+    <link rel="stylesheet" href="./markdown.css" />
+  </head>
+  <body>
+    <main class="page">
+      <article class="markdown-body">
+        <h1>Markdown CSS Playground</h1>
+        <p>
+          This page contains common HTML elements generated from Markdown. Edit
+          <code>preview/markdown.css</code> to test your browser preview style.
+        </p>
+
+        <h2>Headings and Text</h2>
+        <p>
+          A regular paragraph with <strong>bold</strong>, <em>italic</em>,
+          <a href="https://www.markdownguide.org/">a link</a>, and
+          <code>inline code</code>.
+        </p>
+
+        <blockquote>
+          <p>An example blockquote with a separate paragraph.</p>
+          <p>It can also take more space and carry stronger visual treatment.</p>
+        </blockquote>
+
+        <h2>Lists</h2>
+        <ul>
+          <li>First item</li>
+          <li>
+            Second item
+            <ul>
+              <li>Nested item</li>
+              <li>Another nested item</li>
+            </ul>
+          </li>
+        </ul>
+
+        <ol>
+          <li>Step one</li>
+          <li>Step two</li>
+          <li>Step three</li>
+        </ol>
+
+        <h2>Checklist</h2>
+        <ul>
+          <li><input type="checkbox" checked /> Completed item</li>
+          <li><input type="checkbox" /> Item to finish</li>
+        </ul>
+
+        <h2>Code</h2>
+        <pre><code>const message = "Markdown";
+console.log(`Hello ${message}`);</code></pre>
+
+        <h2>Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Headings</td>
+              <td>Different H1-H6 levels</td>
+              <td>OK</td>
+            </tr>
+            <tr>
+              <td>Tables</td>
+              <td>Cells, borders, and padding</td>
+              <td>OK</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Image</h2>
+        <p>
+          <img
+            src="https://via.placeholder.com/960x240.png?text=Markdown+CSS+Preview"
+            alt="Example preview image"
+          />
+        </p>
+
+        <hr />
+
+        <details>
+          <summary>Additional HTML element</summary>
+          <p>Useful if you also want to style Markdown-adjacent extensions.</p>
+        </details>
+      </article>
+    </main>
+  </body>
+</html>

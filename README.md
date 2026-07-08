@@ -1,40 +1,105 @@
-# Markdown Playground
+# Markdown CSS Playground
 
-Repozytorium do testowania:
+A public playground for experimenting with Markdown fixtures, browser preview styles, and Cursor inline preview themes.
 
-- roznych wariantow skladni Markdown,
-- wlasnego CSS dla tresci renderowanej z Markdown,
-- roznych elementow typowo generowanych przez parsery Markdown.
+## What This Repo Contains
 
-## Struktura
+- reusable Markdown samples for testing rendered content
+- a local browser preview setup for stylesheet iteration
+- Cursor inline preview themes inspired by popular products and custom personal themes
 
-- `examples/` - surowe pliki `.md` z przykladami:
-  - `basic.md` — skladnia podstawowa
-  - `extended.md` — tabele, obrazy, HTML
-  - `code-showcase.md` — fragmenty kodu C++ (szablony, CMake, SQL)
-  - `mvp-taskflow.md` — dokumentacja MVP projektu (backend C++)
-  - `documentation-patterns.md` — wzorce dokumentacji C++
-- `playground/index.html` - strona testowa z wyrenderowanymi elementami HTML.
-- `playground/markdown.css` - style dla przegladarki.
-- `playground/cursor-preview.css` - style dla bocznego podgladu Cursora (`Ctrl+K V`).
-- `playground/cursor-inline-preview.css` - domyslny motyw GitHub dla inline preview.
-- `playground/inline-themes/cpp-modern/` - C++ Modern v1/v2 (v2 Readable = domyslny)
-- `playground/inline-themes/lumina/` - wersje motywu Lumina (v4 Neon Blue = aktualny Lumina)
+## Structure
 
-## Jak tego uzywac
+- `examples/`
+  - `basic.md` - core Markdown syntax
+  - `extended.md` - tables, images, embedded HTML, and code fences
+  - `theme-preview.md` - a fixed comparison document for screenshots and theme previews
+  - `code-showcase.md` - C++-heavy snippets for technical theme testing
+  - `documentation-patterns.md` - technical documentation patterns and release notes
+  - `mvp-taskflow.md` - realistic long-form product and API documentation
+- `preview/`
+  - `index.html` - browser preview page with rendered Markdown-like HTML
+  - `markdown.css` - browser preview stylesheet
+  - `cursor-preview.css` - stylesheet for Cursor side preview (`Ctrl+K V`)
+- `themes/cursor-inline/`
+  - `popular/` - themes inspired by recognizable products and palettes
+  - `original/` - personal theme families such as `cpp-modern` and `lumina`
+  - `cursor-inline-preview.css` - the default installable GitHub-style inline preview file
+- `assets/previews/`
+  - notes for storing screenshot previews that can be browsed directly on GitHub
 
-1. Otworz dowolny plik z `examples/` w podgladzie Markdown.
-2. Otworz `playground/index.html` w przegladarce.
-3. Edytuj `playground/markdown.css` i odswiezaj strone, aby testowac style.
-4. Dla inline preview w Cursorze skopiuj wybrany motyw z `playground/inline-themes/` — szczegoly w `playground/inline-themes/README.md`.
+## Preview Locally
 
-## Co jest w srodku
+### Browser Preview
 
-Przykladowe pliki zawieraja m.in.:
+1. Open `preview/index.html` in a browser.
+2. Edit `preview/markdown.css`.
+3. Refresh the page to review the updated styling.
 
-- naglowki, cytaty, listy, checklisty,
-- tabele, kod inline i bloki kodu,
-- obrazki, separatory, linki,
-- elementy HTML osadzane w Markdown,
-- dokumentacje API, architekture, roadmape (MVP TaskFlow w C++),
-- snippety C++20, CMake, SQL, JSON, Docker i bash.
+### Cursor Markdown Preview
+
+1. Open any file from `examples/`.
+2. Use Cursor's Markdown preview.
+3. For side preview styling, use `preview/cursor-preview.css`.
+
+### Cursor Inline Preview Themes
+
+Browse installable themes in `themes/cursor-inline/`:
+
+- `themes/cursor-inline/popular/` for styles inspired by GitHub, Notion, Dracula, Nord, Solarized, and similar references
+- `themes/cursor-inline/original/cpp-modern/` for the C++ Modern family
+- `themes/cursor-inline/original/lumina/` for the Lumina family
+
+## Install A Cursor Inline Theme
+
+Choose one CSS file from `themes/cursor-inline/` and copy it to:
+
+```text
+C:\Program Files\cursor\resources\app\out\vs\workbench\cursor-inline-preview.css
+```
+
+Then make sure `workbench.html` includes:
+
+```html
+<link rel="stylesheet" href="../../../workbench/cursor-inline-preview.css">
+```
+
+File location:
+
+```text
+C:\Program Files\cursor\resources\app\out\vs\code\electron-sandbox\workbench\workbench.html
+```
+
+After that:
+
+1. Restart Cursor.
+2. Reapply the file after Cursor updates.
+
+Important notes:
+
+- Do not use an external `file:///D:/...` stylesheet path. Chromium blocks it in this context.
+- `preview/cursor-preview.css` is for side preview only.
+- `themes/cursor-inline/...` files are for the inline `Preview | Markdown` experience.
+
+## Recommended Theme Files
+
+- `themes/cursor-inline/popular/cursor-inline-github.css` - GitHub-style default
+- `themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern theme
+- `themes/cursor-inline/original/lumina/cursor-inline-lumina.css` - recommended Lumina theme
+
+## GitHub-Friendly Theme Presentation
+
+This repository is prepared for screenshot-based previews.
+
+Recommended approach:
+
+1. Use `examples/theme-preview.md` as the fixed comparison document.
+2. Generate one screenshot per theme from the same content.
+3. Store the images in `assets/previews/`.
+4. Link those screenshots from this README and from `themes/cursor-inline/README.md`.
+
+This keeps previews easy to browse directly on GitHub without requiring installation.
+
+## License
+
+This project uses the MIT License. See `LICENSE`.

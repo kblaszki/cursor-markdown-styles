@@ -1,0 +1,164 @@
+/* Theme: Notion - minimalist, without H1/H2 underline rules */
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  --md-bg: #ffffff;
+  --md-panel: #f7f6f3;
+  --md-text: #37352f;
+  --md-heading: #37352f;
+  --md-border: #e9e9e7;
+  --md-accent: #2383e2;
+  --md-quote: #6b6b6b;
+  --md-code-bg: #f1f1ef;
+  --md-font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --md-font-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --md-h-border: none;
+  --md-line-height: 1.65;
+  --md-padding: 28px 40px;
+  --md-quote-radius: 4px;
+  --md-pre-radius: 4px;
+  --md-img-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .anysphere-markdown-container-root,
+  .markdown-editor-react__richtext-content {
+    --md-bg: #191919;
+    --md-panel: #252525;
+    --md-text: #d4d4d4;
+    --md-heading: #ffffff;
+    --md-border: #333333;
+    --md-accent: #529cca;
+    --md-quote: #9b9b9b;
+    --md-code-bg: #2f2f2f;
+  }
+}
+
+.anysphere-markdown-container-root h1,
+.markdown-editor-react__richtext-content h1 {
+  font-size: 2em !important;
+  font-weight: 700 !important;
+}
+
+.anysphere-markdown-container-root,
+.markdown-editor-react__richtext-content {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height, 1.7) !important;
+  font-size: var(--md-font-size, inherit) !important;
+}
+
+.anysphere-markdown-container-root {
+  padding: var(--md-padding, 24px 32px) !important;
+}
+
+.anysphere-markdown-container-root :is(h1, h2, h3, h4, h5, h6),
+.markdown-editor-react__richtext-content :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--md-heading) !important;
+  font-family: var(--md-font-heading, var(--md-font-body)) !important;
+  font-weight: var(--md-heading-weight, 600) !important;
+  line-height: 1.25 !important;
+  margin: 1.5em 0 0.6em !important;
+}
+
+.anysphere-markdown-container-root :is(h1, h2),
+.markdown-editor-react__richtext-content :is(h1, h2) {
+  padding-bottom: var(--md-h-border-pb, 0.3em) !important;
+  border-bottom: var(--md-h-border, 1px solid var(--md-border)) !important;
+}
+
+.anysphere-markdown-container-root :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-editor-react__richtext-content :is(p, ul, ol, blockquote, table, pre, hr) {
+  margin: 0 0 1rem !important;
+}
+
+.anysphere-markdown-container-root a,
+.markdown-editor-react__richtext-content a {
+  color: var(--md-accent) !important;
+  text-decoration: var(--md-link-decoration, none) !important;
+}
+
+.anysphere-markdown-container-root a:hover,
+.markdown-editor-react__richtext-content a:hover {
+  text-decoration: var(--md-link-hover, underline) !important;
+}
+
+.anysphere-markdown-container-root blockquote,
+.markdown-editor-react__richtext-content blockquote {
+  margin-left: 0 !important;
+  padding: var(--md-quote-padding, 0.2rem 1rem) !important;
+  border-left: var(--md-quote-border, 4px solid var(--md-border)) !important;
+  color: var(--md-quote) !important;
+  background: var(--md-panel) !important;
+  border-radius: var(--md-quote-radius, 0) !important;
+}
+
+.anysphere-markdown-container-root :not(pre) > code,
+.markdown-editor-react__richtext-content :not(pre) > code {
+  padding: 0.15rem 0.35rem !important;
+  border-radius: var(--md-code-radius, 6px) !important;
+  background: var(--md-code-bg) !important;
+  color: var(--md-code-text, inherit) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+}
+
+.anysphere-markdown-container-root pre,
+.markdown-editor-react__richtext-content pre {
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  border: 1px solid var(--md-border) !important;
+  border-radius: var(--md-pre-radius, 10px) !important;
+  background: var(--md-panel) !important;
+}
+
+.anysphere-markdown-container-root pre code,
+.markdown-editor-react__richtext-content pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.anysphere-markdown-container-root table,
+.markdown-editor-react__richtext-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.anysphere-markdown-container-root :is(th, td),
+.markdown-editor-react__richtext-content :is(th, td) {
+  padding: 0.75rem !important;
+  border: 1px solid var(--md-border) !important;
+  text-align: left !important;
+}
+
+.anysphere-markdown-container-root th,
+.markdown-editor-react__richtext-content th {
+  background: var(--md-panel) !important;
+  font-weight: 600 !important;
+}
+
+.anysphere-markdown-container-root hr,
+.markdown-editor-react__richtext-content hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: var(--md-border) !important;
+  margin: 2rem 0 !important;
+}
+
+.anysphere-markdown-container-root img,
+.markdown-editor-react__richtext-content img {
+  max-width: 100% !important;
+  border-radius: var(--md-img-radius, 10px) !important;
+}
+
+.anysphere-markdown-container-root :is(ul, ol),
+.markdown-editor-react__richtext-content :is(ul, ol) {
+  padding-left: 1.5rem !important;
+}
+
+.anysphere-markdown-container-root li,
+.markdown-editor-react__richtext-content li {
+  margin-bottom: 0.25rem !important;
+}

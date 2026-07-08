@@ -1,36 +1,36 @@
-# Rozszerzone Przyklady Markdown
+# Extended Markdown Examples
 
-## Tabela
+## Table
 
-| Kolumna A | Kolumna B | Kolumna C |
-|-----------|-----------|-----------|
-| 1         | 2         | 3         |
-| tekst     | **bold**  | `code`    |
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| 1        | 2        | 3        |
+| text     | **bold** | `code`   |
 
-## Obraz
+## Image
 
 ![Placeholder](https://via.placeholder.com/640x180.png?text=Markdown+Preview)
 
-## Cytat z lista
+## Quote With A List
 
-> Wewnatrz cytatu mozna miec takze liste:
-> - jeden
-> - dwa
-> - trzy
+> You can also place a list inside a quote:
+> - one
+> - two
+> - three
 
-## HTML w Markdown
+## HTML In Markdown
 
 <details>
-  <summary>Kliknij, aby rozwinac</summary>
+  <summary>Click to expand</summary>
 
-To jest przyklad osadzonego HTML w Markdown.
+This is an example of embedded HTML inside Markdown.
 
 </details>
 
-## Kod C++
+## C++ Code
 
 ```cpp
-// Przyklad naglowka z guardem i atrybutami [[nodiscard]]
+// Example header with an include guard-style directive and [[nodiscard]]
 #pragma once
 
 #include <string>

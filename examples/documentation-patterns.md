@@ -1,33 +1,33 @@
-# Wzorce dokumentacji technicznej (C++)
+# Technical Documentation Patterns (C++)
 
-Przyklady typowych sekcji z dokumentacji bibliotek C++, API i narzedzi wewnetrznych.
+Examples of common sections found in C++ library docs, API docs, and internal tooling guides.
 
-## Admonitions (cytaty jako callouty)
+## Admonitions (Quotes As Callouts)
 
-> **Uwaga:** Od wersji 2.0 `TaskRepository::connect()` wymaga jawnego `ConnectionOptions`. Stary konstruktor z `const char*` zostanie usuniety w 3.0.
+> **Note:** Since version 2.0, `TaskRepository::connect()` requires explicit `ConnectionOptions`. The old `const char*` constructor will be removed in 3.0.
 
-> **Wskazowka:** Uruchom migracje w trybie podgladu przed produkcja:
+> **Tip:** Run migrations in preview mode before production:
 > `taskflow-migrate --dry-run --config config/app.json`
 
-> **Ostrzezenie:** Endpoint `/admin/*` nie jest chroniony rate limitem w trybie `TASKFLOW_ENV=development`.
+> **Warning:** The `/admin/*` endpoint is not protected by rate limiting when `TASKFLOW_ENV=development`.
 
-## Definicje i skladnia
+## Definitions And Syntax
 
-### Funkcja `parse_config`
+### Function `parse_config`
 
-Laduje plik JSON i zwraca zwalidowany obiekt konfiguracji.
+Loads a JSON file and returns a validated configuration object.
 
-**Parametry:**
+**Parameters:**
 
-| Nazwa | Typ | Domyslnie | Opis |
-|-------|-----|-----------|------|
-| `path` | `std::filesystem::path` | — | Sciezka do pliku `.json` |
-| `strict` | `bool` | `true` | Rzuca `ConfigError` przy nieznanych kluczach |
-| `env_prefix` | `std::string_view` | `"TASKFLOW_"` | Prefiks zmiennych srodowiskowych |
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `path` | `std::filesystem::path` | — | Path to the `.json` file |
+| `strict` | `bool` | `true` | Throws `ConfigError` on unknown keys |
+| `env_prefix` | `std::string_view` | `"TASKFLOW_"` | Environment variable prefix |
 
-**Zwraca:** `AppConfig`
+**Returns:** `AppConfig`
 
-**Rzuca:** `ConfigError` gdy plik nie istnieje lub JSON jest niepoprawny
+**Throws:** `ConfigError` when the file does not exist or the JSON is invalid
 
 ```cpp
 #include "taskflow/config.hpp"
@@ -43,30 +43,30 @@ int main() {
 }
 ```
 
-## Changelog (fragment)
+## Changelog (Excerpt)
 
 ### [1.2.0] — 2026-03-01
 
-#### Dodane
+#### Added
 
-- Obsluga webhookow `task.created` i `task.updated`
-- Flaga `--json` w CLI `taskflow list`
+- Support for `task.created` and `task.updated` webhooks
+- `--json` flag in the `taskflow list` CLI
 
-#### Zmienione
+#### Changed
 
-- **Breaking:** pole `user_id` w odpowiedzi API przemianowane na `assignee_id`
-- Domyslny timeout HTTP zwiekszony z 5s do 10s
-- Wymagany **C++20** (wczesniej C++17)
+- **Breaking:** the `user_id` field in API responses was renamed to `assignee_id`
+- Default HTTP timeout increased from 5s to 10s
+- **C++20** is now required instead of C++17
 
-#### Naprawione
+#### Fixed
 
-- `#142` — duplikaty zadan przy rownoleglym `POST`
-- `#156` — wyciek polaczen PostgreSQL przy restarcie workera
+- `#142` — duplicate tasks during concurrent `POST` requests
+- `#156` — PostgreSQL connection leak during worker restart
 
-## Diagram sekwencji (tekstowy)
+## Sequence Diagram (Text)
 
 ```
-Klient          API (C++)        PostgreSQL
+Client          API (C++)        PostgreSQL
   │              │                    │
   │── POST /tasks ────────────────►│
   │              │── INSERT ────────►│
@@ -79,18 +79,18 @@ Klient          API (C++)        PostgreSQL
   │◄── 200 ──────│                    │
 ```
 
-## Tabela kompatybilnosci
+## Compatibility Table
 
-| Kompilator | Standard | TaskFlow API | Status |
-|------------|----------|--------------|--------|
-| GCC 13+ | C++20 | 0.1.x | **Zalecane** |
-| Clang 17+ | C++20 | 0.1.x | Wspierane |
-| MSVC 19.38+ | C++20 | 0.1.x | Wspierane |
-| GCC 11 | C++17 | 0.1.x | Nie wspierane |
+| Compiler | Standard | TaskFlow API | Status |
+|----------|----------|--------------|--------|
+| GCC 13+ | C++20 | 0.1.x | **Recommended** |
+| Clang 17+ | C++20 | 0.1.x | Supported |
+| MSVC 19.38+ | C++20 | 0.1.x | Supported |
+| GCC 11 | C++17 | 0.1.x | Unsupported |
 
-## Snippety konfiguracyjne
+## Configuration Snippets
 
-### CMake — opcje kompilacji
+### CMake Build Options
 
 ```cmake
 # CMakeLists.txt (fragment)
@@ -105,7 +105,7 @@ option(TASKFLOW_BUILD_TESTS "Build unit tests" ON)
 option(TASKFLOW_ENABLE_ASAN "Address sanitizer" OFF)
 ```
 
-### Nginx (reverse proxy)
+### Nginx (Reverse Proxy)
 
 ```nginx
 server {
@@ -122,7 +122,7 @@ server {
 }
 ```
 
-### Kubernetes (probe)
+### Kubernetes (Probe)
 
 ```yaml
 livenessProbe:
@@ -140,53 +140,53 @@ readinessProbe:
   periodSeconds: 10
 ```
 
-## Lista kontrolna przed release
+## Pre-Release Checklist
 
-- [x] Testy jednostkowe przechodza (`ctest --test-dir build`)
-- [x] Migracje przetestowane na staging
-- [x] CHANGELOG zaktualizowany
-- [x] Wersja w `CMakeLists.txt` podbita
+- [x] Unit tests pass (`ctest --test-dir build`)
+- [x] Migrations tested on staging
+- [x] `CHANGELOG` updated
+- [x] Version bumped in `CMakeLists.txt`
 - [ ] Tag git `v1.2.0`
-- [ ] Deploy na produkcje
-- [ ] Post na #releases w Slacku
+- [ ] Production deployment
+- [ ] Announcement posted to `#releases` in Slack
 
-## Porownanie opcji
+## Option Comparison
 
-| Aspekt | REST + Drogon | gRPC | Wlasny socket |
+| Aspect | REST + Drogon | gRPC | Custom Socket |
 |--------|---------------|------|---------------|
-| Prostosc MVP | ★★★★☆ | ★★★ | ★★ |
-| Dokumentacja | OpenAPI | Proto | Brak |
-| Wydajnosc | Wysoka | Bardzo wysoka | Zalezna od impl. |
-| Typowanie | JSON + walidacja | Silne (proto) | Reczne |
+| MVP simplicity | ★★★★☆ | ★★★ | ★★ |
+| Documentation | OpenAPI | Proto | None |
+| Performance | High | Very high | Implementation-dependent |
+| Typing | JSON + validation | Strong (proto) | Manual |
 
-## Kod z komentarzami (tutorial)
+## Commented Tutorial Code
 
 ```cpp
-// src/etl/import_contacts.cpp — uproszczony import CSV
+// src/etl/import_contacts.cpp - simplified CSV import
 
 #include <fstream>
 #include <pqxx/pqxx>
 #include <sstream>
 #include <string>
 
-// Laduje CSV, czysci e-mail i zapisuje do tabeli stagingowej.
+// Loads a CSV file, normalizes the email, and writes into a staging table.
 int run_etl(const std::string& source_csv, const std::string& db_url) {
     std::ifstream in{source_csv};
-    if (!in) throw std::runtime_error("Nie mozna otworzyc pliku CSV");
+    if (!in) throw std::runtime_error("Cannot open CSV file");
 
     pqxx::connection conn{db_url};
     pqxx::work tx{conn};
     int rows = 0;
 
     std::string line;
-    std::getline(in, line); // naglowek
+    std::getline(in, line); // header
 
     while (std::getline(in, line)) {
         std::istringstream ss{line};
         std::string email;
         std::getline(ss, email, ',');
 
-        // normalizacja
+        // normalization
         for (auto& c : email) c = static_cast<char>(std::tolower(c));
         if (email.empty()) continue;
 
@@ -200,9 +200,9 @@ int run_etl(const std::string& source_csv, const std::string& db_url) {
 }
 ```
 
-## Linki i odniesienia
+## Links And References
 
 - [C++ Reference](https://en.cppreference.com/)
 - [CMake Documentation](https://cmake.org/documentation/)
-- Wewnetrzny runbook: `docs/runbooks/incident-response.md`
-- Kod zrodlowy modulu auth: `src/middleware/auth_filter.cpp`
+- Internal runbook: `docs/runbooks/incident-response.md`
+- Source code for the auth module: `src/middleware/auth_filter.cpp`

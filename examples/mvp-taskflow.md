@@ -1,60 +1,60 @@
-# TaskFlow — dokumentacja MVP
+# TaskFlow - MVP Documentation
 
-> **TaskFlow** to lekki system zarzadzania zadaniami dla malych zespolow.
-> Ten dokument opisuje wersje **0.1.0 (MVP)** — minimum do walidacji produktu.
+> **TaskFlow** is a lightweight task management system for small teams.
+> This document describes version **0.1.0 (MVP)**, the smallest scope needed for product validation.
 
 ---
 
-## Spis tresci
+## Table of Contents
 
-1. [Cel produktu](#cel-produktu)
-2. [Zakres MVP](#zakres-mvp)
-3. [Architektura](#architektura)
-4. [Model danych](#model-danych)
+1. [Product Goal](#product-goal)
+2. [MVP Scope](#mvp-scope)
+3. [Architecture](#architecture)
+4. [Data Model](#data-model)
 5. [API REST](#api-rest)
-6. [Instalacja](#instalacja)
-7. [Zmienne srodowiskowe](#zmienne-srodowiskowe)
-8. [Roadmapa](#roadmapa)
+6. [Installation](#installation)
+7. [Environment Variables](#environment-variables)
+8. [Roadmap](#roadmap)
 
 ---
 
-## Cel produktu
+## Product Goal
 
-Zespoly developerskie traca czas na przełaczanie sie miedzy Jira, Slackiem i notatkami.
-**TaskFlow MVP** ma rozwiazac jeden problem:
+Development teams lose time switching between Jira, Slack, and scattered notes.
+**TaskFlow MVP** is meant to solve one problem:
 
-> *Jedno miejsce na zadania zespolu z prostym API i widokiem w przegladarce.*
+> *One place for team tasks with a simple API and a browser-based view.*
 
-### Metryki sukcesu (MVP)
+### Success Metrics (MVP)
 
-| Metryka | Cel | Sposob pomiaru |
-|---------|-----|----------------|
-| Time-to-first-task | < 5 min | onboarding w panelu |
-| Aktywne zespoly | 10 | rejestracje w 30 dni |
-| Retencja 7-dniowa | 40% | logowania po tygodniu |
-
----
-
-## Zakres MVP
-
-### W zakresie
-
-- [x] Rejestracja i logowanie (e-mail + haslo)
-- [x] CRUD zadan w ramach projektu
-- [x] Statusy: `todo`, `in_progress`, `done`
-- [x] REST API z dokumentacja OpenAPI
-- [x] Prosty dashboard webowy
-
-### Poza zakresem (v0.2+)
-
-- [ ] Integracja ze Slackiem
-- [ ] Kanban z drag & drop
-- [ ] Role i uprawnienia per projekt
-- [ ] Aplikacja mobilna
+| Metric | Goal | Measurement |
+|--------|------|-------------|
+| Time-to-first-task | < 5 min | onboarding flow in the dashboard |
+| Active teams | 10 | signups within 30 days |
+| 7-day retention | 40% | logins after one week |
 
 ---
 
-## Architektura
+## MVP Scope
+
+### Included
+
+- [x] Registration and login (email + password)
+- [x] Project task CRUD
+- [x] Statuses: `todo`, `in_progress`, `done`
+- [x] REST API with OpenAPI documentation
+- [x] Simple web dashboard
+
+### Out Of Scope (v0.2+)
+
+- [ ] Slack integration
+- [ ] Kanban board with drag and drop
+- [ ] Roles and permissions per project
+- [ ] Mobile app
+
+---
+
+## Architecture
 
 ```
 ┌─────────────┐     HTTPS      ┌─────────────────┐
@@ -67,20 +67,20 @@ Zespoly developerskie traca czas na przełaczanie sie miedzy Jira, Slackiem i no
                                  └─────────────┘
 ```
 
-### Stos technologiczny
+### Technology Stack
 
-| Warstwa | Technologia | Uzasadnienie |
-|---------|-------------|--------------|
-| Frontend | React + Vite | Szybki dev, znany zespolowi |
-| Backend | C++20 + Drogon | Wydajnosc, niskie opoznienia REST |
-| Baza | PostgreSQL 16 + libpqxx | Sprawdzone transakcje, JSONB |
-| Auth | JWT (jwt-cpp) | Lekka biblioteka header-only |
-| Build | CMake + vcpkg | Reprodukowalne zaleznosci |
-| Deploy | Docker + Fly.io | Niski koszt, szybki start |
+| Layer | Technology | Reason |
+|-------|------------|--------|
+| Frontend | React + Vite | Fast development, familiar to the team |
+| Backend | C++20 + Drogon | High performance, low REST latency |
+| Database | PostgreSQL 16 + libpqxx | Reliable transactions, JSONB support |
+| Auth | JWT (`jwt-cpp`) | Lightweight header-only library |
+| Build | CMake + vcpkg | Reproducible dependencies |
+| Deploy | Docker + Fly.io | Low cost, quick setup |
 
 ---
 
-## Model danych
+## Data Model
 
 ```cpp
 // include/taskflow/domain.hpp
@@ -124,34 +124,34 @@ struct Task {
 } // namespace taskflow
 ```
 
-### Relacje (uproszczone)
+### Relationships (Simplified)
 
 ```
 User 1───* Project
 Project 1───* Task
-User 1───* Task (assignee, opcjonalnie)
+User 1───* Task (assignee, optional)
 ```
 
 ---
 
 ## API REST
 
-Bazowy URL: `https://api.taskflow.example/v1`
+Base URL: `https://api.taskflow.example/v1`
 
-### Endpointy
+### Endpoints
 
-| Metoda | Sciezka | Opis | Auth |
-|--------|---------|------|------|
-| `POST` | `/auth/register` | Rejestracja uzytkownika | — |
-| `POST` | `/auth/login` | Logowanie, zwrot JWT | — |
-| `GET` | `/projects` | Lista projektow uzytkownika | Bearer |
-| `POST` | `/projects` | Nowy projekt | Bearer |
-| `GET` | `/projects/:id/tasks` | Zadania w projekcie | Bearer |
-| `POST` | `/projects/:id/tasks` | Utworz zadanie | Bearer |
-| `PATCH` | `/tasks/:id` | Aktualizacja zadania | Bearer |
-| `DELETE` | `/tasks/:id` | Usuniecie zadania | Bearer |
+| Method | Path | Description | Auth |
+|--------|------|-------------|------|
+| `POST` | `/auth/register` | Register a user | — |
+| `POST` | `/auth/login` | Log in and return a JWT | — |
+| `GET` | `/projects` | List the user's projects | Bearer |
+| `POST` | `/projects` | Create a project | Bearer |
+| `GET` | `/projects/:id/tasks` | List tasks in a project | Bearer |
+| `POST` | `/projects/:id/tasks` | Create a task | Bearer |
+| `PATCH` | `/tasks/:id` | Update a task | Bearer |
+| `DELETE` | `/tasks/:id` | Delete a task | Bearer |
 
-### Przyklad: utworzenie zadania
+### Example: Create A Task
 
 **Request:**
 
@@ -162,8 +162,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 Content-Type: application/json
 
 {
-  "title": "Zaimplementowac endpoint PATCH /tasks",
-  "description": "Obsluga zmiany statusu i assignee",
+  "title": "Implement PATCH /tasks endpoint",
+  "description": "Handle status and assignee updates",
   "status": "todo",
   "dueDate": "2026-04-15"
 }
@@ -175,8 +175,8 @@ Content-Type: application/json
 {
   "id": "tsk_m9f3a",
   "projectId": "prj_7xk2",
-  "title": "Zaimplementowac endpoint PATCH /tasks",
-  "description": "Obsluga zmiany statusu i assignee",
+  "title": "Implement PATCH /tasks endpoint",
+  "description": "Handle status and assignee updates",
   "status": "todo",
   "assigneeId": null,
   "dueDate": "2026-04-15",
@@ -185,7 +185,7 @@ Content-Type: application/json
 }
 ```
 
-### Handler (fragment backendu)
+### Handler (Backend Excerpt)
 
 ```cpp
 // src/routes/tasks.cpp
@@ -232,63 +232,63 @@ void create_task(
 }
 ```
 
-### Kody bledow
+### Error Codes
 
-| Kod | Znaczenie | Przyklad |
-|-----|-----------|----------|
-| `400` | Niepoprawne dane | Brak `title` |
-| `401` | Brak lub wygasly token | — |
-| `403` | Brak dostepu do projektu | Cudzy `projectId` |
-| `404` | Nie znaleziono | Nieistniejace zadanie |
-| `409` | Konflikt | Duplikat e-maila przy rejestracji |
+| Code | Meaning | Example |
+|------|---------|---------|
+| `400` | Invalid data | Missing `title` |
+| `401` | Missing or expired token | — |
+| `403` | No access to the project | Someone else's `projectId` |
+| `404` | Not found | Nonexistent task |
+| `409` | Conflict | Duplicate email during registration |
 
 ---
 
-## Instalacja
+## Installation
 
-### Wymagania
+### Requirements
 
 - **C++20** (GCC 13+, Clang 17+ lub MSVC 19.38+)
 - **CMake** 3.20+
-- **vcpkg** lub Conan (zaleznosci)
-- Docker (opcjonalnie, do PostgreSQL)
+- **vcpkg** or Conan (dependencies)
+- Docker (optional, for PostgreSQL)
 
-### Kroki
+### Steps
 
 ```bash
-# 1. Klonowanie
+# 1. Clone
 git clone https://github.com/example/taskflow.git
 cd taskflow
 
-# 2. Zaleznosci (vcpkg)
+# 2. Dependencies (vcpkg)
 vcpkg install drogon libpqxx nlohmann-json jwt-cpp
 
-# 3. Baza danych (Docker)
+# 3. Database (Docker)
 docker compose up -d postgres
 
-# 4. Konfiguracja
+# 4. Configuration
 cp config/app.example.json config/app.json
 export JWT_SECRET=$(openssl rand -hex 32)
 
-# 5. Migracje
+# 5. Migrations
 ./build/taskflow-migrate --config config/app.json
 
-# 6. Seed (dane demo)
+# 6. Seed (demo data)
 ./build/taskflow-seed --config config/app.json
 
-# 7. Kompilacja i uruchomienie
+# 7. Build and run
 cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
 cmake --build build
 ./build/taskflow_api --config config/app.json
 ```
 
-Aplikacja:
+Application URLs:
 
 - **API:** `http://localhost:8080`
 - **Web:** `http://localhost:5173`
 - **OpenAPI:** `http://localhost:8080/docs`
 
-### Docker Compose (fragment)
+### Docker Compose (Excerpt)
 
 ```yaml
 services:
@@ -309,18 +309,18 @@ volumes:
 
 ---
 
-## Zmienne srodowiskowe
+## Environment Variables
 
-| Zmienna | Wymagana | Domyslnie | Opis |
-|---------|----------|-----------|------|
-| `TASKFLOW_ENV` | nie | `development` | `development` / `production` |
-| `TASKFLOW_PORT` | nie | `8080` | Port API |
-| `DATABASE_URL` | **tak** | — | Connection string PostgreSQL |
-| `JWT_SECRET` | **tak** | — | Min. 32 znaki, losowy |
-| `JWT_EXPIRES_IN` | nie | `7d` | Czas zycia tokenu |
-| `CORS_ORIGIN` | nie | `http://localhost:5173` | Dozwolony origin FE |
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `TASKFLOW_ENV` | no | `development` | `development` / `production` |
+| `TASKFLOW_PORT` | no | `8080` | API port |
+| `DATABASE_URL` | **yes** | — | PostgreSQL connection string |
+| `JWT_SECRET` | **yes** | — | Minimum 32 random characters |
+| `JWT_EXPIRES_IN` | no | `7d` | Token lifetime |
+| `CORS_ORIGIN` | no | `http://localhost:5173` | Allowed frontend origin |
 
-Przyklad `config/app.json`:
+Example `config/app.json`:
 
 ```json
 {
@@ -338,23 +338,23 @@ Przyklad `config/app.json`:
 
 ---
 
-## Roadmapa
+## Roadmap
 
-### Q2 2026 — MVP (biezacy)
+### Q2 2026 - MVP (Current)
 
-1. Stabilizacja API v1
-2. Dashboard z lista zadan
-3. Deploy na produkcje (Fly.io)
-4. Onboarding 3 beta-zespolow
+1. Stabilize API v1
+2. Dashboard with a task list
+3. Production deployment on Fly.io
+4. Onboard 3 beta teams
 
-### Q3 2026 — v0.2
+### Q3 2026 - v0.2
 
 1. Kanban board
-2. Komentarze przy zadaniach
-3. Webhooki (Slack, Discord)
-4. Eksport CSV
+2. Task comments
+3. Webhooks (Slack, Discord)
+4. CSV export
 
-### Q4 2026 — v1.0
+### Q4 2026 - v1.0
 
 1. Role: owner / member / viewer
 2. Billing (Stripe)
@@ -365,15 +365,15 @@ Przyklad `config/app.json`:
 ## FAQ
 
 <details>
-  <summary>Czy MVP wspiera wielu uzytkownikow w jednym projekcie?</summary>
+  <summary>Does the MVP support multiple users in one project?</summary>
 
-Tak — kazdy projekt moze miec wielu czlonkow, ale w MVP wszyscy maja te same uprawnienia.
-Role pojawia sie w v1.0.
+Yes. Each project can have multiple members, but in the MVP they all share the same permissions.
+Roles arrive in v1.0.
 
 </details>
 
 <details>
-  <summary>Jak wygenerowac JWT_SECRET?</summary>
+  <summary>How do I generate `JWT_SECRET`?</summary>
 
 ```bash
 openssl rand -hex 32
@@ -383,12 +383,12 @@ openssl rand -hex 32
 
 ---
 
-## Kontakt
+## Contact
 
 - **Product:** product@taskflow.example
-- **Repozytorium:** [github.com/example/taskflow](https://github.com/example/taskflow)
+- **Repository:** [github.com/example/taskflow](https://github.com/example/taskflow)
 - **Status API:** [status.taskflow.example](https://status.taskflow.example)
 
 ---
 
-*Ostatnia aktualizacja dokumentacji: 2026-03-20 · Wersja API: 0.1.0*
+*Last documentation update: 2026-03-20 · API version: 0.1.0*
