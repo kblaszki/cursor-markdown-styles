@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Markdown CSS Playground</title>
     <link rel="stylesheet" href="./markdown.css" />
+    <style id="runtime-css"></style>
   </head>
   <body>
     <main class="page">
-      <article class="markdown-body">
+      <section class="preview-toolbar" aria-label="Preview controls">
+        <div class="preview-toolbar__actions">
+          <button id="load-css-button" type="button">Load CSS</button>
+          <button id="reset-css-button" type="button">Reset CSS</button>
+          <input id="css-file-input" type="file" accept=".css,text/css" hidden />
+        </div>
+        <p id="css-status" class="preview-toolbar__status">
+          Using bundled stylesheet: <code>preview/markdown.css</code>
+        </p>
+      </section>
+
+      <article class="markdown-body anysphere-markdown-container-root">
         <h1>Markdown CSS Playground</h1>
         <p>
-          This page contains common HTML elements generated from Markdown. Edit
-          <code>preview/markdown.css</code> to test your browser preview style.
+          This page contains common HTML elements generated from Markdown. Use
+          <code>Load CSS</code> or drag-and-drop a theme file from
+          <code>themes/cursor-inline/</code> to preview Cursor inline styles here.
         </p>
 
         <h2>Headings and Text</h2>
@@ -80,10 +93,62 @@ console.log(`Hello ${message}`);</code></pre>
 
         <h2>Image</h2>
         <p>
-          <img
-            src="https://via.placeholder.com/960x240.png?text=Markdown+CSS+Preview"
-            alt="Example preview image"
-          />
+          <svg
+            class="preview-sample-image"
+            xmlns="http://www.w3.org/2000/svg"
+            width="960"
+            height="240"
+            viewBox="0 0 960 240"
+            role="img"
+            aria-label="Markdown CSS Preview"
+          >
+            <defs>
+              <linearGradient id="preview-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0f172a" />
+                <stop offset="55%" stop-color="#1e293b" />
+                <stop offset="100%" stop-color="#0f766e" />
+              </linearGradient>
+              <linearGradient id="preview-accent" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="50%" stop-color="#4ec9b0" />
+                <stop offset="100%" stop-color="#60a5fa" />
+              </linearGradient>
+            </defs>
+            <rect width="960" height="240" rx="16" fill="url(#preview-bg)" />
+            <rect
+              x="1.5"
+              y="1.5"
+              width="957"
+              height="237"
+              rx="14.5"
+              fill="none"
+              stroke="url(#preview-accent)"
+              stroke-opacity="0.45"
+            />
+            <g opacity="0.18" stroke="#94a3b8" stroke-width="1">
+              <path d="M0 60 H960 M0 120 H960 M0 180 H960" />
+              <path d="M120 0 V240 M240 0 V240 M360 0 V240 M480 0 V240 M600 0 V240 M720 0 V240 M840 0 V240" />
+            </g>
+            <rect x="56" y="56" width="10" height="128" rx="5" fill="url(#preview-accent)" />
+            <text x="84" y="98" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">
+              Markdown CSS Preview
+            </text>
+            <text x="84" y="136" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="18">
+              Sample image for theme testing
+            </text>
+            <text x="84" y="168" fill="#7dd3fc" font-family="Consolas, monospace" font-size="15">
+              headings / lists / code / tables / images
+            </text>
+            <g transform="translate(760, 52)">
+              <rect x="0" y="0" width="144" height="136" rx="12" fill="#111827" stroke="#334155" />
+              <rect x="18" y="22" width="72" height="10" rx="5" fill="#4ec9b0" />
+              <rect x="18" y="44" width="108" height="8" rx="4" fill="#64748b" />
+              <rect x="18" y="62" width="96" height="8" rx="4" fill="#64748b" />
+              <rect x="18" y="88" width="108" height="34" rx="8" fill="#1f2937" stroke="#2563eb" stroke-opacity="0.5" />
+              <rect x="28" y="100" width="54" height="6" rx="3" fill="#569cd6" />
+              <rect x="28" y="112" width="72" height="6" rx="3" fill="#ce9178" />
+            </g>
+          </svg>
         </p>
 
         <hr />
@@ -94,5 +159,84 @@ console.log(`Hello ${message}`);</code></pre>
         </details>
       </article>
     </main>
+    <script>
+      const fileInput = document.getElementById("css-file-input");
+      const loadButton = document.getElementById("load-css-button");
+      const resetButton = document.getElementById("reset-css-button");
+      const status = document.getElementById("css-status");
+      const runtimeStyle = document.getElementById("runtime-css");
+
+      const setStatus = (message) => {
+        status.textContent = message;
+      };
+
+      const isCursorInlineTheme = (cssText) =>
+        cssText.includes(".anysphere-markdown-container-root") ||
+        cssText.includes(".markdown-editor-react__richtext-content");
+
+      const applyCssFile = async (file) => {
+        if (!file || !file.name.toLowerCase().endsWith(".css")) {
+          setStatus("Please choose a valid .css file.");
+          return;
+        }
+
+        const cssText = await file.text();
+        const cursorTheme = isCursorInlineTheme(cssText);
+
+        runtimeStyle.textContent = cssText;
+        document.body.classList.toggle("preview-theme-active", cursorTheme);
+
+        setStatus(
+          cursorTheme
+            ? `Loaded Cursor theme: ${file.name}`
+            : `Loaded CSS override: ${file.name}`
+        );
+      };
+
+      loadButton.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener("change", async (event) => {
+        const file = event.target.files?.[0];
+        await applyCssFile(file);
+      });
+
+      resetButton.addEventListener("click", () => {
+        runtimeStyle.textContent = "";
+        fileInput.value = "";
+        document.body.classList.remove("preview-theme-active");
+        setStatus("Using bundled stylesheet: preview/markdown.css");
+      });
+
+      document.addEventListener("dragover", (event) => {
+        if ([...event.dataTransfer.items].some((item) => item.kind === "file")) {
+          event.preventDefault();
+          document.body.classList.add("is-dragging-css");
+        }
+      });
+
+      document.addEventListener("dragleave", (event) => {
+        if (event.target === document.documentElement) {
+          document.body.classList.remove("is-dragging-css");
+        }
+      });
+
+      document.addEventListener("drop", async (event) => {
+        event.preventDefault();
+        document.body.classList.remove("is-dragging-css");
+
+        const cssFile = [...event.dataTransfer.files].find((file) =>
+          file.name.toLowerCase().endsWith(".css")
+        );
+
+        if (!cssFile) {
+          setStatus("Drop a .css file to preview it.");
+          return;
+        }
+
+        await applyCssFile(cssFile);
+      });
+    </script>
   </body>
 </html>
