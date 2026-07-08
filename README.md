@@ -13,7 +13,7 @@ A public playground for experimenting with Markdown fixtures, browser preview st
 - `examples/`
   - `basic.md` - core Markdown syntax
   - `extended.md` - tables, images, embedded HTML, and code fences
-  - `theme-preview.md` - a fixed comparison document for screenshots and theme previews
+  - `theme-preview.md` - a fixed comparison document for theme testing
   - `code-showcase.md` - C++-heavy snippets for technical theme testing
   - `documentation-patterns.md` - technical documentation patterns and release notes
   - `mvp-taskflow.md` - realistic long-form product and API documentation
@@ -24,17 +24,15 @@ A public playground for experimenting with Markdown fixtures, browser preview st
 - `themes/cursor-inline/`
   - `popular/` - themes inspired by recognizable products and palettes
   - `original/` - personal theme families such as `cpp-modern` and `lumina`
-  - `cursor-inline-preview.css` - the default installable GitHub-style inline preview file
-- `assets/previews/`
-  - notes for storing screenshot previews that can be browsed directly on GitHub
+  - `cursor-inline-preview.css` - default GitHub-style theme file
 
 ## Preview Locally
 
 ### Browser Preview
 
 1. Open `preview/index.html` in a browser.
-2. Edit `preview/markdown.css`.
-3. Refresh the page to review the updated styling.
+2. Edit `preview/markdown.css`, or use **Load CSS** / drag-and-drop to test a theme from `themes/cursor-inline/`.
+3. Refresh the page when editing `preview/markdown.css` directly.
 
 ### Cursor Markdown Preview
 
@@ -52,32 +50,45 @@ Browse installable themes in `themes/cursor-inline/`:
 
 ## Install A Cursor Inline Theme
 
-Choose one CSS file from `themes/cursor-inline/` and copy it to:
+Cursor inline preview styling is applied by copying a theme CSS file into Cursor's workbench stylesheet.
+
+1. Choose one CSS file from `themes/cursor-inline/`.
+2. Back up the original `workbench.desktop.main.css`.
+3. Copy the full contents of the chosen theme file into `workbench.desktop.main.css`.
+4. Restart Cursor.
+5. Repeat the process after Cursor updates.
+
+### Global Install (system-wide Cursor)
 
 ```text
-C:\Program Files\cursor\resources\app\out\vs\workbench\cursor-inline-preview.css
+C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
 ```
 
-Then make sure `workbench.html` includes:
+This path usually requires administrator rights.
 
-```html
-<link rel="stylesheet" href="../../../workbench/cursor-inline-preview.css">
-```
-
-File location:
+### Per-User Install (local Cursor install)
 
 ```text
-C:\Program Files\cursor\resources\app\out\vs\code\electron-sandbox\workbench\workbench.html
+%LOCALAPPDATA%\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
 ```
 
-After that:
+Example:
 
-1. Restart Cursor.
-2. Reapply the file after Cursor updates.
+```text
+C:\Users\<YourUser>\AppData\Local\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+### Example
+
+```text
+themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css
+  -> workbench.desktop.main.css
+```
 
 Important notes:
 
-- Do not use an external `file:///D:/...` stylesheet path. Chromium blocks it in this context.
+- Replace the file contents with the theme CSS. Do not append a second stylesheet.
+- Keep a backup of the original `workbench.desktop.main.css` so you can restore it later.
 - `preview/cursor-preview.css` is for side preview only.
 - `themes/cursor-inline/...` files are for the inline `Preview | Markdown` experience.
 
@@ -86,19 +97,6 @@ Important notes:
 - `themes/cursor-inline/popular/cursor-inline-github.css` - GitHub-style default
 - `themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern theme
 - `themes/cursor-inline/original/lumina/cursor-inline-lumina.css` - recommended Lumina theme
-
-## GitHub-Friendly Theme Presentation
-
-This repository is prepared for screenshot-based previews.
-
-Recommended approach:
-
-1. Use `examples/theme-preview.md` as the fixed comparison document.
-2. Generate one screenshot per theme from the same content.
-3. Store the images in `assets/previews/`.
-4. Link those screenshots from this README and from `themes/cursor-inline/README.md`.
-
-This keeps previews easy to browse directly on GitHub without requiring installation.
 
 ## License
 

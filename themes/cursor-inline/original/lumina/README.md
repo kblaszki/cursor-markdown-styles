@@ -15,9 +15,22 @@ A signature Cursor inline preview theme family built around luminous gradients a
 - This directory exposes one recommended public install file and keeps older iterations for comparison.
 - The current Lumina theme uses a unified blue neon palette.
 
-## Install Path
+## Install
+
+Copy the full contents of the chosen file into:
+
+```text
+C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+Per-user install:
+
+```text
+%LOCALAPPDATA%\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+Recommended source file:
 
 ```text
 themes/cursor-inline/original/lumina/cursor-inline-lumina.css
-  -> C:\Program Files\cursor\resources\app\out\vs\workbench\cursor-inline-preview.css
 ```

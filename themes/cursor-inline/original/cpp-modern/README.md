@@ -13,9 +13,22 @@ A Cursor inline preview theme family inspired by VS Code's modern dark C++ feel.
 - This directory exposes one recommended public install file and keeps older iterations for comparison.
 - The current theme focuses on readability with a restrained blue and teal palette.
 
-## Install Path
+## Install
+
+Copy the full contents of the chosen file into:
+
+```text
+C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+Per-user install:
+
+```text
+%LOCALAPPDATA%\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+Recommended source file:
 
 ```text
 themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css
-  -> C:\Program Files\cursor\resources\app\out\vs\workbench\cursor-inline-preview.css
 ```

@@ -2,14 +2,14 @@
 
 Installable CSS themes for Cursor's inline Markdown preview.
 
-Every file in this directory tree is self-contained and can be copied into a Cursor installation. The `_shared-rules.css` file is included only as source reference and should not be copied on its own.
+Every file in this directory tree is self-contained and ready to copy into Cursor. The `_shared-rules.css` file is included only as source reference and should not be copied on its own.
 
 ## Directory Layout
 
 - `popular/` - themes inspired by recognizable products or palettes
 - `original/cpp-modern/` - the C++ Modern family
 - `original/lumina/` - the Lumina family
-- `cursor-inline-preview.css` - default GitHub-style inline preview file
+- `cursor-inline-preview.css` - default GitHub-style theme file
 
 ## Popular Themes
 
@@ -32,20 +32,22 @@ Every file in this directory tree is self-contained and can be copied into a Cur
 ## Install In Cursor
 
 1. Choose the CSS file you want to use.
-2. Copy it to:
-
-```text
-C:\Program Files\cursor\resources\app\out\vs\workbench\cursor-inline-preview.css
-```
-
-3. Make sure `workbench.html` contains:
-
-```html
-<link rel="stylesheet" href="../../../workbench/cursor-inline-preview.css">
-```
-
+2. Back up the original `workbench.desktop.main.css`.
+3. Copy the full contents of the chosen theme file into `workbench.desktop.main.css`.
 4. Restart Cursor.
 
-## Preview Strategy
+### Global Install (system-wide Cursor)
 
-Use `examples/theme-preview.md` as the fixed comparison document and keep screenshots in `assets/previews/` so visitors can compare styles directly on GitHub.
+```text
+C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+### Per-User Install (local Cursor install)
+
+```text
+%LOCALAPPDATA%\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
+```
+
+## Preview Before Installing
+
+Use `preview/index.html` with **Load CSS** or drag-and-drop, or open `examples/theme-preview.md` in Cursor after applying a theme.

@@ -1,6 +1,6 @@
 # Theme Preview Fixture
 
-Use this document as the fixed comparison source when generating screenshots for GitHub previews.
+Use this document as the fixed comparison source when testing themes in `preview/index.html` or in Cursor inline preview.
 
 ## Typography
 
