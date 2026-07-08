@@ -62,6 +62,52 @@
           breaks: false,
         });
 
+        const enhanceTaskLists = (html) => {
+          const template = document.createElement("template");
+          template.innerHTML = html;
+
+          template.content.querySelectorAll("li").forEach((item) => {
+            const checkbox = item.querySelector(':scope > input[type="checkbox"]');
+            if (!checkbox) {
+              return;
+            }
+
+            item.classList.add("task-list-item");
+            checkbox.classList.add("task-list-item-checkbox");
+            checkbox.removeAttribute("disabled");
+
+            const parentList = item.parentElement;
+            if (parentList?.tagName === "UL") {
+              parentList.classList.add("contains-task-list");
+            }
+
+            if (item.querySelector(":scope > .task-list-item-label")) {
+              return;
+            }
+
+            const label = document.createElement("span");
+            label.className = "task-list-item-label";
+            const nestedList = item.querySelector(":scope > ul");
+            const nodesToMove = [];
+
+            let node = checkbox.nextSibling;
+            while (node && node !== nestedList) {
+              nodesToMove.push(node);
+              node = node.nextSibling;
+            }
+
+            nodesToMove.forEach((contentNode) => {
+              label.appendChild(contentNode);
+            });
+
+            if (label.childNodes.length > 0) {
+              item.insertBefore(label, nestedList);
+            }
+          });
+
+          return template.innerHTML;
+        };
+
         const setStatus = (message) => {
           status.textContent = message;
         };
@@ -111,7 +157,7 @@
           if (!cached) {
             const { markdown, source } = await loadFixtureMarkdown(fixture.file);
             cached = {
-              html: marked.parse(markdown),
+              html: enhanceTaskLists(marked.parse(markdown)),
               source,
             };
             renderedCache.set(fixture.id, cached);

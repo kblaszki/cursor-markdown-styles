@@ -26,6 +26,9 @@ A public playground for experimenting with Markdown fixtures, browser preview st
   - `popular/` - themes inspired by recognizable products and palettes
   - `original/` - personal theme families such as `cpp-modern` and `lumina`
   - `cursor-inline-preview.css` - default GitHub-style theme file
+- `cursor-inline-patch/`
+  - optional `workbench.html` JS patch for GFM checkboxes in inline preview
+  - `patch.ps1` / `rollback.ps1` installers for Windows
 
 ## Preview Locally
 

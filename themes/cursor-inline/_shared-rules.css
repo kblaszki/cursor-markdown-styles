@@ -123,3 +123,66 @@
 .markdown-editor-react__richtext-content li {
   margin-bottom: 0.25rem !important;
 }
+
+/* === Task lists (GFM checkboxes) === */
+
+/* Shared task-list rules copied into theme files.
+   Do not copy this file into Cursor on its own. */
+
+.anysphere-markdown-container-root :is(ul.contains-task-list, ul:has(> li > input[type="checkbox"])),
+.markdown-editor-react__richtext-content :is(ul.contains-task-list, ul:has(> li > input[type="checkbox"])) {
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.anysphere-markdown-container-root :is(li.task-list-item, li:has(> input[type="checkbox"])),
+.markdown-editor-react__richtext-content :is(li.task-list-item, li:has(> input[type="checkbox"])) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: 0.45rem 0.55rem !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+  position: relative !important;
+}
+
+.anysphere-markdown-container-root
+  :is(li.task-list-item, li:has(> input[type="checkbox"]))::before,
+.markdown-editor-react__richtext-content
+  :is(li.task-list-item, li:has(> input[type="checkbox"]))::before {
+  display: none !important;
+  content: none !important;
+}
+
+.anysphere-markdown-container-root
+  :is(
+    input.task-list-item-checkbox,
+    li:has(> input[type="checkbox"]) > input[type="checkbox"]
+  ),
+.markdown-editor-react__richtext-content
+  :is(
+    input.task-list-item-checkbox,
+    li:has(> input[type="checkbox"]) > input[type="checkbox"]
+  ) {
+  flex: 0 0 auto !important;
+  margin: 0.28em 0 0 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  accent-color: var(--md-accent, currentColor) !important;
+  cursor: default !important;
+}
+
+.anysphere-markdown-container-root
+  :is(li.task-list-item > .task-list-item-label, li:has(> input[type="checkbox"]) > .task-list-item-label),
+.markdown-editor-react__richtext-content
+  :is(li.task-list-item > .task-list-item-label, li:has(> input[type="checkbox"]) > .task-list-item-label) {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+}
+
+.anysphere-markdown-container-root :is(li.task-list-item > ul, li:has(> input[type="checkbox"]) > ul),
+.markdown-editor-react__richtext-content :is(li.task-list-item > ul, li:has(> input[type="checkbox"]) > ul) {
+  flex: 1 1 100% !important;
+  margin: 0.2rem 0 0 1.45rem !important;
+  padding-left: 0 !important;
+}
