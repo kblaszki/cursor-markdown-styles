@@ -2,7 +2,7 @@
 
 Installable CSS themes for Cursor's inline Markdown preview.
 
-Every file in this directory tree is self-contained and ready to copy into Cursor. The `_shared-rules.css` file is included only as source reference and should not be copied on its own.
+Every file in this directory tree is self-contained and ready to copy into Cursor. The `_shared-rules.css` and `_frontmatter-heuristic-rules.css` files are included only as source reference and should not be copied on their own.
 
 ## Directory Layout
 

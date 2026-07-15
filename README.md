@@ -1,12 +1,13 @@
 # Markdown CSS Playground
 
-A public playground for experimenting with Markdown fixtures, browser preview styles, and Cursor inline preview themes.
+A public playground for experimenting with Markdown fixtures, browser preview styles, Cursor inline preview themes, and VS Code side-preview themes.
 
 ## What This Repo Contains
 
 - reusable Markdown samples for testing rendered content
 - a local browser preview setup for stylesheet iteration
 - Cursor inline preview themes inspired by popular products and custom personal themes
+- VS Code / Cursor side-preview themes loaded through `markdown.styles`
 
 ## Structure
 
@@ -14,6 +15,7 @@ A public playground for experimenting with Markdown fixtures, browser preview st
   - `basic.md` - core Markdown syntax
   - `extended.md` - tables, images, embedded HTML, and code fences
   - `checkboxes.md` - task lists and nested checklist patterns
+  - `frontmatter.md` - YAML front matter example and renderer compatibility notes
   - `theme-preview.md` - a fixed comparison document for theme testing
   - `code-showcase.md` - C++-heavy snippets for technical theme testing
   - `documentation-patterns.md` - technical documentation patterns and release notes
@@ -26,6 +28,8 @@ A public playground for experimenting with Markdown fixtures, browser preview st
   - `popular/` - themes inspired by recognizable products and palettes
   - `original/` - personal theme families such as `cpp-modern` and `lumina`
   - `cursor-inline-preview.css` - default GitHub-style theme file
+- `themes/vscode-preview/`
+  - `original/cpp-modern/` - C++ Modern family for VS Code side preview (`markdown.styles`)
 
 ## Preview Locally
 
@@ -36,11 +40,31 @@ A public playground for experimenting with Markdown fixtures, browser preview st
 3. Edit `preview/markdown.css`, or use **Load CSS** / drag-and-drop to test a theme from `themes/cursor-inline/`.
 4. Refresh the page when editing `preview/markdown.css` directly.
 
-### Cursor Markdown Preview
+### VS Code / Cursor Side Markdown Preview
+
+Recommended when using standard preview (`Ctrl+Shift+V` / `Ctrl+K V`) with Markdown extensions.
+
+1. Add a theme path to `markdown.styles` in settings (see [themes/vscode-preview/README.md](themes/vscode-preview/README.md)).
+2. Open any file from `examples/`.
+3. Run **Markdown: Open Preview** or **Markdown: Open Preview to the Side**.
+
+Example workspace setting:
+
+```json
+{
+  "markdown.styles": [
+    "${workspaceFolder}/themes/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css"
+  ]
+}
+```
+
+For **Markdown Preview Enhanced**, paste a ready-made bundle into global `style.less` — see [themes/vscode-preview/mpe/README.md](themes/vscode-preview/mpe/README.md).
+
+### Cursor Markdown Preview (legacy side preview)
 
 1. Open any file from `examples/`.
 2. Use Cursor's Markdown preview.
-3. For side preview styling, use `preview/cursor-preview.css`.
+3. For a minimal generic stylesheet, use `preview/cursor-preview.css`.
 
 ### Cursor Inline Preview Themes
 
@@ -96,9 +120,10 @@ Important notes:
 
 ## Recommended Theme Files
 
-- `themes/cursor-inline/popular/cursor-inline-github.css` - GitHub-style default
-- `themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern theme
-- `themes/cursor-inline/original/lumina/cursor-inline-lumina.css` - recommended Lumina theme
+- `themes/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css` - recommended C++ Modern for VS Code side preview
+- `themes/cursor-inline/popular/cursor-inline-github.css` - GitHub-style default (inline)
+- `themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern theme (inline)
+- `themes/cursor-inline/original/lumina/cursor-inline-lumina.css` - recommended Lumina theme (inline)
 
 ## License
 

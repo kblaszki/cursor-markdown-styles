@@ -1,0 +1,105 @@
+/* Shared scope and VS Code / MPE preview helpers copied into theme files.
+   Do not copy this file into settings on its own. */
+
+/* Scopes:
+   - .markdown-body  — built-in VS Code Markdown preview
+   - .markdown-preview — Markdown Preview Enhanced (Crossnote)
+   - body            — iframe fallback */
+
+/* === Task lists (GFM) === */
+
+.markdown-body ul.contains-task-list,
+.markdown-preview ul.contains-task-list,
+body ul.contains-task-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+  position: relative !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before,
+.markdown-body ul.contains-task-list > li::before,
+.markdown-preview ul.contains-task-list > li::before,
+body ul.contains-task-list > li::before {
+  display: none !important;
+  content: none !important;
+}
+
+.markdown-body li.task-list-item input[type="checkbox"],
+.markdown-preview li.task-list-item input[type="checkbox"],
+body li.task-list-item input[type="checkbox"] {
+  margin-right: 0.45rem !important;
+}
+
+/* Exclude task lists from custom bullet styling */
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  /* variant themes override background/color */
+}
+
+/* === Front matter === */
+
+/* Built-in VS Code preview (markdown.preview.frontMatter: "show") */
+.markdown-body .front-matter,
+body .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
+}
+
+.markdown-body .front-matter table,
+body .front-matter table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+}
+
+.markdown-body .front-matter :is(th, td),
+body .front-matter :is(th, td) {
+  padding: 0.2rem 0.5rem !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body .front-matter th,
+body .front-matter th {
+  text-align: left !important;
+  white-space: nowrap !important;
+  padding-right: 0.75rem !important;
+  color: color-mix(in srgb, var(--cpp-muted, #9d9d9d) 80%, var(--cpp-fg, #cccccc)) !important;
+}
+
+.markdown-body .front-matter td,
+body .front-matter td {
+  font-family: var(--md-font-mono, ui-monospace, monospace) !important;
+}
+
+/* MPE front matter block (YAML header rendered by Crossnote) */
+.markdown-preview .front-matter,
+.markdown-preview.markdown-preview .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
+}

@@ -1,13 +1,33 @@
+/* =============================================================================
+ * Markdown Preview Enhanced — Global style.less (C++ Modern v1 Syntax)
+ * =============================================================================
+ *
+ * INSTALL (Windows):
+ * 1. Ctrl+Shift+P
+ * 2. Run: "Markdown Preview Enhanced: Customize CSS (Global)"
+ * 3. VS Code opens: %USERPROFILE%\.crossnote\style.less
+ * 4. Select ALL content in that file and DELETE it
+ * 5. Paste THIS ENTIRE FILE from the repo:
+ *    themes/vscode-preview/mpe/global-cpp-modern-v1-syntax.less
+ * 6. Save (Ctrl+S)
+ * 7. Open any .md file → "Markdown Preview Enhanced: Open Preview to the Side"
+ *
+ * OPTIONAL — add to settings.json to reduce MPE built-in theme conflicts:
+ *   "markdown-preview-enhanced.previewTheme": "none.css"
+ *
+ * NOTE: This bundle inlines the full theme CSS (no @import) for reliable loading.
+ * ============================================================================= */
+
+
 /* C++ Modern v1 - Syntax (faithful mapping of C++ syntax tokens)
- * Syntax colors mapped from VS Code Dark Modern, Dark+, and Better C++ Syntax.
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
  * Copyright (c) 2026 kblaszki
  * SPDX-License-Identifier: MIT
- *
- * Cursor inline preview: Preview | Markdown
  */
 
-.anysphere-markdown-container-root,
-.markdown-editor-react__richtext-content {
+.markdown-body,
+.markdown-preview,
+body {
   /* Background and text from Modern Dark */
   --cpp-bg: var(--vscode-editor-background, #1f1f1f);
   --cpp-fg: var(--vscode-editor-foreground, #cccccc);
@@ -46,27 +66,37 @@
 
 /* === Base === */
 
-.anysphere-markdown-container-root,
-.markdown-editor-react__richtext-content {
+.markdown-body,
+.markdown-preview,
+body {
   color: var(--md-text) !important;
   background: var(--md-bg) !important;
   font-family: var(--md-font-body) !important;
   line-height: var(--md-line-height) !important;
 }
 
-.anysphere-markdown-container-root {
+.markdown-body {
   padding: var(--md-padding) !important;
 }
 
-.anysphere-markdown-container-root :is(p, ul, ol, blockquote, table, pre, hr),
-.markdown-editor-react__richtext-content :is(p, ul, ol, blockquote, table, pre, hr) {
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+body {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr) {
   margin: 0 0 1.1rem !important;
 }
 
 /* === Headings - mapped to C++ token colors === */
 
-.anysphere-markdown-container-root :is(h1, h2, h3, h4, h5, h6),
-.markdown-editor-react__richtext-content :is(h1, h2, h3, h4, h5, h6) {
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 700 !important;
   line-height: 1.2 !important;
   margin: 1.6em 0 0.55em !important;
@@ -74,8 +104,9 @@
 }
 
 /* H1: type -> keyword -> function (classic VS Code trio) */
-.anysphere-markdown-container-root h1,
-.markdown-editor-react__richtext-content h1 {
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
   font-size: 2em !important;
   background: linear-gradient(120deg, var(--cpp-type), var(--cpp-keyword), var(--cpp-function)) !important;
   -webkit-background-clip: text !important;
@@ -86,8 +117,9 @@
 }
 
 /* H2: types (class, struct, template) */
-.anysphere-markdown-container-root h2,
-.markdown-editor-react__richtext-content h2 {
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
   font-size: 1.55em !important;
   color: var(--cpp-type) !important;
   border-bottom: 1px solid color-mix(in srgb, var(--cpp-type) 35%, transparent) !important;
@@ -95,22 +127,25 @@
 }
 
 /* H3: keywords */
-.anysphere-markdown-container-root h3,
-.markdown-editor-react__richtext-content h3 {
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
   font-size: 1.3em !important;
   color: var(--cpp-keyword) !important;
 }
 
 /* H4: control flow (if, for, return) */
-.anysphere-markdown-container-root h4,
-.markdown-editor-react__richtext-content h4 {
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
   font-size: 1.12em !important;
   color: var(--cpp-control) !important;
 }
 
 /* H5: functions / macros */
-.anysphere-markdown-container-root h5,
-.markdown-editor-react__richtext-content h5 {
+.markdown-body h5,
+.markdown-preview h5,
+body h5 {
   font-size: 1em !important;
   color: var(--cpp-function) !important;
   text-transform: uppercase !important;
@@ -118,8 +153,9 @@
 }
 
 /* H6: variables / parameters */
-.anysphere-markdown-container-root h6,
-.markdown-editor-react__richtext-content h6 {
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
   font-size: 0.92em !important;
   color: var(--cpp-variable) !important;
   font-weight: 600 !important;
@@ -127,59 +163,67 @@
 
 /* === Inline text === */
 
-.anysphere-markdown-container-root strong,
-.markdown-editor-react__richtext-content strong {
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
   color: var(--cpp-function) !important;
   font-weight: 700 !important;
 }
 
-.anysphere-markdown-container-root em,
-.markdown-editor-react__richtext-content em {
+.markdown-body em,
+.markdown-preview em,
+body em {
   color: var(--cpp-type) !important;
   font-style: italic !important;
 }
 
-.anysphere-markdown-container-root del,
-.markdown-editor-react__richtext-content del {
+.markdown-body del,
+.markdown-preview del,
+body del {
   color: var(--cpp-comment) !important;
   text-decoration-color: var(--cpp-string) !important;
 }
 
-.anysphere-markdown-container-root a,
-.markdown-editor-react__richtext-content a {
+.markdown-body a,
+.markdown-preview a,
+body a {
   color: var(--cpp-link) !important;
   text-decoration: none !important;
   border-bottom: 1px solid color-mix(in srgb, var(--cpp-link) 40%, transparent) !important;
   transition: color 0.15s, border-color 0.15s !important;
 }
 
-.anysphere-markdown-container-root a:hover,
-.markdown-editor-react__richtext-content a:hover {
+.markdown-body a:hover,
+.markdown-preview a:hover,
+body a:hover {
   color: var(--cpp-constant) !important;
   border-bottom-color: var(--cpp-constant) !important;
 }
 
 /* === Lists === */
 
-.anysphere-markdown-container-root :is(ul, ol),
-.markdown-editor-react__richtext-content :is(ul, ol) {
+.markdown-body :is(ul, ol),
+.markdown-preview :is(ul, ol) {
   padding-left: 1.6rem !important;
 }
 
-.anysphere-markdown-container-root ul,
-.markdown-editor-react__richtext-content ul {
+.markdown-body ul,
+.markdown-preview ul,
+body ul {
   list-style: none !important;
 }
 
-.anysphere-markdown-container-root ul > li,
-.markdown-editor-react__richtext-content ul > li {
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item),
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item),
+body ul:not(.contains-task-list) > li:not(.task-list-item) {
   position: relative !important;
   padding-left: 0.35rem !important;
   margin-bottom: 0.4rem !important;
 }
 
-.anysphere-markdown-container-root ul > li::before,
-.markdown-editor-react__richtext-content ul > li::before {
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
   content: "" !important;
   position: absolute !important;
   left: -1.15rem !important;
@@ -191,36 +235,41 @@
   box-shadow: 0 0 6px color-mix(in srgb, var(--cpp-type) 45%, transparent) !important;
 }
 
-.anysphere-markdown-container-root ul ul > li::before,
-.markdown-editor-react__richtext-content ul ul > li::before {
+.markdown-body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before {
   background: var(--cpp-keyword) !important;
   box-shadow: 0 0 5px color-mix(in srgb, var(--cpp-keyword) 40%, transparent) !important;
   width: 6px !important;
   height: 6px !important;
 }
 
-.anysphere-markdown-container-root ul ul ul > li::before,
-.markdown-editor-react__richtext-content ul ul ul > li::before {
+.markdown-body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before {
   background: var(--cpp-variable) !important;
   box-shadow: 0 0 5px color-mix(in srgb, var(--cpp-variable) 35%, transparent) !important;
 }
 
-.anysphere-markdown-container-root ol,
-.markdown-editor-react__richtext-content ol {
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
   counter-reset: cpp-ol !important;
   list-style: none !important;
 }
 
-.anysphere-markdown-container-root ol > li,
-.markdown-editor-react__richtext-content ol > li {
+.markdown-body ol > li,
+.markdown-preview ol > li,
+body ol > li {
   counter-increment: cpp-ol !important;
   position: relative !important;
   padding-left: 0.2rem !important;
   margin-bottom: 0.4rem !important;
 }
 
-.anysphere-markdown-container-root ol > li::before,
-.markdown-editor-react__richtext-content ol > li::before {
+.markdown-body ol > li::before,
+.markdown-preview ol > li::before,
+body ol > li::before {
   content: counter(cpp-ol) !important;
   position: absolute !important;
   left: -1.6rem !important;
@@ -238,24 +287,27 @@
   border-radius: 4px !important;
 }
 
-.anysphere-markdown-container-root :is(ul, ol) li > :is(ul, ol),
-.markdown-editor-react__richtext-content :is(ul, ol) li > :is(ul, ol) {
+.markdown-body :is(ul, ol) li > :is(ul, ol),
+.markdown-preview :is(ul, ol) li > :is(ul, ol) {
   margin-top: 0.45rem !important;
 }
 
-.anysphere-markdown-container-root li:has(input[type="checkbox"]),
-.markdown-editor-react__richtext-content li:has(input[type="checkbox"]) {
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
   list-style: none !important;
   padding-left: 0 !important;
 }
 
-.anysphere-markdown-container-root li:has(input[type="checkbox"])::before,
-.markdown-editor-react__richtext-content li:has(input[type="checkbox"])::before {
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before {
   display: none !important;
 }
 
-.anysphere-markdown-container-root input[type="checkbox"],
-.markdown-editor-react__richtext-content input[type="checkbox"] {
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
   accent-color: var(--cpp-accent) !important;
   margin-right: 0.45rem !important;
   transform: scale(1.12) !important;
@@ -263,8 +315,9 @@
 
 /* === Blockquotes - like // comments === */
 
-.anysphere-markdown-container-root blockquote,
-.markdown-editor-react__richtext-content blockquote {
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
   margin-left: 0 !important;
   padding: 0.65rem 1.2rem !important;
   border-left: 4px solid var(--cpp-comment) !important;
@@ -276,8 +329,9 @@
 
 /* === Inline code - variables and identifiers === */
 
-.anysphere-markdown-container-root :not(pre) > code,
-.markdown-editor-react__richtext-content :not(pre) > code {
+.markdown-body :not(pre) > code,
+.markdown-preview :not(pre) > code,
+body :not(pre) > code {
   padding: 0.16rem 0.42rem !important;
   border-radius: 4px !important;
   font-family: var(--md-font-mono) !important;
@@ -289,8 +343,9 @@
 
 /* === Code blocks — editor / terminal === */
 
-.anysphere-markdown-container-root pre,
-.markdown-editor-react__richtext-content pre {
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
   padding: 1rem 1.1rem !important;
   overflow-x: auto !important;
   border-radius: 6px !important;
@@ -302,8 +357,9 @@
 }
 
 /* Bar: type | keyword | function — like syntax highlighting */
-.anysphere-markdown-container-root pre::before,
-.markdown-editor-react__richtext-content pre::before {
+.markdown-body pre::before,
+.markdown-preview pre::before,
+body pre::before {
   content: "" !important;
   position: absolute !important;
   left: 0 !important;
@@ -319,8 +375,9 @@
   ) !important;
 }
 
-.anysphere-markdown-container-root pre code,
-.markdown-editor-react__richtext-content pre code {
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
@@ -332,8 +389,9 @@
 
 /* === Tables === */
 
-.anysphere-markdown-container-root table,
-.markdown-editor-react__richtext-content table {
+.markdown-body table,
+.markdown-preview table,
+body table {
   width: 100% !important;
   border-collapse: separate !important;
   border-spacing: 0 !important;
@@ -342,15 +400,16 @@
   border: 1px solid var(--cpp-border) !important;
 }
 
-.anysphere-markdown-container-root :is(th, td),
-.markdown-editor-react__richtext-content :is(th, td) {
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td) {
   padding: 0.7rem 0.9rem !important;
   border-bottom: 1px solid var(--cpp-border) !important;
   text-align: left !important;
 }
 
-.anysphere-markdown-container-root th,
-.markdown-editor-react__richtext-content th {
+.markdown-body th,
+.markdown-preview th,
+body th {
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--cpp-type) 22%, var(--cpp-panel)),
@@ -364,25 +423,29 @@
   border-bottom: 2px solid color-mix(in srgb, var(--cpp-type) 50%, transparent) !important;
 }
 
-.anysphere-markdown-container-root tr:nth-child(even) td,
-.markdown-editor-react__richtext-content tr:nth-child(even) td {
+.markdown-body tr:nth-child(even) td,
+.markdown-preview tr:nth-child(even) td,
+body tr:nth-child(even) td {
   background: color-mix(in srgb, var(--cpp-keyword) 4%, var(--cpp-bg)) !important;
 }
 
-.anysphere-markdown-container-root tr:hover td,
-.markdown-editor-react__richtext-content tr:hover td {
+.markdown-body tr:hover td,
+.markdown-preview tr:hover td,
+body tr:hover td {
   background: color-mix(in srgb, var(--cpp-type) 6%, var(--cpp-bg)) !important;
 }
 
-.anysphere-markdown-container-root tr:last-child td,
-.markdown-editor-react__richtext-content tr:last-child td {
+.markdown-body tr:last-child td,
+.markdown-preview tr:last-child td,
+body tr:last-child td {
   border-bottom: none !important;
 }
 
 /* === Divider === */
 
-.anysphere-markdown-container-root hr,
-.markdown-editor-react__richtext-content hr {
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
   height: 1px !important;
   border: 0 !important;
   margin: 2.2rem 0 !important;
@@ -399,8 +462,9 @@
 
 /* === Images === */
 
-.anysphere-markdown-container-root img,
-.markdown-editor-react__richtext-content img {
+.markdown-body img,
+.markdown-preview img,
+body img {
   max-width: 100% !important;
   border-radius: 6px !important;
   border: 1px solid var(--cpp-border) !important;
@@ -409,8 +473,9 @@
 
 /* === Details — like a preprocessor section === */
 
-.anysphere-markdown-container-root details,
-.markdown-editor-react__richtext-content details {
+.markdown-body details,
+.markdown-preview details,
+body details {
   padding: 0.5rem 0.8rem !important;
   border: 1px solid color-mix(in srgb, var(--cpp-preprocessor) 30%, transparent) !important;
   border-radius: 4px !important;
@@ -418,8 +483,9 @@
   margin-bottom: 1rem !important;
 }
 
-.anysphere-markdown-container-root summary,
-.markdown-editor-react__richtext-content summary {
+.markdown-body summary,
+.markdown-preview summary,
+body summary {
   color: var(--cpp-preprocessor) !important;
   font-weight: 600 !important;
   font-family: var(--md-font-mono) !important;
@@ -427,109 +493,128 @@
 }
 
 /* Syntax accents in paragraphs — optional semantic classes */
-.anysphere-markdown-container-root .cpp-string,
-.markdown-editor-react__richtext-content .cpp-string,
-.anysphere-markdown-container-root code.cpp-string,
-.markdown-editor-react__richtext-content code.cpp-string {
+.markdown-body .cpp-string,
+.markdown-preview .cpp-string,
+.markdown-body code.cpp-string,
+.markdown-preview code.cpp-string,
+body code.cpp-string {
   color: var(--cpp-string) !important;
 }
 
-.anysphere-markdown-container-root .cpp-number,
-.markdown-editor-react__richtext-content .cpp-number {
+.markdown-body .cpp-number,
+.markdown-preview .cpp-number,
+body .cpp-number {
   color: var(--cpp-number) !important;
 }
 
-.anysphere-markdown-container-root .cpp-control,
-.markdown-editor-react__richtext-content .cpp-control {
+.markdown-body .cpp-control,
+.markdown-preview .cpp-control,
+body .cpp-control {
   color: var(--cpp-control) !important;
 }
 
-/* Shared front matter heuristic rules copied into theme files.
-   Do not copy this file into Cursor on its own.
-   Targets top-level blocks before the first h1 (Cursor inline preview often
-   renders --- delimiters as paragraphs, not hr elements). */
+/* Shared scope and VS Code / MPE preview helpers copied into theme files.
+   Do not copy this file into settings on its own. */
 
-/* Top-level blocks before the first h1 */
-.anysphere-markdown-container-root > *:has(~ h1:first-of-type):not(:is(h1, h2, h3, h4, h5, h6, pre, blockquote, table)),
-.markdown-editor-react__richtext-content > *:has(~ h1:first-of-type):not(:is(h1, h2, h3, h4, h5, h6, pre, blockquote, table)),
-.anysphere-markdown-container-root :is(p, ul, ol, hr):has(~ h1:first-of-type),
-.markdown-editor-react__richtext-content :is(p, ul, ol, hr):has(~ h1:first-of-type) {
-  color: #e8c98a !important;
-  font-size: 0.82em !important;
-  line-height: 1.35 !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  -webkit-text-fill-color: #e8c98a !important;
-  background: color-mix(in srgb, #8b6914 14%, transparent) !important;
+/* Scopes:
+   - .markdown-body  — built-in VS Code Markdown preview
+   - .markdown-preview — Markdown Preview Enhanced (Crossnote)
+   - body            — iframe fallback */
+
+/* === Task lists (GFM) === */
+
+.markdown-body ul.contains-task-list,
+.markdown-preview ul.contains-task-list,
+body ul.contains-task-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+  position: relative !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before,
+.markdown-body ul.contains-task-list > li::before,
+.markdown-preview ul.contains-task-list > li::before,
+body ul.contains-task-list > li::before {
+  display: none !important;
+  content: none !important;
+}
+
+.markdown-body li.task-list-item input[type="checkbox"],
+.markdown-preview li.task-list-item input[type="checkbox"],
+body li.task-list-item input[type="checkbox"] {
+  margin-right: 0.45rem !important;
+}
+
+/* Exclude task lists from custom bullet styling */
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  /* variant themes override background/color */
+}
+
+/* === Front matter === */
+
+/* Built-in VS Code preview (markdown.preview.frontMatter: "show") */
+.markdown-body .front-matter,
+body .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
   border-radius: 4px !important;
-  margin-block: 0.12rem !important;
-  padding: 0.08rem 0.35rem !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
+}
+
+.markdown-body .front-matter table,
+body .front-matter table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+}
+
+.markdown-body .front-matter :is(th, td),
+body .front-matter :is(th, td) {
+  padding: 0.2rem 0.5rem !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body .front-matter th,
+body .front-matter th {
+  text-align: left !important;
+  white-space: nowrap !important;
+  padding-right: 0.75rem !important;
+  color: color-mix(in srgb, var(--cpp-muted, #9d9d9d) 80%, var(--cpp-fg, #cccccc)) !important;
+}
+
+.markdown-body .front-matter td,
+body .front-matter td {
   font-family: var(--md-font-mono, ui-monospace, monospace) !important;
 }
 
-/* Nested inline elements inside metadata blocks */
-.anysphere-markdown-container-root > *:has(~ h1:first-of-type) :is(code, strong, em, span, a),
-.markdown-editor-react__richtext-content > *:has(~ h1:first-of-type) :is(code, strong, em, span, a),
-.anysphere-markdown-container-root :is(p, ul, ol):has(~ h1:first-of-type) :is(code, strong, em, span, a),
-.markdown-editor-react__richtext-content :is(p, ul, ol):has(~ h1:first-of-type) :is(code, strong, em, span, a) {
-  color: #e8c98a !important;
-  font-size: inherit !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  -webkit-text-fill-color: #e8c98a !important;
-  background: transparent !important;
-  border: none !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
-  text-decoration: none !important;
-}
-
-/* Lists inside metadata block */
-.anysphere-markdown-container-root > ul:has(~ h1:first-of-type),
-.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type),
-.anysphere-markdown-container-root ul:has(~ h1:first-of-type),
-.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) {
-  padding-left: 1.1rem !important;
-  background: color-mix(in srgb, #8b6914 10%, transparent) !important;
-}
-
-.anysphere-markdown-container-root > ul:has(~ h1:first-of-type) > li,
-.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type) > li,
-.anysphere-markdown-container-root ul:has(~ h1:first-of-type) li,
-.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) li {
-  color: #e8c98a !important;
-  font-size: 0.82em !important;
-  margin-bottom: 0.1rem !important;
-}
-
-.anysphere-markdown-container-root > ul:has(~ h1:first-of-type) > li::before,
-.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type) > li::before,
-.anysphere-markdown-container-root ul:has(~ h1:first-of-type) li::before,
-.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) li::before {
-  width: 5px !important;
-  height: 5px !important;
-  background: #c9a227 !important;
-  box-shadow: none !important;
-}
-
-/* Fallback: hr-based delimiters when renderer emits hr */
-.anysphere-markdown-container-root:has(> hr:first-child) > hr:first-of-type,
-.markdown-editor-react__richtext-content:has(> hr:first-child) > hr:first-of-type,
-.anysphere-markdown-container-root:has(> hr:first-child) > hr:nth-of-type(2),
-.markdown-editor-react__richtext-content:has(> hr:first-child) > hr:nth-of-type(2) {
-  height: 1px !important;
-  margin-block: 0.25rem !important;
-  opacity: 0.45 !important;
-  background: #c9a227 !important;
-  box-shadow: none !important;
-  border: 0 !important;
-}
-
-.anysphere-markdown-container-root:has(> hr:first-child) > :is(p, ul, ol, code):has(~ hr:nth-of-type(2)),
-.markdown-editor-react__richtext-content:has(> hr:first-child) > :is(p, ul, ol, code):has(~ hr:nth-of-type(2)) {
-  color: #e8c98a !important;
-  font-size: 0.82em !important;
-  background: color-mix(in srgb, #8b6914 14%, transparent) !important;
+/* MPE front matter block (YAML header rendered by Crossnote) */
+.markdown-preview .front-matter,
+.markdown-preview.markdown-preview .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
 }

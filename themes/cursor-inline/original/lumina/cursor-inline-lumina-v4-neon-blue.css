@@ -414,3 +414,93 @@
   font-weight: 600 !important;
   cursor: pointer !important;
 }
+
+/* Shared front matter heuristic rules copied into theme files.
+   Do not copy this file into Cursor on its own.
+   Targets top-level blocks before the first h1 (Cursor inline preview often
+   renders --- delimiters as paragraphs, not hr elements). */
+
+/* Top-level blocks before the first h1 */
+.anysphere-markdown-container-root > *:has(~ h1:first-of-type):not(:is(h1, h2, h3, h4, h5, h6, pre, blockquote, table)),
+.markdown-editor-react__richtext-content > *:has(~ h1:first-of-type):not(:is(h1, h2, h3, h4, h5, h6, pre, blockquote, table)),
+.anysphere-markdown-container-root :is(p, ul, ol, hr):has(~ h1:first-of-type),
+.markdown-editor-react__richtext-content :is(p, ul, ol, hr):has(~ h1:first-of-type) {
+  color: #e8c98a !important;
+  font-size: 0.82em !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  -webkit-text-fill-color: #e8c98a !important;
+  background: color-mix(in srgb, #8b6914 14%, transparent) !important;
+  border-radius: 4px !important;
+  margin-block: 0.12rem !important;
+  padding: 0.08rem 0.35rem !important;
+  font-family: var(--md-font-mono, ui-monospace, monospace) !important;
+}
+
+/* Nested inline elements inside metadata blocks */
+.anysphere-markdown-container-root > *:has(~ h1:first-of-type) :is(code, strong, em, span, a),
+.markdown-editor-react__richtext-content > *:has(~ h1:first-of-type) :is(code, strong, em, span, a),
+.anysphere-markdown-container-root :is(p, ul, ol):has(~ h1:first-of-type) :is(code, strong, em, span, a),
+.markdown-editor-react__richtext-content :is(p, ul, ol):has(~ h1:first-of-type) :is(code, strong, em, span, a) {
+  color: #e8c98a !important;
+  font-size: inherit !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  -webkit-text-fill-color: #e8c98a !important;
+  background: transparent !important;
+  border: none !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+}
+
+/* Lists inside metadata block */
+.anysphere-markdown-container-root > ul:has(~ h1:first-of-type),
+.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type),
+.anysphere-markdown-container-root ul:has(~ h1:first-of-type),
+.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) {
+  padding-left: 1.1rem !important;
+  background: color-mix(in srgb, #8b6914 10%, transparent) !important;
+}
+
+.anysphere-markdown-container-root > ul:has(~ h1:first-of-type) > li,
+.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type) > li,
+.anysphere-markdown-container-root ul:has(~ h1:first-of-type) li,
+.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) li {
+  color: #e8c98a !important;
+  font-size: 0.82em !important;
+  margin-bottom: 0.1rem !important;
+}
+
+.anysphere-markdown-container-root > ul:has(~ h1:first-of-type) > li::before,
+.markdown-editor-react__richtext-content > ul:has(~ h1:first-of-type) > li::before,
+.anysphere-markdown-container-root ul:has(~ h1:first-of-type) li::before,
+.markdown-editor-react__richtext-content ul:has(~ h1:first-of-type) li::before {
+  width: 5px !important;
+  height: 5px !important;
+  background: #c9a227 !important;
+  box-shadow: none !important;
+}
+
+/* Fallback: hr-based delimiters when renderer emits hr */
+.anysphere-markdown-container-root:has(> hr:first-child) > hr:first-of-type,
+.markdown-editor-react__richtext-content:has(> hr:first-child) > hr:first-of-type,
+.anysphere-markdown-container-root:has(> hr:first-child) > hr:nth-of-type(2),
+.markdown-editor-react__richtext-content:has(> hr:first-child) > hr:nth-of-type(2) {
+  height: 1px !important;
+  margin-block: 0.25rem !important;
+  opacity: 0.45 !important;
+  background: #c9a227 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+.anysphere-markdown-container-root:has(> hr:first-child) > :is(p, ul, ol, code):has(~ hr:nth-of-type(2)),
+.markdown-editor-react__richtext-content:has(> hr:first-child) > :is(p, ul, ol, code):has(~ hr:nth-of-type(2)) {
+  color: #e8c98a !important;
+  font-size: 0.82em !important;
+  background: color-mix(in srgb, #8b6914 14%, transparent) !important;
+}
