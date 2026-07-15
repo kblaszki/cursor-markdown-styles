@@ -356,10 +356,6 @@ body pre::before {
 .markdown-body pre code,
 .markdown-preview pre code,
 body pre code {
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  color: var(--cpp-code-fg) !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
   line-height: 1.65 !important;
@@ -578,4 +574,74 @@ body .front-matter td {
   font-size: 0.85em !important;
   line-height: 1.4 !important;
   color: var(--cpp-muted, #9d9d9d) !important;
+}
+
+/* === Code blocks — VS Code / HLJS preview structure === */
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  box-sizing: border-box !important;
+  padding: 1rem 1.15rem 1rem calc(1.15rem + 12px) !important;
+}
+
+/* Built-in preview defaults to inline-block code; use block layout for correct padding */
+.markdown-body pre > code,
+.markdown-preview pre > code,
+body pre > code {
+  display: block !important;
+  width: 100% !important;
+  white-space: pre !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--vscode-editor-foreground, var(--cpp-code-fg, #d4d4d4));
+  tab-size: 4 !important;
+}
+
+.markdown-body pre.hljs code > div,
+.markdown-preview pre.hljs code > div,
+body pre.hljs code > div {
+  padding: 0 !important;
+}
+
+/* Keep prose/link/strikethrough styles out of fenced code */
+.markdown-body pre :is(code, code *),
+.markdown-preview pre :is(code, code *),
+body pre :is(code, code *) {
+  text-decoration: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.markdown-body pre :is(strong, em),
+.markdown-preview pre :is(strong, em),
+body pre :is(strong, em) {
+  color: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+}
+
+.markdown-body pre code a,
+.markdown-preview pre code a,
+body pre code a {
+  color: inherit !important;
+}
+
+.markdown-body pre code .hljs-addition,
+.markdown-preview pre code .hljs-addition,
+body pre code .hljs-addition,
+.markdown-body pre code .hljs-deletion,
+.markdown-preview pre code .hljs-deletion,
+body pre code .hljs-deletion {
+  display: inline !important;
+  width: auto !important;
+}
+
+/* VS Code diff markers must stay layout-neutral */
+[data-diff-start],
+[data-diff-end] {
+  display: contents !important;
 }
