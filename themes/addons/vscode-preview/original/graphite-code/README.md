@@ -25,4 +25,5 @@ A hybrid theme family: **Graphite** styling with **C++ Modern / Dark+** syntax c
   - constants, variables, escapes
   - quieter punctuation vs operators
 - Control-flow purple (`--md-syntax-control`) applies when the highlighter emits `.token.control` / `.keyword.control`. Plain Prism C++ still paints most keywords blue, which matches stock Dark+.
+- Light fences use a recessed warm panel (`#ebe2d6`) and a higher-chroma Light+ token palette for clearer C++ contrast.
 - Best fixtures: `examples/code-showcase.md`.

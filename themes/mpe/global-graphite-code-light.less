@@ -40,6 +40,9 @@ body {
   --graphite-link: #9a5521;
   --graphite-code-bg: #efe6de;
   --graphite-code-text: #7b3f12;
+  /* Fenced blocks: recessed warm paper, clearer than page #fcfaf7 */
+  --graphite-code-fence-bg: #ebe2d6;
+  --graphite-code-fence-border: #c9b29a;
   --graphite-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
   --graphite-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
 
@@ -55,22 +58,22 @@ body {
   --md-line-height: 1.82;
   --md-padding: 24px 32px;
 
-  /* C++ Modern Light / Dark+-inspired token palette */
-  --md-syntax-fg: #16324a;
-  --md-syntax-comment: #2f6b2f;
-  --md-syntax-keyword: #0b57a4;
-  --md-syntax-control: #8a2f8a;
-  --md-syntax-type: #0e7490;
-  --md-syntax-function: #6b5a00;
-  --md-syntax-string: #a14a1f;
-  --md-syntax-number: #2f6b2f;
-  --md-syntax-variable: #0f5fd7;
-  --md-syntax-constant: #0369a1;
-  --md-syntax-preprocessor: #0b57a4;
-  --md-syntax-operator: #334155;
-  --md-syntax-punctuation: #64748b;
-  --md-syntax-escape: #9a6700;
-  --md-syntax-label: #475569;
+  /* Higher-chroma Light+ / Better-C++-inspired token palette */
+  --md-syntax-fg: #1a1520;
+  --md-syntax-comment: #1b7a38;
+  --md-syntax-keyword: #0550ae;
+  --md-syntax-control: #a21caf;
+  --md-syntax-type: #0a7a8c;
+  --md-syntax-function: #8b5a00;
+  --md-syntax-string: #c0391a;
+  --md-syntax-number: #157a3a;
+  --md-syntax-variable: #0b4fd6;
+  --md-syntax-constant: #026aa2;
+  --md-syntax-preprocessor: #0550ae;
+  --md-syntax-operator: #1e293b;
+  --md-syntax-punctuation: #6b5c4f;
+  --md-syntax-escape: #a16207;
+  --md-syntax-label: #4a3f36;
   --md-syntax-deleted: #b42318;
   --md-syntax-inserted: #067647;
 }
@@ -194,11 +197,12 @@ body code {
 body pre {
   overflow-x: auto !important;
   padding: 1rem 1.1rem !important;
-  border: 1px solid var(--graphite-border) !important;
+  border: 1px solid var(--graphite-code-fence-border) !important;
   border-left: 4px solid var(--graphite-accent) !important;
   border-radius: 12px !important;
-  background: var(--graphite-panel-raised) !important;
+  background: var(--graphite-code-fence-bg) !important;
   color: var(--md-syntax-fg) !important;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff 55%, transparent) !important;
 }
 
 .markdown-body pre code,
