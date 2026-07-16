@@ -1,0 +1,296 @@
+/* Beacon Light - paper readability with tempered Light+ code
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --be-bg: #f6f7fa;
+  --be-text: #1f2430;
+  --be-muted: #5f6b7c;
+  --be-panel: #e9edf4;
+  --be-panel-raised: #ffffff;
+  --be-border: #c5cddb;
+  --be-primary: #1f6fb3;
+  --be-secondary: #9a5f28;
+  --be-link: #1a62a0;
+  --be-strong: #12151c;
+  --be-code-bg: #e2e8f2;
+  --be-code-text: #0f4f8f;
+  --be-fence-bg: #eef2f8;
+  --be-fence-fg: #1a2030;
+  --be-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --be-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+
+  --md-bg: var(--be-bg);
+  --md-text: var(--be-text);
+  --md-border: var(--be-border);
+  --md-accent: var(--be-primary);
+  --md-panel: var(--be-panel);
+  --md-code-bg: var(--be-code-bg);
+  --md-code-text: var(--be-code-text);
+  --md-font-body: var(--be-font-body);
+  --md-font-mono: var(--be-font-mono);
+  --md-line-height: 1.8;
+  --md-padding: 24px 32px;
+
+  /* Tempered Light+ — clear roles, easy on long reads */
+  --md-syntax-fg: #1a2030;
+  --md-syntax-comment: #3d7340;
+  --md-syntax-keyword: #1558a0;
+  --md-syntax-control: #8a2f8a;
+  --md-syntax-type: #0d7480;
+  --md-syntax-function: #7a5a00;
+  --md-syntax-string: #b03f18;
+  --md-syntax-number: #2f7340;
+  --md-syntax-variable: #0f5ab5;
+  --md-syntax-constant: #0a6f96;
+  --md-syntax-preprocessor: #1558a0;
+  --md-syntax-operator: #334155;
+  --md-syntax-punctuation: #64748b;
+  --md-syntax-escape: #9a6700;
+  --md-syntax-label: #475569;
+  --md-syntax-deleted: #b42318;
+  --md-syntax-inserted: #067647;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+  max-width: 52rem !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.15rem !important;
+}
+
+.markdown-body p,
+.markdown-preview p,
+body p {
+  color: var(--be-text) !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.28 !important;
+  margin: 1.7em 0 0.55em !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  color: var(--be-strong) !important;
+  font-size: 1.85em !important;
+  border-bottom: 2px solid var(--be-primary) !important;
+  padding-bottom: 0.4em !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--be-primary) !important;
+  font-size: 1.4em !important;
+  border-bottom: 1px solid var(--be-border) !important;
+  padding-bottom: 0.26em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: var(--be-secondary) !important;
+  font-size: 1.18em !important;
+}
+
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
+  color: #3a4558 !important;
+  font-size: 1.05em !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: var(--be-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-size: 0.88em !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--be-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--be-link) 35%, transparent) !important;
+  text-underline-offset: 3px !important;
+}
+
+.markdown-body a:hover,
+.markdown-preview a:hover,
+body a:hover {
+  color: #0f4f8f !important;
+}
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: var(--be-strong) !important;
+  font-weight: 700 !important;
+}
+
+.markdown-body em,
+.markdown-preview em,
+body em {
+  color: #2a3140 !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul,
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  padding-left: 1.55rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li::marker,
+.markdown-preview ul:not(.contains-task-list) > li::marker,
+body ul:not(.contains-task-list) > li::marker,
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--be-primary) !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.8rem 1.05rem !important;
+  background: var(--be-panel) !important;
+  border-left: 4px solid var(--be-secondary) !important;
+  color: #4a5568 !important;
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.14rem 0.38rem !important;
+  border-radius: 6px !important;
+  background: var(--be-code-bg) !important;
+  color: var(--be-code-text) !important;
+  font-family: var(--md-font-mono) !important;
+  border: 1px solid color-mix(in srgb, var(--be-border) 75%, transparent) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1.05rem 1.15rem !important;
+  border: 1px solid var(--be-border) !important;
+  border-left: 4px solid var(--be-primary) !important;
+  border-radius: 10px !important;
+  background: var(--be-fence-bg) !important;
+  color: var(--be-fence-fg) !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--md-syntax-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.92em !important;
+  line-height: 1.72 !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--be-panel-raised) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  border: 1px solid var(--be-border) !important;
+  padding: 0.74rem 0.88rem !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: var(--be-panel) !important;
+  color: var(--be-strong) !important;
+}
+
+.markdown-body tr:nth-child(even) td,
+.markdown-preview tr:nth-child(even) td,
+body tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--be-panel) 55%, transparent) !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: var(--be-border) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--be-primary) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.85rem 1.05rem !important;
+  border: 1px solid var(--be-border) !important;
+  border-radius: 10px !important;
+  background: var(--be-panel) !important;
+}
+
+.markdown-body details > summary,
+.markdown-preview details > summary,
+body details > summary {
+  color: var(--be-primary) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.markdown-body mark,
+.markdown-preview mark,
+body mark {
+  background: color-mix(in srgb, var(--be-secondary) 28%, transparent) !important;
+  color: var(--be-strong) !important;
+  padding: 0.05em 0.25em !important;
+  border-radius: 4px !important;
+}

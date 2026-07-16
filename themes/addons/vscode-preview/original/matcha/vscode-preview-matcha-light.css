@@ -1,0 +1,236 @@
+/* Matcha Light - steamed paper and tea leaf accents
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --ma-bg: #f5f7ef;
+  --ma-text: #2a3324;
+  --ma-muted: #6d7a62;
+  --ma-panel: #e8eedc;
+  --ma-panel-raised: #fbfcf6;
+  --ma-border: #c5d0b4;
+  --ma-primary: #4f7a3a;
+  --ma-secondary: #8a6a2e;
+  --ma-link: #3f6b2e;
+  --ma-code-bg: #e3ebd4;
+  --ma-code-text: #355828;
+  --ma-font-body: var(--vscode-font-family, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif);
+  --ma-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+
+  --md-bg: var(--ma-bg);
+  --md-text: var(--ma-text);
+  --md-border: var(--ma-border);
+  --md-accent: var(--ma-primary);
+  --md-panel: var(--ma-panel);
+  --md-code-bg: var(--ma-code-bg);
+  --md-code-text: var(--ma-code-text);
+  --md-font-body: var(--ma-font-body);
+  --md-font-mono: var(--ma-font-mono);
+  --md-line-height: 1.84;
+  --md-padding: 26px 34px;
+
+  --md-syntax-comment: #4f7340;
+  --md-syntax-keyword: #2f6b1f;
+  --md-syntax-control: #8a3d6b;
+  --md-syntax-type: #3d7a5a;
+  --md-syntax-function: #7a5a10;
+  --md-syntax-string: #9a4a1a;
+  --md-syntax-number: #3f7340;
+  --md-syntax-variable: #1f5a9a;
+  --md-syntax-constant: #2a6f8a;
+  --md-syntax-preprocessor: #2f6b1f;
+  --md-syntax-operator: #3a4534;
+  --md-syntax-punctuation: #6d7a62;
+  --md-syntax-deleted: #b42318;
+  --md-syntax-inserted: #067647;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background:
+    radial-gradient(ellipse at 80% 0%, color-mix(in srgb, #dfe8cc 70%, transparent), transparent 45%),
+    var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.2rem !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  color: #24301f !important;
+  line-height: 1.28 !important;
+  margin: 1.7em 0 0.55em !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  border-bottom: 2px solid var(--ma-primary) !important;
+  padding-bottom: 0.4em !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--ma-primary) !important;
+  border-bottom: 1px solid var(--ma-border) !important;
+  padding-bottom: 0.24em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: var(--ma-secondary) !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: var(--ma-muted) !important;
+  letter-spacing: 0.05em !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--ma-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--ma-link) 35%, transparent) !important;
+  text-underline-offset: 3px !important;
+}
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: #1c2618 !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul,
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  padding-left: 1.55rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li::marker,
+.markdown-preview ul:not(.contains-task-list) > li::marker,
+body ul:not(.contains-task-list) > li::marker,
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--ma-primary) !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.8rem 1.1rem !important;
+  background: var(--ma-panel) !important;
+  border-left: 4px solid var(--ma-secondary) !important;
+  color: #55604c !important;
+  border-radius: 0 16px 16px 0 !important;
+  font-style: italic !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.14rem 0.38rem !important;
+  border-radius: 8px !important;
+  background: var(--ma-code-bg) !important;
+  color: var(--ma-code-text) !important;
+  font-family: var(--md-font-mono) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1.05rem 1.15rem !important;
+  border: 1px solid var(--ma-border) !important;
+  border-left: 4px solid var(--ma-primary) !important;
+  border-radius: 16px !important;
+  background: var(--ma-panel-raised) !important;
+  color: #2a3324 !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: #2a3324 !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--ma-panel-raised) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  border: 1px solid var(--ma-border) !important;
+  padding: 0.74rem 0.88rem !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: var(--ma-panel) !important;
+  color: #24301f !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: linear-gradient(90deg, transparent, var(--ma-primary), transparent) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--ma-primary) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.85rem 1.05rem !important;
+  border: 1px solid var(--ma-border) !important;
+  border-radius: 16px !important;
+  background: var(--ma-panel) !important;
+}

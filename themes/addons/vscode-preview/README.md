@@ -12,10 +12,15 @@ They do **not** apply to Cursor's inline `Preview | Markdown` mode. That path is
 ## Directory Layout
 
 - `original/cpp-modern/` — C++ Modern family for built-in preview
+- `original/studio/` — Studio light-first peer to C++ Modern
 - `original/lumina/` — Lumina family source CSS for built-in preview and MPE bundle generation
 - `original/graphite/` — Graphite family source CSS for built-in preview and MPE bundle generation
 - `original/graphite-code/` — Graphite Code hybrid (Graphite chrome + Dark+ syntax + C++ refine layer)
 - `original/meridian/` — Meridian family source CSS for built-in preview and MPE bundle generation
+- `original/blueprint/` — Blueprint cyanotype drafting family
+- `original/phosphor/` — Phosphor CRT terminal family (green + amber)
+- `original/matcha/` — Matcha tea-garden serif family
+- `original/beacon/` — Beacon readability-first family (tempered Dark+/Light+ code)
 - `_scope.css` — shared task-list and front-matter helpers (reference only)
 - `build-from-inline.mjs` — regenerate themes from cursor-inline sources
 - `build-mpe-global.mjs` — regenerate `../../mpe/global-*.less` bundles
@@ -51,16 +56,29 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | ---- | ------- |
 | [../../mpe/global-cpp-modern.less](../../mpe/global-cpp-modern.less) | C++ Modern (recommended) |
 | [../../mpe/global-cpp-modern-light.less](../../mpe/global-cpp-modern-light.less) | C++ Modern Light |
+| [../../mpe/global-studio.less](../../mpe/global-studio.less) | Studio (recommended light peer) |
 | [../../mpe/global-cpp-modern-v1-syntax.less](../../mpe/global-cpp-modern-v1-syntax.less) | v1 Syntax |
 | [../../mpe/global-cpp-modern-v2-readable.less](../../mpe/global-cpp-modern-v2-readable.less) | v2 Readable |
 | [../../mpe/global-lumina.less](../../mpe/global-lumina.less) | Lumina |
 | [../../mpe/global-lumina-light.less](../../mpe/global-lumina-light.less) | Lumina Light |
+| [../../mpe/global-lumina-v1-neon.less](../../mpe/global-lumina-v1-neon.less) | Lumina v1 Neon |
+| [../../mpe/global-lumina-v2-muted.less](../../mpe/global-lumina-v2-muted.less) | Lumina v2 Muted |
+| [../../mpe/global-lumina-v3-balanced.less](../../mpe/global-lumina-v3-balanced.less) | Lumina v3 Balanced |
+| [../../mpe/global-lumina-v4-neon-blue.less](../../mpe/global-lumina-v4-neon-blue.less) | Lumina v4 Neon Blue |
 | [../../mpe/global-graphite.less](../../mpe/global-graphite.less) | Graphite |
 | [../../mpe/global-graphite-light.less](../../mpe/global-graphite-light.less) | Graphite Light |
 | [../../mpe/global-graphite-code.less](../../mpe/global-graphite-code.less) | Graphite Code |
 | [../../mpe/global-graphite-code-light.less](../../mpe/global-graphite-code-light.less) | Graphite Code Light |
 | [../../mpe/global-meridian.less](../../mpe/global-meridian.less) | Meridian |
 | [../../mpe/global-meridian-light.less](../../mpe/global-meridian-light.less) | Meridian Light |
+| [../../mpe/global-blueprint.less](../../mpe/global-blueprint.less) | Blueprint |
+| [../../mpe/global-blueprint-light.less](../../mpe/global-blueprint-light.less) | Blueprint Light |
+| [../../mpe/global-phosphor.less](../../mpe/global-phosphor.less) | Phosphor |
+| [../../mpe/global-phosphor-amber.less](../../mpe/global-phosphor-amber.less) | Phosphor Amber |
+| [../../mpe/global-matcha.less](../../mpe/global-matcha.less) | Matcha |
+| [../../mpe/global-matcha-light.less](../../mpe/global-matcha-light.less) | Matcha Light |
+| [../../mpe/global-beacon.less](../../mpe/global-beacon.less) | Beacon |
+| [../../mpe/global-beacon-light.less](../../mpe/global-beacon-light.less) | Beacon Light |
 
 Each bundle inlines the full CSS (no `@import`) so copy-paste works reliably.
 

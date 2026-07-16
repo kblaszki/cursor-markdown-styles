@@ -8,12 +8,6 @@ const frontMatterMarker = "/* Shared front matter heuristic rules";
 
 const mappings = [
   {
-    source: join(root, "../cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css"),
-    target: join(root, "original/cpp-modern/vscode-preview-cpp-modern.css"),
-    title: "C++ Modern - readable, blue-teal palette",
-    subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
-  },
-  {
     source: join(root, "../cursor-inline/original/cpp-modern/cursor-inline-cpp-modern-v1-syntax.css"),
     target: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v1-syntax.css"),
     title: "C++ Modern v1 - Syntax (faithful mapping of C++ syntax tokens)",
@@ -26,9 +20,27 @@ const mappings = [
     subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
   },
   {
-    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina.css"),
-    target: join(root, "original/lumina/vscode-preview-lumina.css"),
-    title: "Lumina - unified blue neon palette",
+    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina-v1-neon.css"),
+    target: join(root, "original/lumina/vscode-preview-lumina-v1-neon.css"),
+    title: "Lumina v1 - Neon (first vivid palette)",
+    subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
+  },
+  {
+    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina-v2-muted.css"),
+    target: join(root, "original/lumina/vscode-preview-lumina-v2-muted.css"),
+    title: "Lumina v2 - Muted (subdued palette)",
+    subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
+  },
+  {
+    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina-v3-balanced.css"),
+    target: join(root, "original/lumina/vscode-preview-lumina-v3-balanced.css"),
+    title: "Lumina v3 - Balanced (midpoint between vivid and muted)",
+    subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
+  },
+  {
+    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina-v4-neon-blue.css"),
+    target: join(root, "original/lumina/vscode-preview-lumina-v4-neon-blue.css"),
+    title: "Lumina v4 - Neon Blue (unified blue palette)",
     subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
   },
 ];

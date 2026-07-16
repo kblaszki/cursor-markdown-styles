@@ -31,6 +31,7 @@ Recommended companion extensions are listed in the root [README.md](../../README
 | ---- | ----- |
 | [global-cpp-modern.less](global-cpp-modern.less) | C++ Modern dark (recommended default) |
 | [global-cpp-modern-light.less](global-cpp-modern-light.less) | C++ Modern light |
+| [global-studio.less](global-studio.less) | Studio light (recommended light peer to C++ Modern) |
 | [global-lumina.less](global-lumina.less) | Lumina dark |
 | [global-lumina-light.less](global-lumina-light.less) | Lumina light |
 | [global-graphite.less](global-graphite.less) | Graphite dark |
@@ -39,6 +40,14 @@ Recommended companion extensions are listed in the root [README.md](../../README
 | [global-graphite-code-light.less](global-graphite-code-light.less) | Graphite Code light |
 | [global-meridian.less](global-meridian.less) | Meridian dark |
 | [global-meridian-light.less](global-meridian-light.less) | Meridian light |
+| [global-blueprint.less](global-blueprint.less) | Blueprint dark (cyanotype drafting) |
+| [global-blueprint-light.less](global-blueprint-light.less) | Blueprint light |
+| [global-phosphor.less](global-phosphor.less) | Phosphor (green CRT) |
+| [global-phosphor-amber.less](global-phosphor-amber.less) | Phosphor Amber (amber CRT) |
+| [global-matcha.less](global-matcha.less) | Matcha dark (tea garden) |
+| [global-matcha-light.less](global-matcha-light.less) | Matcha light |
+| [global-beacon.less](global-beacon.less) | Beacon dark (readability-first) |
+| [global-beacon-light.less](global-beacon-light.less) | Beacon light |
 
 ### Legacy C++ Modern Variants
 
@@ -47,15 +56,29 @@ Recommended companion extensions are listed in the root [README.md](../../README
 | [global-cpp-modern-v1-syntax.less](global-cpp-modern-v1-syntax.less) | C++ Modern v1 Syntax |
 | [global-cpp-modern-v2-readable.less](global-cpp-modern-v2-readable.less) | C++ Modern v2 Readable |
 
+### Legacy Lumina Variants
+
+| File | Theme |
+| ---- | ----- |
+| [global-lumina-v1-neon.less](global-lumina-v1-neon.less) | Lumina v1 Neon |
+| [global-lumina-v2-muted.less](global-lumina-v2-muted.less) | Lumina v2 Muted |
+| [global-lumina-v3-balanced.less](global-lumina-v3-balanced.less) | Lumina v3 Balanced |
+| [global-lumina-v4-neon-blue.less](global-lumina-v4-neon-blue.less) | Lumina v4 Neon Blue |
+
 Each file contains install instructions in the header comment plus the full inlined theme CSS.
 
 ## Family Guide
 
 - **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling
+- **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
 - **Lumina** - brighter neon identity with gradient headings and luminous accents
 - **Graphite** - editorial documentation theme with warm copper contrast
 - **Graphite Code** - Graphite visuals with Dark+ syntax colors plus a stronger C++ token refine layer
 - **Meridian** - blue-green structural theme for checklists, tables, and runbooks
+- **Blueprint** - cyanotype drafting look with dashed rules and grid-lined fences
+- **Phosphor** - CRT terminal vibes (green + amber phosphor pair)
+- **Matcha** - serif tea-garden prose with moss and gold accents
+- **Beacon** - readability-first daily driver: calm surfaces, clear hierarchy, tempered Dark+/Light+ code
 
 ## Fenced Code And C++ Syntax
 

@@ -19,10 +19,15 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 Current primary families:
 
 - `C++ Modern` - balanced technical baseline with dark and light variants
+- `Studio` - light-first recommended peer to C++ Modern (daylight / sapphire)
 - `Lumina` - luminous blue neon family with dark and light variants
 - `Graphite` - editorial copper-accent family with dark and light variants
 - `Graphite Code` - Graphite family with C++ Modern syntax colors only (dark and light)
 - `Meridian` - blue-green structured docs family with dark and light variants
+- `Blueprint` - cyanotype / architectural drafting family
+- `Phosphor` - CRT terminal family (green + amber)
+- `Matcha` - tea-garden serif family with dark and light variants
+- `Beacon` - readability-first family with tempered code colors
 
 ### Add-ons And Legacy
 

@@ -46,6 +46,26 @@ const variants = [
     label: "Lumina Light",
   },
   {
+    css: join(root, "original/lumina/vscode-preview-lumina-v1-neon.css"),
+    out: join(mpeDir, "global-lumina-v1-neon.less"),
+    label: "Lumina v1 Neon",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina-v2-muted.css"),
+    out: join(mpeDir, "global-lumina-v2-muted.less"),
+    label: "Lumina v2 Muted",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina-v3-balanced.css"),
+    out: join(mpeDir, "global-lumina-v3-balanced.less"),
+    label: "Lumina v3 Balanced",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina-v4-neon-blue.css"),
+    out: join(mpeDir, "global-lumina-v4-neon-blue.less"),
+    label: "Lumina v4 Neon Blue",
+  },
+  {
     css: join(root, "original/graphite/vscode-preview-graphite.css"),
     out: join(mpeDir, "global-graphite.less"),
     label: "Graphite",
@@ -76,6 +96,54 @@ const variants = [
     css: join(root, "original/meridian/vscode-preview-meridian-light.css"),
     out: join(mpeDir, "global-meridian-light.less"),
     label: "Meridian Light",
+  },
+  {
+    css: join(root, "original/blueprint/vscode-preview-blueprint.css"),
+    out: join(mpeDir, "global-blueprint.less"),
+    label: "Blueprint",
+  },
+  {
+    css: join(root, "original/blueprint/vscode-preview-blueprint-light.css"),
+    out: join(mpeDir, "global-blueprint-light.less"),
+    label: "Blueprint Light",
+  },
+  {
+    css: join(root, "original/phosphor/vscode-preview-phosphor.css"),
+    out: join(mpeDir, "global-phosphor.less"),
+    label: "Phosphor",
+  },
+  {
+    css: join(root, "original/phosphor/vscode-preview-phosphor-amber.css"),
+    out: join(mpeDir, "global-phosphor-amber.less"),
+    label: "Phosphor Amber",
+  },
+  {
+    css: join(root, "original/matcha/vscode-preview-matcha.css"),
+    out: join(mpeDir, "global-matcha.less"),
+    label: "Matcha",
+  },
+  {
+    css: join(root, "original/matcha/vscode-preview-matcha-light.css"),
+    out: join(mpeDir, "global-matcha-light.less"),
+    label: "Matcha Light",
+  },
+  {
+    css: join(root, "original/beacon/vscode-preview-beacon.css"),
+    out: join(mpeDir, "global-beacon.less"),
+    label: "Beacon",
+    appendSyntaxRefine: true,
+  },
+  {
+    css: join(root, "original/beacon/vscode-preview-beacon-light.css"),
+    out: join(mpeDir, "global-beacon-light.less"),
+    label: "Beacon Light",
+    appendSyntaxRefine: true,
+  },
+  {
+    css: join(root, "original/studio/vscode-preview-studio.css"),
+    out: join(mpeDir, "global-studio.less"),
+    label: "Studio",
+    appendSyntaxRefine: true,
   },
 ];
 

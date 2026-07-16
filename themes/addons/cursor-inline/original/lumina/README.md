@@ -16,6 +16,7 @@ A signature Cursor inline preview theme family built around luminous gradients a
 - The current Lumina theme uses a unified blue neon palette.
 - For daily Markdown work in VS Code or Cursor, prefer the MPE setup in [themes/mpe/](../../../../mpe/).
 - The MPE equivalents are now available as `themes/mpe/global-lumina.less` and `themes/mpe/global-lumina-light.less`.
+- Legacy iterations are also available as MPE bundles: `global-lumina-v1-neon.less`, `global-lumina-v2-muted.less`, `global-lumina-v3-balanced.less`, `global-lumina-v4-neon-blue.less`.
 
 ## Install
 

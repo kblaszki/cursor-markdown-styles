@@ -1,0 +1,688 @@
+/* Lumina v1 - Neon (first vivid palette)
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  /* Colors derived from the Cursor theme - automatic light/dark behavior */
+  --lum-bg: var(--vscode-editor-background, #1e1e1e);
+  --lum-text: var(--vscode-editor-foreground, #d4d4d4);
+  --lum-muted: var(--vscode-descriptionForeground, #9d9d9d);
+  --lum-panel: color-mix(in srgb, var(--lum-bg) 82%, #6366f1 18%);
+  --lum-panel-deep: color-mix(in srgb, var(--lum-bg) 70%, #1a1a2e 30%);
+  --lum-border: color-mix(in srgb, var(--lum-text) 18%, transparent);
+
+  /* Accent palette */
+  --lum-pink: #ff6b9d;
+  --lum-purple: #c084fc;
+  --lum-blue: #60a5fa;
+  --lum-cyan: #22d3ee;
+  --lum-green: #4ade80;
+  --lum-amber: #fbbf24;
+  --lum-coral: #fb7185;
+  --lum-violet: #a78bfa;
+
+  --md-bg: var(--lum-bg);
+  --md-text: var(--lum-text);
+  --md-heading: var(--lum-text);
+  --md-border: var(--lum-border);
+  --md-accent: var(--lum-cyan);
+  --md-quote: var(--lum-muted);
+  --md-panel: var(--lum-panel-deep);
+  --md-code-bg: color-mix(in srgb, var(--lum-purple) 22%, var(--lum-bg));
+  --md-code-text: #fda4af;
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", "Fira Code", Consolas, monospace);
+  --md-line-height: 1.75;
+  --md-padding: 20px 28px;
+
+  /* C++-first Prism token palette (vivid multi-hue neon) */
+  --md-syntax-comment: #6a9955;
+  --md-syntax-keyword: #60a5fa;
+  --md-syntax-control: #c084fc;
+  --md-syntax-type: #22d3ee;
+  --md-syntax-function: #fbbf24;
+  --md-syntax-string: #ff6b9d;
+  --md-syntax-number: #4ade80;
+  --md-syntax-variable: #a78bfa;
+  --md-syntax-constant: #fb7185;
+  --md-syntax-preprocessor: #60a5fa;
+  --md-syntax-operator: #d4d4d4;
+  --md-syntax-punctuation: #9d9d9d;
+  --md-syntax-deleted: #fb7185;
+  --md-syntax-inserted: #4ade80;
+
+  --md-h-border: none;
+  --md-link-decoration: none;
+  --md-link-hover: underline;
+  --md-quote-radius: 0 10px 10px 0;
+  --md-quote-padding: 0.6rem 1.2rem;
+  --md-code-radius: 6px;
+  --md-pre-radius: 12px;
+  --md-img-radius: 12px;
+}
+
+/* === Base === */
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body {
+  padding: var(--md-padding) !important;
+}
+
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+body {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr) {
+  margin: 0 0 1.1rem !important;
+}
+
+/* === Headings - gradient and per-level color === */
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin: 1.6em 0 0.55em !important;
+  letter-spacing: -0.02em !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  font-size: 2em !important;
+  background: linear-gradient(120deg, var(--lum-pink), var(--lum-purple), var(--lum-blue)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  padding-bottom: 0.35em !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--lum-purple) 45%, transparent) !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  font-size: 1.55em !important;
+  color: var(--lum-purple) !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--lum-purple) 35%, transparent) !important;
+  padding-bottom: 0.25em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  font-size: 1.3em !important;
+  color: var(--lum-cyan) !important;
+}
+
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
+  font-size: 1.12em !important;
+  color: var(--lum-green) !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5 {
+  font-size: 1em !important;
+  color: var(--lum-amber) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  font-size: 0.92em !important;
+  color: var(--lum-coral) !important;
+  font-weight: 600 !important;
+}
+
+/* === Inline text === */
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: var(--lum-amber) !important;
+  font-weight: 700 !important;
+}
+
+.markdown-body em,
+.markdown-preview em,
+body em {
+  color: var(--lum-cyan) !important;
+  font-style: italic !important;
+}
+
+.markdown-body del,
+.markdown-preview del,
+body del {
+  color: var(--lum-muted) !important;
+  text-decoration-color: var(--lum-coral) !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--lum-blue) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--lum-blue) 40%, transparent) !important;
+  transition: color 0.15s, border-color 0.15s !important;
+}
+
+.markdown-body a:hover,
+.markdown-preview a:hover,
+body a:hover {
+  color: var(--lum-cyan) !important;
+  border-bottom-color: var(--lum-cyan) !important;
+}
+
+/* === Lists - colorful markers === */
+
+.markdown-body :is(ul, ol),
+.markdown-preview :is(ul, ol) {
+  padding-left: 1.6rem !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul {
+  list-style: none !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item),
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item),
+body ul:not(.contains-task-list) > li:not(.task-list-item) {
+  position: relative !important;
+  padding-left: 0.35rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: -1.15rem !important;
+  top: 0.62em !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: var(--lum-pink) !important;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-pink) 60%, transparent) !important;
+}
+
+.markdown-body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before {
+  background: var(--lum-cyan) !important;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-cyan) 60%, transparent) !important;
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.markdown-body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before {
+  background: var(--lum-green) !important;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--lum-green) 60%, transparent) !important;
+}
+
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  counter-reset: lum-ol !important;
+  list-style: none !important;
+}
+
+.markdown-body ol > li,
+.markdown-preview ol > li,
+body ol > li {
+  counter-increment: lum-ol !important;
+  position: relative !important;
+  padding-left: 0.2rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.markdown-body ol > li::before,
+.markdown-preview ol > li::before,
+body ol > li::before {
+  content: counter(lum-ol) !important;
+  position: absolute !important;
+  left: -1.6rem !important;
+  top: 0.05em !important;
+  min-width: 1.35rem !important;
+  height: 1.35rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.72em !important;
+  font-weight: 700 !important;
+  color: var(--lum-bg) !important;
+  background: linear-gradient(135deg, var(--lum-purple), var(--lum-blue)) !important;
+  border-radius: 6px !important;
+}
+
+.markdown-body :is(ul, ol) li > :is(ul, ol),
+.markdown-preview :is(ul, ol) li > :is(ul, ol) {
+  margin-top: 0.45rem !important;
+}
+
+/* Checklists */
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before {
+  display: none !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--lum-purple) !important;
+  margin-right: 0.45rem !important;
+  transform: scale(1.15) !important;
+}
+
+/* === Blockquotes === */
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.65rem 1.2rem !important;
+  border-left: 4px solid transparent !important;
+  border-image: linear-gradient(180deg, var(--lum-pink), var(--lum-purple), var(--lum-cyan)) 1 !important;
+  background: color-mix(in srgb, var(--lum-purple) 10%, var(--lum-bg)) !important;
+  color: color-mix(in srgb, var(--lum-text) 85%, var(--lum-purple)) !important;
+  border-radius: 0 10px 10px 0 !important;
+  font-style: italic !important;
+}
+
+/* === Inline code === */
+
+.markdown-body :not(pre) > code,
+.markdown-preview :not(pre) > code,
+body :not(pre) > code {
+  padding: 0.18rem 0.45rem !important;
+  border-radius: 6px !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.88em !important;
+  color: #fda4af !important;
+  background: color-mix(in srgb, var(--lum-purple) 25%, var(--lum-bg)) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-pink) 35%, transparent) !important;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--lum-purple) 15%, transparent) !important;
+}
+
+/* === Code blocks === */
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  padding: 1rem 1.1rem !important;
+  overflow-x: auto !important;
+  border-radius: 12px !important;
+  background: var(--lum-panel-deep) !important;
+  border: 1px solid color-mix(in srgb, var(--lum-purple) 30%, transparent) !important;
+  border-left: 4px solid var(--lum-purple) !important;
+  box-shadow:
+    0 4px 24px color-mix(in srgb, var(--lum-purple) 12%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--lum-text) 6%, transparent) !important;
+  position: relative !important;
+}
+
+.markdown-body pre::before,
+.markdown-preview pre::before,
+body pre::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  border-radius: 12px 0 0 12px !important;
+  background: linear-gradient(180deg, var(--lum-pink), var(--lum-purple), var(--lum-cyan), var(--lum-green)) !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #e2e8f0 !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.6 !important;
+}
+
+/* === Tables === */
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 1px solid color-mix(in srgb, var(--lum-purple) 35%, transparent) !important;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--lum-purple) 10%, transparent) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td) {
+  padding: 0.7rem 0.9rem !important;
+  border-bottom: 1px solid var(--lum-border) !important;
+  text-align: left !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--lum-purple) 55%, var(--lum-bg)),
+    color-mix(in srgb, var(--lum-blue) 45%, var(--lum-bg))) !important;
+  color: #f8fafc !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 0.78em !important;
+  letter-spacing: 0.05em !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--lum-cyan) 40%, transparent) !important;
+}
+
+.markdown-body tr:nth-child(even) td,
+.markdown-preview tr:nth-child(even) td,
+body tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--lum-purple) 6%, var(--lum-bg)) !important;
+}
+
+.markdown-body tr:hover td,
+.markdown-preview tr:hover td,
+body tr:hover td {
+  background: color-mix(in srgb, var(--lum-cyan) 8%, var(--lum-bg)) !important;
+}
+
+.markdown-body tr:last-child td,
+.markdown-preview tr:last-child td,
+body tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* === Divider === */
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 2px !important;
+  border: 0 !important;
+  margin: 2.2rem 0 !important;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--lum-pink),
+    var(--lum-purple),
+    var(--lum-cyan),
+    transparent) !important;
+  opacity: 0.85 !important;
+}
+
+/* === Images === */
+
+.markdown-body img,
+.markdown-preview img,
+body img {
+  max-width: 100% !important;
+  border-radius: 12px !important;
+  border: 1px solid color-mix(in srgb, var(--lum-purple) 30%, transparent) !important;
+  box-shadow:
+    0 8px 32px color-mix(in srgb, var(--lum-purple) 18%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--lum-cyan) 10%, transparent) !important;
+}
+
+/* === HTML details (details/summary) === */
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.5rem 0.8rem !important;
+  border: 1px solid var(--lum-border) !important;
+  border-radius: 8px !important;
+  background: color-mix(in srgb, var(--lum-purple) 5%, var(--lum-bg)) !important;
+  margin-bottom: 1rem !important;
+}
+
+.markdown-body summary,
+.markdown-preview summary,
+body summary {
+  color: var(--lum-purple) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+/* Shared scope and VS Code / MPE preview helpers copied into theme files.
+   Do not copy this file into settings on its own. */
+
+/* Scopes:
+   - .markdown-body  — built-in VS Code Markdown preview
+   - .markdown-preview — Markdown Preview Enhanced (Crossnote)
+   - body            — iframe fallback */
+
+/* === Task lists (GFM) === */
+
+.markdown-body ul.contains-task-list,
+.markdown-preview ul.contains-task-list,
+body ul.contains-task-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+  position: relative !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before,
+.markdown-body ul.contains-task-list > li::before,
+.markdown-preview ul.contains-task-list > li::before,
+body ul.contains-task-list > li::before {
+  display: none !important;
+  content: none !important;
+}
+
+.markdown-body li.task-list-item input[type="checkbox"],
+.markdown-preview li.task-list-item input[type="checkbox"],
+body li.task-list-item input[type="checkbox"] {
+  margin-right: 0.45rem !important;
+}
+
+/* Exclude task lists from custom bullet styling */
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  /* variant themes override background/color */
+}
+
+/* === Front matter === */
+
+/* Built-in VS Code preview (markdown.preview.frontMatter: "show") */
+.markdown-body .front-matter,
+body .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
+}
+
+.markdown-body .front-matter table,
+body .front-matter table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+}
+
+.markdown-body .front-matter :is(th, td),
+body .front-matter :is(th, td) {
+  padding: 0.2rem 0.5rem !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body .front-matter th,
+body .front-matter th {
+  text-align: left !important;
+  white-space: nowrap !important;
+  padding-right: 0.75rem !important;
+  color: color-mix(in srgb, var(--cpp-muted, #9d9d9d) 80%, var(--cpp-fg, #cccccc)) !important;
+}
+
+.markdown-body .front-matter td,
+body .front-matter td {
+  font-family: var(--md-font-mono, ui-monospace, monospace) !important;
+}
+
+/* MPE front matter block (YAML header rendered by Crossnote) */
+.markdown-preview .front-matter,
+.markdown-preview.markdown-preview .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #3c3c3c) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #2b2b2b) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #9d9d9d) !important;
+}
+
+/* === Fenced ``` blocks — panel background only, no text/token chips === */
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  box-sizing: border-box !important;
+  padding: 1rem 1.15rem 1rem calc(1.15rem + 12px) !important;
+}
+
+.markdown-body pre > code,
+.markdown-preview pre > code,
+body pre > code {
+  display: block !important;
+  width: 100% !important;
+  white-space: pre !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--vscode-editor-foreground, var(--cpp-code-fg, #d4d4d4));
+  tab-size: 4 !important;
+}
+
+.markdown-body pre.hljs code > div,
+.markdown-preview pre.hljs code > div,
+body pre.hljs code > div {
+  padding: 0 !important;
+}
+
+/* Strip chip/highlight styling from everything inside fenced blocks */
+.markdown-body pre *,
+.markdown-preview pre *,
+body pre * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* MPE loads codeBlockTheme after style.less — needs higher specificity */
+.markdown-preview.markdown-preview pre *,
+.markdown-preview.markdown-preview .highlight pre *,
+.markdown-preview.markdown-preview pre [class*="token"],
+.markdown-preview.markdown-preview pre span,
+.markdown-preview.markdown-preview .highlight pre span {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.markdown-body pre :is(strong, em),
+.markdown-preview pre :is(strong, em),
+body pre :is(strong, em) {
+  color: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+}
+
+.markdown-body pre :is(code, code *, .token),
+.markdown-preview pre :is(code, code *, .token),
+body pre :is(code, code *, .token) {
+  text-decoration: none !important;
+}
+
+.markdown-body pre code a,
+.markdown-preview pre code a,
+body pre code a {
+  color: inherit !important;
+}
+
+.markdown-body pre code .hljs-addition,
+.markdown-preview pre code .hljs-addition,
+body pre code .hljs-addition,
+.markdown-body pre code .hljs-deletion,
+.markdown-preview pre code .hljs-deletion,
+body pre code .hljs-deletion {
+  display: inline !important;
+  width: auto !important;
+}
+
+[data-diff-start],
+[data-diff-end] {
+  display: contents !important;
+}
