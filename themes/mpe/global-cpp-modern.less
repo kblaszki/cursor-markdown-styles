@@ -628,12 +628,15 @@ body pre * {
 /* MPE loads codeBlockTheme after style.less — needs higher specificity */
 .markdown-preview.markdown-preview pre *,
 .markdown-preview.markdown-preview .highlight pre *,
-.markdown-preview.markdown-preview pre [class*="token"] {
+.markdown-preview.markdown-preview pre [class*="token"],
+.markdown-preview.markdown-preview pre span,
+.markdown-preview.markdown-preview .highlight pre span {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
   border: none !important;
   box-shadow: none !important;
+  text-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 !important;

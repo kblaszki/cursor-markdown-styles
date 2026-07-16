@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const mpeDir = join(root, "../../mpe");
+const scopeRules = readFileSync(join(root, "_scope.css"), "utf8").trim();
+const scopeMarker = "Shared scope and VS Code / MPE preview helpers";
 
 const variants = [
   {
@@ -84,7 +86,10 @@ const header = (label, filename) => `/* ========================================
 mkdirSync(mpeDir, { recursive: true });
 
 for (const { css, out, label } of variants) {
-  const themeCss = readFileSync(css, "utf8").trim();
+  let themeCss = readFileSync(css, "utf8").trim();
+  if (!themeCss.includes(scopeMarker)) {
+    themeCss = `${themeCss}\n\n${scopeRules}`;
+  }
   const bundle = `${header(label, basename(out))}\n${themeCss}\n`;
   writeFileSync(out, bundle, "utf8");
   console.log(`wrote ${out}`);
