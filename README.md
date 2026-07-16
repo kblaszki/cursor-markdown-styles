@@ -1,129 +1,133 @@
-# Markdown CSS Playground
+# Markdown Preview Setup (MPE) + Themes
 
-A public playground for experimenting with Markdown fixtures, browser preview styles, Cursor inline preview themes, and VS Code side-preview themes.
+This repository is a setup guide for writing Markdown in **VS Code** or **Cursor** with **Markdown Preview Enhanced (MPE)** as the primary preview workflow.
 
-## What This Repo Contains
+It also includes:
 
-- reusable Markdown samples for testing rendered content
-- a local browser preview setup for stylesheet iteration
-- Cursor inline preview themes inspired by popular products and custom personal themes
-- VS Code / Cursor side-preview themes loaded through `markdown.styles`
+- ready-to-paste global CSS bundles for MPE
+- example Markdown files for testing preview behavior
+- built-in VS Code preview themes as a fallback path
+- legacy Cursor inline themes for people who still want the old patched experience
 
-## Structure
+If you want something closest to Cursor inline preview, but more stable and configurable, the recommended setup is **MPE + `Preview Mode: Previews Only`**.
 
-- `examples/`
-  - `basic.md` - core Markdown syntax
-  - `extended.md` - tables, images, embedded HTML, and code fences
-  - `checkboxes.md` - task lists and nested checklist patterns
-  - `frontmatter.md` - YAML front matter example and renderer compatibility notes
-  - `theme-preview.md` - a fixed comparison document for theme testing
-  - `code-showcase.md` - C++-heavy snippets for technical theme testing
-  - `documentation-patterns.md` - technical documentation patterns and release notes
-  - `mvp-taskflow.md` - realistic long-form product and API documentation
-- `preview/`
-  - `index.html` - browser preview page with rendered Markdown-like HTML
-  - `markdown.css` - browser preview stylesheet
-  - `cursor-preview.css` - stylesheet for Cursor side preview (`Ctrl+K V`)
-- `themes/cursor-inline/`
-  - `popular/` - themes inspired by recognizable products and palettes
-  - `original/` - personal theme families such as `cpp-modern` and `lumina`
-  - `cursor-inline-preview.css` - default GitHub-style theme file
-- `themes/vscode-preview/`
-  - `original/cpp-modern/` - C++ Modern family for VS Code side preview (`markdown.styles`)
+## Quick Start
 
-## Preview Locally
+1. Install the recommended extensions listed below.
+2. Set MPE **Preview Mode** to **`Previews Only`** and restart VS Code or Cursor.
+3. Paste one of this repo's global CSS bundles into `%USERPROFILE%\.crossnote\style.less`.
+4. Open `examples/theme-preview.md` or `examples/extended.md`.
+5. Verify that headings, lists, front matter, and fenced code blocks render correctly.
 
-### Browser Preview
+## Recommended Extensions
 
-1. Open `preview/index.html` in a browser.
-2. Switch between example fixtures with the tabs at the top of the page.
-3. Edit `preview/markdown.css`, or use **Load CSS** / drag-and-drop to test a theme from `themes/cursor-inline/`.
-4. Refresh the page when editing `preview/markdown.css` directly.
+| Extension | ID | Purpose |
+| --- | --- | --- |
+| **Markdown Preview Enhanced** | `shd101wyy.markdown-preview-enhanced` | Primary preview and editing workflow |
+| **Markdown All in One** | `yzhang.markdown-all-in-one` | TOC, keyboard helpers, and common Markdown editing shortcuts |
+| **markdownlint** | `DavidAnson.vscode-markdownlint` | Markdown linting |
 
-### VS Code / Cursor Side Markdown Preview
+This repo also includes workspace recommendations in [`.vscode/extensions.json`](.vscode/extensions.json).
 
-Recommended when using standard preview (`Ctrl+Shift+V` / `Ctrl+K V`) with Markdown extensions.
+## Recommended User Settings
 
-1. Add a theme path to `markdown.styles` in settings (see [themes/vscode-preview/README.md](themes/vscode-preview/README.md)).
-2. Open any file from `examples/`.
-3. Run **Markdown: Open Preview** or **Markdown: Open Preview to the Side**.
-
-Example workspace setting:
+Add these to your **user** `settings.json`:
 
 ```json
 {
-  "markdown.styles": [
-    "${workspaceFolder}/themes/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css"
-  ]
+  "markdown-preview-enhanced.previewMode": "Previews Only",
+  "markdown-preview-enhanced.previewTheme": "none.css",
+  "markdown-preview-enhanced.codeBlockTheme": "auto.css",
+  "markdown-preview-enhanced.enableScriptExecution": false
 }
 ```
 
-For **Markdown Preview Enhanced**, paste a ready-made bundle into global `style.less` — see [themes/vscode-preview/mpe/README.md](themes/vscode-preview/mpe/README.md).
+Notes:
 
-### Cursor Markdown Preview (legacy side preview)
+- `markdown-preview-enhanced.previewMode: "Previews Only"` requires a restart after you change it.
+- In this mode, Markdown files open directly into preview instead of a separate source editor.
+- You can still edit inside the preview using the in-preview editor.
+- To open raw source, use the preview context menu: **Edit Markdown → Open VS Code Editor**.
+- MPE does not currently provide a dedicated preview-to-editor toggle button in this mode. See [issue #2045](https://github.com/shd101wyy/vscode-markdown-preview-enhanced/issues/2045).
 
-1. Open any file from `examples/`.
-2. Use Cursor's Markdown preview.
-3. For a minimal generic stylesheet, use `preview/cursor-preview.css`.
+## Recommended Workflow
 
-### Cursor Inline Preview Themes
+### Daily Use
 
-Browse installable themes in `themes/cursor-inline/`:
+1. Open a Markdown file.
+2. Work primarily in the MPE preview.
+3. Click into the rendered content when you want in-preview editing.
+4. Save with `Ctrl+S`.
+5. Press `Esc` to close the in-preview editor when needed.
 
-- `themes/cursor-inline/popular/` for styles inspired by GitHub, Notion, Dracula, Nord, Solarized, and similar references
-- `themes/cursor-inline/original/cpp-modern/` for the C++ Modern family
-- `themes/cursor-inline/original/lumina/` for the Lumina family
+### Useful Shortcuts
 
-## Install A Cursor Inline Theme
+| Action | Shortcut / command |
+| --- | --- |
+| Open MPE preview to the side | `Ctrl+K V` → `Markdown Preview Enhanced: Open Preview to the Side` |
+| Open MPE preview | `Ctrl+Shift+V` → `Markdown Preview Enhanced: Open Preview` |
+| Save in-preview editor | `Ctrl+S` |
+| Close in-preview editor | `Esc` |
+| Open raw source | Preview context menu → **Edit Markdown → Open VS Code Editor** |
 
-Cursor inline preview styling is applied by copying a theme CSS file into Cursor's workbench stylesheet.
+## Global CSS for MPE
 
-1. Choose one CSS file from `themes/cursor-inline/`.
-2. Back up the original `workbench.desktop.main.css`.
-3. Copy the full contents of the chosen theme file into `workbench.desktop.main.css`.
-4. Restart Cursor.
-5. Repeat the process after Cursor updates.
+The main output of this repo is a set of ready-to-paste MPE global styles:
 
-### Global Install (system-wide Cursor)
+- [`themes/vscode-preview/mpe/global-cpp-modern.less`](themes/vscode-preview/mpe/global-cpp-modern.less) - recommended
+- [`themes/vscode-preview/mpe/global-cpp-modern-v1-syntax.less`](themes/vscode-preview/mpe/global-cpp-modern-v1-syntax.less)
+- [`themes/vscode-preview/mpe/global-cpp-modern-v2-readable.less`](themes/vscode-preview/mpe/global-cpp-modern-v2-readable.less)
 
-```text
-C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
-```
+### Copy-Paste Install
 
-This path usually requires administrator rights.
+1. Open the Command Palette with `Ctrl+Shift+P`.
+2. Run `Markdown Preview Enhanced: Customize CSS (Global)`.
+3. VS Code or Cursor opens `%USERPROFILE%\.crossnote\style.less`.
+4. Select all, delete the existing content, and paste one full bundle from this repo.
+5. Save the file.
+6. Refresh the MPE preview.
 
-### Per-User Install (local Cursor install)
+Full walkthrough: [`themes/vscode-preview/mpe/README.md`](themes/vscode-preview/mpe/README.md)
 
-```text
-%LOCALAPPDATA%\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
-```
+## Example Files
 
-Example:
+Use the files in [`examples/`](examples/) to verify your setup:
 
-```text
-C:\Users\<YourUser>\AppData\Local\Programs\cursor\resources\app\out\vs\workbench\workbench.desktop.main.css
-```
+- [`examples/theme-preview.md`](examples/theme-preview.md) - overall visual sanity check
+- [`examples/extended.md`](examples/extended.md) - tables, images, HTML, code fences
+- [`examples/code-showcase.md`](examples/code-showcase.md) - code-heavy technical samples
+- [`examples/frontmatter.md`](examples/frontmatter.md) - YAML front matter behavior
+- [`examples/documentation-patterns.md`](examples/documentation-patterns.md) - documentation structure
 
-### Example
+## Repository Layout
 
-```text
-themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css
-  -> workbench.desktop.main.css
-```
+- [`themes/README.md`](themes/README.md) - theme index and entry points
+- [`themes/vscode-preview/mpe/`](themes/vscode-preview/mpe/) - MPE-first global CSS bundles
+- [`themes/vscode-preview/`](themes/vscode-preview/) - built-in VS Code preview themes and related docs
+- [`examples/`](examples/) - Markdown fixtures for testing
+- [`preview/`](preview/) - browser-based visual preview tools for theme iteration
 
-Important notes:
+## Other Modes
 
-- Replace the file contents with the theme CSS. Do not append a second stylesheet.
-- Keep a backup of the original `workbench.desktop.main.css` so you can restore it later.
-- `preview/cursor-preview.css` is for side preview only.
-- `themes/cursor-inline/...` files are for the inline `Preview | Markdown` experience.
+### Built-in VS Code Preview
 
-## Recommended Theme Files
+If you prefer the built-in Markdown preview with `markdown.styles`, see:
 
-- `themes/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css` - recommended C++ Modern for VS Code side preview
-- `themes/cursor-inline/popular/cursor-inline-github.css` - GitHub-style default (inline)
-- `themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern theme (inline)
-- `themes/cursor-inline/original/lumina/cursor-inline-lumina.css` - recommended Lumina theme (inline)
+- [`themes/vscode-preview/README.md`](themes/vscode-preview/README.md)
+
+### Browser Preview
+
+For quick offline visual checks in a browser:
+
+- [`preview/README.md`](preview/README.md)
+
+### Legacy Cursor Inline
+
+Cursor inline preview is kept as a legacy / curiosity path:
+
+- [`themes/cursor-inline/README.md`](themes/cursor-inline/README.md)
+
+It requires patching Cursor's `workbench.desktop.main.css` and can break after Cursor updates.
 
 ## License
 

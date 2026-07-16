@@ -1,5 +1,7 @@
 # Cursor Inline Themes
 
+> **Legacy / experimental.** This path requires patching `workbench.desktop.main.css`, can break after Cursor updates, and is no longer the main workflow in this repository. For daily Markdown work, use the [MPE setup](../vscode-preview/mpe/README.md) instead.
+
 Installable CSS themes for Cursor's inline Markdown preview.
 
 Every file in this directory tree is self-contained and ready to copy into Cursor. The `_shared-rules.css` and `_frontmatter-heuristic-rules.css` files are included only as source reference and should not be copied on their own.
@@ -11,23 +13,11 @@ Every file in this directory tree is self-contained and ready to copy into Curso
 - `original/lumina/` - the Lumina family
 - `cursor-inline-preview.css` - default GitHub-style theme file
 
-## Popular Themes
-
-- `popular/cursor-inline-github.css`
-- `popular/cursor-inline-notion.css`
-- `popular/cursor-inline-nord.css`
-- `popular/cursor-inline-dracula.css`
-- `popular/cursor-inline-solarized.css`
-- `popular/cursor-inline-editorial.css`
-- `popular/cursor-inline-obsidian.css`
-- `popular/cursor-inline-bear.css`
-- `popular/cursor-inline-docs.css`
-- `popular/cursor-inline-catppuccin.css`
-
-## Original Themes
+## Recommended Files
 
 - `original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern version
 - `original/lumina/cursor-inline-lumina.css` - recommended Lumina version
+- `popular/cursor-inline-github.css` - familiar GitHub-style fallback
 
 ## Install In Cursor
 
@@ -35,6 +25,8 @@ Every file in this directory tree is self-contained and ready to copy into Curso
 2. Back up the original `workbench.desktop.main.css`.
 3. Copy the full contents of the chosen theme file into `workbench.desktop.main.css`.
 4. Restart Cursor.
+
+Repeat this process after Cursor updates if the patched stylesheet gets replaced.
 
 ### Global Install (system-wide Cursor)
 
@@ -51,3 +43,8 @@ C:\Program Files\cursor\resources\app\out\vs\workbench\workbench.desktop.main.cs
 ## Preview Before Installing
 
 Use `preview/index.html` with **Load CSS** or drag-and-drop, or open `examples/theme-preview.md` in Cursor after applying a theme.
+
+## Related
+
+- `cursor-inline-patch/frontmatter-patch.js` - optional front matter patch for inline preview experiments
+- `../vscode-preview/mpe/README.md` - recommended modern workflow for Markdown in VS Code / Cursor

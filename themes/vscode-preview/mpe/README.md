@@ -1,11 +1,32 @@
 # Markdown Preview Enhanced — Global CSS
 
-Ready-to-paste bundles for **Markdown Preview Enhanced: Customize CSS (Global)**.
+This directory contains the **primary recommended setup** for this repository: ready-to-paste global CSS bundles for **Markdown Preview Enhanced (MPE)**.
+
+If you want a Markdown workflow that feels close to Cursor inline preview, but is more stable and configurable, use **MPE + `Preview Mode: Previews Only`**.
+
+## Recommended Preview Mode
+
+Set this in your **user** `settings.json`:
+
+```json
+{
+  "markdown-preview-enhanced.previewMode": "Previews Only"
+}
+```
+
+Notes:
+
+- Restart VS Code or Cursor after changing `previewMode`.
+- In this mode, Markdown files open directly into MPE preview.
+- You can edit from inside the preview using the in-preview editor.
+- To open raw source, use the preview context menu: **Edit Markdown → Open VS Code Editor**.
+
+Recommended companion extensions are listed in the root [README.md](../../../README.md).
 
 ## Files
 
 | File | Theme |
-|------|-------|
+| ---- | ----- |
 | [global-cpp-modern.less](global-cpp-modern.less) | C++ Modern (recommended) |
 | [global-cpp-modern-v1-syntax.less](global-cpp-modern-v1-syntax.less) | C++ Modern v1 Syntax |
 | [global-cpp-modern-v2-readable.less](global-cpp-modern-v2-readable.less) | C++ Modern v2 Readable |
@@ -44,29 +65,31 @@ Then run the command again.
 themes/vscode-preview/mpe/global-cpp-modern.less
 ```
 
-4. Press `Ctrl+A` → `Ctrl+C` (copy entire file).
-5. Switch back to `%USERPROFILE%\.crossnote\style.less`.
-6. Press `Ctrl+V` (paste).
-7. Press `Ctrl+S` (save).
+1. Press `Ctrl+A` → `Ctrl+C` (copy entire file).
+2. Switch back to `%USERPROFILE%\.crossnote\style.less`.
+3. Press `Ctrl+V` (paste).
+4. Press `Ctrl+S` (save).
 
-### 3. Optional MPE settings
+### 3. Recommended MPE settings
 
 Add to user or workspace `settings.json`:
 
 ```json
 {
+  "markdown-preview-enhanced.previewMode": "Previews Only",
   "markdown-preview-enhanced.previewTheme": "none.css",
   "markdown-preview-enhanced.codeBlockTheme": "auto.css"
 }
 ```
 
-This reduces conflicts with MPE's built-in `github-light.css` theme.
+This keeps MPE focused on preview-first editing and reduces conflicts with built-in preview themes.
 
 ### 4. Open preview
 
-1. Open any `.md` file (e.g. `examples/theme-preview.md`).
-2. `Ctrl+Shift+P` → **Markdown Preview Enhanced: Open Preview to the Side**
-3. If styles do not appear, click the **refresh** button in the preview toolbar.
+1. Open any `.md` file (for example `examples/theme-preview.md`).
+2. If you use `Previews Only`, the file should open directly in MPE preview after restart.
+3. Otherwise run **Markdown Preview Enhanced: Open Preview to the Side**.
+4. If styles do not appear, click the **refresh** button in the preview toolbar.
 
 ### 5. Verify
 
@@ -76,6 +99,19 @@ You should see:
 - teal `h2` headings
 - blue-teal list bullets
 - styled code blocks with left accent bar
+
+## Editing Workflow
+
+### In-preview editing
+
+- Click into the rendered Markdown to activate the in-preview editor.
+- Save with `Ctrl+S`.
+- Press `Esc` to close the in-preview editor.
+
+### Open raw source
+
+- Right-click in the preview and choose **Edit Markdown → Open VS Code Editor**.
+- Use this when you want the plain text editor instead of the in-preview editing experience.
 
 ## Regenerate bundles
 
@@ -89,7 +125,7 @@ node themes/vscode-preview/build-mpe-global.mjs
 ## Workspace vs global
 
 | Scope | Command | File |
-|-------|---------|------|
+| ----- | ------- | ---- |
 | Global (all projects) | Customize CSS **(Global)** | `%USERPROFILE%\.crossnote\style.less` |
 | Workspace (this repo only) | Customize CSS **(Workspace)** | `.crossnote/style.less` |
 
@@ -97,24 +133,25 @@ For workspace-only install, paste the same bundle into `.crossnote/style.less` a
 
 ## Troubleshooting
 
-**Styles not applied**
+### Styles not applied
 
 - Confirm you replaced the **entire** `style.less` content, not just appended.
+- Set `markdown-preview-enhanced.previewMode` to `"Previews Only"` if you want preview-first behavior.
 - Set `markdown-preview-enhanced.previewTheme` to `none.css`.
 - Refresh the MPE preview after saving.
 
-**Gray boxes on operators or punctuation inside ``` blocks**
+### Gray boxes on operators or punctuation inside ``` blocks
 
 - MPE's built-in `codeBlockTheme` adds per-token backgrounds (e.g. on `&&`, `<`, `>`).
 - Re-paste the latest `global-cpp-modern.less` into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping syntax colors.
 - Refresh the MPE preview after saving.
 
-**Wrong file location**
+### Wrong file location
 
 - Global config: `~/.crossnote/` (Windows: `%USERPROFILE%\.crossnote\`)
 - Old MPE versions used `~/.mume/` — re-run **Customize CSS (Global)** to migrate.
 
-**Built-in VS Code preview unchanged**
+### Built-in VS Code preview unchanged
 
 - MPE global CSS affects **MPE preview only**.
 - For built-in preview, use `markdown.styles` — see [../README.md](../README.md).
