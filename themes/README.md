@@ -21,6 +21,7 @@ Current primary families:
 - `C++ Modern` - balanced technical baseline with dark and light variants
 - `Lumina` - luminous blue neon family with dark and light variants
 - `Graphite` - editorial copper-accent family with dark and light variants
+- `Graphite Code` - Graphite family with C++ Modern syntax colors only (dark and light)
 - `Meridian` - blue-green structured docs family with dark and light variants
 
 ### Add-ons And Legacy

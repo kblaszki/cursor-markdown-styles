@@ -14,6 +14,7 @@ They do **not** apply to Cursor's inline `Preview | Markdown` mode. That path is
 - `original/cpp-modern/` — C++ Modern family for built-in preview
 - `original/lumina/` — Lumina family source CSS for built-in preview and MPE bundle generation
 - `original/graphite/` — Graphite family source CSS for built-in preview and MPE bundle generation
+- `original/graphite-code/` — Graphite Code hybrid (Graphite chrome + Dark+ syntax + C++ refine layer)
 - `original/meridian/` — Meridian family source CSS for built-in preview and MPE bundle generation
 - `_scope.css` — shared task-list and front-matter helpers (reference only)
 - `build-from-inline.mjs` — regenerate themes from cursor-inline sources
@@ -56,6 +57,8 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | [../../mpe/global-lumina-light.less](../../mpe/global-lumina-light.less) | Lumina Light |
 | [../../mpe/global-graphite.less](../../mpe/global-graphite.less) | Graphite |
 | [../../mpe/global-graphite-light.less](../../mpe/global-graphite-light.less) | Graphite Light |
+| [../../mpe/global-graphite-code.less](../../mpe/global-graphite-code.less) | Graphite Code |
+| [../../mpe/global-graphite-code-light.less](../../mpe/global-graphite-code-light.less) | Graphite Code Light |
 | [../../mpe/global-meridian.less](../../mpe/global-meridian.less) | Meridian |
 | [../../mpe/global-meridian-light.less](../../mpe/global-meridian-light.less) | Meridian Light |
 

@@ -1,0 +1,236 @@
+/* Graphite Code - Graphite with C++ Modern syntax colors
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --graphite-bg: #171616;
+  --graphite-text: #ddd6cf;
+  --graphite-muted: #a59a90;
+  --graphite-panel: #221f1d;
+  --graphite-panel-raised: #2b2623;
+  --graphite-border: #4b423d;
+  --graphite-accent: #d19a66;
+  --graphite-accent-strong: #f0b27a;
+  --graphite-link: #e6b98b;
+  --graphite-code-bg: #241f1a;
+  --graphite-code-text: #f2d4b2;
+  --graphite-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --graphite-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+
+  --md-bg: var(--graphite-bg);
+  --md-text: var(--graphite-text);
+  --md-border: var(--graphite-border);
+  --md-accent: var(--graphite-accent);
+  --md-panel: var(--graphite-panel);
+  --md-code-bg: var(--graphite-code-bg);
+  --md-code-text: var(--graphite-code-text);
+  --md-font-body: var(--graphite-font-body);
+  --md-font-mono: var(--graphite-font-mono);
+  --md-line-height: 1.82;
+  --md-padding: 24px 32px;
+
+  /* C++ Modern / Dark+ token palette (Graphite Code refine layer uses these) */
+  --md-syntax-fg: #d4d4d4;
+  --md-syntax-comment: #6a9955;
+  --md-syntax-keyword: #569cd6;
+  --md-syntax-control: #c586c0;
+  --md-syntax-type: #4ec9b0;
+  --md-syntax-function: #dcdcaa;
+  --md-syntax-string: #ce9178;
+  --md-syntax-number: #b5cea8;
+  --md-syntax-variable: #9cdcfe;
+  --md-syntax-constant: #4fc1ff;
+  --md-syntax-preprocessor: #569cd6;
+  --md-syntax-operator: #d4d4d4;
+  --md-syntax-punctuation: #a0a0a0;
+  --md-syntax-escape: #d7ba7d;
+  --md-syntax-label: #c8c8c8;
+  --md-syntax-deleted: #f44747;
+  --md-syntax-inserted: #89d185;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.15rem !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  color: #f5ede3 !important;
+  line-height: 1.25 !important;
+  margin: 1.65em 0 0.55em !important;
+  font-weight: 650 !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  border-bottom: 2px solid var(--graphite-accent) !important;
+  padding-bottom: 0.4em !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--graphite-accent-strong) !important;
+  border-bottom: 1px solid var(--graphite-border) !important;
+  padding-bottom: 0.24em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: #e4c7a4 !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: var(--graphite-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--graphite-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--graphite-link) 35%, transparent) !important;
+  text-underline-offset: 3px !important;
+}
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: #f3dfc9 !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul,
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  padding-left: 1.55rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li::marker,
+.markdown-preview ul:not(.contains-task-list) > li::marker,
+body ul:not(.contains-task-list) > li::marker,
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--graphite-accent) !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.75rem 1rem !important;
+  background: var(--graphite-panel) !important;
+  border-left: 4px solid var(--graphite-accent) !important;
+  color: #c9b9aa !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.14rem 0.35rem !important;
+  border-radius: 6px !important;
+  background: var(--graphite-code-bg) !important;
+  color: var(--graphite-code-text) !important;
+  font-family: var(--md-font-mono) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1rem 1.1rem !important;
+  border: 1px solid var(--graphite-border) !important;
+  border-left: 4px solid var(--graphite-accent) !important;
+  border-radius: 12px !important;
+  background: var(--graphite-panel-raised) !important;
+  color: var(--md-syntax-fg) !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--md-syntax-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--graphite-panel) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  border: 1px solid var(--graphite-border) !important;
+  padding: 0.74rem 0.84rem !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: var(--graphite-panel-raised) !important;
+  color: #f2e8dc !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: var(--graphite-border) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--graphite-accent) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.8rem 1rem !important;
+  border: 1px solid var(--graphite-border) !important;
+  border-radius: 12px !important;
+  background: var(--graphite-panel) !important;
+}

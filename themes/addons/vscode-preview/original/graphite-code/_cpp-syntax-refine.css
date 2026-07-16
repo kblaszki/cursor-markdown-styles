@@ -1,0 +1,324 @@
+/* Graphite Code — stronger C++ Dark+ / Better-C++-inspired token splits.
+   Appended after shared _syntax-tokens.css for graphite-code bundles only.
+   Color / weight / style only — never backgrounds. */
+
+/* Base fence foreground closer to VS Code editor so Dark+ tokens read correctly */
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code,
+.markdown-preview.markdown-preview pre code {
+  color: var(--md-syntax-fg, #d4d4d4) !important;
+}
+
+/* === Boolean is a keyword in Dark+, not a number === */
+
+.markdown-body pre .token.boolean,
+.markdown-preview pre .token.boolean,
+body pre .token.boolean,
+.markdown-preview.markdown-preview pre .token.boolean,
+.markdown-body pre .hljs-literal,
+.markdown-preview pre .hljs-literal,
+body pre .hljs-literal,
+.markdown-preview.markdown-preview pre .hljs-literal {
+  color: var(--md-syntax-keyword, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+/* Numbers stay green — override after shared boolean+number grouping */
+.markdown-body pre .token.number,
+.markdown-preview pre .token.number,
+body pre .token.number,
+.markdown-preview.markdown-preview pre .token.number,
+.markdown-body pre .hljs-number,
+.markdown-preview pre .hljs-number,
+body pre .hljs-number,
+.markdown-preview.markdown-preview pre .hljs-number {
+  color: var(--md-syntax-number, #b5cea8) !important;
+  font-weight: 400 !important;
+}
+
+/* === Types / class names / builtins (Better C++ type teal) === */
+
+.markdown-body pre .token.class-name,
+.markdown-preview pre .token.class-name,
+body pre .token.class-name,
+.markdown-body pre .token.builtin,
+.markdown-preview pre .token.builtin,
+body pre .token.builtin,
+.markdown-body pre .token.namespace,
+.markdown-preview pre .token.namespace,
+body pre .token.namespace,
+.markdown-preview.markdown-preview pre .token.class-name,
+.markdown-preview.markdown-preview pre .token.builtin,
+.markdown-preview.markdown-preview pre .token.namespace,
+.markdown-body pre .hljs-type,
+.markdown-preview pre .hljs-type,
+body pre .hljs-type,
+.markdown-body pre .hljs-built_in,
+.markdown-preview pre .hljs-built_in,
+body pre .hljs-built_in,
+.markdown-body pre .hljs-class .hljs-title,
+.markdown-preview pre .hljs-class .hljs-title,
+body pre .hljs-class .hljs-title,
+.markdown-body pre .hljs-title.class_,
+.markdown-preview pre .hljs-title.class_,
+body pre .hljs-title.class_,
+.markdown-preview.markdown-preview pre .hljs-type,
+.markdown-preview.markdown-preview pre .hljs-built_in,
+.markdown-preview.markdown-preview pre .hljs-class .hljs-title,
+.markdown-preview.markdown-preview pre .hljs-title.class_ {
+  color: var(--md-syntax-type, #4ec9b0) !important;
+  font-weight: 400 !important;
+}
+
+/* === Functions === */
+
+.markdown-body pre .token.function,
+.markdown-preview pre .token.function,
+body pre .token.function,
+.markdown-preview.markdown-preview pre .token.function,
+.markdown-body pre .hljs-title.function_,
+.markdown-preview pre .hljs-title.function_,
+body pre .hljs-title.function_,
+.markdown-body pre .hljs-title.function_.invoke__,
+.markdown-preview pre .hljs-title.function_.invoke__,
+body pre .hljs-title.function_.invoke__,
+.markdown-preview.markdown-preview pre .hljs-title.function_,
+.markdown-preview.markdown-preview pre .hljs-title.function_.invoke__ {
+  color: var(--md-syntax-function, #dcdcaa) !important;
+  font-weight: 400 !important;
+}
+
+/* === Keywords vs control-flow (when highlighter emits .control) === */
+
+.markdown-body pre .token.keyword,
+.markdown-preview pre .token.keyword,
+body pre .token.keyword,
+.markdown-preview.markdown-preview pre .token.keyword,
+.markdown-body pre .hljs-keyword,
+.markdown-preview pre .hljs-keyword,
+body pre .hljs-keyword,
+.markdown-preview.markdown-preview pre .hljs-keyword {
+  color: var(--md-syntax-keyword, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body pre .token.control,
+.markdown-preview pre .token.control,
+body pre .token.control,
+.markdown-preview.markdown-preview pre .token.control,
+.markdown-body pre .token.keyword.control,
+.markdown-preview pre .token.keyword.control,
+body pre .token.keyword.control,
+.markdown-preview.markdown-preview pre .token.keyword.control {
+  color: var(--md-syntax-control, #c586c0) !important;
+  font-weight: 600 !important;
+}
+
+/* === Preprocessor / macros (#include, #define, #pragma) === */
+
+.markdown-body pre .token.macro,
+.markdown-preview pre .token.macro,
+body pre .token.macro,
+.markdown-body pre .token.directive,
+.markdown-preview pre .token.directive,
+body pre .token.directive,
+.markdown-body pre .token.directive-hash,
+.markdown-preview pre .token.directive-hash,
+body pre .token.directive-hash,
+.markdown-body pre .token.important,
+.markdown-preview pre .token.important,
+body pre .token.important,
+.markdown-preview.markdown-preview pre .token.macro,
+.markdown-preview.markdown-preview pre .token.directive,
+.markdown-preview.markdown-preview pre .token.directive-hash,
+.markdown-preview.markdown-preview pre .token.important,
+.markdown-body pre .hljs-meta,
+.markdown-preview pre .hljs-meta,
+body pre .hljs-meta,
+.markdown-body pre .hljs-meta-keyword,
+.markdown-preview pre .hljs-meta-keyword,
+body pre .hljs-meta-keyword,
+.markdown-preview.markdown-preview pre .hljs-meta,
+.markdown-preview.markdown-preview pre .hljs-meta-keyword {
+  color: var(--md-syntax-preprocessor, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+/* Nested tokens inside macros keep their roles */
+.markdown-body pre .token.macro .token.string,
+.markdown-preview pre .token.macro .token.string,
+body pre .token.macro .token.string,
+.markdown-preview.markdown-preview pre .token.macro .token.string {
+  color: var(--md-syntax-string, #ce9178) !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body pre .token.macro .token.comment,
+.markdown-preview pre .token.macro .token.comment,
+body pre .token.macro .token.comment,
+.markdown-preview.markdown-preview pre .token.macro .token.comment {
+  color: var(--md-syntax-comment, #6a9955) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body pre .token.macro .token.keyword,
+.markdown-preview pre .token.macro .token.keyword,
+body pre .token.macro .token.keyword,
+.markdown-body pre .token.macro .token.directive,
+.markdown-preview pre .token.macro .token.directive,
+body pre .token.macro .token.directive,
+.markdown-preview.markdown-preview pre .token.macro .token.keyword,
+.markdown-preview.markdown-preview pre .token.macro .token.directive {
+  color: var(--md-syntax-preprocessor, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+/* === Constants / nullptr-like symbols === */
+
+.markdown-body pre .token.constant,
+.markdown-preview pre .token.constant,
+body pre .token.constant,
+.markdown-body pre .token.symbol,
+.markdown-preview pre .token.symbol,
+body pre .token.symbol,
+.markdown-preview.markdown-preview pre .token.constant,
+.markdown-preview.markdown-preview pre .token.symbol,
+.markdown-body pre .hljs-variable.constant_,
+.markdown-preview pre .hljs-variable.constant_,
+body pre .hljs-variable.constant_,
+.markdown-preview.markdown-preview pre .hljs-variable.constant_ {
+  color: var(--md-syntax-constant, #4fc1ff) !important;
+  font-weight: 400 !important;
+}
+
+/* === Variables / parameters / properties === */
+
+.markdown-body pre .token.variable,
+.markdown-preview pre .token.variable,
+body pre .token.variable,
+.markdown-body pre .token.parameter,
+.markdown-preview pre .token.parameter,
+body pre .token.parameter,
+.markdown-body pre .token.property,
+.markdown-preview pre .token.property,
+body pre .token.property,
+.markdown-body pre .token.attr-name,
+.markdown-preview pre .token.attr-name,
+body pre .token.attr-name,
+.markdown-preview.markdown-preview pre .token.variable,
+.markdown-preview.markdown-preview pre .token.parameter,
+.markdown-preview.markdown-preview pre .token.property,
+.markdown-preview.markdown-preview pre .token.attr-name,
+.markdown-body pre .hljs-variable,
+.markdown-preview pre .hljs-variable,
+body pre .hljs-variable,
+.markdown-body pre .hljs-params,
+.markdown-preview pre .hljs-params,
+body pre .hljs-params,
+.markdown-body pre .hljs-attr,
+.markdown-preview pre .hljs-attr,
+body pre .hljs-attr,
+.markdown-preview.markdown-preview pre .hljs-variable,
+.markdown-preview.markdown-preview pre .hljs-params,
+.markdown-preview.markdown-preview pre .hljs-attr {
+  color: var(--md-syntax-variable, #9cdcfe) !important;
+  font-weight: 400 !important;
+}
+
+/* === Strings / chars / escapes === */
+
+.markdown-body pre .token.string,
+.markdown-preview pre .token.string,
+body pre .token.string,
+.markdown-body pre .token.char,
+.markdown-preview pre .token.char,
+body pre .token.char,
+.markdown-body pre .token.attr-value,
+.markdown-preview pre .token.attr-value,
+body pre .token.attr-value,
+.markdown-body pre .token.raw-string,
+.markdown-preview pre .token.raw-string,
+body pre .token.raw-string,
+.markdown-preview.markdown-preview pre .token.string,
+.markdown-preview.markdown-preview pre .token.char,
+.markdown-preview.markdown-preview pre .token.attr-value,
+.markdown-preview.markdown-preview pre .token.raw-string,
+.markdown-body pre .hljs-string,
+.markdown-preview pre .hljs-string,
+body pre .hljs-string,
+.markdown-preview.markdown-preview pre .hljs-string {
+  color: var(--md-syntax-string, #ce9178) !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body pre .token.escape,
+.markdown-preview pre .token.escape,
+body pre .token.escape,
+.markdown-body pre .token.entity,
+.markdown-preview pre .token.entity,
+body pre .token.entity,
+.markdown-preview.markdown-preview pre .token.escape,
+.markdown-preview.markdown-preview pre .token.entity {
+  color: var(--md-syntax-escape, #d7ba7d) !important;
+  font-weight: 400 !important;
+}
+
+/* === Comments === */
+
+.markdown-body pre .token.comment,
+.markdown-preview pre .token.comment,
+body pre .token.comment,
+.markdown-body pre .token.prolog,
+.markdown-preview pre .token.prolog,
+body pre .token.prolog,
+.markdown-preview.markdown-preview pre .token.comment,
+.markdown-preview.markdown-preview pre .token.prolog,
+.markdown-body pre .hljs-comment,
+.markdown-preview pre .hljs-comment,
+body pre .hljs-comment,
+.markdown-preview.markdown-preview pre .hljs-comment {
+  color: var(--md-syntax-comment, #6a9955) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+/* === Operators vs punctuation (Dark+ punctuation slightly quieter) === */
+
+.markdown-body pre .token.operator,
+.markdown-preview pre .token.operator,
+body pre .token.operator,
+.markdown-preview.markdown-preview pre .token.operator,
+.markdown-body pre .hljs-operator,
+.markdown-preview pre .hljs-operator,
+body pre .hljs-operator,
+.markdown-preview.markdown-preview pre .hljs-operator {
+  color: var(--md-syntax-operator, #d4d4d4) !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body pre .token.punctuation,
+.markdown-preview pre .token.punctuation,
+body pre .token.punctuation,
+.markdown-preview.markdown-preview pre .token.punctuation,
+.markdown-body pre .hljs-punctuation,
+.markdown-preview pre .hljs-punctuation,
+body pre .hljs-punctuation,
+.markdown-preview.markdown-preview pre .hljs-punctuation {
+  color: var(--md-syntax-punctuation, #a0a0a0) !important;
+  font-weight: 400 !important;
+}
+
+/* === Labels / annotations when present === */
+
+.markdown-body pre .token.label,
+.markdown-preview pre .token.label,
+body pre .token.label,
+.markdown-body pre .token.annotation,
+.markdown-preview pre .token.annotation,
+body pre .token.annotation,
+.markdown-preview.markdown-preview pre .token.label,
+.markdown-preview.markdown-preview pre .token.annotation {
+  color: var(--md-syntax-label, #c8c8c8) !important;
+}

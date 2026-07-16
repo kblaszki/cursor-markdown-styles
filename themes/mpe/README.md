@@ -35,6 +35,8 @@ Recommended companion extensions are listed in the root [README.md](../../README
 | [global-lumina-light.less](global-lumina-light.less) | Lumina light |
 | [global-graphite.less](global-graphite.less) | Graphite dark |
 | [global-graphite-light.less](global-graphite-light.less) | Graphite light |
+| [global-graphite-code.less](global-graphite-code.less) | Graphite Code dark (Graphite + C++ Modern syntax colors) |
+| [global-graphite-code-light.less](global-graphite-code-light.less) | Graphite Code light |
 | [global-meridian.less](global-meridian.less) | Meridian dark |
 | [global-meridian-light.less](global-meridian-light.less) | Meridian light |
 
@@ -52,6 +54,7 @@ Each file contains install instructions in the header comment plus the full inli
 - **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling
 - **Lumina** - brighter neon identity with gradient headings and luminous accents
 - **Graphite** - editorial documentation theme with warm copper contrast
+- **Graphite Code** - Graphite visuals with Dark+ syntax colors plus a stronger C++ token refine layer
 - **Meridian** - blue-green structural theme for checklists, tables, and runbooks
 
 ## Fenced Code And C++ Syntax

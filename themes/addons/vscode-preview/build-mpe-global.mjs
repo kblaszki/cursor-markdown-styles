@@ -8,6 +8,11 @@ const scopeRules = readFileSync(join(root, "_scope.css"), "utf8").trim();
 const scopeMarker = "Shared scope and VS Code / MPE preview helpers";
 const syntaxRules = readFileSync(join(root, "_syntax-tokens.css"), "utf8").trim();
 const syntaxMarker = "Shared C++-first Prism / hljs token colors";
+const graphiteCodeRefine = readFileSync(
+  join(root, "original/graphite-code/_cpp-syntax-refine.css"),
+  "utf8",
+).trim();
+const graphiteCodeRefineMarker = "Graphite Code — stronger C++ Dark+";
 
 const variants = [
   {
@@ -51,6 +56,18 @@ const variants = [
     label: "Graphite Light",
   },
   {
+    css: join(root, "original/graphite-code/vscode-preview-graphite-code.css"),
+    out: join(mpeDir, "global-graphite-code.less"),
+    label: "Graphite Code",
+    appendSyntaxRefine: true,
+  },
+  {
+    css: join(root, "original/graphite-code/vscode-preview-graphite-code-light.css"),
+    out: join(mpeDir, "global-graphite-code-light.less"),
+    label: "Graphite Code Light",
+    appendSyntaxRefine: true,
+  },
+  {
     css: join(root, "original/meridian/vscode-preview-meridian.css"),
     out: join(mpeDir, "global-meridian.less"),
     label: "Meridian",
@@ -87,10 +104,16 @@ const header = (label, filename) => `/* ========================================
 
 mkdirSync(mpeDir, { recursive: true });
 
-for (const { css, out, label } of variants) {
+for (const { css, out, label, appendSyntaxRefine = false } of variants) {
   let themeCss = readFileSync(css, "utf8").trim();
   if (!themeCss.includes(scopeMarker)) {
     themeCss = `${themeCss}\n\n${scopeRules}`;
+  }
+
+  const refineIndex = themeCss.indexOf(graphiteCodeRefineMarker);
+  if (refineIndex >= 0) {
+    const commentStart = themeCss.lastIndexOf("/*", refineIndex);
+    themeCss = themeCss.slice(0, commentStart >= 0 ? commentStart : refineIndex).trimEnd();
   }
 
   const syntaxIndex = themeCss.indexOf(syntaxMarker);
@@ -99,6 +122,9 @@ for (const { css, out, label } of variants) {
     themeCss = themeCss.slice(0, commentStart >= 0 ? commentStart : syntaxIndex).trimEnd();
   }
   themeCss = `${themeCss}\n\n${syntaxRules}`;
+  if (appendSyntaxRefine) {
+    themeCss = `${themeCss}\n\n${graphiteCodeRefine}`;
+  }
 
   const bundle = `${header(label, basename(out))}\n${themeCss}\n`;
   writeFileSync(out, bundle, "utf8");
