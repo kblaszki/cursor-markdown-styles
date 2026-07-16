@@ -12,7 +12,7 @@ A Cursor inline preview theme family inspired by VS Code's modern dark C++ feel.
 
 - This directory exposes one recommended public install file and keeps older iterations for comparison.
 - The current theme focuses on readability with a restrained blue and teal palette.
-- For VS Code / Cursor **side preview** (`markdown.styles`), use the ported equivalents in [themes/vscode-preview/original/cpp-modern/](../../vscode-preview/original/cpp-modern/).
+- For VS Code / Cursor **side preview** (`markdown.styles`), use the ported equivalents in [themes/addons/vscode-preview/original/cpp-modern/](../../../vscode-preview/original/cpp-modern/).
 
 ## Install
 
@@ -31,5 +31,5 @@ Per-user install:
 Recommended source file:
 
 ```text
-themes/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css
+themes/addons/cursor-inline/original/cpp-modern/cursor-inline-cpp-modern.css
 ```

@@ -3,242 +3,251 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Markdown CSS Playground</title>
+    <title>MPE Theme Workbench</title>
     <link rel="stylesheet" href="./markdown.css" />
     <style id="runtime-css"></style>
   </head>
   <body>
-    <main class="page">
-      <section class="preview-toolbar" aria-label="Preview controls">
-        <div class="preview-toolbar__actions">
-          <button id="load-css-button" type="button">Load CSS</button>
-          <button id="reset-css-button" type="button">Reset CSS</button>
-          <input id="css-file-input" type="file" accept=".css,text/css" hidden />
+    <main class="app-shell">
+      <aside class="workbench-sidebar" aria-label="Theme controls">
+        <header class="panel-card panel-card--hero">
+          <p class="eyebrow">MPE-first workflow</p>
+          <h1>MPE Theme Workbench</h1>
+          <p class="panel-copy">
+            Tune Markdown styles with structured controls, inspect the generated
+            MPE CSS, and keep a handoff package you can turn into a new bundle
+            later.
+          </p>
+        </header>
+
+        <section class="panel-card" aria-labelledby="workbench-session-heading">
+          <div class="panel-heading">
+            <h2 id="workbench-session-heading">Session</h2>
+            <p>Choose a base family and fixture.</p>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span class="field__label">Base family</span>
+              <select id="preset-select">
+                <option value="cpp-modern">C++ Modern</option>
+                <option value="lumina">Lumina</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Fixture</span>
+              <select id="fixture-select"></select>
+            </label>
+          </div>
+
+          <div class="panel-actions">
+            <button id="reset-session-button" type="button">Reset session</button>
+            <button id="load-css-button" type="button">Import CSS override</button>
+            <input id="css-file-input" type="file" accept=".css,text/css" hidden />
+          </div>
+
+          <p id="css-status" class="panel-status">
+            Using preset tokens plus any custom overrides from this session.
+          </p>
+          <p id="fixture-source" class="panel-status" hidden></p>
+        </section>
+
+        <section class="panel-card" aria-labelledby="global-style-heading">
+          <div class="panel-heading">
+            <h2 id="global-style-heading">Global style</h2>
+            <p>Set the visual baseline for the preview canvas.</p>
+          </div>
+
+          <div class="field-grid field-grid--compact">
+            <label class="field">
+              <span class="field__label">Page background</span>
+              <input id="page-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Surface</span>
+              <input id="panel-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Body text</span>
+              <input id="text-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Muted text</span>
+              <input id="muted-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Border</span>
+              <input id="border-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Accent</span>
+              <input id="accent-color" type="color" />
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span class="field__label">Font stack</span>
+              <input id="font-family" type="text" />
+            </label>
+            <label class="field">
+              <span class="field__label">Code font</span>
+              <input id="code-font-family" type="text" />
+            </label>
+            <label class="field">
+              <span class="field__label">Font size (px)</span>
+              <input id="font-size" type="range" min="14" max="22" step="1" />
+              <output id="font-size-output" class="field__value"></output>
+            </label>
+            <label class="field">
+              <span class="field__label">Line height</span>
+              <input id="line-height" type="range" min="1.3" max="2" step="0.05" />
+              <output id="line-height-output" class="field__value"></output>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel-card" aria-labelledby="element-style-heading">
+          <div class="panel-heading">
+            <h2 id="element-style-heading">Element groups</h2>
+            <p>Adjust individual Markdown surfaces and accents.</p>
+          </div>
+
+          <div class="field-grid field-grid--compact">
+            <label class="field">
+              <span class="field__label">Heading color</span>
+              <input id="heading-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Link color</span>
+              <input id="link-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Blockquote border</span>
+              <input id="blockquote-border" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Blockquote background</span>
+              <input id="blockquote-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Inline code text</span>
+              <input id="inline-code-text" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Inline code background</span>
+              <input id="inline-code-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Code block text</span>
+              <input id="code-block-text" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Code block background</span>
+              <input id="code-block-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Code block border</span>
+              <input id="code-block-border" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Table header background</span>
+              <input id="table-header-bg" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">List marker color</span>
+              <input id="list-marker-color" type="color" />
+            </label>
+            <label class="field">
+              <span class="field__label">Rule / separator</span>
+              <input id="rule-color" type="color" />
+            </label>
+          </div>
+        </section>
+
+        <section class="panel-card" aria-labelledby="advanced-heading">
+          <div class="panel-heading">
+            <h2 id="advanced-heading">Advanced overrides</h2>
+            <p>
+              Add raw CSS for details that are not covered by the structured
+              controls.
+            </p>
+          </div>
+
+          <label class="field field--stacked">
+            <span class="field__label">Custom CSS</span>
+            <textarea
+              id="custom-css"
+              rows="10"
+              spellcheck="false"
+              placeholder=".markdown-body h2 { letter-spacing: 0.02em; }"
+            ></textarea>
+          </label>
+        </section>
+
+        <section class="panel-card" aria-labelledby="export-heading">
+          <div class="panel-heading">
+            <h2 id="export-heading">Export and handoff</h2>
+            <p>
+              Keep the generated CSS, structured tokens, or a compact summary to
+              turn this session into a new MPE variant later.
+            </p>
+          </div>
+
+          <div class="panel-actions panel-actions--tight">
+            <button id="copy-css-button" type="button">Copy MPE CSS</button>
+            <button id="download-css-button" type="button">Download CSS</button>
+          </div>
+          <label class="field field--stacked">
+            <span class="field__label">Generated MPE CSS</span>
+            <textarea id="generated-css" rows="12" readonly spellcheck="false"></textarea>
+          </label>
+
+          <div class="panel-actions panel-actions--tight">
+            <button id="copy-json-button" type="button">Copy tokens</button>
+            <button id="download-json-button" type="button">Download JSON</button>
+          </div>
+          <label class="field field--stacked">
+            <span class="field__label">Session tokens</span>
+            <textarea id="theme-json" rows="10" readonly spellcheck="false"></textarea>
+          </label>
+
+          <div class="panel-actions panel-actions--tight">
+            <button id="copy-summary-button" type="button">Copy summary</button>
+          </div>
+          <label class="field field--stacked">
+            <span class="field__label">Handoff summary</span>
+            <textarea id="theme-summary" rows="9" readonly spellcheck="false"></textarea>
+          </label>
+        </section>
+      </aside>
+
+      <section class="preview-column" aria-label="Live preview">
+        <header class="preview-header">
+          <div>
+            <p class="eyebrow">Live output</p>
+            <h2>MPE-oriented Markdown preview</h2>
+          </div>
+          <p class="preview-header__note">
+            Structured controls update the preview immediately. Raw CSS overrides
+            are applied on top.
+          </p>
+        </header>
+
+        <div class="preview-stage">
+          <article
+            id="preview-content"
+            class="markdown-body"
+            tabindex="0"
+            aria-live="polite"
+          ></article>
         </div>
-        <p id="css-status" class="preview-toolbar__status">
-          Using bundled stylesheet: <code>preview/markdown.css</code>
-        </p>
       </section>
-
-      <nav
-        id="fixture-tabs"
-        class="preview-tabs"
-        aria-label="Example fixtures"
-        role="tablist"
-      ></nav>
-
-      <p id="fixture-source" class="preview-fixture-source" hidden></p>
-
-      <article
-        id="preview-content"
-        class="markdown-body anysphere-markdown-container-root"
-        role="tabpanel"
-        tabindex="0"
-        aria-live="polite"
-      ></article>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
     <script src="./fixtures.js"></script>
-    <script>
-      (async () => {
-        const FIXTURES = window.PREVIEW_FIXTURES;
-        const EMBEDDED_MARKDOWN = window.PREVIEW_EMBEDDED_MARKDOWN;
-
-        const fileInput = document.getElementById("css-file-input");
-        const loadButton = document.getElementById("load-css-button");
-        const resetButton = document.getElementById("reset-css-button");
-        const status = document.getElementById("css-status");
-        const runtimeStyle = document.getElementById("runtime-css");
-        const tabsNav = document.getElementById("fixture-tabs");
-        const previewContent = document.getElementById("preview-content");
-        const fixtureSource = document.getElementById("fixture-source");
-
-        const STORAGE_KEY = "markdown-preview-active-fixture";
-        const renderedCache = new Map();
-
-        marked.setOptions({
-          gfm: true,
-          breaks: false,
-        });
-
-        const setStatus = (message) => {
-          status.textContent = message;
-        };
-
-        const isCursorInlineTheme = (cssText) =>
-          cssText.includes(".anysphere-markdown-container-root") ||
-          cssText.includes(".markdown-editor-react__richtext-content");
-
-        const applyCssFile = async (file) => {
-          if (!file || !file.name.toLowerCase().endsWith(".css")) {
-            setStatus("Please choose a valid .css file.");
-            return;
-          }
-
-          const cssText = await file.text();
-          const cursorTheme = isCursorInlineTheme(cssText);
-
-          runtimeStyle.textContent = cssText;
-          document.body.classList.toggle("preview-theme-active", cursorTheme);
-
-          setStatus(
-            cursorTheme
-              ? `Loaded Cursor theme: ${file.name}`
-              : `Loaded CSS override: ${file.name}`
-          );
-        };
-
-        const loadFixtureMarkdown = async (file) => {
-          try {
-            const response = await fetch(`../examples/${file}`);
-            if (response.ok) {
-              return { markdown: await response.text(), source: "fetch" };
-            }
-          } catch {
-            // file:// and other fetch failures fall back to embedded fixtures
-          }
-
-          return {
-            markdown: EMBEDDED_MARKDOWN[file],
-            source: "embedded",
-          };
-        };
-
-        const renderFixture = async (fixture) => {
-          let cached = renderedCache.get(fixture.id);
-
-          if (!cached) {
-            const { markdown, source } = await loadFixtureMarkdown(fixture.file);
-            cached = {
-              html: marked.parse(markdown),
-              source,
-            };
-            renderedCache.set(fixture.id, cached);
-          }
-
-          fixtureSource.hidden = cached.source !== "fetch";
-          fixtureSource.textContent =
-            cached.source === "fetch"
-              ? `Loaded live from examples/${fixture.file}`
-              : "";
-
-          previewContent.innerHTML = cached.html;
-          sessionStorage.setItem(STORAGE_KEY, fixture.id);
-        };
-
-        const activateTab = async (fixture, button) => {
-          tabsNav.querySelectorAll('[role="tab"]').forEach((tab) => {
-            tab.setAttribute("aria-selected", "false");
-            tab.tabIndex = -1;
-          });
-
-          button.setAttribute("aria-selected", "true");
-          button.tabIndex = 0;
-          button.focus({ preventScroll: true });
-
-          await renderFixture(fixture);
-        };
-
-        const initialFixtureId =
-          sessionStorage.getItem(STORAGE_KEY) ?? FIXTURES[0].id;
-        const initialIndex = Math.max(
-          0,
-          FIXTURES.findIndex((fixture) => fixture.id === initialFixtureId)
-        );
-
-        FIXTURES.forEach((fixture, index) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "preview-tabs__tab";
-          button.id = `tab-${fixture.id}`;
-          button.role = "tab";
-          button.setAttribute("aria-controls", "preview-content");
-          button.setAttribute(
-            "aria-selected",
-            index === initialIndex ? "true" : "false"
-          );
-          button.tabIndex = index === initialIndex ? 0 : -1;
-          button.textContent = fixture.label;
-          button.title = `examples/${fixture.file}`;
-
-          button.addEventListener("click", () => {
-            activateTab(fixture, button);
-          });
-
-          button.addEventListener("keydown", (event) => {
-            const tabs = [...tabsNav.querySelectorAll('[role="tab"]')];
-            const currentIndex = tabs.indexOf(button);
-            let nextIndex = currentIndex;
-
-            if (event.key === "ArrowRight") {
-              nextIndex = (currentIndex + 1) % tabs.length;
-            } else if (event.key === "ArrowLeft") {
-              nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-            } else if (event.key === "Home") {
-              nextIndex = 0;
-            } else if (event.key === "End") {
-              nextIndex = tabs.length - 1;
-            } else {
-              return;
-            }
-
-            event.preventDefault();
-            activateTab(FIXTURES[nextIndex], tabs[nextIndex]);
-          });
-
-          tabsNav.appendChild(button);
-        });
-
-        await renderFixture(FIXTURES[initialIndex]);
-
-        loadButton.addEventListener("click", () => {
-          fileInput.click();
-        });
-
-        fileInput.addEventListener("change", async (event) => {
-          const file = event.target.files?.[0];
-          await applyCssFile(file);
-        });
-
-        resetButton.addEventListener("click", () => {
-          runtimeStyle.textContent = "";
-          fileInput.value = "";
-          document.body.classList.remove("preview-theme-active");
-          setStatus("Using bundled stylesheet: preview/markdown.css");
-        });
-
-        document.addEventListener("dragover", (event) => {
-          if (
-            [...event.dataTransfer.items].some((item) => item.kind === "file")
-          ) {
-            event.preventDefault();
-            document.body.classList.add("is-dragging-css");
-          }
-        });
-
-        document.addEventListener("dragleave", (event) => {
-          if (event.target === document.documentElement) {
-            document.body.classList.remove("is-dragging-css");
-          }
-        });
-
-        document.addEventListener("drop", async (event) => {
-          event.preventDefault();
-          document.body.classList.remove("is-dragging-css");
-
-          const cssFile = [...event.dataTransfer.files].find((file) =>
-            file.name.toLowerCase().endsWith(".css")
-          );
-
-          if (!cssFile) {
-            setStatus("Drop a .css file to preview it.");
-            return;
-          }
-
-          await applyCssFile(cssFile);
-        });
-      })();
-    </script>
+    <script src="./app.js"></script>
   </body>
 </html>

@@ -21,7 +21,7 @@ Notes:
 - You can edit from inside the preview using the in-preview editor.
 - To open raw source, use the preview context menu: **Edit Markdown → Open VS Code Editor**.
 
-Recommended companion extensions are listed in the root [README.md](../../../README.md).
+Recommended companion extensions are listed in the root [README.md](../../README.md).
 
 ## Files
 
@@ -62,7 +62,7 @@ Then run the command again.
 3. Open this file from the repo in VS Code:
 
 ```text
-themes/vscode-preview/mpe/global-cpp-modern.less
+themes/mpe/global-cpp-modern.less
 ```
 
 1. Press `Ctrl+A` → `Ctrl+C` (copy entire file).
@@ -118,8 +118,8 @@ You should see:
 After editing inline or vscode-preview themes:
 
 ```bash
-node themes/vscode-preview/build-from-inline.mjs
-node themes/vscode-preview/build-mpe-global.mjs
+node themes/addons/vscode-preview/build-from-inline.mjs
+node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
 
 ## Workspace vs global
@@ -154,4 +154,4 @@ For workspace-only install, paste the same bundle into `.crossnote/style.less` a
 ### Built-in VS Code preview unchanged
 
 - MPE global CSS affects **MPE preview only**.
-- For built-in preview, use `markdown.styles` — see [../README.md](../README.md).
+- For built-in preview, use `markdown.styles` — see [../addons/vscode-preview/README.md](../addons/vscode-preview/README.md).

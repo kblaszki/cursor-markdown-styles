@@ -1,6 +1,6 @@
 # Cursor Inline Themes
 
-> **Legacy / experimental.** This path requires patching `workbench.desktop.main.css`, can break after Cursor updates, and is no longer the main workflow in this repository. For daily Markdown work, use the [MPE setup](../vscode-preview/mpe/README.md) instead.
+> **Legacy / experimental.** This path requires patching `workbench.desktop.main.css`, can break after Cursor updates, and is no longer the main workflow in this repository. For daily Markdown work, use the [MPE setup](../../mpe/README.md) instead.
 
 Installable CSS themes for Cursor's inline Markdown preview.
 
@@ -8,16 +8,14 @@ Every file in this directory tree is self-contained and ready to copy into Curso
 
 ## Directory Layout
 
-- `popular/` - themes inspired by recognizable products or palettes
 - `original/cpp-modern/` - the C++ Modern family
 - `original/lumina/` - the Lumina family
-- `cursor-inline-preview.css` - default GitHub-style theme file
+- `cursor-inline-preview.css` - generic starter file for inline preview experiments
 
 ## Recommended Files
 
 - `original/cpp-modern/cursor-inline-cpp-modern.css` - recommended C++ Modern version
 - `original/lumina/cursor-inline-lumina.css` - recommended Lumina version
-- `popular/cursor-inline-github.css` - familiar GitHub-style fallback
 
 ## Install In Cursor
 
@@ -46,5 +44,5 @@ Use `preview/index.html` with **Load CSS** or drag-and-drop, or open `examples/t
 
 ## Related
 
-- `cursor-inline-patch/frontmatter-patch.js` - optional front matter patch for inline preview experiments
-- `../vscode-preview/mpe/README.md` - recommended modern workflow for Markdown in VS Code / Cursor
+- `../../mpe/README.md` - recommended modern workflow for Markdown in VS Code / Cursor
+- `../../preview/README.md` - browser workbench for iterating on MPE-first styles before converting them into a bundle

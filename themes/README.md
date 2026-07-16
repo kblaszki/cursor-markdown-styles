@@ -5,22 +5,21 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 ## Recommended Path
 
 1. Use **Markdown Preview Enhanced** for daily Markdown work.
-2. Paste one of the ready-made bundles from [`vscode-preview/mpe/`](d:\work\github\markdown\themes\vscode-preview\mpe) into your global `style.less`.
-3. Keep the built-in VS Code preview as a secondary fallback.
+2. Paste one of the ready-made bundles from [`mpe/`](d:\work\github\markdown\themes\mpe) into your global `style.less`.
+3. Use the browser workbench in [`../preview/`](d:\work\github\markdown\preview) to iterate on theme ideas.
+4. Keep built-in preview and Cursor inline themes only as secondary add-ons.
 
 ## Theme Areas
 
 ### MPE First
 
-- [`vscode-preview/mpe/`](d:\work\github\markdown\themes\vscode-preview\mpe) - ready-to-paste global CSS bundles for Markdown Preview Enhanced
-- [`vscode-preview/README.md`](d:\work\github\markdown\themes\vscode-preview\README.md) - full setup guide for MPE and built-in preview
+- [`mpe/`](d:\work\github\markdown\themes\mpe) - ready-to-paste global CSS bundles for Markdown Preview Enhanced
+- [`mpe/README.md`](d:\work\github\markdown\themes\mpe\README.md) - full install and editing workflow for MPE
 
-### Built-in VS Code Preview
+### Add-ons And Legacy
 
-- [`vscode-preview/original/cpp-modern/`](d:\work\github\markdown\themes\vscode-preview\original\cpp-modern) - installable CSS files for `markdown.styles`
+- [`addons/`](d:\work\github\markdown\themes\addons) - secondary theme paths, source families, and regeneration scripts
+- [`addons/vscode-preview/`](d:\work\github\markdown\themes\addons\vscode-preview) - built-in VS Code preview CSS for `markdown.styles`
+- [`addons/cursor-inline/`](d:\work\github\markdown\themes\addons\cursor-inline) - legacy Cursor inline themes for the custom `cpp-modern` and `lumina` families
 
-### Legacy Cursor Inline
-
-- [`cursor-inline/README.md`](d:\work\github\markdown\themes\cursor-inline\README.md) - legacy inline preview themes that patch Cursor workbench CSS
-
-Use Cursor inline themes only if you specifically want the old inline `Preview | Markdown` experience and accept that updates can break the patch.
+Use add-ons only when you specifically need built-in preview compatibility or want to keep experimenting with Cursor's old inline `Preview | Markdown` path.

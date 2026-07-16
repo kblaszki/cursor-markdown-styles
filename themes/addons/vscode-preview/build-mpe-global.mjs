@@ -3,7 +3,7 @@ import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
-const mpeDir = join(root, "mpe");
+const mpeDir = join(root, "../../mpe");
 
 const variants = [
   {
@@ -33,9 +33,10 @@ const header = (label, filename) => `/* ========================================
  * 3. VS Code opens: %USERPROFILE%\\.crossnote\\style.less
  * 4. Select ALL content in that file and DELETE it
  * 5. Paste THIS ENTIRE FILE from the repo:
- *    themes/vscode-preview/mpe/${filename}
+ *    themes/mpe/${filename}
  * 6. Save (Ctrl+S)
- * 7. Open any .md file → "Markdown Preview Enhanced: Open Preview to the Side"
+ * 7. Restart the editor if you just enabled "Previews Only"
+ * 8. Open any .md file in MPE preview
  *
  * OPTIONAL — add to settings.json to reduce MPE built-in theme conflicts:
  *   "markdown-preview-enhanced.previewTheme": "none.css"

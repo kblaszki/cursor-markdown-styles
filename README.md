@@ -7,7 +7,7 @@ It also includes:
 - ready-to-paste global CSS bundles for MPE
 - example Markdown files for testing preview behavior
 - built-in VS Code preview themes as a fallback path
-- legacy Cursor inline themes for people who still want the old patched experience
+- legacy Cursor inline themes for the custom `cpp-modern` and `lumina` families
 
 If you want something closest to Cursor inline preview, but more stable and configurable, the recommended setup is **MPE + `Preview Mode: Previews Only`**.
 
@@ -74,9 +74,9 @@ Notes:
 
 The main output of this repo is a set of ready-to-paste MPE global styles:
 
-- [`themes/vscode-preview/mpe/global-cpp-modern.less`](themes/vscode-preview/mpe/global-cpp-modern.less) - recommended
-- [`themes/vscode-preview/mpe/global-cpp-modern-v1-syntax.less`](themes/vscode-preview/mpe/global-cpp-modern-v1-syntax.less)
-- [`themes/vscode-preview/mpe/global-cpp-modern-v2-readable.less`](themes/vscode-preview/mpe/global-cpp-modern-v2-readable.less)
+- [`themes/mpe/global-cpp-modern.less`](themes/mpe/global-cpp-modern.less) - recommended
+- [`themes/mpe/global-cpp-modern-v1-syntax.less`](themes/mpe/global-cpp-modern-v1-syntax.less)
+- [`themes/mpe/global-cpp-modern-v2-readable.less`](themes/mpe/global-cpp-modern-v2-readable.less)
 
 ### Copy-Paste Install
 
@@ -87,7 +87,7 @@ The main output of this repo is a set of ready-to-paste MPE global styles:
 5. Save the file.
 6. Refresh the MPE preview.
 
-Full walkthrough: [`themes/vscode-preview/mpe/README.md`](themes/vscode-preview/mpe/README.md)
+Full walkthrough: [`themes/mpe/README.md`](themes/mpe/README.md)
 
 ## Example Files
 
@@ -102,10 +102,10 @@ Use the files in [`examples/`](examples/) to verify your setup:
 ## Repository Layout
 
 - [`themes/README.md`](themes/README.md) - theme index and entry points
-- [`themes/vscode-preview/mpe/`](themes/vscode-preview/mpe/) - MPE-first global CSS bundles
-- [`themes/vscode-preview/`](themes/vscode-preview/) - built-in VS Code preview themes and related docs
+- [`themes/mpe/`](themes/mpe/) - MPE-first global CSS bundles
+- [`themes/addons/`](themes/addons/) - built-in preview and legacy Cursor inline assets
 - [`examples/`](examples/) - Markdown fixtures for testing
-- [`preview/`](preview/) - browser-based visual preview tools for theme iteration
+- [`preview/`](preview/) - browser-based MPE style workbench and visual preview tools
 
 ## Other Modes
 
@@ -113,11 +113,11 @@ Use the files in [`examples/`](examples/) to verify your setup:
 
 If you prefer the built-in Markdown preview with `markdown.styles`, see:
 
-- [`themes/vscode-preview/README.md`](themes/vscode-preview/README.md)
+- [`themes/addons/vscode-preview/README.md`](themes/addons/vscode-preview/README.md)
 
 ### Browser Preview
 
-For quick offline visual checks in a browser:
+For MPE-first browser-based theme editing and quick offline visual checks:
 
 - [`preview/README.md`](preview/README.md)
 
@@ -125,7 +125,7 @@ For quick offline visual checks in a browser:
 
 Cursor inline preview is kept as a legacy / curiosity path:
 
-- [`themes/cursor-inline/README.md`](themes/cursor-inline/README.md)
+- [`themes/addons/cursor-inline/README.md`](themes/addons/cursor-inline/README.md)
 
 It requires patching Cursor's `workbench.desktop.main.css` and can break after Cursor updates.
 
@@ -134,5 +134,4 @@ It requires patching Cursor's `workbench.desktop.main.css` and can break after C
 This project is licensed under the [MIT License](LICENSE).
 
 - **Copyright (c) 2026 kblaszki**
-- Themes in `themes/cursor-inline/original/` are original work by kblaszki and are included under the same MIT license.
-- Themes in `themes/cursor-inline/popular/` are inspired by recognizable products and palettes; they are provided as stylistic references under the same MIT license.
+- Themes in `themes/addons/cursor-inline/original/` are original work by kblaszki and are included under the same MIT license.

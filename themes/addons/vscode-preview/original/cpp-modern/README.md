@@ -15,7 +15,7 @@ Add to `.vscode/settings.json` or user settings:
 ```json
 {
   "markdown.styles": [
-    "${workspaceFolder}/themes/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css"
+    "${workspaceFolder}/themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css"
   ],
   "markdown.preview.frontMatter": "hide"
 }
@@ -25,7 +25,7 @@ Set `markdown.preview.frontMatter` to `"show"` if you want YAML front matter ren
 
 ### Markdown Preview Enhanced (global)
 
-Paste the entire contents of [themes/vscode-preview/mpe/global-cpp-modern.less](themes/vscode-preview/mpe/global-cpp-modern.less) into `%USERPROFILE%\.crossnote\style.less` via **Customize CSS (Global)**. See [themes/vscode-preview/mpe/README.md](themes/vscode-preview/mpe/README.md).
+Paste the entire contents of [themes/mpe/global-cpp-modern.less](../../../../mpe/global-cpp-modern.less) into `%USERPROFILE%\.crossnote\style.less` via **Customize CSS (Global)**. See [themes/mpe/README.md](../../../../mpe/README.md).
 
 ## Notes
 
@@ -35,4 +35,4 @@ Paste the entire contents of [themes/vscode-preview/mpe/global-cpp-modern.less](
 
 ## Inline equivalent
 
-For Cursor inline `Preview | Markdown`, use [themes/cursor-inline/original/cpp-modern/](../../cursor-inline/original/cpp-modern/).
+For Cursor inline `Preview | Markdown`, use [themes/addons/cursor-inline/original/cpp-modern/](../../../cursor-inline/original/cpp-modern/).

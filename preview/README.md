@@ -1,17 +1,49 @@
-# Preview Assets
+# MPE Theme Workbench
 
-Files in this directory are for **local visual review and offline theme iteration**.
+Files in this directory provide a **browser-based MPE-first theme workbench** for local visual review, style iteration, and session handoff.
 
-- `index.html` renders example fixtures from `examples/` in the browser.
-- `fixtures.js` embeds the same markdown for offline `file://` preview.
-- `build-fixtures.mjs` regenerates `fixtures.js` after example files change.
-- `markdown.css` styles the browser preview page.
-- `cursor-preview.css` styles Cursor's side Markdown preview (`Ctrl+K V`).
-- `index.html` can load Cursor inline theme files at runtime via **Load CSS** or drag-and-drop.
+## Purpose
 
-## Tabs
+Use `preview/index.html` when you want to:
 
-The preview page exposes one tab per example file: Theme Preview, Basic, Extended, Checklists, Code, Docs, and Long Form.
+- tune an MPE-oriented Markdown style with a left control panel and right live preview
+- compare changes against the repository fixtures without opening VS Code
+- capture the result as generated CSS, structured tokens, and a short handoff summary
+- refine details with raw CSS overrides before turning the session into a real MPE bundle
+
+## Files
+
+- `index.html` - two-pane workbench shell
+- `app.js` - preview state, preset logic, runtime CSS generation, and export actions
+- `markdown.css` - workbench layout and browser UI styling
+- `fixtures.js` - embedded markdown for offline `file://` use
+- `build-fixtures.mjs` - regenerates `fixtures.js` from `examples/`
+- `cursor-preview.css` - minimal generic side-preview CSS kept as a secondary reference
+
+## Workflow
+
+1. Open `preview/index.html` in a browser.
+2. Pick a base family (`C++ Modern` or `Lumina`).
+3. Choose a fixture from `examples/`.
+4. Adjust colors, typography, quotes, tables, code, and other Markdown groups in the left panel.
+5. Add raw CSS in **Advanced overrides** when you need finer control.
+6. Copy or download the generated CSS / JSON / summary as the handoff package for a new MPE variant.
+
+## Export And Handoff
+
+The workbench produces three useful outputs:
+
+- **Generated MPE CSS** - a starter stylesheet targeting `.markdown-body`, `.markdown-preview`, and `body`
+- **Session tokens JSON** - structured values for colors, typography, and component groups
+- **Handoff summary** - concise notes you can pass back into chat to request a new MPE bundle or a refined variant
+
+If you want me to turn a workbench session into a new style later, send back at least one of these:
+
+- the generated CSS
+- the JSON export
+- the handoff summary plus any extra intent
+
+## Fixture Loading
 
 When opened over HTTP, the page loads live markdown from `examples/`. When opened directly as `file://`, it falls back to the embedded copy in `fixtures.js`.
 
@@ -21,10 +53,10 @@ Regenerate embedded fixtures after editing examples:
 node preview/build-fixtures.mjs
 ```
 
-Use these files when you want to:
+## Relationship To The Main Workflow
 
-- sanity-check typography, spacing, and layout without opening VS Code
-- compare example fixtures quickly in a browser
-- iterate on general Markdown rendering ideas before updating the main MPE bundles
+This directory is a **support tool** for the main setup, not a replacement for it.
 
-This is a **secondary tool** in the repository. The main daily workflow is documented in the root [README.md](../README.md) and in [themes/vscode-preview/mpe/README.md](../themes/vscode-preview/mpe/README.md).
+- Primary workflow: [README.md](../README.md)
+- Main MPE bundles: [themes/mpe/README.md](../themes/mpe/README.md)
+- Secondary built-in preview path: [themes/addons/vscode-preview/README.md](../themes/addons/vscode-preview/README.md)
