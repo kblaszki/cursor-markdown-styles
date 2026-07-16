@@ -103,6 +103,12 @@ For workspace-only install, paste the same bundle into `.crossnote/style.less` a
 - Set `markdown-preview-enhanced.previewTheme` to `none.css`.
 - Refresh the MPE preview after saving.
 
+**Gray boxes on operators or punctuation inside ``` blocks**
+
+- MPE's built-in `codeBlockTheme` adds per-token backgrounds (e.g. on `&&`, `<`, `>`).
+- Re-paste the latest `global-cpp-modern.less` into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping syntax colors.
+- Refresh the MPE preview after saving.
+
 **Wrong file location**
 
 - Global config: `~/.crossnote/` (Windows: `%USERPROFILE%\.crossnote\`)

@@ -319,11 +319,11 @@ body blockquote {
   font-style: normal !important;
 }
 
-/* === Inline code === */
+/* === Inline code — prose only (not nested inside fenced blocks) === */
 
-.markdown-body :not(pre) > code,
-.markdown-preview :not(pre) > code,
-body :not(pre) > code {
+.markdown-body :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code,
+.markdown-preview :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code,
+body :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code {
   padding: 0.14rem 0.4rem !important;
   border-radius: 4px !important;
   font-family: var(--md-font-mono) !important;
@@ -576,7 +576,7 @@ body .front-matter td {
   color: var(--cpp-muted, #9d9d9d) !important;
 }
 
-/* === Code blocks — VS Code / HLJS preview structure === */
+/* === Fenced ``` blocks — panel background only, no text/token chips === */
 
 .markdown-body pre,
 .markdown-preview pre,
@@ -585,7 +585,6 @@ body pre {
   padding: 1rem 1.15rem 1rem calc(1.15rem + 12px) !important;
 }
 
-/* Built-in preview defaults to inline-block code; use block layout for correct padding */
 .markdown-body pre > code,
 .markdown-preview pre > code,
 body pre > code {
@@ -606,14 +605,33 @@ body pre.hljs code > div {
   padding: 0 !important;
 }
 
-/* Keep prose/link/strikethrough styles out of fenced code */
-.markdown-body pre :is(code, code *),
-.markdown-preview pre :is(code, code *),
-body pre :is(code, code *) {
-  text-decoration: none !important;
+/* Strip chip/highlight styling from everything inside fenced blocks */
+.markdown-body pre *,
+.markdown-preview pre *,
+body pre * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
   border: none !important;
-  border-bottom: none !important;
   box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* MPE loads codeBlockTheme after style.less — needs higher specificity */
+.markdown-preview.markdown-preview pre *,
+.markdown-preview.markdown-preview .highlight pre *,
+.markdown-preview.markdown-preview pre [class*="token"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
 .markdown-body pre :is(strong, em),
@@ -622,6 +640,12 @@ body pre :is(strong, em) {
   color: inherit !important;
   font-weight: inherit !important;
   font-style: inherit !important;
+}
+
+.markdown-body pre :is(code, code *, .token),
+.markdown-preview pre :is(code, code *, .token),
+body pre :is(code, code *, .token) {
+  text-decoration: none !important;
 }
 
 .markdown-body pre code a,
@@ -640,7 +664,6 @@ body pre code .hljs-deletion {
   width: auto !important;
 }
 
-/* VS Code diff markers must stay layout-neutral */
 [data-diff-start],
 [data-diff-end] {
   display: contents !important;
