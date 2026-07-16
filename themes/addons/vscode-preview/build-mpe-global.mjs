@@ -12,6 +12,11 @@ const variants = [
     label: "C++ Modern",
   },
   {
+    css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-light.css"),
+    out: join(mpeDir, "global-cpp-modern-light.less"),
+    label: "C++ Modern Light",
+  },
+  {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v1-syntax.css"),
     out: join(mpeDir, "global-cpp-modern-v1-syntax.less"),
     label: "C++ Modern v1 Syntax",
@@ -20,6 +25,36 @@ const variants = [
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v2-readable.css"),
     out: join(mpeDir, "global-cpp-modern-v2-readable.less"),
     label: "C++ Modern v2 Readable",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina.css"),
+    out: join(mpeDir, "global-lumina.less"),
+    label: "Lumina",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina-light.css"),
+    out: join(mpeDir, "global-lumina-light.less"),
+    label: "Lumina Light",
+  },
+  {
+    css: join(root, "original/graphite/vscode-preview-graphite.css"),
+    out: join(mpeDir, "global-graphite.less"),
+    label: "Graphite",
+  },
+  {
+    css: join(root, "original/graphite/vscode-preview-graphite-light.css"),
+    out: join(mpeDir, "global-graphite-light.less"),
+    label: "Graphite Light",
+  },
+  {
+    css: join(root, "original/meridian/vscode-preview-meridian.css"),
+    out: join(mpeDir, "global-meridian.less"),
+    label: "Meridian",
+  },
+  {
+    css: join(root, "original/meridian/vscode-preview-meridian-light.css"),
+    out: join(mpeDir, "global-meridian-light.less"),
+    label: "Meridian Light",
   },
 ];
 

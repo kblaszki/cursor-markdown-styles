@@ -25,13 +25,34 @@ Recommended companion extensions are listed in the root [README.md](../../README
 
 ## Files
 
+### Primary Families
+
 | File | Theme |
 | ---- | ----- |
-| [global-cpp-modern.less](global-cpp-modern.less) | C++ Modern (recommended) |
+| [global-cpp-modern.less](global-cpp-modern.less) | C++ Modern dark (recommended default) |
+| [global-cpp-modern-light.less](global-cpp-modern-light.less) | C++ Modern light |
+| [global-lumina.less](global-lumina.less) | Lumina dark |
+| [global-lumina-light.less](global-lumina-light.less) | Lumina light |
+| [global-graphite.less](global-graphite.less) | Graphite dark |
+| [global-graphite-light.less](global-graphite-light.less) | Graphite light |
+| [global-meridian.less](global-meridian.less) | Meridian dark |
+| [global-meridian-light.less](global-meridian-light.less) | Meridian light |
+
+### Legacy C++ Modern Variants
+
+| File | Theme |
+| ---- | ----- |
 | [global-cpp-modern-v1-syntax.less](global-cpp-modern-v1-syntax.less) | C++ Modern v1 Syntax |
 | [global-cpp-modern-v2-readable.less](global-cpp-modern-v2-readable.less) | C++ Modern v2 Readable |
 
 Each file contains install instructions in the header comment plus the full inlined theme CSS.
+
+## Family Guide
+
+- **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling
+- **Lumina** - brighter neon identity with gradient headings and luminous accents
+- **Graphite** - editorial documentation theme with warm copper contrast
+- **Meridian** - blue-green structural theme for checklists, tables, and runbooks
 
 ## Install step by step (Windows)
 
@@ -59,7 +80,7 @@ Then run the command again.
 
 1. In `style.less`, press `Ctrl+A` (select all).
 2. Press `Delete`.
-3. Open this file from the repo in VS Code:
+3. Open one bundle file from the repo in VS Code:
 
 ```text
 themes/mpe/global-cpp-modern.less
@@ -93,12 +114,14 @@ This keeps MPE focused on preview-first editing and reduces conflicts with built
 
 ### 5. Verify
 
-You should see:
+For the default C++ Modern dark bundle you should see:
 
 - dark background (`#1f1f1f`)
 - teal `h2` headings
 - blue-teal list bullets
 - styled code blocks with left accent bar
+
+For other bundles, verify that headings, links, blockquotes, tables, and fenced code blocks all match the family tone in both light and dark variants.
 
 ## Editing Workflow
 

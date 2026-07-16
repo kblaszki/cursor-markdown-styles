@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,6 +23,12 @@ const mappings = [
     source: join(root, "../cursor-inline/original/cpp-modern/cursor-inline-cpp-modern-v2-readable.css"),
     target: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v2-readable.css"),
     title: "C++ Modern v2 - Readable (consistency and blue-teal palette)",
+    subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
+  },
+  {
+    source: join(root, "../cursor-inline/original/lumina/cursor-inline-lumina.css"),
+    target: join(root, "original/lumina/vscode-preview-lumina.css"),
+    title: "Lumina - unified blue neon palette",
     subtitle: "VS Code / Cursor side preview and Markdown Preview Enhanced",
   },
 ];
@@ -102,6 +108,7 @@ function convertInlineToVscodePreview(source, title, subtitle) {
 
 for (const { source, target, title, subtitle } of mappings) {
   const converted = convertInlineToVscodePreview(readFileSync(source, "utf8"), title, subtitle);
+  mkdirSync(dirname(target), { recursive: true });
   writeFileSync(target, converted, "utf8");
   console.log(`wrote ${target}`);
 }

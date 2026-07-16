@@ -16,6 +16,13 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 - [`mpe/`](d:\work\github\markdown\themes\mpe) - ready-to-paste global CSS bundles for Markdown Preview Enhanced
 - [`mpe/README.md`](d:\work\github\markdown\themes\mpe\README.md) - full install and editing workflow for MPE
 
+Current primary families:
+
+- `C++ Modern` - balanced technical baseline with dark and light variants
+- `Lumina` - luminous blue neon family with dark and light variants
+- `Graphite` - editorial copper-accent family with dark and light variants
+- `Meridian` - blue-green structured docs family with dark and light variants
+
 ### Add-ons And Legacy
 
 - [`addons/`](d:\work\github\markdown\themes\addons) - secondary theme paths, source families, and regeneration scripts

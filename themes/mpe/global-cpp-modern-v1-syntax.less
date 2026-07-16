@@ -328,11 +328,11 @@ body blockquote {
   font-style: italic !important;
 }
 
-/* === Inline code — prose only (not nested inside fenced blocks) === */
+/* === Inline code - variables and identifiers === */
 
-.markdown-body :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code,
-.markdown-preview :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code,
-body :is(p, li, td, th, blockquote, h1, h2, h3, h4, h5, h6, summary, figcaption, dt, dd) > code {
+.markdown-body :not(pre) > code,
+.markdown-preview :not(pre) > code,
+body :not(pre) > code {
   padding: 0.16rem 0.42rem !important;
   border-radius: 4px !important;
   font-family: var(--md-font-mono) !important;
@@ -379,6 +379,10 @@ body pre::before {
 .markdown-body pre code,
 .markdown-preview pre code,
 body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--cpp-fg) !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
   line-height: 1.6 !important;

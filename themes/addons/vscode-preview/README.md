@@ -12,6 +12,9 @@ They do **not** apply to Cursor's inline `Preview | Markdown` mode. That path is
 ## Directory Layout
 
 - `original/cpp-modern/` — C++ Modern family for built-in preview
+- `original/lumina/` — Lumina family source CSS for built-in preview and MPE bundle generation
+- `original/graphite/` — Graphite family source CSS for built-in preview and MPE bundle generation
+- `original/meridian/` — Meridian family source CSS for built-in preview and MPE bundle generation
 - `_scope.css` — shared task-list and front-matter helpers (reference only)
 - `build-from-inline.mjs` — regenerate themes from cursor-inline sources
 - `build-mpe-global.mjs` — regenerate `../../mpe/global-*.less` bundles
@@ -46,8 +49,15 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | File | Variant |
 | ---- | ------- |
 | [../../mpe/global-cpp-modern.less](../../mpe/global-cpp-modern.less) | C++ Modern (recommended) |
+| [../../mpe/global-cpp-modern-light.less](../../mpe/global-cpp-modern-light.less) | C++ Modern Light |
 | [../../mpe/global-cpp-modern-v1-syntax.less](../../mpe/global-cpp-modern-v1-syntax.less) | v1 Syntax |
 | [../../mpe/global-cpp-modern-v2-readable.less](../../mpe/global-cpp-modern-v2-readable.less) | v2 Readable |
+| [../../mpe/global-lumina.less](../../mpe/global-lumina.less) | Lumina |
+| [../../mpe/global-lumina-light.less](../../mpe/global-lumina-light.less) | Lumina Light |
+| [../../mpe/global-graphite.less](../../mpe/global-graphite.less) | Graphite |
+| [../../mpe/global-graphite-light.less](../../mpe/global-graphite-light.less) | Graphite Light |
+| [../../mpe/global-meridian.less](../../mpe/global-meridian.less) | Meridian |
+| [../../mpe/global-meridian-light.less](../../mpe/global-meridian-light.less) | Meridian Light |
 
 Each bundle inlines the full CSS (no `@import`) so copy-paste works reliably.
 

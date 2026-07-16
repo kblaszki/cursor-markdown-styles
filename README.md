@@ -75,8 +75,22 @@ Notes:
 The main output of this repo is a set of ready-to-paste MPE global styles:
 
 - [`themes/mpe/global-cpp-modern.less`](themes/mpe/global-cpp-modern.less) - recommended
+- [`themes/mpe/global-cpp-modern-light.less`](themes/mpe/global-cpp-modern-light.less)
+- [`themes/mpe/global-lumina.less`](themes/mpe/global-lumina.less)
+- [`themes/mpe/global-lumina-light.less`](themes/mpe/global-lumina-light.less)
+- [`themes/mpe/global-graphite.less`](themes/mpe/global-graphite.less)
+- [`themes/mpe/global-graphite-light.less`](themes/mpe/global-graphite-light.less)
+- [`themes/mpe/global-meridian.less`](themes/mpe/global-meridian.less)
+- [`themes/mpe/global-meridian-light.less`](themes/mpe/global-meridian-light.less)
 - [`themes/mpe/global-cpp-modern-v1-syntax.less`](themes/mpe/global-cpp-modern-v1-syntax.less)
 - [`themes/mpe/global-cpp-modern-v2-readable.less`](themes/mpe/global-cpp-modern-v2-readable.less)
+
+Recommended family choices:
+
+- `C++ Modern` - balanced technical default
+- `Lumina` - brighter neon style
+- `Graphite` - editorial, prose-first style
+- `Meridian` - structured docs and checklist style
 
 ### Copy-Paste Install
 

@@ -1,0 +1,264 @@
+/* Lumina Light - icy neon palette
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --lum-bg: #f5f9ff;
+  --lum-text: #173052;
+  --lum-muted: #60799b;
+  --lum-panel: #ebf3ff;
+  --lum-panel-deep: #ffffff;
+  --lum-border: color-mix(in srgb, #38bdf8 24%, #c8d8f5);
+
+  --neon-indigo: #4f46e5;
+  --neon-blue: #2563eb;
+  --neon-electric: #0ea5e9;
+  --neon-cyan: #0891b2;
+  --neon-sky: #38bdf8;
+  --neon-ice: #0f5fd7;
+  --neon-deep: #1d4ed8;
+
+  --md-bg: var(--lum-bg);
+  --md-text: var(--lum-text);
+  --md-border: var(--lum-border);
+  --md-accent: var(--neon-electric);
+  --md-quote: color-mix(in srgb, var(--lum-muted) 70%, var(--neon-sky));
+  --md-panel: var(--lum-panel);
+  --md-code-bg: #e7efff;
+  --md-code-text: #155e75;
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", "Fira Code", Consolas, monospace);
+  --md-line-height: 1.75;
+  --md-padding: 20px 28px;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+body {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.1rem !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin: 1.6em 0 0.55em !important;
+  letter-spacing: -0.02em !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  font-size: 2em !important;
+  background: linear-gradient(120deg, var(--neon-indigo), var(--neon-blue), var(--neon-electric)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  padding-bottom: 0.35em !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--neon-blue) 35%, transparent) !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--neon-electric) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--neon-blue) 25%, transparent) !important;
+  padding-bottom: 0.25em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: var(--neon-cyan) !important;
+}
+
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
+  color: var(--neon-sky) !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: color-mix(in srgb, var(--neon-electric) 70%, var(--lum-muted)) !important;
+}
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: var(--neon-ice) !important;
+}
+
+.markdown-body em,
+.markdown-preview em,
+body em {
+  color: var(--neon-cyan) !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--neon-electric) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--neon-electric) 45%, transparent) !important;
+}
+
+.markdown-body a:hover,
+.markdown-preview a:hover,
+body a:hover {
+  color: var(--neon-blue) !important;
+  border-bottom-color: var(--neon-blue) !important;
+}
+
+.markdown-body :is(ul, ol),
+.markdown-preview :is(ul, ol),
+body :is(ul, ol) {
+  padding-left: 1.6rem !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul {
+  list-style: none !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item),
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item),
+body ul:not(.contains-task-list) > li:not(.task-list-item) {
+  position: relative !important;
+  padding-left: 0.35rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: -1.1rem !important;
+  top: 0.62em !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: var(--neon-cyan) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--neon-cyan) 16%, transparent) !important;
+}
+
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--neon-blue) !important;
+  font-weight: 700 !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.65rem 1.2rem !important;
+  background: linear-gradient(180deg, #f0f6ff, #eaf2ff) !important;
+  border-left: 4px solid var(--neon-blue) !important;
+  border-radius: 0 14px 14px 0 !important;
+  color: #375374 !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.15rem 0.35rem !important;
+  color: var(--md-code-text) !important;
+  background: var(--md-code-bg) !important;
+  border-radius: 6px !important;
+  font-family: var(--md-font-mono) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1rem 1.1rem !important;
+  border: 1px solid color-mix(in srgb, var(--neon-blue) 20%, #c8d8f5) !important;
+  border-left: 4px solid var(--neon-electric) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, #fbfdff, #edf4ff) !important;
+  color: #173052 !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--lum-panel-deep) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  padding: 0.75rem !important;
+  border: 1px solid color-mix(in srgb, var(--neon-blue) 14%, #ccd8ea) !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: linear-gradient(180deg, #edf5ff, #e4efff) !important;
+  color: #173052 !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: color-mix(in srgb, var(--neon-blue) 24%, #c9d8ef) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--neon-blue) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.8rem 1rem !important;
+  background: var(--lum-panel) !important;
+  border: 1px solid color-mix(in srgb, var(--neon-blue) 18%, #c9d8ef) !important;
+  border-radius: 14px !important;
+}

@@ -1,0 +1,232 @@
+/* =============================================================================
+ * Markdown Preview Enhanced — Global style.less (Meridian)
+ * =============================================================================
+ *
+ * INSTALL (Windows):
+ * 1. Ctrl+Shift+P
+ * 2. Run: "Markdown Preview Enhanced: Customize CSS (Global)"
+ * 3. VS Code opens: %USERPROFILE%\.crossnote\style.less
+ * 4. Select ALL content in that file and DELETE it
+ * 5. Paste THIS ENTIRE FILE from the repo:
+ *    themes/mpe/global-meridian.less
+ * 6. Save (Ctrl+S)
+ * 7. Restart the editor if you just enabled "Previews Only"
+ * 8. Open any .md file in MPE preview
+ *
+ * OPTIONAL — add to settings.json to reduce MPE built-in theme conflicts:
+ *   "markdown-preview-enhanced.previewTheme": "none.css"
+ *
+ * NOTE: This bundle inlines the full theme CSS (no @import) for reliable loading.
+ * ============================================================================= */
+
+
+/* Meridian - dark blue-green navigation palette
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --mer-bg: #0f1718;
+  --mer-text: #d8e6df;
+  --mer-muted: #93aca3;
+  --mer-panel: #152123;
+  --mer-panel-raised: #1b2b2e;
+  --mer-border: #2d4749;
+  --mer-primary: #62c3a5;
+  --mer-secondary: #38b2ac;
+  --mer-link: #7ed7c5;
+  --mer-code-bg: #132226;
+  --mer-code-text: #a0f1dc;
+  --md-bg: var(--mer-bg);
+  --md-text: var(--mer-text);
+  --md-border: var(--mer-border);
+  --md-accent: var(--mer-primary);
+  --md-panel: var(--mer-panel);
+  --md-code-bg: var(--mer-code-bg);
+  --md-code-text: var(--mer-code-text);
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+  --md-line-height: 1.78;
+  --md-padding: 22px 30px;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.15rem !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.24 !important;
+  margin: 1.65em 0 0.55em !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  color: #e8faf4 !important;
+  border-bottom: 2px solid var(--mer-primary) !important;
+  padding-bottom: 0.38em !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--mer-primary) !important;
+  border-bottom: 1px solid var(--mer-border) !important;
+  padding-bottom: 0.24em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: var(--mer-secondary) !important;
+}
+
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
+  color: #8adcc7 !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: var(--mer-muted) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--mer-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--mer-link) 35%, transparent) !important;
+  text-underline-offset: 3px !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul,
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  padding-left: 1.55rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li::marker,
+.markdown-preview ul:not(.contains-task-list) > li::marker,
+body ul:not(.contains-task-list) > li::marker,
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--mer-primary) !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.7rem 1rem !important;
+  border-left: 4px solid var(--mer-secondary) !important;
+  background: var(--mer-panel) !important;
+  color: #bbd3ca !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.15rem 0.35rem !important;
+  border-radius: 6px !important;
+  background: var(--mer-code-bg) !important;
+  color: var(--mer-code-text) !important;
+  font-family: var(--md-font-mono) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1rem 1.1rem !important;
+  border: 1px solid var(--mer-border) !important;
+  border-left: 4px solid var(--mer-primary) !important;
+  border-radius: 12px !important;
+  background: var(--mer-panel-raised) !important;
+  color: #def6ee !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--mer-panel) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  border: 1px solid var(--mer-border) !important;
+  padding: 0.72rem 0.84rem !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: var(--mer-panel-raised) !important;
+  color: #e6faf3 !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: var(--mer-border) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--mer-primary) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.8rem 1rem !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--mer-border) !important;
+  background: var(--mer-panel) !important;
+}
