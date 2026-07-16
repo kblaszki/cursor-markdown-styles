@@ -36,6 +36,22 @@ body {
   --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", "Fira Code", Consolas, monospace);
   --md-line-height: 1.75;
   --md-padding: 20px 28px;
+
+  /* C++-first Prism token palette (blue neon) */
+  --md-syntax-comment: #7aa2c8;
+  --md-syntax-keyword: #82aaff;
+  --md-syntax-control: #c792ea;
+  --md-syntax-type: #22d3ee;
+  --md-syntax-function: #7dd3fc;
+  --md-syntax-string: #7dd3fc;
+  --md-syntax-number: #a5b4fc;
+  --md-syntax-variable: #bae6fd;
+  --md-syntax-constant: #38bdf8;
+  --md-syntax-preprocessor: #60a5fa;
+  --md-syntax-operator: #93c5fd;
+  --md-syntax-punctuation: #bfdbfe;
+  --md-syntax-deleted: #fb7185;
+  --md-syntax-inserted: #4ade80;
 }
 
 /* === Base === */
@@ -356,7 +372,7 @@ body pre code {
   color: #e0f2fe !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
-  line-height: 1.6 !important;
+  line-height: 1.7 !important;
 }
 
 /* === Tables === */

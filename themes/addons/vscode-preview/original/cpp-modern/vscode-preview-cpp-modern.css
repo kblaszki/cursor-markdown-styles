@@ -30,6 +30,22 @@ body {
   --cpp-syntax-number: #b5cea8;
   --cpp-syntax-comment: #6a9955;
 
+  /* C++-first Prism token palette (VS Code Dark+) */
+  --md-syntax-comment: #6a9955;
+  --md-syntax-keyword: #569cd6;
+  --md-syntax-control: #c586c0;
+  --md-syntax-type: #4ec9b0;
+  --md-syntax-function: #dcdcaa;
+  --md-syntax-string: #ce9178;
+  --md-syntax-number: #b5cea8;
+  --md-syntax-variable: #9cdcfe;
+  --md-syntax-constant: #4fc1ff;
+  --md-syntax-preprocessor: #569cd6;
+  --md-syntax-operator: #d4d4d4;
+  --md-syntax-punctuation: #d4d4d4;
+  --md-syntax-deleted: #f44747;
+  --md-syntax-inserted: #89d185;
+
   --md-bg: var(--cpp-bg);
   --md-text: var(--cpp-fg);
   --md-border: var(--cpp-border-subtle);
@@ -341,7 +357,7 @@ body pre code {
   color: var(--cpp-code-fg) !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
-  line-height: 1.65 !important;
+  line-height: 1.7 !important;
 }
 
 /* === Tables — simple, high contrast === */

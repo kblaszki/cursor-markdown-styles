@@ -715,3 +715,285 @@ body pre code .hljs-deletion {
 [data-diff-end] {
   display: contents !important;
 }
+
+/* Shared C++-first Prism / hljs token colors for MPE and VS Code preview.
+   Color / weight / style only — never backgrounds (chip strip lives in _scope.css). */
+
+/* === Prism tokens (Markdown Preview Enhanced) === */
+
+.markdown-body pre .token.comment,
+.markdown-preview pre .token.comment,
+body pre .token.comment,
+.markdown-body pre .token.prolog,
+.markdown-preview pre .token.prolog,
+body pre .token.prolog,
+.markdown-body pre .token.doctype,
+.markdown-preview pre .token.doctype,
+body pre .token.doctype,
+.markdown-body pre .token.cdata,
+.markdown-preview pre .token.cdata,
+body pre .token.cdata,
+.markdown-preview.markdown-preview pre .token.comment,
+.markdown-preview.markdown-preview pre .token.prolog,
+.markdown-preview.markdown-preview pre .token.doctype,
+.markdown-preview.markdown-preview pre .token.cdata {
+  color: var(--md-syntax-comment, #6a9955) !important;
+  font-style: italic !important;
+}
+
+.markdown-body pre .token.keyword,
+.markdown-preview pre .token.keyword,
+body pre .token.keyword,
+.markdown-preview.markdown-preview pre .token.keyword {
+  color: var(--md-syntax-keyword, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body pre .token.operator,
+.markdown-preview pre .token.operator,
+body pre .token.operator,
+.markdown-preview.markdown-preview pre .token.operator {
+  color: var(--md-syntax-operator, #d4d4d4) !important;
+}
+
+.markdown-body pre .token.punctuation,
+.markdown-preview pre .token.punctuation,
+body pre .token.punctuation,
+.markdown-preview.markdown-preview pre .token.punctuation {
+  color: var(--md-syntax-punctuation, #d4d4d4) !important;
+}
+
+.markdown-body pre .token.string,
+.markdown-preview pre .token.string,
+body pre .token.string,
+.markdown-body pre .token.char,
+.markdown-preview pre .token.char,
+body pre .token.char,
+.markdown-body pre .token.attr-value,
+.markdown-preview pre .token.attr-value,
+body pre .token.attr-value,
+.markdown-preview.markdown-preview pre .token.string,
+.markdown-preview.markdown-preview pre .token.char,
+.markdown-preview.markdown-preview pre .token.attr-value {
+  color: var(--md-syntax-string, #ce9178) !important;
+}
+
+.markdown-body pre .token.number,
+.markdown-preview pre .token.number,
+body pre .token.number,
+.markdown-body pre .token.boolean,
+.markdown-preview pre .token.boolean,
+body pre .token.boolean,
+.markdown-preview.markdown-preview pre .token.number,
+.markdown-preview.markdown-preview pre .token.boolean {
+  color: var(--md-syntax-number, #b5cea8) !important;
+}
+
+.markdown-body pre .token.function,
+.markdown-preview pre .token.function,
+body pre .token.function,
+.markdown-preview.markdown-preview pre .token.function {
+  color: var(--md-syntax-function, #dcdcaa) !important;
+}
+
+.markdown-body pre .token.class-name,
+.markdown-preview pre .token.class-name,
+body pre .token.class-name,
+.markdown-body pre .token.builtin,
+.markdown-preview pre .token.builtin,
+body pre .token.builtin,
+.markdown-preview.markdown-preview pre .token.class-name,
+.markdown-preview.markdown-preview pre .token.builtin {
+  color: var(--md-syntax-type, #4ec9b0) !important;
+}
+
+.markdown-body pre .token.constant,
+.markdown-preview pre .token.constant,
+body pre .token.constant,
+.markdown-body pre .token.symbol,
+.markdown-preview pre .token.symbol,
+body pre .token.symbol,
+.markdown-preview.markdown-preview pre .token.constant,
+.markdown-preview.markdown-preview pre .token.symbol {
+  color: var(--md-syntax-constant, #4fc1ff) !important;
+}
+
+.markdown-body pre .token.variable,
+.markdown-preview pre .token.variable,
+body pre .token.variable,
+.markdown-body pre .token.parameter,
+.markdown-preview pre .token.parameter,
+body pre .token.parameter,
+.markdown-body pre .token.property,
+.markdown-preview pre .token.property,
+body pre .token.property,
+.markdown-body pre .token.attr-name,
+.markdown-preview pre .token.attr-name,
+body pre .token.attr-name,
+.markdown-preview.markdown-preview pre .token.variable,
+.markdown-preview.markdown-preview pre .token.parameter,
+.markdown-preview.markdown-preview pre .token.property,
+.markdown-preview.markdown-preview pre .token.attr-name {
+  color: var(--md-syntax-variable, #9cdcfe) !important;
+}
+
+.markdown-body pre .token.macro,
+.markdown-preview pre .token.macro,
+body pre .token.macro,
+.markdown-body pre .token.directive,
+.markdown-preview pre .token.directive,
+body pre .token.directive,
+.markdown-body pre .token.directive-hash,
+.markdown-preview pre .token.directive-hash,
+body pre .token.directive-hash,
+.markdown-body pre .token.important,
+.markdown-preview pre .token.important,
+body pre .token.important,
+.markdown-preview.markdown-preview pre .token.macro,
+.markdown-preview.markdown-preview pre .token.directive,
+.markdown-preview.markdown-preview pre .token.directive-hash,
+.markdown-preview.markdown-preview pre .token.important {
+  color: var(--md-syntax-preprocessor, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body pre .token.regex,
+.markdown-preview pre .token.regex,
+body pre .token.regex,
+.markdown-preview.markdown-preview pre .token.regex {
+  color: var(--md-syntax-string, #ce9178) !important;
+}
+
+.markdown-body pre .token.deleted,
+.markdown-preview pre .token.deleted,
+body pre .token.deleted,
+.markdown-preview.markdown-preview pre .token.deleted {
+  color: var(--md-syntax-deleted, #f44747) !important;
+}
+
+.markdown-body pre .token.inserted,
+.markdown-preview pre .token.inserted,
+body pre .token.inserted,
+.markdown-preview.markdown-preview pre .token.inserted {
+  color: var(--md-syntax-inserted, #89d185) !important;
+}
+
+.markdown-body pre .token.control,
+.markdown-preview pre .token.control,
+body pre .token.control,
+.markdown-preview.markdown-preview pre .token.control {
+  color: var(--md-syntax-control, #c586c0) !important;
+  font-weight: 600 !important;
+}
+
+/* === Highlight.js fallback === */
+
+.markdown-body pre .hljs-comment,
+.markdown-preview pre .hljs-comment,
+body pre .hljs-comment,
+.markdown-body pre .hljs-quote,
+.markdown-preview pre .hljs-quote,
+body pre .hljs-quote,
+.markdown-preview.markdown-preview pre .hljs-comment,
+.markdown-preview.markdown-preview pre .hljs-quote {
+  color: var(--md-syntax-comment, #6a9955) !important;
+  font-style: italic !important;
+}
+
+.markdown-body pre .hljs-keyword,
+.markdown-preview pre .hljs-keyword,
+body pre .hljs-keyword,
+.markdown-body pre .hljs-selector-tag,
+.markdown-preview pre .hljs-selector-tag,
+body pre .hljs-selector-tag,
+.markdown-preview.markdown-preview pre .hljs-keyword,
+.markdown-preview.markdown-preview pre .hljs-selector-tag {
+  color: var(--md-syntax-keyword, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body pre .hljs-string,
+.markdown-preview pre .hljs-string,
+body pre .hljs-string,
+.markdown-body pre .hljs-doctag,
+.markdown-preview pre .hljs-doctag,
+body pre .hljs-doctag,
+.markdown-preview.markdown-preview pre .hljs-string,
+.markdown-preview.markdown-preview pre .hljs-doctag {
+  color: var(--md-syntax-string, #ce9178) !important;
+}
+
+.markdown-body pre .hljs-number,
+.markdown-preview pre .hljs-number,
+body pre .hljs-number,
+.markdown-body pre .hljs-literal,
+.markdown-preview pre .hljs-literal,
+body pre .hljs-literal,
+.markdown-preview.markdown-preview pre .hljs-number,
+.markdown-preview.markdown-preview pre .hljs-literal {
+  color: var(--md-syntax-number, #b5cea8) !important;
+}
+
+.markdown-body pre .hljs-title,
+.markdown-preview pre .hljs-title,
+body pre .hljs-title,
+.markdown-body pre .hljs-title.function_,
+.markdown-preview pre .hljs-title.function_,
+body pre .hljs-title.function_,
+.markdown-preview.markdown-preview pre .hljs-title,
+.markdown-preview.markdown-preview pre .hljs-title.function_ {
+  color: var(--md-syntax-function, #dcdcaa) !important;
+}
+
+.markdown-body pre .hljs-type,
+.markdown-preview pre .hljs-type,
+body pre .hljs-type,
+.markdown-body pre .hljs-built_in,
+.markdown-preview pre .hljs-built_in,
+body pre .hljs-built_in,
+.markdown-body pre .hljs-class .hljs-title,
+.markdown-preview pre .hljs-class .hljs-title,
+body pre .hljs-class .hljs-title,
+.markdown-preview.markdown-preview pre .hljs-type,
+.markdown-preview.markdown-preview pre .hljs-built_in,
+.markdown-preview.markdown-preview pre .hljs-class .hljs-title {
+  color: var(--md-syntax-type, #4ec9b0) !important;
+}
+
+.markdown-body pre .hljs-variable,
+.markdown-preview pre .hljs-variable,
+body pre .hljs-variable,
+.markdown-body pre .hljs-params,
+.markdown-preview pre .hljs-params,
+body pre .hljs-params,
+.markdown-body pre .hljs-attr,
+.markdown-preview pre .hljs-attr,
+body pre .hljs-attr,
+.markdown-preview.markdown-preview pre .hljs-variable,
+.markdown-preview.markdown-preview pre .hljs-params,
+.markdown-preview.markdown-preview pre .hljs-attr {
+  color: var(--md-syntax-variable, #9cdcfe) !important;
+}
+
+.markdown-body pre .hljs-meta,
+.markdown-preview pre .hljs-meta,
+body pre .hljs-meta,
+.markdown-body pre .hljs-meta-keyword,
+.markdown-preview pre .hljs-meta-keyword,
+body pre .hljs-meta-keyword,
+.markdown-preview.markdown-preview pre .hljs-meta,
+.markdown-preview.markdown-preview pre .hljs-meta-keyword {
+  color: var(--md-syntax-preprocessor, #569cd6) !important;
+  font-weight: 600 !important;
+}
+
+.markdown-body pre .hljs-operator,
+.markdown-preview pre .hljs-operator,
+body pre .hljs-operator,
+.markdown-body pre .hljs-punctuation,
+.markdown-preview pre .hljs-punctuation,
+body pre .hljs-punctuation,
+.markdown-preview.markdown-preview pre .hljs-operator,
+.markdown-preview.markdown-preview pre .hljs-punctuation {
+  color: var(--md-syntax-operator, #d4d4d4) !important;
+}

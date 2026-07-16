@@ -54,6 +54,17 @@ Each file contains install instructions in the header comment plus the full inli
 - **Graphite** - editorial documentation theme with warm copper contrast
 - **Meridian** - blue-green structural theme for checklists, tables, and runbooks
 
+## Fenced Code And C++ Syntax
+
+Primary bundles ship **C++-first Prism token colors** for fenced ``` blocks (keywords, types, strings, numbers, comments, functions, preprocessor).
+
+- Token colors come from `--md-syntax-*` variables defined by each family.
+- Per-token gray chip backgrounds from MPE `codeBlockTheme` remain stripped.
+- Keep `"markdown-preview-enhanced.codeBlockTheme": "auto.css"` — the theme overrides token colors while preserving highlighting structure.
+- After updating a bundle, re-paste the full `themes/mpe/global-*.less` file into `%USERPROFILE%\.crossnote\style.less` and refresh the MPE preview.
+
+Best fixtures for checking code styling: `examples/code-showcase.md` and `examples/documentation-patterns.md`.
+
 ## Install step by step (Windows)
 
 ### 1. Open the global style file
@@ -166,8 +177,14 @@ For workspace-only install, paste the same bundle into `.crossnote/style.less` a
 ### Gray boxes on operators or punctuation inside ``` blocks
 
 - MPE's built-in `codeBlockTheme` adds per-token backgrounds (e.g. on `&&`, `<`, `>`).
-- Re-paste the latest `global-cpp-modern.less` into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping syntax colors.
+- Re-paste the latest primary bundle (for example `global-cpp-modern.less`) into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping family syntax colors.
 - Refresh the MPE preview after saving.
+
+### Code colors look wrong or washed out
+
+- Confirm you pasted a **current** primary bundle that includes `--md-syntax-*` variables.
+- Refresh the preview after saving `style.less`.
+- Check `examples/code-showcase.md` under C++ fences for keyword / type / string contrast.
 
 ### Wrong file location
 

@@ -31,6 +31,22 @@ body {
   --md-font-mono: var(--graphite-font-mono);
   --md-line-height: 1.82;
   --md-padding: 24px 32px;
+
+  /* C++-first Prism token palette (copper on paper) */
+  --md-syntax-comment: #7a6a5c;
+  --md-syntax-keyword: #9a5521;
+  --md-syntax-control: #8f3d6b;
+  --md-syntax-type: #8f4d1d;
+  --md-syntax-function: #6b4a1f;
+  --md-syntax-string: #a35a28;
+  --md-syntax-number: #7a5a28;
+  --md-syntax-variable: #5c4030;
+  --md-syntax-constant: #b56c35;
+  --md-syntax-preprocessor: #9a5521;
+  --md-syntax-operator: #5c4a3c;
+  --md-syntax-punctuation: #6b5a4c;
+  --md-syntax-deleted: #b42318;
+  --md-syntax-inserted: #067647;
 }
 
 .markdown-body,
@@ -164,7 +180,10 @@ body pre {
 body pre code {
   padding: 0 !important;
   background: transparent !important;
-  color: inherit !important;
+  color: #3b2c20 !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
 }
 
 .markdown-body table,

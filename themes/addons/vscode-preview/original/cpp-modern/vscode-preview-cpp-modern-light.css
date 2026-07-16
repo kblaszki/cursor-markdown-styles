@@ -24,12 +24,28 @@ body {
   --cpp-code-inline: #0f5fd7;
   --cpp-code-bg: #e8eef5;
 
+  /* C++-first Prism token palette (Dark+ on paper) */
+  --md-syntax-comment: #2f6b2f;
+  --md-syntax-keyword: #0b57a4;
+  --md-syntax-control: #8a2f8a;
+  --md-syntax-type: #0e7490;
+  --md-syntax-function: #6b5a00;
+  --md-syntax-string: #a14a1f;
+  --md-syntax-number: #2f6b2f;
+  --md-syntax-variable: #0f5fd7;
+  --md-syntax-constant: #0369a1;
+  --md-syntax-preprocessor: #0b57a4;
+  --md-syntax-operator: #334155;
+  --md-syntax-punctuation: #475569;
+  --md-syntax-deleted: #b42318;
+  --md-syntax-inserted: #067647;
+
   --md-bg: var(--cpp-bg);
   --md-text: var(--cpp-fg);
   --md-border: var(--cpp-border-subtle);
   --md-accent: var(--cpp-link);
   --md-panel: var(--cpp-panel);
-  --md-code-bg: var(--cpp-code-bg);
+  --md-code-bg: #e8eef5;
   --md-code-text: var(--cpp-code-inline);
   --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
   --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
@@ -188,7 +204,10 @@ body pre {
 body pre code {
   padding: 0 !important;
   background: transparent !important;
-  color: inherit !important;
+  color: var(--cpp-code-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
 }
 
 .markdown-body table,

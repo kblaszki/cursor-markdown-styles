@@ -29,6 +29,22 @@ body {
   --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
   --md-line-height: 1.78;
   --md-padding: 22px 30px;
+
+  /* C++-first Prism token palette (sage / emerald) */
+  --md-syntax-comment: #7f9e95;
+  --md-syntax-keyword: #5ec4c0;
+  --md-syntax-control: #8fd4b8;
+  --md-syntax-type: #62c3a5;
+  --md-syntax-function: #a0f1dc;
+  --md-syntax-string: #7ed7c5;
+  --md-syntax-number: #9ad9b5;
+  --md-syntax-variable: #c5ebe0;
+  --md-syntax-constant: #38b2ac;
+  --md-syntax-preprocessor: #4db6a8;
+  --md-syntax-operator: #b7d5cb;
+  --md-syntax-punctuation: #93aca3;
+  --md-syntax-deleted: #f07178;
+  --md-syntax-inserted: #7fd99a;
 }
 
 .markdown-body,
@@ -161,7 +177,10 @@ body pre {
 body pre code {
   padding: 0 !important;
   background: transparent !important;
-  color: inherit !important;
+  color: #def6ee !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
 }
 
 .markdown-body table,

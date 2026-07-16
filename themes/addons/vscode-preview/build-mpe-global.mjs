@@ -6,6 +6,8 @@ const root = dirname(fileURLToPath(import.meta.url));
 const mpeDir = join(root, "../../mpe");
 const scopeRules = readFileSync(join(root, "_scope.css"), "utf8").trim();
 const scopeMarker = "Shared scope and VS Code / MPE preview helpers";
+const syntaxRules = readFileSync(join(root, "_syntax-tokens.css"), "utf8").trim();
+const syntaxMarker = "Shared C++-first Prism / hljs token colors";
 
 const variants = [
   {
@@ -90,6 +92,14 @@ for (const { css, out, label } of variants) {
   if (!themeCss.includes(scopeMarker)) {
     themeCss = `${themeCss}\n\n${scopeRules}`;
   }
+
+  const syntaxIndex = themeCss.indexOf(syntaxMarker);
+  if (syntaxIndex >= 0) {
+    const commentStart = themeCss.lastIndexOf("/*", syntaxIndex);
+    themeCss = themeCss.slice(0, commentStart >= 0 ? commentStart : syntaxIndex).trimEnd();
+  }
+  themeCss = `${themeCss}\n\n${syntaxRules}`;
+
   const bundle = `${header(label, basename(out))}\n${themeCss}\n`;
   writeFileSync(out, bundle, "utf8");
   console.log(`wrote ${out}`);
