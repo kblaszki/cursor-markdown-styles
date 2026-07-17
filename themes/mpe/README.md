@@ -55,6 +55,8 @@ Recommended companion extensions are listed in the root [README.md](../../README
 | ---- | ----- |
 | [global-cpp-modern-v1-syntax.less](global-cpp-modern-v1-syntax.less) | C++ Modern v1 Syntax |
 | [global-cpp-modern-v2-readable.less](global-cpp-modern-v2-readable.less) | C++ Modern v2 Readable |
+| [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) | C++ Modern v3 Diagrams (Mermaid + diagram styling) |
+| [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less) | C++ Modern v3 Diagrams Light |
 
 ### Legacy Lumina Variants
 
@@ -70,6 +72,7 @@ Each file contains install instructions in the header comment plus the full inli
 ## Family Guide
 
 - **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling
+- **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid and diagram chrome (legacy variant)
 - **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
 - **Lumina** - brighter neon identity with gradient headings and luminous accents
 - **Graphite** - editorial documentation theme with warm copper contrast
@@ -90,6 +93,232 @@ Primary bundles ship **C++-first Prism token colors** for fenced ``` blocks (key
 - After updating a bundle, re-paste the full `themes/mpe/global-*.less` file into `%USERPROFILE%\.crossnote\style.less` and refresh the MPE preview.
 
 Best fixtures for checking code styling: `examples/code-showcase.md` and `examples/documentation-patterns.md`.
+
+## Diagrams / Mermaid
+
+Mermaid diagrams render in **MPE only** (not in the browser workbench). For themed diagram output use the **v3 Diagrams** bundle:
+
+| File | Theme |
+| ---- | ----- |
+| [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) | C++ Modern v3 Diagrams (dark) |
+| [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less) | C++ Modern v3 Diagrams Light |
+| [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) | Fields to put inside `mermaidConfig` in `config.js` (not a whole `config.js` file) |
+
+MPE does not provide a separate global CSS file for Mermaid — diagram colors come from `mermaidConfig` (init / `themeVariables`) plus `--md-diagram-*` overrides in the v3 `style.less` bundle (see `_diagram-tokens.css` in the vscode-preview add-on).
+
+Best fixture for checking diagram styling: `examples/mermaid-showcase.md`.
+
+### Configure Mermaid (Open Config Script)
+
+Without `theme: "base"` and `themeVariables` in `config.js`, Mermaid keeps default light-gray edge-label backgrounds (`yes` / `no` / `assign`). CSS alone often cannot win over those defaults.
+
+#### 1. Install the v3 CSS bundle
+
+Paste [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) into `%USERPROFILE%\.crossnote\style.less` (same steps as [Install step by step](#install-step-by-step-windows) below).
+
+#### 2. VS Code / Cursor settings
+
+Add to user or workspace `settings.json`:
+
+```json
+{
+  "markdown-preview-enhanced.previewTheme": "none.css",
+  "markdown-preview-enhanced.mermaidTheme": "default"
+}
+```
+
+Use `"default"`, not `"dark"`. The built-in `mermaid.dark.css` theme often restores light edge-label backgrounds.
+
+#### 3. Open the global config script
+
+1. Press `Ctrl+Shift+P` (Command Palette).
+2. Run: **Markdown Preview Enhanced: Open Config Script (Global)**.
+3. VS Code opens (or creates):
+
+```text
+C:\Users\<YourUser>\.crossnote\config.js
+```
+
+A fresh file looks like this — `mermaidConfig` only has `startOnLoad`:
+
+```js
+({
+  katexConfig: {
+    "macros": {}
+  },
+
+  mathjaxConfig: {
+    "tex": {},
+    "options": {
+      "enableEnrichment": false
+    },
+    "loader": {}
+  },
+
+  mermaidConfig: {
+    "startOnLoad": false
+  },
+})
+```
+
+#### 4. Fill in `mermaidConfig`
+
+Do **not** replace the entire `config.js` with the JSON file.  
+[mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) is the **contents** of `mermaidConfig` only.
+
+Keep `startOnLoad: false`, then merge in every field from that JSON (`theme`, `themeVariables`, `flowchart`, …).
+
+Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
+
+```js
+({
+  katexConfig: {
+    "macros": {}
+  },
+
+  mathjaxConfig: {
+    "tex": {},
+    "options": {
+      "enableEnrichment": false
+    },
+    "loader": {}
+  },
+
+  mermaidConfig: {
+    "startOnLoad": false,
+    "theme": "base",
+    "themeVariables": {
+      "darkMode": true,
+      "background": "#2b2b2b",
+      "primaryColor": "#2d2d30",
+      "primaryTextColor": "#ffffff",
+      "primaryBorderColor": "#569cd6",
+      "secondaryColor": "#333333",
+      "secondaryTextColor": "#ffffff",
+      "secondaryBorderColor": "#569cd6",
+      "tertiaryColor": "#252526",
+      "tertiaryTextColor": "#ffffff",
+      "tertiaryBorderColor": "#4ec9b0",
+      "lineColor": "#b0b0b0",
+      "arrowheadColor": "#4ec9b0",
+      "textColor": "#ffffff",
+      "mainBkg": "#2d2d30",
+      "nodeBorder": "#569cd6",
+      "nodeTextColor": "#ffffff",
+      "clusterBkg": "#2f3634",
+      "clusterBorder": "#4ec9b0",
+      "titleColor": "#4ec9b0",
+      "edgeLabelBackground": "transparent",
+      "labelBackground": "transparent",
+      "labelTextColor": "#ffffff",
+      "relationLabelBackground": "transparent",
+      "actorBkg": "#2d2d30",
+      "actorBorder": "#569cd6",
+      "actorTextColor": "#ffffff",
+      "actorLineColor": "#4ec9b0",
+      "signalColor": "#4ec9b0",
+      "signalTextColor": "#ffffff",
+      "stateBkg": "#2d2d30",
+      "stateBorder": "#569cd6",
+      "stateLabelColor": "#ffffff",
+      "pie1": "#569cd6",
+      "pie2": "#4ec9b0",
+      "pie3": "#6a9955",
+      "pie4": "#ce9178",
+      "pie5": "#b5cea8",
+      "pie6": "#c586c0",
+      "pie7": "#dcdcaa",
+      "pieTitleTextColor": "#ffffff",
+      "pieSectionTextColor": "#ffffff",
+      "pieSectionTextSize": "14px",
+      "pieLegendTextColor": "#e8e8e8",
+      "pieStrokeColor": "#2b2b2b",
+      "pieStrokeWidth": "1px",
+      "git0": "#569cd6",
+      "git1": "#4ec9b0",
+      "git2": "#6a9955",
+      "git3": "#ce9178",
+      "gitBranchLabel0": "#ffffff",
+      "gitBranchLabel1": "#ffffff",
+      "gitBranchLabel2": "#ffffff",
+      "commitLabelColor": "#e8e8e8",
+      "commitLabelBackground": "#333333",
+      "gitInv0": "#4ec9b0",
+      "gitInv1": "#569cd6",
+      "fontFamily": "Segoe UI, Inter, system-ui, sans-serif",
+      "fontSize": "14px",
+      "quadrant1Fill": "#2a3438",
+      "quadrant2Fill": "#283238",
+      "quadrant3Fill": "#262a2e",
+      "quadrant4Fill": "#24282c",
+      "quadrantPointFill": "#4ec9b0",
+      "quadrantPointStrokeColor": "#ffffff",
+      "quadrantPointTextFill": "#ffffff",
+      "quadrantXAxisTextColor": "#cccccc",
+      "quadrantYAxisTextColor": "#cccccc",
+      "quadrantTitleFill": "#4ec9b0",
+      "quadrantLabelFill": "#ffffff",
+      "quadrantInnerStrokeFill": "#569cd6",
+      "quadrantOuterStrokeFill": "#4ec9b0"
+    },
+    "flowchart": {
+      "htmlLabels": false,
+      "padding": 12,
+      "nodeSpacing": 50,
+      "rankSpacing": 55
+    },
+    "sequence": {
+      "diagramMarginX": 24,
+      "diagramMarginY": 20,
+      "boxMargin": 10,
+      "actorFontSize": 14
+    },
+    "class": {
+      "padding": 10
+    },
+    "state": {
+      "padding": 6,
+      "nodeSpacing": 30,
+      "rankSpacing": 30,
+      "fontSize": 12,
+      "dividerMargin": 6
+    },
+    "gantt": {
+      "leftPadding": 75,
+      "gridLineStartPadding": 35
+    },
+    "journey": {
+      "sectionFontSize": 14,
+      "taskFontSize": 13
+    },
+    "pie": {
+      "textPosition": 0.75
+    },
+    "gitGraph": {
+      "showBranches": true,
+      "showCommitLabel": true,
+      "rotateCommitLabel": true
+    }
+  },
+})
+```
+
+For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less)).
+
+#### 5. Save and verify
+
+1. Save `config.js` (`Ctrl+S`).
+2. Refresh the MPE preview (toolbar refresh, or close/reopen preview).
+3. Open `examples/mermaid-showcase.md` and check flowchart `yes` / `no` and state labels like `assign` — they should have **no** light-gray label background.
+
+### Mermaid troubleshooting
+
+| Symptom | Fix |
+| ------- | --- |
+| Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"` and `edgeLabelBackground: "transparent"` are inside `mermaidConfig` in `config.js`, not only in a loose JSON file on disk |
+| Config seems ignored | Re-open via **Open Config Script (Global)** — the live file is `%USERPROFILE%\.crossnote\config.js` |
+| Labels still light after CSS paste | Do not use `"markdown-preview-enhanced.mermaidTheme": "dark"` |
+| Only `startOnLoad: false` in `mermaidConfig` | Merge the full [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) fields into that object |
 
 ## Install step by step (Windows)
 

@@ -53,6 +53,8 @@ Regenerate embedded fixtures after editing examples:
 node preview/build-fixtures.mjs
 ```
 
+**Mermaid diagrams** do not render in this workbench — they appear as source code blocks. Test diagram styling in MPE with `examples/mermaid-showcase.md` and `global-cpp-modern-v3-diagrams.less`.
+
 ## Relationship To The Main Workflow
 
 This directory is a **support tool** for the main setup, not a replacement for it.

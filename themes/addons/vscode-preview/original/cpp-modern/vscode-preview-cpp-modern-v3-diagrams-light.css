@@ -1,0 +1,285 @@
+/* C++ Modern v3 Diagrams Light - blue-teal palette + Mermaid / diagram styling
+ * Pair with MPE setting: "markdown-preview-enhanced.mermaidTheme": "default"
+ * VS Code / Cursor side preview and Markdown Preview Enhanced
+ * Copyright (c) 2026 kblaszki
+ * SPDX-License-Identifier: MIT
+ */
+
+.markdown-body,
+.markdown-preview,
+body {
+  --cpp-bg: #f7f9fc;
+  --cpp-fg: #203040;
+  --cpp-muted: #5f7284;
+  --cpp-panel: #eef4f8;
+  --cpp-panel-raised: #ffffff;
+  --cpp-border: #c8d5df;
+  --cpp-border-subtle: color-mix(in srgb, var(--cpp-secondary) 18%, white);
+
+  --cpp-primary: #0e7490;
+  --cpp-secondary: #2563eb;
+  --cpp-link: #0f5fd7;
+  --cpp-link-hover: #0b4bac;
+  --cpp-accent: #0f766e;
+  --cpp-code-fg: #16324a;
+  --cpp-code-inline: #0f5fd7;
+  --cpp-code-bg: #e8eef5;
+
+  /* C++-first Prism token palette (Dark+ on paper) */
+  --md-syntax-comment: #2f6b2f;
+  --md-syntax-keyword: #0b57a4;
+  --md-syntax-control: #8a2f8a;
+  --md-syntax-type: #0e7490;
+  --md-syntax-function: #6b5a00;
+  --md-syntax-string: #a14a1f;
+  --md-syntax-number: #2f6b2f;
+  --md-syntax-variable: #0f5fd7;
+  --md-syntax-constant: #0369a1;
+  --md-syntax-preprocessor: #0b57a4;
+  --md-syntax-operator: #334155;
+  --md-syntax-punctuation: #475569;
+  --md-syntax-deleted: #b42318;
+  --md-syntax-inserted: #067647;
+
+  --md-bg: var(--cpp-bg);
+  --md-text: var(--cpp-fg);
+  --md-border: var(--cpp-border-subtle);
+  --md-accent: var(--cpp-link);
+  --md-panel: var(--cpp-panel);
+  --md-code-bg: #e8eef5;
+  --md-code-text: var(--cpp-code-inline);
+  --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
+  --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
+  --md-line-height: 1.8;
+  --md-padding: 22px 30px;
+
+  /* Diagram / Mermaid palette (see _diagram-tokens.css) */
+  --md-diagram-bg: var(--cpp-panel);
+  --md-diagram-border: var(--cpp-border);
+  --md-diagram-font: var(--md-font-body);
+  --md-diagram-font-size: 14px;
+  --md-diagram-node-fill: #ffffff;
+  --md-diagram-node-stroke: var(--cpp-secondary);
+  --md-diagram-node-text: #16324a;
+  --md-diagram-edge: #5f7284;
+  --md-diagram-arrow: #2563eb;
+  --md-diagram-label-bg: transparent;
+  --md-diagram-label-border: transparent;
+  --md-diagram-label-text: #16324a;
+  --md-diagram-cluster-fill: #e4edf4;
+  --md-diagram-cluster-stroke: var(--cpp-primary);
+  --md-diagram-quadrant-fill: #e8f0f6;
+  --md-diagram-point-fill: #2563eb;
+  --md-diagram-point-stroke: #ffffff;
+  --md-diagram-actor-fill: var(--cpp-panel-raised);
+  --md-diagram-actor-stroke: var(--cpp-secondary);
+  --md-diagram-note-fill: var(--cpp-panel-raised);
+  --md-diagram-note-border: var(--cpp-primary);
+  --md-diagram-accent: var(--cpp-primary);
+  --md-diagram-accent2: var(--cpp-secondary);
+  --md-diagram-muted: var(--cpp-muted);
+  --md-diagram-error: #b42318;
+  --md-diagram-success: #067647;
+}
+
+.markdown-body,
+.markdown-preview,
+body {
+  color: var(--md-text) !important;
+  background: var(--md-bg) !important;
+  font-family: var(--md-font-body) !important;
+  line-height: var(--md-line-height) !important;
+}
+
+.markdown-body,
+.markdown-preview {
+  padding: var(--md-padding) !important;
+}
+
+body {
+  background: var(--md-bg) !important;
+  color: var(--md-text) !important;
+}
+
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+  margin: 0 0 1.15rem !important;
+}
+
+.markdown-body p,
+.markdown-preview p,
+body p {
+  color: var(--cpp-fg) !important;
+}
+
+.markdown-body :is(h1, h2, h3, h4, h5, h6),
+.markdown-preview :is(h1, h2, h3, h4, h5, h6),
+body :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  margin: 1.75em 0 0.6em !important;
+  letter-spacing: -0.015em !important;
+}
+
+.markdown-body h1,
+.markdown-preview h1,
+body h1 {
+  font-size: 1.85em !important;
+  color: var(--cpp-fg) !important;
+  padding-bottom: 0.4em !important;
+  border-bottom: 2px solid var(--cpp-primary) !important;
+}
+
+.markdown-body h2,
+.markdown-preview h2,
+body h2 {
+  color: var(--cpp-primary) !important;
+  border-bottom: 1px solid var(--cpp-border) !important;
+  padding-bottom: 0.28em !important;
+}
+
+.markdown-body h3,
+.markdown-preview h3,
+body h3 {
+  color: color-mix(in srgb, var(--cpp-secondary) 82%, var(--cpp-fg)) !important;
+}
+
+.markdown-body h4,
+.markdown-preview h4,
+body h4 {
+  color: color-mix(in srgb, var(--cpp-secondary) 55%, var(--cpp-fg)) !important;
+}
+
+.markdown-body h5,
+.markdown-preview h5,
+body h5,
+.markdown-body h6,
+.markdown-preview h6,
+body h6 {
+  color: var(--cpp-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.markdown-body a,
+.markdown-preview a,
+body a {
+  color: var(--cpp-link) !important;
+  text-decoration: underline !important;
+  text-decoration-color: color-mix(in srgb, var(--cpp-link) 40%, transparent) !important;
+  text-underline-offset: 2px !important;
+}
+
+.markdown-body a:hover,
+.markdown-preview a:hover,
+body a:hover {
+  color: var(--cpp-link-hover) !important;
+}
+
+.markdown-body ul,
+.markdown-preview ul,
+body ul,
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  padding-left: 1.55rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li::marker,
+.markdown-preview ul:not(.contains-task-list) > li::marker,
+body ul:not(.contains-task-list) > li::marker,
+.markdown-body ol > li::marker,
+.markdown-preview ol > li::marker,
+body ol > li::marker {
+  color: var(--cpp-primary) !important;
+}
+
+.markdown-body blockquote,
+.markdown-preview blockquote,
+body blockquote {
+  margin-left: 0 !important;
+  padding: 0.65rem 1rem !important;
+  color: color-mix(in srgb, var(--cpp-muted) 90%, var(--cpp-fg)) !important;
+  background: var(--cpp-panel) !important;
+  border-left: 4px solid var(--cpp-secondary) !important;
+  border-radius: 0 12px 12px 0 !important;
+}
+
+.markdown-body code,
+.markdown-preview code,
+body code {
+  padding: 0.16rem 0.38rem !important;
+  color: var(--cpp-code-inline) !important;
+  background: var(--cpp-code-bg) !important;
+  border-radius: 6px !important;
+  font-family: var(--md-font-mono) !important;
+}
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  overflow-x: auto !important;
+  padding: 1rem 1.1rem !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-left: 4px solid var(--cpp-accent) !important;
+  border-radius: 12px !important;
+  background: var(--cpp-panel-raised) !important;
+  color: var(--cpp-code-fg) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cpp-secondary) 8%, transparent) !important;
+}
+
+.markdown-body pre code,
+.markdown-preview pre code,
+body pre code {
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--cpp-code-fg) !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.9em !important;
+  line-height: 1.7 !important;
+}
+
+.markdown-body table,
+.markdown-preview table,
+body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: var(--cpp-panel-raised) !important;
+}
+
+.markdown-body :is(th, td),
+.markdown-preview :is(th, td),
+body :is(th, td) {
+  padding: 0.72rem 0.85rem !important;
+  border: 1px solid var(--cpp-border) !important;
+}
+
+.markdown-body th,
+.markdown-preview th,
+body th {
+  background: var(--cpp-panel) !important;
+  color: var(--cpp-fg) !important;
+}
+
+.markdown-body hr,
+.markdown-preview hr,
+body hr {
+  height: 1px !important;
+  border: 0 !important;
+  background: var(--cpp-border) !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--cpp-accent) !important;
+}
+
+.markdown-body details,
+.markdown-preview details,
+body details {
+  padding: 0.8rem 1rem !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-radius: 12px !important;
+  background: var(--cpp-panel) !important;
+}

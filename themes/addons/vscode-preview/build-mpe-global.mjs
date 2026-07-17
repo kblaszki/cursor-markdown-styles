@@ -8,6 +8,8 @@ const scopeRules = readFileSync(join(root, "_scope.css"), "utf8").trim();
 const scopeMarker = "Shared scope and VS Code / MPE preview helpers";
 const syntaxRules = readFileSync(join(root, "_syntax-tokens.css"), "utf8").trim();
 const syntaxMarker = "Shared C++-first Prism / hljs token colors";
+const diagramRules = readFileSync(join(root, "_diagram-tokens.css"), "utf8").trim();
+const diagramMarker = "Shared Mermaid / diagram colors";
 const graphiteCodeRefine = readFileSync(
   join(root, "original/graphite-code/_cpp-syntax-refine.css"),
   "utf8",
@@ -34,6 +36,18 @@ const variants = [
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v2-readable.css"),
     out: join(mpeDir, "global-cpp-modern-v2-readable.less"),
     label: "C++ Modern v2 Readable",
+  },
+  {
+    css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v3-diagrams.css"),
+    out: join(mpeDir, "global-cpp-modern-v3-diagrams.less"),
+    label: "C++ Modern v3 Diagrams",
+    appendDiagramTokens: true,
+  },
+  {
+    css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v3-diagrams-light.css"),
+    out: join(mpeDir, "global-cpp-modern-v3-diagrams-light.less"),
+    label: "C++ Modern v3 Diagrams Light",
+    appendDiagramTokens: true,
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina.css"),
@@ -172,7 +186,7 @@ const header = (label, filename) => `/* ========================================
 
 mkdirSync(mpeDir, { recursive: true });
 
-for (const { css, out, label, appendSyntaxRefine = false } of variants) {
+for (const { css, out, label, appendSyntaxRefine = false, appendDiagramTokens = false } of variants) {
   let themeCss = readFileSync(css, "utf8").trim();
   if (!themeCss.includes(scopeMarker)) {
     themeCss = `${themeCss}\n\n${scopeRules}`;
@@ -184,6 +198,12 @@ for (const { css, out, label, appendSyntaxRefine = false } of variants) {
     themeCss = themeCss.slice(0, commentStart >= 0 ? commentStart : refineIndex).trimEnd();
   }
 
+  const diagramIndex = themeCss.indexOf(diagramMarker);
+  if (diagramIndex >= 0) {
+    const commentStart = themeCss.lastIndexOf("/*", diagramIndex);
+    themeCss = themeCss.slice(0, commentStart >= 0 ? commentStart : diagramIndex).trimEnd();
+  }
+
   const syntaxIndex = themeCss.indexOf(syntaxMarker);
   if (syntaxIndex >= 0) {
     const commentStart = themeCss.lastIndexOf("/*", syntaxIndex);
@@ -192,6 +212,9 @@ for (const { css, out, label, appendSyntaxRefine = false } of variants) {
   themeCss = `${themeCss}\n\n${syntaxRules}`;
   if (appendSyntaxRefine) {
     themeCss = `${themeCss}\n\n${graphiteCodeRefine}`;
+  }
+  if (appendDiagramTokens) {
+    themeCss = `${themeCss}\n\n${diagramRules}`;
   }
 
   const bundle = `${header(label, basename(out))}\n${themeCss}\n`;

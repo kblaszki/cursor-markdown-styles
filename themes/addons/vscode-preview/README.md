@@ -22,6 +22,8 @@ They do **not** apply to Cursor's inline `Preview | Markdown` mode. That path is
 - `original/matcha/` — Matcha tea-garden serif family
 - `original/beacon/` — Beacon readability-first family (tempered Dark+/Light+ code)
 - `_scope.css` — shared task-list and front-matter helpers (reference only)
+- `_syntax-tokens.css` — shared C++-first Prism / hljs token colors (appended to MPE bundles)
+- `_diagram-tokens.css` — shared Mermaid / diagram SVG overrides (appended to v3 bundles only)
 - `build-from-inline.mjs` — regenerate themes from cursor-inline sources
 - `build-mpe-global.mjs` — regenerate `../../mpe/global-*.less` bundles
 
@@ -59,6 +61,8 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | [../../mpe/global-studio.less](../../mpe/global-studio.less) | Studio (recommended light peer) |
 | [../../mpe/global-cpp-modern-v1-syntax.less](../../mpe/global-cpp-modern-v1-syntax.less) | v1 Syntax |
 | [../../mpe/global-cpp-modern-v2-readable.less](../../mpe/global-cpp-modern-v2-readable.less) | v2 Readable |
+| [../../mpe/global-cpp-modern-v3-diagrams.less](../../mpe/global-cpp-modern-v3-diagrams.less) | v3 Diagrams |
+| [../../mpe/global-cpp-modern-v3-diagrams-light.less](../../mpe/global-cpp-modern-v3-diagrams-light.less) | v3 Diagrams Light |
 | [../../mpe/global-lumina.less](../../mpe/global-lumina.less) | Lumina |
 | [../../mpe/global-lumina-light.less](../../mpe/global-lumina-light.less) | Lumina Light |
 | [../../mpe/global-lumina-v1-neon.less](../../mpe/global-lumina-v1-neon.less) | Lumina v1 Neon |

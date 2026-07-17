@@ -79,6 +79,27 @@ Client          API (C++)        PostgreSQL
   │◄── 200 ──────│                    │
 ```
 
+## Sequence Diagram (Mermaid)
+
+Same flow as above, rendered by MPE when using a diagram-aware theme (for example `global-cpp-modern-v3-diagrams.less`).
+
+```mermaid
+sequenceDiagram
+  participant Client
+  participant API as API C++
+  participant PG as PostgreSQL
+
+  Client->>API: POST /tasks
+  API->>PG: INSERT
+  PG-->>API: OK
+  API-->>Client: 201 Created
+
+  Client->>API: GET /tasks
+  API->>PG: SELECT
+  PG-->>API: rows
+  API-->>Client: 200 OK
+```
+
 ## Compatibility Table
 
 | Compiler | Standard | TaskFlow API | Status |

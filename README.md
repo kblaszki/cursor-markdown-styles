@@ -131,6 +131,7 @@ Use the files in [`examples/`](examples/) to verify your setup:
 - [`examples/theme-preview.md`](examples/theme-preview.md) - overall visual sanity check
 - [`examples/extended.md`](examples/extended.md) - tables, images, HTML, code fences
 - [`examples/code-showcase.md`](examples/code-showcase.md) - code-heavy technical samples
+- [`examples/mermaid-showcase.md`](examples/mermaid-showcase.md) - Mermaid diagram catalog (MPE)
 - [`examples/frontmatter.md`](examples/frontmatter.md) - YAML front matter behavior
 - [`examples/documentation-patterns.md`](examples/documentation-patterns.md) - documentation structure
 

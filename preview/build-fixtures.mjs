@@ -11,6 +11,7 @@ const FIXTURES = [
   { id: "extended", label: "Extended", file: "extended.md" },
   { id: "checkboxes", label: "Checklists", file: "checkboxes.md" },
   { id: "code-showcase", label: "Code", file: "code-showcase.md" },
+  { id: "mermaid-showcase", label: "Mermaid", file: "mermaid-showcase.md" },
   { id: "documentation-patterns", label: "Docs", file: "documentation-patterns.md" },
   { id: "mvp-taskflow", label: "Long Form", file: "mvp-taskflow.md" },
 ];
