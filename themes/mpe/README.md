@@ -188,128 +188,13 @@ Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
 
   mermaidConfig: {
     "startOnLoad": false,
-    "theme": "base",
-    "themeVariables": {
-      "darkMode": true,
-      "background": "#2b2b2b",
-      "primaryColor": "#2d2d30",
-      "primaryTextColor": "#ffffff",
-      "primaryBorderColor": "#569cd6",
-      "secondaryColor": "#333333",
-      "secondaryTextColor": "#ffffff",
-      "secondaryBorderColor": "#569cd6",
-      "tertiaryColor": "#252526",
-      "tertiaryTextColor": "#ffffff",
-      "tertiaryBorderColor": "#4ec9b0",
-      "lineColor": "#b0b0b0",
-      "arrowheadColor": "#4ec9b0",
-      "textColor": "#ffffff",
-      "mainBkg": "#2d2d30",
-      "nodeBorder": "#569cd6",
-      "nodeTextColor": "#ffffff",
-      "clusterBkg": "#2f3634",
-      "clusterBorder": "#4ec9b0",
-      "titleColor": "#4ec9b0",
-      "edgeLabelBackground": "transparent",
-      "labelBackground": "transparent",
-      "labelTextColor": "#ffffff",
-      "relationLabelBackground": "transparent",
-      "actorBkg": "#2d2d30",
-      "actorBorder": "#569cd6",
-      "actorTextColor": "#ffffff",
-      "actorLineColor": "#4ec9b0",
-      "signalColor": "#4ec9b0",
-      "signalTextColor": "#ffffff",
-      "stateBkg": "#2d2d30",
-      "stateBorder": "#569cd6",
-      "stateLabelColor": "#ffffff",
-      "transitionColor": "#b0b0b0",
-      "transitionLabelColor": "#ffffff",
-      "labelBackgroundColor": "transparent",
-      "attributeBackgroundColorOdd": "#2d2d30",
-      "attributeBackgroundColorEven": "#252526",
-      "pie1": "#569cd6",
-      "pie2": "#4ec9b0",
-      "pie3": "#6a9955",
-      "pie4": "#ce9178",
-      "pie5": "#b5cea8",
-      "pie6": "#c586c0",
-      "pie7": "#dcdcaa",
-      "pieTitleTextColor": "#ffffff",
-      "pieSectionTextColor": "#ffffff",
-      "pieSectionTextSize": "14px",
-      "pieLegendTextColor": "#e8e8e8",
-      "pieStrokeColor": "#2b2b2b",
-      "pieStrokeWidth": "1px",
-      "git0": "#569cd6",
-      "git1": "#4ec9b0",
-      "git2": "#6a9955",
-      "git3": "#ce9178",
-      "gitBranchLabel0": "#ffffff",
-      "gitBranchLabel1": "#ffffff",
-      "gitBranchLabel2": "#ffffff",
-      "commitLabelColor": "#e8e8e8",
-      "commitLabelBackground": "#333333",
-      "gitInv0": "#4ec9b0",
-      "gitInv1": "#569cd6",
-      "fontFamily": "Segoe UI, Inter, system-ui, sans-serif",
-      "fontSize": "14px",
-      "quadrant1Fill": "#2a3438",
-      "quadrant2Fill": "#283238",
-      "quadrant3Fill": "#262a2e",
-      "quadrant4Fill": "#24282c",
-      "quadrantPointFill": "#4ec9b0",
-      "quadrantPointStrokeColor": "#ffffff",
-      "quadrantPointTextFill": "#ffffff",
-      "quadrantXAxisTextColor": "#cccccc",
-      "quadrantYAxisTextColor": "#cccccc",
-      "quadrantTitleFill": "#4ec9b0",
-      "quadrantLabelFill": "#ffffff",
-      "quadrantInnerStrokeFill": "#569cd6",
-      "quadrantOuterStrokeFill": "#4ec9b0"
-    },
-    "themeCSS": ".row-rect-odd>path:first-child{fill:#2d2d30!important}.row-rect-even>path:first-child{fill:#252526!important}.er.attributeBoxOdd{fill:#2d2d30!important}.er.attributeBoxEven{fill:#252526!important}.er.entityBox{fill:#2d2d30!important;stroke:#569cd6!important}.er.entityLabel{fill:#ffffff!important}.nodeLabel,.nodeLabel p{color:#ffffff!important}.er.relationshipLabel{fill:#ffffff!important}.er.relationshipLabelBox{fill:transparent!important;stroke:none!important;opacity:0!important}.edgeLabel .background{fill:#252526!important}",
-    "flowchart": {
-      "htmlLabels": false,
-      "padding": 12,
-      "nodeSpacing": 50,
-      "rankSpacing": 55
-    },
-    "sequence": {
-      "diagramMarginX": 24,
-      "diagramMarginY": 20,
-      "boxMargin": 10,
-      "actorFontSize": 14
-    },
-    "class": {
-      "padding": 10
-    },
-    "state": {
-      "padding": 6,
-      "nodeSpacing": 30,
-      "rankSpacing": 30,
-      "fontSize": 12,
-      "dividerMargin": 6
-    },
-    "gantt": {
-      "leftPadding": 75,
-      "gridLineStartPadding": 35
-    },
-    "journey": {
-      "sectionFontSize": 14,
-      "taskFontSize": 13
-    },
-    "pie": {
-      "textPosition": 0.75
-    },
-    "gitGraph": {
-      "showBranches": true,
-      "showCommitLabel": true,
-      "rotateCommitLabel": true
-    }
+    // Paste every field from themes/mpe/mermaid-config-cpp-modern.json here
+    // (theme, themeVariables, themeCSS, flowchart, sequence, …)
   },
 })
 ```
+
+Keep the JSON as the single source of truth — copy its fields into `mermaidConfig` after `startOnLoad`. Do not leave the README example as a second stale copy.
 
 For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less)).
 
@@ -317,7 +202,7 @@ For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [g
 
 1. Save `config.js` (`Ctrl+S`).
 2. Refresh the MPE preview (toolbar refresh, or close/reopen preview).
-3. Open `examples/mermaid-showcase.md` and check flowchart `yes` / `no` and state labels like `assign` — they should have **no** light-gray label background.
+3. Open `examples/mermaid-showcase.md` and check flowchart `yes` / `no`, state labels, ER rows, gantt/pie/journey/mindmap/quadrant contrast.
 
 ### Mermaid troubleshooting
 
@@ -325,6 +210,10 @@ For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [g
 | ------- | --- |
 | Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"`, `edgeLabelBackground: "transparent"`, and for state diagrams also `labelBackgroundColor: "transparent"` inside `mermaidConfig` |
 | ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `mermaid-config-cpp-modern.json`. |
+| Gantt purple bars / yellow sections | Set `taskBkgColor`, `sectionBkgColor*`, and matching `themeCSS` — see JSON |
+| Mindmap pastel nodes / white-on-yellow | Force dark `.section-N` fills + white labels via `cScale*` and `themeCSS` |
+| Quadrant names black | Use `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`); `themeCSS` `.quadrant text` |
+| Journey huge empty bottom | Mermaid reserves vertical score space for faces; config sets `bottomMarginAdj: 0`, `taskMargin: 25`, `todayMarker` off on gantt |
 | Config seems ignored | Re-open via **Open Config Script (Global)** — the live file is `%USERPROFILE%\.crossnote\config.js` |
 | Labels still light after CSS paste | Do not use `"markdown-preview-enhanced.mermaidTheme": "dark"` |
 | Only `startOnLoad: false` in `mermaidConfig` | Merge the full [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) fields into that object |

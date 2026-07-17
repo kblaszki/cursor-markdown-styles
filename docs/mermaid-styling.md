@@ -149,12 +149,12 @@ That block is already in [`mermaid-config-cpp-modern.json`](../themes/mpe/mermai
 
 | Type | What config mainly controls |
 | ---- | --------------------------- |
-| Pie | `pie1`…`pieN`, title/legend/section text colors, stroke |
+| Pie | `pie1`…`pieN`, title/legend/section text; `themeCSS` `.pieCircle{opacity:1}` |
 | Git graph | `git0`…`gitN`, branch labels, commit label colors |
-| Gantt | Section/task colors; some defaults stay light — inspect `.task0`, `.sectionTitle*` in SVG style |
-| Journey | Task/section fills; faces stay illustrative |
-| Mindmap | Section palette is largely Mermaid-generated HSL; root uses primary blue |
-| Quadrant | `quadrant1Fill`…`quadrant4Fill`, point/title/axis colors |
+| Gantt | `taskBkgColor`, `sectionBkgColor` / `sectionBkgColor2`, `altSectionBkgColor`, `taskTextColor`; `gantt.todayMarker: "off"` avoids off-chart today line; `themeCSS` on `.task0`, `.section0` |
+| Journey | `fillType0`…`fillTypeN` for section/task fills; actor dots via `.actor-0` / `.actor-1` in `themeCSS`. Vertical gap under faces is Mermaid score layout — tighten with `journey.taskMargin` / `bottomMarginAdj` |
+| Mindmap | Explicit `cScale0`… + `cScaleLabel0`… (white on dark). Pastel defaults are unreadable — override with `themeCSS` `.section-N` fills/text |
+| Quadrant | `quadrant1TextFill`…`quadrant4TextFill` for quadrant names (not `quadrantLabelFill`); axis uses `quadrantXAxisTextFill` / `quadrantYAxisTextFill`; backup `themeCSS` `.quadrant text` |
 | Block | Same node/edge variables as flowchart (block reuses flowchart-like CSS) |
 
 ## Inspecting a live diagram
@@ -204,6 +204,9 @@ Light variant: use `global-cpp-modern-v3-diagrams-light.less` and set `"darkMode
 | ------- | --- |
 | Gray boxes behind `yes` / `no` / `assign` | `edgeLabelBackground` / `labelBackground` / (state) `labelBackgroundColor` → `transparent`; `mermaidTheme: "default"` |
 | ER rows white / unreadable | Update `themeCSS` for `.row-rect-odd/even>path:first-child` |
+| Gantt / pie / mindmap off-palette | Re-merge latest `mermaid-config-cpp-modern.json` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
+| Quadrant names black | `quadrant1TextFill`…`4` + `.quadrant text{fill:#e8e8e8!important}` |
+| Journey large empty bottom | Expected score-face band; reduce `taskMargin` / `bottomMarginAdj` |
 | Config ignored | Edit via **Open Config Script (Global)** → `%USERPROFILE%\.crossnote\config.js`, then refresh preview |
 | Diagrams only show as code | MPE only — browser workbench does not run Mermaid |
 | Block diagram missing | Needs a recent Mermaid; update MPE |

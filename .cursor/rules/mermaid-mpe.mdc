@@ -20,6 +20,8 @@ JSON files like `themes/mpe/mermaid-config-cpp-modern.json` are the **contents**
 | ------- | --- |
 | Gray pills behind edge labels | `edgeLabelBackground` / `labelBackground` / state `labelBackgroundColor` → `transparent` |
 | ER white zebra rows | `themeCSS` on `.row-rect-odd>path:first-child` / `.row-rect-even>path:first-child` (not only `attributeBackgroundColor*`) |
+| Gantt / pie / mindmap / journey | Prefer vars in `mermaid-config-cpp-modern.json` + `themeCSS` overrides; mindmap needs dark `.section-N` fills |
+| Quadrant black labels | `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`) |
 
 ## Docs and fixtures
 
