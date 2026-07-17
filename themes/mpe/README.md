@@ -221,6 +221,11 @@ Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
       "stateBkg": "#2d2d30",
       "stateBorder": "#569cd6",
       "stateLabelColor": "#ffffff",
+      "transitionColor": "#b0b0b0",
+      "transitionLabelColor": "#ffffff",
+      "labelBackgroundColor": "transparent",
+      "attributeBackgroundColorOdd": "#2d2d30",
+      "attributeBackgroundColorEven": "#252526",
       "pie1": "#569cd6",
       "pie2": "#4ec9b0",
       "pie3": "#6a9955",
@@ -261,6 +266,7 @@ Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
       "quadrantInnerStrokeFill": "#569cd6",
       "quadrantOuterStrokeFill": "#4ec9b0"
     },
+    "themeCSS": ".row-rect-odd>path:first-child{fill:#2d2d30!important}.row-rect-even>path:first-child{fill:#252526!important}.er.attributeBoxOdd{fill:#2d2d30!important}.er.attributeBoxEven{fill:#252526!important}.er.entityBox{fill:#2d2d30!important;stroke:#569cd6!important}.er.entityLabel{fill:#ffffff!important}.nodeLabel,.nodeLabel p{color:#ffffff!important}.er.relationshipLabel{fill:#ffffff!important}.er.relationshipLabelBox{fill:transparent!important;stroke:none!important;opacity:0!important}.edgeLabel .background{fill:#252526!important}",
     "flowchart": {
       "htmlLabels": false,
       "padding": 12,
@@ -315,7 +321,8 @@ For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [g
 
 | Symptom | Fix |
 | ------- | --- |
-| Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"` and `edgeLabelBackground: "transparent"` are inside `mermaidConfig` in `config.js`, not only in a loose JSON file on disk |
+| Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"`, `edgeLabelBackground: "transparent"`, and for state diagrams also `labelBackgroundColor: "transparent"` inside `mermaidConfig` |
+| ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `mermaid-config-cpp-modern.json`. |
 | Config seems ignored | Re-open via **Open Config Script (Global)** — the live file is `%USERPROFILE%\.crossnote\config.js` |
 | Labels still light after CSS paste | Do not use `"markdown-preview-enhanced.mermaidTheme": "dark"` |
 | Only `startOnLoad: false` in `mermaidConfig` | Merge the full [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) fields into that object |

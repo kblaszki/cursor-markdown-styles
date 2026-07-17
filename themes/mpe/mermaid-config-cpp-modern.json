@@ -2,7 +2,7 @@
   "theme": "base",
   "themeVariables": {
     "darkMode": true,
-    "background": "#2b2b2b",
+    "background": "#1f1f1f",
     "primaryColor": "#2d2d30",
     "primaryTextColor": "#ffffff",
     "primaryBorderColor": "#569cd6",
@@ -34,6 +34,11 @@
     "stateBkg": "#2d2d30",
     "stateBorder": "#569cd6",
     "stateLabelColor": "#ffffff",
+    "transitionColor": "#b0b0b0",
+    "transitionLabelColor": "#ffffff",
+    "labelBackgroundColor": "transparent",
+    "attributeBackgroundColorOdd": "#2d2d30",
+    "attributeBackgroundColorEven": "#252526",
     "pie1": "#569cd6",
     "pie2": "#4ec9b0",
     "pie3": "#6a9955",
@@ -74,6 +79,7 @@
     "quadrantInnerStrokeFill": "#569cd6",
     "quadrantOuterStrokeFill": "#4ec9b0"
   },
+  "themeCSS": ".row-rect-odd>path:first-child{fill:#2d2d30!important}.row-rect-even>path:first-child{fill:#252526!important}.er.attributeBoxOdd{fill:#2d2d30!important}.er.attributeBoxEven{fill:#252526!important}.er.entityBox{fill:#2d2d30!important;stroke:#569cd6!important}.er.entityLabel{fill:#ffffff!important}.nodeLabel,.nodeLabel p{color:#ffffff!important}.er.relationshipLabel{fill:#ffffff!important}.er.relationshipLabelBox{fill:transparent!important;stroke:none!important;opacity:0!important}.edgeLabel .background{fill:#252526!important}",
   "flowchart": {
     "htmlLabels": false,
     "padding": 12,
