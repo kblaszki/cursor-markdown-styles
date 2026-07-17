@@ -108,6 +108,8 @@ MPE does not provide a separate global CSS file for Mermaid — diagram colors c
 
 Best fixture for checking diagram styling: `examples/mermaid-showcase.md`.
 
+Deep dive (SVG DOM, selectors, ER zebra, config vs CSS): [`docs/mermaid-styling.md`](../../docs/mermaid-styling.md).
+
 ### Configure Mermaid (Open Config Script)
 
 Without `theme: "base"` and `themeVariables` in `config.js`, Mermaid keeps default light-gray edge-label backgrounds (`yes` / `no` / `assign`). CSS alone often cannot win over those defaults.
