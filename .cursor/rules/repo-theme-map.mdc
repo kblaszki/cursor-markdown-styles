@@ -1,0 +1,37 @@
+---
+description: Repo map for MPE themes — source vs output, build, Mermaid, fixtures
+alwaysApply: true
+---
+
+# Theme repo map
+
+## Source of truth vs output
+
+| Role | Path |
+| ---- | ---- |
+| Edit CSS here | `themes/addons/vscode-preview/original/<family>/vscode-preview-*.css` |
+| Build script | `themes/addons/vscode-preview/build-mpe-global.mjs` |
+| Generated paste targets | `themes/mpe/global-*.less` |
+
+Do **not** hand-edit `themes/mpe/global-*.less` unless the user explicitly asks. Change source CSS, then rebuild.
+
+```bash
+node themes/addons/vscode-preview/build-mpe-global.mjs
+```
+
+## Shared CSS appended by build
+
+Always: `_scope.css`, `_syntax-tokens.css`  
+Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (`appendSyntaxRefine: true`)
+
+## Mermaid
+
+- Config: `themes/mpe/mermaid-config-cpp-modern.json` → merge into Crossnote `mermaidConfig` (not whole `config.js`)
+- Deep dive: `docs/mermaid-styling.md`
+- Prefer config over fighting SVG with preview CSS alone
+
+## Fixtures and iteration
+
+- Markdown: `examples/mermaid-showcase.md`, `examples/code-showcase.md`
+- Browser workbench: `preview/` — iterate UI, then hand off CSS into `original/`
+- Install docs: `themes/mpe/README.md`, `themes/README.md`

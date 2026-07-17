@@ -1,0 +1,38 @@
+---
+description: Conventions for authoring and building MPE / vscode-preview theme CSS
+globs: themes/addons/vscode-preview/**/*.css,themes/mpe/**/*.less
+alwaysApply: false
+---
+
+# MPE CSS conventions
+
+## Selectors
+
+Target `.markdown-body`, `.markdown-preview`, and `body`. Bundles are fully inlined (no `@import` in output).
+
+## Naming
+
+| Layer | Pattern | Example |
+| ----- | ------- | ------- |
+| Source | `vscode-preview-<slug>[-light\|-vN-desc].css` | `vscode-preview-beacon-light.css` |
+| Output | `global-<slug>….less` | `global-beacon-light.less` |
+| Family folder | kebab-case | `graphite-code`, `cpp-modern` |
+
+Dark = no suffix; light = `-light`. Exceptions: Studio (light-only `global-studio.less`), Phosphor amber as light sibling.
+
+## New family or variant
+
+1. Add CSS under `themes/addons/vscode-preview/original/<family>/`
+2. Register in `variants` in `build-mpe-global.mjs`
+3. Run `node themes/addons/vscode-preview/build-mpe-global.mjs`
+4. Update `themes/README.md`, `themes/mpe/README.md`, and the family `README.md`
+
+## Shared tokens
+
+- Do not duplicate all of `_syntax-tokens.css` inside a family file
+- Stronger C++ refine only when needed (see `original/graphite-code/_cpp-syntax-refine.css` + `appendSyntaxRefine`)
+- Diagram CSS tokens only for v3-style overlays (`appendDiagramTokens`)
+
+## After every source CSS change
+
+Rebuild MPE globals. Prefer editing `original/`, not generated `themes/mpe/global-*.less`.

@@ -1,0 +1,28 @@
+---
+description: Mermaid styling for MPE — config first, themeCSS pitfalls, ER zebra
+globs: "**/mermaid*.json,docs/mermaid*.md,examples/mermaid*.md,themes/addons/vscode-preview/_diagram-tokens.css"
+alwaysApply: false
+---
+
+# Mermaid + MPE
+
+## Preferred stack
+
+1. `theme: "base"` + `themeVariables` + `themeCSS` in `mermaidConfig`
+2. VS Code: `"markdown-preview-enhanced.mermaidTheme": "default"` (not `"dark"`)
+3. Optional CSS overlay: v3 `global-*-v3-diagrams.less` / `--md-diagram-*` — secondary to config
+
+JSON files like `themes/mpe/mermaid-config-cpp-modern.json` are the **contents** of `mermaidConfig`, not a full Crossnote `config.js`. Keep `"startOnLoad": false`.
+
+## Critical fixes
+
+| Symptom | Fix |
+| ------- | --- |
+| Gray pills behind edge labels | `edgeLabelBackground` / `labelBackground` / state `labelBackgroundColor` → `transparent` |
+| ER white zebra rows | `themeCSS` on `.row-rect-odd>path:first-child` / `.row-rect-even>path:first-child` (not only `attributeBackgroundColor*`) |
+
+## Docs and fixtures
+
+- Deep dive: `docs/mermaid-styling.md`
+- Visual check: `examples/mermaid-showcase.md` in MPE preview
+- Setup walkthrough: `themes/mpe/README.md` — Configure Mermaid
