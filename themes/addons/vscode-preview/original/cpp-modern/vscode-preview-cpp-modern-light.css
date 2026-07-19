@@ -1,4 +1,5 @@
-/* C++ Modern Light - readable, blue-teal palette
+/* C++ Modern Light - readable blue-teal on paper surfaces
+ * Peer of vscode-preview-cpp-modern.css (same selectors / roles; light hex)
  * VS Code / Cursor side preview and Markdown Preview Enhanced
  * Copyright (c) 2026 kblaszki
  * SPDX-License-Identifier: MIT
@@ -7,51 +8,61 @@
 .markdown-body,
 .markdown-preview,
 body {
+  /* Hardcoded light surfaces — do NOT bind to --vscode-editor-* or a dark IDE
+     theme paints dark page + light panels (broken blockquote / inline code). */
   --cpp-bg: #f7f9fc;
-  --cpp-fg: #203040;
-  --cpp-muted: #5f7284;
-  --cpp-panel: #eef4f8;
+  --cpp-fg: #1f2937;
+  --cpp-muted: #64748b;
+  --cpp-panel: #eef2f7;
   --cpp-panel-raised: #ffffff;
-  --cpp-border: #c8d5df;
-  --cpp-border-subtle: color-mix(in srgb, var(--cpp-secondary) 18%, white);
+  --cpp-border: #d0d7e2;
+  --cpp-border-subtle: color-mix(in srgb, var(--cpp-fg) 10%, transparent);
 
-  --cpp-primary: #0e7490;
-  --cpp-secondary: #2563eb;
-  --cpp-link: #0f5fd7;
-  --cpp-link-hover: #0b4bac;
-  --cpp-accent: #0f766e;
-  --cpp-code-fg: #16324a;
-  --cpp-code-inline: #0f5fd7;
-  --cpp-code-bg: #e8eef5;
+  /* Same jobs as dark: teal primary, blue secondary, link blue */
+  --cpp-primary: #0f766e;
+  --cpp-secondary: #1d4ed8;
+  --cpp-link: #1d4ed8;
+  --cpp-link-hover: #1e40af;
+  --cpp-accent: #2563eb;
+  --cpp-code-fg: #1e293b;
+  --cpp-code-inline: #1d4ed8;
+  --cpp-code-bg: #e2e8f0;
 
-  /* C++-first Prism token palette (Dark+ on paper) */
-  --md-syntax-comment: #2f6b2f;
-  --md-syntax-keyword: #0b57a4;
-  --md-syntax-control: #8a2f8a;
-  --md-syntax-type: #0e7490;
-  --md-syntax-function: #6b5a00;
-  --md-syntax-string: #a14a1f;
-  --md-syntax-number: #2f6b2f;
-  --md-syntax-variable: #0f5fd7;
-  --md-syntax-constant: #0369a1;
-  --md-syntax-preprocessor: #0b57a4;
+  /* Code semantics belong in blocks and helper classes, not in headings */
+  --cpp-syntax-string: #9a3412;
+  --cpp-syntax-number: #166534;
+  --cpp-syntax-comment: #3f6212;
+
+  /* Dark+ roles deepened for paper contrast */
+  --md-syntax-comment: #3f6212;
+  --md-syntax-keyword: #1d4ed8;
+  --md-syntax-control: #7e22ce;
+  --md-syntax-type: #0f766e;
+  --md-syntax-function: #a16207;
+  --md-syntax-string: #9a3412;
+  --md-syntax-number: #166534;
+  --md-syntax-variable: #0369a1;
+  --md-syntax-constant: #0284c7;
+  --md-syntax-preprocessor: #1d4ed8;
   --md-syntax-operator: #334155;
   --md-syntax-punctuation: #475569;
-  --md-syntax-deleted: #b42318;
-  --md-syntax-inserted: #067647;
+  --md-syntax-deleted: #b91c1c;
+  --md-syntax-inserted: #15803d;
 
   --md-bg: var(--cpp-bg);
   --md-text: var(--cpp-fg);
   --md-border: var(--cpp-border-subtle);
   --md-accent: var(--cpp-link);
   --md-panel: var(--cpp-panel);
-  --md-code-bg: #e8eef5;
+  --md-code-bg: var(--cpp-code-bg);
   --md-code-text: var(--cpp-code-inline);
   --md-font-body: var(--vscode-font-family, "Segoe UI", Inter, system-ui, sans-serif);
   --md-font-mono: var(--vscode-editor-font-family, "Cascadia Code", Consolas, monospace);
   --md-line-height: 1.8;
   --md-padding: 22px 30px;
 }
+
+/* === Base === */
 
 .markdown-body,
 .markdown-preview,
@@ -62,7 +73,10 @@ body {
   line-height: var(--md-line-height) !important;
 }
 
-.markdown-body,
+.markdown-body {
+  padding: var(--md-padding) !important;
+}
+
 .markdown-preview {
   padding: var(--md-padding) !important;
 }
@@ -72,8 +86,8 @@ body {
   color: var(--md-text) !important;
 }
 
-.markdown-body :is(p, ul, ol, blockquote, table, pre, hr, details),
-.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr, details) {
+.markdown-body :is(p, ul, ol, blockquote, table, pre, hr),
+.markdown-preview :is(p, ul, ol, blockquote, table, pre, hr) {
   margin: 0 0 1.15rem !important;
 }
 
@@ -83,9 +97,10 @@ body p {
   color: var(--cpp-fg) !important;
 }
 
+/* === Headings - hierarchy within one color family === */
+
 .markdown-body :is(h1, h2, h3, h4, h5, h6),
-.markdown-preview :is(h1, h2, h3, h4, h5, h6),
-body :is(h1, h2, h3, h4, h5, h6) {
+.markdown-preview :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 600 !important;
   line-height: 1.3 !important;
   margin: 1.75em 0 0.6em !important;
@@ -96,6 +111,7 @@ body :is(h1, h2, h3, h4, h5, h6) {
 .markdown-preview h1,
 body h1 {
   font-size: 1.85em !important;
+  font-weight: 700 !important;
   color: var(--cpp-fg) !important;
   padding-bottom: 0.4em !important;
   border-bottom: 2px solid var(--cpp-primary) !important;
@@ -104,6 +120,7 @@ body h1 {
 .markdown-body h2,
 .markdown-preview h2,
 body h2 {
+  font-size: 1.45em !important;
   color: var(--cpp-primary) !important;
   border-bottom: 1px solid var(--cpp-border) !important;
   padding-bottom: 0.28em !important;
@@ -112,24 +129,56 @@ body h2 {
 .markdown-body h3,
 .markdown-preview h3,
 body h3 {
-  color: color-mix(in srgb, var(--cpp-secondary) 82%, var(--cpp-fg)) !important;
+  font-size: 1.22em !important;
+  color: color-mix(in srgb, var(--cpp-secondary) 80%, var(--cpp-fg)) !important;
 }
 
 .markdown-body h4,
 .markdown-preview h4,
 body h4 {
+  font-size: 1.08em !important;
   color: color-mix(in srgb, var(--cpp-secondary) 55%, var(--cpp-fg)) !important;
 }
 
 .markdown-body h5,
 .markdown-preview h5,
-body h5,
+body h5 {
+  font-size: 0.95em !important;
+  color: var(--cpp-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  font-weight: 600 !important;
+}
+
 .markdown-body h6,
 .markdown-preview h6,
 body h6 {
+  font-size: 0.9em !important;
   color: var(--cpp-muted) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  font-weight: 600 !important;
+}
+
+/* === Inline text === */
+
+.markdown-body strong,
+.markdown-preview strong,
+body strong {
+  color: var(--cpp-fg) !important;
+  font-weight: 700 !important;
+}
+
+.markdown-body em,
+.markdown-preview em,
+body em {
+  color: color-mix(in srgb, var(--cpp-primary) 65%, var(--cpp-fg)) !important;
+  font-style: italic !important;
+}
+
+.markdown-body del,
+.markdown-preview del,
+body del {
+  color: var(--cpp-muted) !important;
+  text-decoration-color: var(--cpp-border) !important;
 }
 
 .markdown-body a,
@@ -137,8 +186,9 @@ body h6 {
 body a {
   color: var(--cpp-link) !important;
   text-decoration: underline !important;
-  text-decoration-color: color-mix(in srgb, var(--cpp-link) 40%, transparent) !important;
+  text-decoration-color: color-mix(in srgb, var(--cpp-link) 45%, transparent) !important;
   text-underline-offset: 2px !important;
+  transition: color 0.12s !important;
 }
 
 .markdown-body a:hover,
@@ -147,56 +197,158 @@ body a:hover {
   color: var(--cpp-link-hover) !important;
 }
 
-.markdown-body ul,
-.markdown-preview ul,
-body ul,
-.markdown-body ol,
-.markdown-preview ol,
-body ol {
+/* === Lists - consistent markers, no glow === */
+
+.markdown-body :is(ul, ol),
+.markdown-preview :is(ul, ol) {
   padding-left: 1.55rem !important;
 }
 
-.markdown-body ul:not(.contains-task-list) > li::marker,
-.markdown-preview ul:not(.contains-task-list) > li::marker,
-body ul:not(.contains-task-list) > li::marker,
-.markdown-body ol > li::marker,
-.markdown-preview ol > li::marker,
-body ol > li::marker {
-  color: var(--cpp-primary) !important;
+.markdown-body ul,
+.markdown-preview ul,
+body ul {
+  list-style: none !important;
 }
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item),
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item),
+body ul:not(.contains-task-list) > li:not(.task-list-item) {
+  position: relative !important;
+  padding-left: 0.3rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: -1.1rem !important;
+  top: 0.68em !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--cpp-primary) !important;
+}
+
+.markdown-body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul > li:not(.task-list-item)::before {
+  background: var(--cpp-secondary) !important;
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.markdown-body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) ul ul > li:not(.task-list-item)::before {
+  background: color-mix(in srgb, var(--cpp-secondary) 50%, var(--cpp-muted)) !important;
+}
+
+.markdown-body ol,
+.markdown-preview ol,
+body ol {
+  counter-reset: cpp-ol !important;
+  list-style: none !important;
+}
+
+.markdown-body ol > li,
+.markdown-preview ol > li,
+body ol > li {
+  counter-increment: cpp-ol !important;
+  position: relative !important;
+  padding-left: 0.15rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.markdown-body ol > li::before,
+.markdown-preview ol > li::before,
+body ol > li::before {
+  content: counter(cpp-ol) "." !important;
+  position: absolute !important;
+  left: -1.45rem !important;
+  top: 0 !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  font-family: var(--md-font-mono) !important;
+  color: var(--cpp-primary) !important;
+  min-width: auto !important;
+  height: auto !important;
+  background: none !important;
+  border-radius: 0 !important;
+}
+
+.markdown-body :is(ul, ol) li > :is(ul, ol),
+.markdown-preview :is(ul, ol) li > :is(ul, ol) {
+  margin-top: 0.5rem !important;
+}
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before {
+  display: none !important;
+}
+
+.markdown-body input[type="checkbox"],
+.markdown-preview input[type="checkbox"],
+body input[type="checkbox"] {
+  accent-color: var(--cpp-accent) !important;
+  margin-right: 0.45rem !important;
+}
+
+/* === Blockquotes - neutral and readable === */
 
 .markdown-body blockquote,
 .markdown-preview blockquote,
 body blockquote {
   margin-left: 0 !important;
-  padding: 0.65rem 1rem !important;
-  color: color-mix(in srgb, var(--cpp-muted) 90%, var(--cpp-fg)) !important;
+  padding: 0.7rem 1.15rem !important;
+  border-left: 3px solid var(--cpp-secondary) !important;
   background: var(--cpp-panel) !important;
-  border-left: 4px solid var(--cpp-secondary) !important;
-  border-radius: 0 12px 12px 0 !important;
+  color: var(--cpp-fg) !important;
+  border-radius: 0 4px 4px 0 !important;
+  font-style: normal !important;
 }
 
-.markdown-body code,
-.markdown-preview code,
-body code {
-  padding: 0.16rem 0.38rem !important;
+/* === Inline code === */
+
+.markdown-body :not(pre) > code,
+.markdown-preview :not(pre) > code,
+body :not(pre) > code {
+  padding: 0.14rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-family: var(--md-font-mono) !important;
+  font-size: 0.87em !important;
   color: var(--cpp-code-inline) !important;
   background: var(--cpp-code-bg) !important;
-  border-radius: 6px !important;
-  font-family: var(--md-font-mono) !important;
+  border: 1px solid var(--cpp-border) !important;
 }
+
+/* === Code blocks - readable panel === */
 
 .markdown-body pre,
 .markdown-preview pre,
 body pre {
+  padding: 1rem 1.15rem !important;
   overflow-x: auto !important;
-  padding: 1rem 1.1rem !important;
+  border-radius: 6px !important;
+  background: var(--cpp-panel) !important;
   border: 1px solid var(--cpp-border) !important;
-  border-left: 4px solid var(--cpp-accent) !important;
-  border-radius: 12px !important;
-  background: var(--cpp-panel-raised) !important;
-  color: var(--cpp-code-fg) !important;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cpp-secondary) 8%, transparent) !important;
+  border-left: 3px solid var(--cpp-primary) !important;
+  position: relative !important;
+}
+
+.markdown-body pre::before,
+.markdown-preview pre::before,
+body pre::before {
+  display: none !important;
 }
 
 .markdown-body pre code,
@@ -204,53 +356,320 @@ body pre {
 body pre code {
   padding: 0 !important;
   background: transparent !important;
+  border: none !important;
   color: var(--cpp-code-fg) !important;
   font-family: var(--md-font-mono) !important;
   font-size: 0.9em !important;
   line-height: 1.7 !important;
 }
 
+/* === Tables — simple, high contrast === */
+
 .markdown-body table,
 .markdown-preview table,
 body table {
   width: 100% !important;
   border-collapse: collapse !important;
-  background: var(--cpp-panel-raised) !important;
+  border: 1px solid var(--cpp-border) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
 }
 
 .markdown-body :is(th, td),
-.markdown-preview :is(th, td),
-body :is(th, td) {
-  padding: 0.72rem 0.85rem !important;
-  border: 1px solid var(--cpp-border) !important;
+.markdown-preview :is(th, td) {
+  padding: 0.65rem 0.85rem !important;
+  border-bottom: 1px solid var(--cpp-border) !important;
+  text-align: left !important;
 }
 
 .markdown-body th,
 .markdown-preview th,
 body th {
-  background: var(--cpp-panel) !important;
+  background: var(--cpp-panel-raised) !important;
   color: var(--cpp-fg) !important;
+  font-weight: 600 !important;
+  font-size: 0.85em !important;
+  border-bottom: 2px solid var(--cpp-primary) !important;
 }
+
+.markdown-body tr:nth-child(even) td,
+.markdown-preview tr:nth-child(even) td,
+body tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--cpp-panel) 50%, var(--cpp-bg)) !important;
+}
+
+.markdown-body tr:hover td,
+.markdown-preview tr:hover td,
+body tr:hover td {
+  background: color-mix(in srgb, var(--cpp-primary) 5%, var(--cpp-bg)) !important;
+}
+
+.markdown-body tr:last-child td,
+.markdown-preview tr:last-child td,
+body tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* === Divider === */
 
 .markdown-body hr,
 .markdown-preview hr,
 body hr {
   height: 1px !important;
   border: 0 !important;
+  margin: 2rem 0 !important;
   background: var(--cpp-border) !important;
 }
 
-.markdown-body input[type="checkbox"],
-.markdown-preview input[type="checkbox"],
-body input[type="checkbox"] {
-  accent-color: var(--cpp-accent) !important;
+/* === Images === */
+
+.markdown-body img,
+.markdown-preview img,
+body img {
+  max-width: 100% !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--cpp-border) !important;
 }
+
+/* === Details === */
 
 .markdown-body details,
 .markdown-preview details,
 body details {
-  padding: 0.8rem 1rem !important;
+  padding: 0.55rem 0.85rem !important;
   border: 1px solid var(--cpp-border) !important;
-  border-radius: 12px !important;
+  border-radius: 4px !important;
   background: var(--cpp-panel) !important;
+  margin-bottom: 1rem !important;
+}
+
+.markdown-body summary,
+.markdown-preview summary,
+body summary {
+  color: var(--cpp-secondary) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+/* Code semantics - optional classes */
+.markdown-body .cpp-string,
+.markdown-preview .cpp-string,
+.markdown-body code.cpp-string,
+.markdown-preview code.cpp-string,
+body code.cpp-string {
+  color: var(--cpp-syntax-string) !important;
+}
+
+.markdown-body .cpp-number,
+.markdown-preview .cpp-number,
+body .cpp-number {
+  color: var(--cpp-syntax-number) !important;
+}
+
+.markdown-body .cpp-comment,
+.markdown-preview .cpp-comment,
+body .cpp-comment {
+  color: var(--cpp-syntax-comment) !important;
+}
+
+/* Shared scope and VS Code / MPE preview helpers copied into theme files.
+   Do not copy this file into settings on its own. */
+
+/* Scopes:
+   - .markdown-body  — built-in VS Code Markdown preview
+   - .markdown-preview — Markdown Preview Enhanced (Crossnote)
+   - body            — iframe fallback */
+
+/* === Task lists (GFM) === */
+
+.markdown-body ul.contains-task-list,
+.markdown-preview ul.contains-task-list,
+body ul.contains-task-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.markdown-body li.task-list-item,
+.markdown-preview li.task-list-item,
+body li.task-list-item {
+  list-style: none !important;
+  padding-left: 0 !important;
+  position: relative !important;
+}
+
+.markdown-body li.task-list-item::before,
+.markdown-preview li.task-list-item::before,
+body li.task-list-item::before,
+.markdown-body ul.contains-task-list > li::before,
+.markdown-preview ul.contains-task-list > li::before,
+body ul.contains-task-list > li::before {
+  display: none !important;
+  content: none !important;
+}
+
+.markdown-body li.task-list-item input[type="checkbox"],
+.markdown-preview li.task-list-item input[type="checkbox"],
+body li.task-list-item input[type="checkbox"] {
+  margin-right: 0.45rem !important;
+}
+
+/* Exclude task lists from custom bullet styling */
+.markdown-body ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+.markdown-preview ul:not(.contains-task-list) > li:not(.task-list-item)::before,
+body ul:not(.contains-task-list) > li:not(.task-list-item)::before {
+  /* variant themes override background/color */
+}
+
+/* === Front matter === */
+
+/* Built-in VS Code preview (markdown.preview.frontMatter: "show") */
+.markdown-body .front-matter,
+body .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #d0d7e2) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #eef2f7) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #64748b) !important;
+}
+
+.markdown-body .front-matter table,
+body .front-matter table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+}
+
+.markdown-body .front-matter :is(th, td),
+body .front-matter :is(th, td) {
+  padding: 0.2rem 0.5rem !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  font-weight: 400 !important;
+}
+
+.markdown-body .front-matter th,
+body .front-matter th {
+  text-align: left !important;
+  white-space: nowrap !important;
+  padding-right: 0.75rem !important;
+  color: color-mix(in srgb, var(--cpp-muted, #64748b) 80%, var(--cpp-fg, #1f2937)) !important;
+}
+
+.markdown-body .front-matter td,
+body .front-matter td {
+  font-family: var(--md-font-mono, ui-monospace, monospace) !important;
+}
+
+/* MPE front matter block (YAML header rendered by Crossnote) */
+.markdown-preview .front-matter,
+.markdown-preview.markdown-preview .front-matter {
+  margin: 0 0 1rem !important;
+  padding: 0.55rem 0.75rem !important;
+  border-left: 3px solid var(--cpp-border, #d0d7e2) !important;
+  background: color-mix(in srgb, var(--cpp-panel, #eef2f7) 88%, transparent) !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  color: var(--cpp-muted, #64748b) !important;
+}
+
+/* === Fenced ``` blocks — panel background only, no text/token chips === */
+
+.markdown-body pre,
+.markdown-preview pre,
+body pre {
+  box-sizing: border-box !important;
+  padding: 1rem 1.15rem 1rem calc(1.15rem + 12px) !important;
+}
+
+.markdown-body pre > code,
+.markdown-preview pre > code,
+body pre > code {
+  display: block !important;
+  width: 100% !important;
+  white-space: pre !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--cpp-code-fg) !important;
+  tab-size: 4 !important;
+}
+
+.markdown-body pre.hljs code > div,
+.markdown-preview pre.hljs code > div,
+body pre.hljs code > div {
+  padding: 0 !important;
+}
+
+/* Strip chip/highlight styling from everything inside fenced blocks */
+.markdown-body pre *,
+.markdown-preview pre *,
+body pre * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* MPE loads codeBlockTheme after style.less — needs higher specificity */
+.markdown-preview.markdown-preview pre *,
+.markdown-preview.markdown-preview .highlight pre *,
+.markdown-preview.markdown-preview pre [class*="token"],
+.markdown-preview.markdown-preview pre span,
+.markdown-preview.markdown-preview .highlight pre span {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.markdown-body pre :is(strong, em),
+.markdown-preview pre :is(strong, em),
+body pre :is(strong, em) {
+  color: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+}
+
+.markdown-body pre :is(code, code *, .token),
+.markdown-preview pre :is(code, code *, .token),
+body pre :is(code, code *, .token) {
+  text-decoration: none !important;
+}
+
+.markdown-body pre code a,
+.markdown-preview pre code a,
+body pre code a {
+  color: inherit !important;
+}
+
+.markdown-body pre code .hljs-addition,
+.markdown-preview pre code .hljs-addition,
+body pre code .hljs-addition,
+.markdown-body pre code .hljs-deletion,
+.markdown-preview pre code .hljs-deletion,
+body pre code .hljs-deletion {
+  display: inline !important;
+  width: auto !important;
+}
+
+[data-diff-start],
+[data-diff-end] {
+  display: contents !important;
 }

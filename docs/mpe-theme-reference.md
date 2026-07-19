@@ -9,7 +9,7 @@ Reference for building Markdown Preview Enhanced (MPE) themes. Canonical **relea
 | Crossnote config | [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) — paste over `%USERPROFILE%\.crossnote\config.js` |
 | Mermaid SVG deep dive | [`mermaid-styling.md`](mermaid-styling.md) |
 
-**Dark** is fully documented below. **Light** is a short stub (experimental peer only).
+**Dark** is fully documented below. **Light** is the experimental peer with the same selector inventory and role map (paper hex) — see §7.
 
 ---
 
@@ -331,30 +331,35 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 
 ---
 
-## 7. Light (stub)
+## 7. Light — C++ Modern peer
 
 | Status | Detail |
 | ------ | ------ |
-| Package | Experimental only: [`themes/mpe/experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) |
+| Package | Experimental: [`themes/mpe/experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) |
 | Source | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
-| Crossnote | **No** released `config.js` yet |
+| Crossnote | **No** released `config.js` yet (`darkMode: false` when promoting) |
 
-### Surface / accent contrast vs dark
+Same selector / role inventory as dark (§2–§5). Hex values are **hardcoded** for paper contrast — do **not** bind `--cpp-bg` / `--cpp-fg` to `--vscode-editor-*`, or a dark IDE theme produces a dark page with light panels (illegible blockquotes and inline code).
 
-| Role | Dark | Light (experimental) |
-| ---- | ---- | -------------------- |
-| `--cpp-bg` | `#1f1f1f` | `#f7f9fc` |
-| `--cpp-fg` | `#cccccc` | `#203040` |
-| `--cpp-muted` | `#9d9d9d` | `#5f7284` |
-| `--cpp-panel` | `#2b2b2b` | `#eef4f8` |
-| `--cpp-panel-raised` | `#333333` | `#ffffff` |
-| `--cpp-border` | `#3c3c3c` | `#c8d5df` |
-| `--cpp-primary` | `#4ec9b0` | `#0e7490` |
-| `--cpp-secondary` | `#569cd6` | `#2563eb` |
-| `--cpp-link` | `#4daafc` | `#0f5fd7` |
-| Syntax | Dark+ on black | Dark+-like on paper (darker greens/blues) |
+### Role → hex (light)
 
-Selector structure mirrors dark (same sections). When promoting light to released: add full `config.js` with `"darkMode": false` and light surfaces; expand this section to match dark’s depth.
+| Role | Light hex | Token(s) |
+| ---- | --------- | -------- |
+| Page background | `#f7f9fc` | `--cpp-bg`, `--md-bg` |
+| Body / heading text | `#1f2937` | `--cpp-fg`, `--md-text` |
+| Muted / meta | `#64748b` | `--cpp-muted` |
+| Panel | `#eef2f7` | `--cpp-panel`, `--md-panel` |
+| Raised panel | `#ffffff` | `--cpp-panel-raised` |
+| Hard border | `#d0d7e2` | `--cpp-border` |
+| Primary accent (teal) | `#0f766e` | `--cpp-primary` |
+| Secondary accent (blue) | `#1d4ed8` | `--cpp-secondary` |
+| Link | `#1d4ed8` / hover `#1e40af` | `--cpp-link`, `--cpp-link-hover` |
+| Checkbox accent | `#2563eb` | `--cpp-accent` |
+| Inline code text | `#1d4ed8` | `--cpp-code-inline` |
+| Fenced code default text | `#1e293b` | `--cpp-code-fg` |
+| Inline code chip bg | `#e2e8f0` | `--cpp-code-bg` |
+
+Exhaustive tables: package / family README (regen: `node scripts/update-palette-readmes.mjs`).
 
 ---
 
