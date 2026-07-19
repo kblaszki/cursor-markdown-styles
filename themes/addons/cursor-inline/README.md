@@ -1,6 +1,6 @@
 # Cursor Inline Themes
 
-> **Legacy / experimental.** This path requires patching `workbench.desktop.main.css`, can break after Cursor updates, and is no longer the main workflow in this repository. For daily Markdown work, use the [MPE setup](../../mpe/README.md) instead.
+> **Legacy.** Prefer the **released** MPE package [`../../mpe/released/cpp-modern/`](../../mpe/released/cpp-modern/) for daily Markdown work. Cursor-inline themes here are older mirrors for `Preview | Markdown` / workbench CSS patching — not a released product line and not split into released/experimental tiers.
 
 Installable CSS themes for Cursor's inline Markdown preview.
 
@@ -44,5 +44,6 @@ Use `preview/index.html` with **Load CSS** or drag-and-drop, or open `examples/t
 
 ## Related
 
-- `../../mpe/README.md` - recommended modern workflow for Markdown in VS Code / Cursor
-- `../../preview/README.md` - browser workbench for iterating on MPE-first styles before converting them into a bundle
+- [`../../mpe/released/cpp-modern/`](../../mpe/released/cpp-modern/) - recommended released MPE package
+- `../../mpe/README.md` - MPE install index (released vs experimental)
+- `../../preview/README.md` - browser workbench for iterating on styles before handing off to `vscode-preview/original/`

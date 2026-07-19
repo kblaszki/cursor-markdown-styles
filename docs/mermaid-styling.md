@@ -3,7 +3,7 @@
 How Markdown Preview Enhanced (MPE) / Crossnote paints Mermaid SVGs, what ends up in the DOM, and how to theme diagrams for dark previews (C++ Modern).
 
 Fixture: [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md)  
-Config source of truth: [`themes/mpe/mermaid-config-cpp-modern.json`](../themes/mpe/mermaid-config-cpp-modern.json)  
+Config source of truth: [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json)  
 Setup steps: [`themes/mpe/README.md` — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script)
 
 ## How MPE renders a diagram
@@ -143,7 +143,7 @@ Newer Mermaid does **not** paint attribute rows with `.er.attributeBoxOdd` / `Ev
 .edgeLabel .background{fill:#252526!important}
 ```
 
-That block is already in [`mermaid-config-cpp-modern.json`](../themes/mpe/mermaid-config-cpp-modern.json) as `themeCSS`.
+That block is already in [`mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) as `themeCSS`.
 
 ### Pie / git / gantt / journey / mindmap / quadrant / block
 
@@ -177,7 +177,7 @@ mermaidConfig: {
   theme: "base",
   themeVariables: {
     darkMode: true,
-    // …see mermaid-config-cpp-modern.json
+    // …see themes/mpe/released/cpp-modern/mermaid-config.json
   },
   themeCSS: "/* ER + edge label overrides */",
   flowchart: { htmlLabels: false, padding: 12 },
@@ -185,9 +185,9 @@ mermaidConfig: {
 }
 ```
 
-Full paste-ready object: [`themes/mpe/mermaid-config-cpp-modern.json`](../themes/mpe/mermaid-config-cpp-modern.json).
+Full paste-ready object: [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json).
 
-Light variant: use `global-cpp-modern-v3-diagrams-light.less` and set `"darkMode": false` (and light surfaces) in `themeVariables`.
+Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/experimental/); set `"darkMode": false` (and light surfaces) in `themeVariables` when promoting a light package.
 
 ## CSS vs config (what we learned)
 
@@ -204,7 +204,7 @@ Light variant: use `global-cpp-modern-v3-diagrams-light.less` and set `"darkMode
 | ------- | --- |
 | Gray boxes behind `yes` / `no` / `assign` | `edgeLabelBackground` / `labelBackground` / (state) `labelBackgroundColor` → `transparent`; `mermaidTheme: "default"` |
 | ER rows white / unreadable | Update `themeCSS` for `.row-rect-odd/even>path:first-child` |
-| Gantt / pie / mindmap off-palette | Re-merge latest `mermaid-config-cpp-modern.json` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
+| Gantt / pie / mindmap off-palette | Re-merge latest `released/cpp-modern/mermaid-config.json` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
 | Quadrant names black | `quadrant1TextFill`…`4` + `.quadrant text{fill:#e8e8e8!important}` |
 | Journey large empty bottom | Expected score-face band; reduce `taskMargin` / `bottomMarginAdj` |
 | Config ignored | Edit via **Open Config Script (Global)** → `%USERPROFILE%\.crossnote\config.js`, then refresh preview |
@@ -215,8 +215,8 @@ Light variant: use `global-cpp-modern-v3-diagrams-light.less` and set `"darkMode
 
 | Path | Role |
 | ---- | ---- |
-| [`themes/mpe/mermaid-config-cpp-modern.json`](../themes/mpe/mermaid-config-cpp-modern.json) | Copy into `mermaidConfig` |
-| [`themes/mpe/global-cpp-modern.less`](../themes/mpe/global-cpp-modern.less) | Primary preview theme |
-| [`themes/mpe/global-cpp-modern-v3-diagrams.less`](../themes/mpe/global-cpp-modern-v3-diagrams.less) | Optional CSS token overlay for diagrams |
+| [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) | Copy into `mermaidConfig` |
+| [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) | Primary preview theme |
+| [`themes/mpe/experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/) | Optional CSS token overlay for diagrams |
 | [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md) | Visual regression fixture |
 | [`themes/mpe/README.md`](../themes/mpe/README.md) | Install + full config walkthrough |

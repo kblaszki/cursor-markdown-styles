@@ -9,5 +9,5 @@ Tea-garden documentation family: soft serif prose, moss + gold accents, rounded 
 
 ## MPE Bundles
 
-- `themes/mpe/global-matcha.less`
-- `themes/mpe/global-matcha-light.less`
+- `themes/mpe/experimental/matcha/style.less`
+- `themes/mpe/experimental/matcha-light/style.less`

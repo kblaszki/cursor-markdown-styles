@@ -10,8 +10,8 @@ A hybrid theme family: **Graphite** styling with **C++ Modern / Dark+** syntax c
 
 ## MPE Bundles
 
-- `themes/mpe/global-graphite-code.less`
-- `themes/mpe/global-graphite-code-light.less`
+- `themes/mpe/experimental/graphite-code/style.less`
+- `themes/mpe/experimental/graphite-code-light/style.less`
 
 ## Notes
 

@@ -1,8 +1,14 @@
-# Markdown Preview Enhanced — Global CSS
+# Markdown Preview Enhanced — packages
 
-This directory contains the **primary recommended setup** for this repository: ready-to-paste global CSS bundles for **Markdown Preview Enhanced (MPE)**.
+Ready-to-paste **style.less** packages for **Markdown Preview Enhanced (MPE)**, split into **released** (install these) and **experimental** (WIP; may lack Mermaid config).
 
-If you want a Markdown workflow that feels close to Cursor inline preview, but is more stable and configurable, use **MPE + `Preview Mode: Previews Only`**.
+Source CSS lives under [`../addons/vscode-preview/original/`](../addons/vscode-preview/original/). Rebuild after edits:
+
+```bash
+node themes/addons/vscode-preview/build-mpe-global.mjs
+```
+
+Do **not** hand-edit generated `style.less` files.
 
 ## Recommended Preview Mode
 
@@ -23,56 +29,55 @@ Notes:
 
 Recommended companion extensions are listed in the root [README.md](../../README.md).
 
-## Files
+## Released
 
-### Primary Families
+Stable install packages. Each folder has `style.less` plus `mermaid-config.json` (merge into Crossnote `mermaidConfig`).
 
-| File | Theme |
-| ---- | ----- |
-| [global-cpp-modern.less](global-cpp-modern.less) | C++ Modern dark (recommended default) |
-| [global-cpp-modern-light.less](global-cpp-modern-light.less) | C++ Modern light |
-| [global-studio.less](global-studio.less) | Studio light (recommended light peer to C++ Modern) |
-| [global-lumina.less](global-lumina.less) | Lumina dark |
-| [global-lumina-light.less](global-lumina-light.less) | Lumina light |
-| [global-graphite.less](global-graphite.less) | Graphite dark |
-| [global-graphite-light.less](global-graphite-light.less) | Graphite light |
-| [global-graphite-code.less](global-graphite-code.less) | Graphite Code dark (Graphite + C++ Modern syntax colors) |
-| [global-graphite-code-light.less](global-graphite-code-light.less) | Graphite Code light |
-| [global-meridian.less](global-meridian.less) | Meridian dark |
-| [global-meridian-light.less](global-meridian-light.less) | Meridian light |
-| [global-blueprint.less](global-blueprint.less) | Blueprint dark (cyanotype drafting) |
-| [global-blueprint-light.less](global-blueprint-light.less) | Blueprint light |
-| [global-phosphor.less](global-phosphor.less) | Phosphor (green CRT) |
-| [global-phosphor-amber.less](global-phosphor-amber.less) | Phosphor Amber (amber CRT) |
-| [global-matcha.less](global-matcha.less) | Matcha dark (tea garden) |
-| [global-matcha-light.less](global-matcha-light.less) | Matcha light |
-| [global-beacon.less](global-beacon.less) | Beacon dark (readability-first) |
-| [global-beacon-light.less](global-beacon-light.less) | Beacon light |
+| Package | Theme |
+| ------- | ----- |
+| [released/cpp-modern/](released/cpp-modern/) | C++ Modern dark (recommended default) |
 
-### Legacy C++ Modern Variants
+Install: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then merge [`released/cpp-modern/mermaid-config.json`](released/cpp-modern/mermaid-config.json) into `config.js` (see [Configure Mermaid](#configure-mermaid-open-config-script)).
 
-| File | Theme |
-| ---- | ----- |
-| [global-cpp-modern-v1-syntax.less](global-cpp-modern-v1-syntax.less) | C++ Modern v1 Syntax |
-| [global-cpp-modern-v2-readable.less](global-cpp-modern-v2-readable.less) | C++ Modern v2 Readable |
-| [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) | C++ Modern v3 Diagrams (Mermaid + diagram styling) |
-| [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less) | C++ Modern v3 Diagrams Light |
+Short package guide: [released/cpp-modern/README.md](released/cpp-modern/README.md).
 
-### Legacy Lumina Variants
+## Experimental
 
-| File | Theme |
-| ---- | ----- |
-| [global-lumina-v1-neon.less](global-lumina-v1-neon.less) | Lumina v1 Neon |
-| [global-lumina-v2-muted.less](global-lumina-v2-muted.less) | Lumina v2 Muted |
-| [global-lumina-v3-balanced.less](global-lumina-v3-balanced.less) | Lumina v3 Balanced |
-| [global-lumina-v4-neon-blue.less](global-lumina-v4-neon-blue.less) | Lumina v4 Neon Blue |
+Work-in-progress variants and families. Paste `style.less` only; Mermaid config is added when a package is promoted to released.
 
-Each file contains install instructions in the header comment plus the full inlined theme CSS.
+| Package | Theme |
+| ------- | ----- |
+| [experimental/cpp-modern-light/](experimental/cpp-modern-light/) | C++ Modern light |
+| [experimental/studio/](experimental/studio/) | Studio light |
+| [experimental/lumina/](experimental/lumina/) | Lumina dark |
+| [experimental/lumina-light/](experimental/lumina-light/) | Lumina light |
+| [experimental/graphite/](experimental/graphite/) | Graphite dark |
+| [experimental/graphite-light/](experimental/graphite-light/) | Graphite light |
+| [experimental/graphite-code/](experimental/graphite-code/) | Graphite Code dark |
+| [experimental/graphite-code-light/](experimental/graphite-code-light/) | Graphite Code light |
+| [experimental/meridian/](experimental/meridian/) | Meridian dark |
+| [experimental/meridian-light/](experimental/meridian-light/) | Meridian light |
+| [experimental/blueprint/](experimental/blueprint/) | Blueprint dark |
+| [experimental/blueprint-light/](experimental/blueprint-light/) | Blueprint light |
+| [experimental/phosphor/](experimental/phosphor/) | Phosphor (green CRT) |
+| [experimental/phosphor-amber/](experimental/phosphor-amber/) | Phosphor Amber |
+| [experimental/matcha/](experimental/matcha/) | Matcha dark |
+| [experimental/matcha-light/](experimental/matcha-light/) | Matcha light |
+| [experimental/beacon/](experimental/beacon/) | Beacon dark |
+| [experimental/beacon-light/](experimental/beacon-light/) | Beacon light |
+| [experimental/cpp-modern-v1-syntax/](experimental/cpp-modern-v1-syntax/) | C++ Modern v1 Syntax |
+| [experimental/cpp-modern-v2-readable/](experimental/cpp-modern-v2-readable/) | C++ Modern v2 Readable |
+| [experimental/cpp-modern-v3-diagrams/](experimental/cpp-modern-v3-diagrams/) | C++ Modern v3 Diagrams (+ diagram CSS tokens) |
+| [experimental/cpp-modern-v3-diagrams-light/](experimental/cpp-modern-v3-diagrams-light/) | C++ Modern v3 Diagrams Light |
+| [experimental/lumina-v1-neon/](experimental/lumina-v1-neon/) | Lumina v1 Neon |
+| [experimental/lumina-v2-muted/](experimental/lumina-v2-muted/) | Lumina v2 Muted |
+| [experimental/lumina-v3-balanced/](experimental/lumina-v3-balanced/) | Lumina v3 Balanced |
+| [experimental/lumina-v4-neon-blue/](experimental/lumina-v4-neon-blue/) | Lumina v4 Neon Blue |
 
 ## Family Guide
 
-- **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling
-- **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid and diagram chrome (legacy variant)
+- **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling (dark = released)
+- **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid chrome (experimental)
 - **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
 - **Lumina** - brighter neon identity with gradient headings and luminous accents
 - **Graphite** - editorial documentation theme with warm copper contrast
@@ -90,33 +95,32 @@ Primary bundles ship **C++-first Prism token colors** for fenced ``` blocks (key
 - Token colors come from `--md-syntax-*` variables defined by each family.
 - Per-token gray chip backgrounds from MPE `codeBlockTheme` remain stripped.
 - Keep `"markdown-preview-enhanced.codeBlockTheme": "auto.css"` — the theme overrides token colors while preserving highlighting structure.
-- After updating a bundle, re-paste the full `themes/mpe/global-*.less` file into `%USERPROFILE%\.crossnote\style.less` and refresh the MPE preview.
+- After updating a package, re-paste the full `style.less` into `%USERPROFILE%\.crossnote\style.less` and refresh the MPE preview.
 
 Best fixtures for checking code styling: `examples/code-showcase.md` and `examples/documentation-patterns.md`.
 
 ## Diagrams / Mermaid
 
-Mermaid diagrams render in **MPE only** (not in the browser workbench). For themed diagram output use the **v3 Diagrams** bundle:
+Mermaid diagrams render in **MPE only** (not in the browser workbench).
 
-| File | Theme |
-| ---- | ----- |
-| [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) | C++ Modern v3 Diagrams (dark) |
-| [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less) | C++ Modern v3 Diagrams Light |
-| [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) | Fields to put inside `mermaidConfig` in `config.js` (not a whole `config.js` file) |
+For the **released** dark package, use:
 
-MPE does not provide a separate global CSS file for Mermaid — diagram colors come from `mermaidConfig` (init / `themeVariables`) plus `--md-diagram-*` overrides in the v3 `style.less` bundle (see `_diagram-tokens.css` in the vscode-preview add-on).
+| File | Role |
+| ---- | ---- |
+| [released/cpp-modern/style.less](released/cpp-modern/style.less) | Preview theme |
+| [released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) | Fields to put inside `mermaidConfig` in `config.js` |
 
-Best fixture for checking diagram styling: `examples/mermaid-showcase.md`.
+Optional experimental CSS overlay for `--md-diagram-*` tokens: [experimental/cpp-modern-v3-diagrams/](experimental/cpp-modern-v3-diagrams/) (pair with the released Mermaid JSON until that variant is promoted).
 
-Deep dive (SVG DOM, selectors, ER zebra, config vs CSS): [`docs/mermaid-styling.md`](../../docs/mermaid-styling.md).
+Best fixture: `examples/mermaid-showcase.md`. Deep dive: [`docs/mermaid-styling.md`](../../docs/mermaid-styling.md).
 
 ### Configure Mermaid (Open Config Script)
 
 Without `theme: "base"` and `themeVariables` in `config.js`, Mermaid keeps default light-gray edge-label backgrounds (`yes` / `no` / `assign`). CSS alone often cannot win over those defaults.
 
-#### 1. Install the v3 CSS bundle
+#### 1. Install the released CSS package
 
-Paste [global-cpp-modern-v3-diagrams.less](global-cpp-modern-v3-diagrams.less) into `%USERPROFILE%\.crossnote\style.less` (same steps as [Install step by step](#install-step-by-step-windows) below).
+Paste [released/cpp-modern/style.less](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less` (same steps as [Install step by step](#install-step-by-step-windows) below).
 
 #### 2. VS Code / Cursor settings
 
@@ -166,11 +170,9 @@ A fresh file looks like this — `mermaidConfig` only has `startOnLoad`:
 #### 4. Fill in `mermaidConfig`
 
 Do **not** replace the entire `config.js` with the JSON file.  
-[mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) is the **contents** of `mermaidConfig` only.
+[released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) is the **contents** of `mermaidConfig` only.
 
 Keep `startOnLoad: false`, then merge in every field from that JSON (`theme`, `themeVariables`, `flowchart`, …).
-
-Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
 
 ```js
 ({
@@ -188,15 +190,15 @@ Copy-paste example (katex / mathjax unchanged; full dark v3 Mermaid config):
 
   mermaidConfig: {
     "startOnLoad": false,
-    // Paste every field from themes/mpe/mermaid-config-cpp-modern.json here
+    // Paste every field from themes/mpe/released/cpp-modern/mermaid-config.json here
     // (theme, themeVariables, themeCSS, flowchart, sequence, …)
   },
 })
 ```
 
-Keep the JSON as the single source of truth — copy its fields into `mermaidConfig` after `startOnLoad`. Do not leave the README example as a second stale copy.
+Keep the JSON as the single source of truth — copy its fields into `mermaidConfig` after `startOnLoad`.
 
-For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [global-cpp-modern-v3-diagrams-light.less](global-cpp-modern-v3-diagrams-light.less)).
+For experimental light / v3 packages, adapt `themeVariables` (e.g. `"darkMode": false`) when you add a package-local Mermaid JSON on promotion.
 
 #### 5. Save and verify
 
@@ -209,14 +211,21 @@ For the light v3 bundle, set `"darkMode": false` in `themeVariables` (and use [g
 | Symptom | Fix |
 | ------- | --- |
 | Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"`, `edgeLabelBackground: "transparent"`, and for state diagrams also `labelBackgroundColor: "transparent"` inside `mermaidConfig` |
-| ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `mermaid-config-cpp-modern.json`. |
+| ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `released/cpp-modern/mermaid-config.json`. |
 | Gantt purple bars / yellow sections | Set `taskBkgColor`, `sectionBkgColor*`, and matching `themeCSS` — see JSON |
 | Mindmap pastel nodes / white-on-yellow | Force dark `.section-N` fills + white labels via `cScale*` and `themeCSS` |
 | Quadrant names black | Use `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`); `themeCSS` `.quadrant text` |
 | Journey huge empty bottom | Mermaid reserves vertical score space for faces; config sets `bottomMarginAdj: 0`, `taskMargin: 25`, `todayMarker` off on gantt |
 | Config seems ignored | Re-open via **Open Config Script (Global)** — the live file is `%USERPROFILE%\.crossnote\config.js` |
 | Labels still light after CSS paste | Do not use `"markdown-preview-enhanced.mermaidTheme": "dark"` |
-| Only `startOnLoad: false` in `mermaidConfig` | Merge the full [mermaid-config-cpp-modern.json](mermaid-config-cpp-modern.json) fields into that object |
+| Only `startOnLoad: false` in `mermaidConfig` | Merge the full [released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) fields into that object |
+
+### Promote experimental → released
+
+1. Add `mermaid-config.json` next to that package’s `style.less` (adapt from cpp-modern; palette aligned to the family).
+2. Set `tier: "released"` for that variant in [`build-mpe-global.mjs`](../addons/vscode-preview/build-mpe-global.mjs).
+3. Rebuild; add a short package `README.md`; update this index and the root theme docs.
+4. Remove the empty experimental folder if the path changed.
 
 ## Install step by step (Windows)
 
@@ -244,10 +253,10 @@ Then run the command again.
 
 1. In `style.less`, press `Ctrl+A` (select all).
 2. Press `Delete`.
-3. Open one bundle file from the repo in VS Code:
+3. Open the released package from the repo:
 
 ```text
-themes/mpe/global-cpp-modern.less
+themes/mpe/released/cpp-modern/style.less
 ```
 
 1. Press `Ctrl+A` → `Ctrl+C` (copy entire file).
@@ -278,14 +287,14 @@ This keeps MPE focused on preview-first editing and reduces conflicts with built
 
 ### 5. Verify
 
-For the default C++ Modern dark bundle you should see:
+For the released C++ Modern dark package you should see:
 
 - dark background (`#1f1f1f`)
 - teal `h2` headings
 - blue-teal list bullets
 - styled code blocks with left accent bar
 
-For other bundles, verify that headings, links, blockquotes, tables, and fenced code blocks all match the family tone in both light and dark variants.
+For experimental packages, verify that headings, links, blockquotes, tables, and fenced code blocks match the family tone.
 
 ## Editing Workflow
 
@@ -300,14 +309,15 @@ For other bundles, verify that headings, links, blockquotes, tables, and fenced 
 - Right-click in the preview and choose **Edit Markdown → Open VS Code Editor**.
 - Use this when you want the plain text editor instead of the in-preview editing experience.
 
-## Regenerate bundles
+## Regenerate packages
 
-After editing inline or vscode-preview themes:
+After editing vscode-preview source CSS:
 
 ```bash
-node themes/addons/vscode-preview/build-from-inline.mjs
 node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
+
+(`build-from-inline.mjs` remains only for the legacy cursor-inline path.)
 
 ## Workspace vs global
 
@@ -316,7 +326,7 @@ node themes/addons/vscode-preview/build-mpe-global.mjs
 | Global (all projects) | Customize CSS **(Global)** | `%USERPROFILE%\.crossnote\style.less` |
 | Workspace (this repo only) | Customize CSS **(Workspace)** | `.crossnote/style.less` |
 
-For workspace-only install, paste the same bundle into `.crossnote/style.less` at the repo root.
+For workspace-only install, paste the same package `style.less` into `.crossnote/style.less` at the repo root.
 
 ## Troubleshooting
 
@@ -330,12 +340,12 @@ For workspace-only install, paste the same bundle into `.crossnote/style.less` a
 ### Gray boxes on operators or punctuation inside ``` blocks
 
 - MPE's built-in `codeBlockTheme` adds per-token backgrounds (e.g. on `&&`, `<`, `>`).
-- Re-paste the latest primary bundle (for example `global-cpp-modern.less`) into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping family syntax colors.
+- Re-paste the latest released package (`released/cpp-modern/style.less`) into `%USERPROFILE%\.crossnote\style.less` — the theme strips token backgrounds while keeping family syntax colors.
 - Refresh the MPE preview after saving.
 
 ### Code colors look wrong or washed out
 
-- Confirm you pasted a **current** primary bundle that includes `--md-syntax-*` variables.
+- Confirm you pasted a **current** package that includes `--md-syntax-*` variables.
 - Refresh the preview after saving `style.less`.
 - Check `examples/code-showcase.md` under C++ fences for keyword / type / string contrast.
 

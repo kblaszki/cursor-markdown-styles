@@ -1,14 +1,15 @@
 # Theme Add-ons
 
-This directory contains the **secondary** theme paths for the repository.
+Secondary theme paths. They are **not** split into `released` / `experimental` folders — that tiering lives under [`../mpe/`](../mpe/).
 
 ## Included Areas
 
-- `vscode-preview/` - CSS files for the built-in VS Code / Cursor Markdown preview via `markdown.styles`
-- `cursor-inline/` - legacy Cursor inline preview themes for the custom `cpp-modern` and `lumina` families
+- `vscode-preview/` — CSS source of truth + built-in VS Code / Cursor preview via `markdown.styles`
+- `cursor-inline/` — legacy Cursor inline preview themes (`cpp-modern`, `lumina` only)
 
 ## Notes
 
-- The main workflow lives in [`../mpe/`](../mpe/).
-- Use these add-ons only when you need compatibility with a non-MPE preview mode.
-- Regeneration scripts for built-in preview assets also live here.
+- Primary install path: [`../mpe/released/`](../mpe/released/) (start with `cpp-modern`).
+- Map each CSS family to its MPE package in [`vscode-preview/README.md`](vscode-preview/README.md).
+- Prefer MPE released over cursor-inline for daily work.
+- Regeneration scripts for MPE packages live under `vscode-preview/`.

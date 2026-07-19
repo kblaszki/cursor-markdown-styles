@@ -5,34 +5,40 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 ## Recommended Path
 
 1. Use **Markdown Preview Enhanced** for daily Markdown work.
-2. Paste one of the ready-made bundles from [`mpe/`](d:\work\github\markdown\themes\mpe) into your global `style.less`.
-3. Use the browser workbench in [`../preview/`](d:\work\github\markdown\preview) to iterate on theme ideas.
-4. Keep built-in preview and Cursor inline themes only as secondary add-ons.
+2. Paste a **released** package from [`mpe/released/`](mpe/released) into your global `style.less` (start with [`mpe/released/cpp-modern/`](mpe/released/cpp-modern)).
+3. Merge that package’s `mermaid-config.json` into Crossnote `mermaidConfig`.
+4. Use the browser workbench in [`../preview/`](../preview) to iterate on theme ideas.
+5. Keep built-in preview and Cursor inline themes only as secondary add-ons.
 
 ## Theme Areas
 
 ### MPE First
 
-- [`mpe/`](d:\work\github\markdown\themes\mpe) - ready-to-paste global CSS bundles for Markdown Preview Enhanced
-- [`mpe/README.md`](d:\work\github\markdown\themes\mpe\README.md) - full install and editing workflow for MPE
+- [`mpe/`](mpe) - install packages for Markdown Preview Enhanced
+- [`mpe/released/`](mpe/released) - stable packages (`style.less` + `mermaid-config.json`)
+- [`mpe/experimental/`](mpe/experimental) - WIP variants (CSS only until promoted)
+- [`mpe/README.md`](mpe/README.md) - full install and editing workflow
 
-Current primary families:
+Released now:
 
-- `C++ Modern` - balanced technical baseline with dark and light variants
-- `Studio` - light-first recommended peer to C++ Modern (daylight / sapphire)
-- `Lumina` - luminous blue neon family with dark and light variants
-- `Graphite` - editorial copper-accent family with dark and light variants
-- `Graphite Code` - Graphite family with C++ Modern syntax colors only (dark and light)
-- `Meridian` - blue-green structured docs family with dark and light variants
-- `Blueprint` - cyanotype / architectural drafting family
-- `Phosphor` - CRT terminal family (green + amber)
-- `Matcha` - tea-garden serif family with dark and light variants
-- `Beacon` - readability-first family with tempered code colors
+- **C++ Modern** dark — [`mpe/released/cpp-modern/`](mpe/released/cpp-modern)
+
+Experimental families (and light / legacy variants) live under [`mpe/experimental/`](mpe/experimental).
 
 ### Add-ons And Legacy
 
-- [`addons/`](d:\work\github\markdown\themes\addons) - secondary theme paths, source families, and regeneration scripts
-- [`addons/vscode-preview/`](d:\work\github\markdown\themes\addons\vscode-preview) - built-in VS Code preview CSS for `markdown.styles`
-- [`addons/cursor-inline/`](d:\work\github\markdown\themes\addons\cursor-inline) - legacy Cursor inline themes for the custom `cpp-modern` and `lumina` families
+Add-ons are **delivery channels**, not a second `released` / `experimental` tree. Tiering applies to MPE packages only.
 
-Use add-ons only when you specifically need built-in preview compatibility or want to keep experimenting with Cursor's old inline `Preview | Markdown` path.
+| Channel | Path | Role |
+| ------- | ---- | ---- |
+| vscode-preview | [`addons/vscode-preview/`](addons/vscode-preview) | CSS source of truth + optional `markdown.styles` for built-in preview |
+| cursor-inline | [`addons/cursor-inline/`](addons/cursor-inline) | Legacy Cursor inline (`Preview \| Markdown`); prefer MPE released |
+
+#### MPE ↔ vscode-preview mapping
+
+| MPE package | vscode-preview CSS | Status |
+| ----------- | ------------------ | ------ |
+| [`mpe/released/cpp-modern`](mpe/released/cpp-modern) | [`original/cpp-modern/vscode-preview-cpp-modern.css`](addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) | released |
+| [`mpe/experimental/<slug>`](mpe/experimental) | matching `original/<family>/vscode-preview-*.css` | experimental |
+
+Use add-ons only when you specifically need built-in preview compatibility or the old Cursor inline path. Details: [`addons/README.md`](addons/README.md), [`addons/vscode-preview/README.md`](addons/vscode-preview/README.md), [`addons/cursor-inline/README.md`](addons/cursor-inline/README.md).

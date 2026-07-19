@@ -16,12 +16,12 @@ An original luminous blue theme family with gradient headings, bright links, and
 
 ## MPE Bundles
 
-- `themes/mpe/global-lumina.less`
-- `themes/mpe/global-lumina-light.less`
-- `themes/mpe/global-lumina-v1-neon.less`
-- `themes/mpe/global-lumina-v2-muted.less`
-- `themes/mpe/global-lumina-v3-balanced.less`
-- `themes/mpe/global-lumina-v4-neon-blue.less`
+- `themes/mpe/experimental/lumina/style.less`
+- `themes/mpe/experimental/lumina-light/style.less`
+- `themes/mpe/experimental/lumina-v1-neon/style.less`
+- `themes/mpe/experimental/lumina-v2-muted/style.less`
+- `themes/mpe/experimental/lumina-v3-balanced/style.less`
+- `themes/mpe/experimental/lumina-v4-neon-blue/style.less`
 
 ## Notes
 

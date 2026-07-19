@@ -9,5 +9,5 @@ Architectural cyanotype family: drafting ink, dashed rules, double-line quotes, 
 
 ## MPE Bundles
 
-- `themes/mpe/global-blueprint.less`
-- `themes/mpe/global-blueprint-light.less`
+- `themes/mpe/experimental/blueprint/style.less`
+- `themes/mpe/experimental/blueprint-light/style.less`

@@ -25,7 +25,7 @@ Set `markdown.preview.frontMatter` to `"show"` if you want YAML front matter ren
 
 ### Markdown Preview Enhanced (global)
 
-Paste the entire contents of [themes/mpe/global-cpp-modern.less](../../../../mpe/global-cpp-modern.less) into `%USERPROFILE%\.crossnote\style.less` via **Customize CSS (Global)**. See [themes/mpe/README.md](../../../../mpe/README.md).
+Paste the entire contents of [themes/mpe/released/cpp-modern/style.less](../../../../mpe/released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less` via **Customize CSS (Global)**. See [themes/mpe/README.md](../../../../mpe/README.md).
 
 ## Notes
 

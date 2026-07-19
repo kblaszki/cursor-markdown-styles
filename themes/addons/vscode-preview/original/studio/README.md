@@ -23,4 +23,4 @@ Light-first daily theme meant to sit beside **C++ Modern** dark as an equally po
 
 ## MPE Bundle
 
-- `themes/mpe/global-studio.less`
+- `themes/mpe/experimental/studio/style.less`

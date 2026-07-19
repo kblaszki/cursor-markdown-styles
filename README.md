@@ -72,57 +72,21 @@ Notes:
 
 ## Global CSS for MPE
 
-The main output of this repo is a set of ready-to-paste MPE global styles:
+Ready-to-paste packages live under [`themes/mpe/`](themes/mpe):
 
-- [`themes/mpe/global-cpp-modern.less`](themes/mpe/global-cpp-modern.less) - recommended
-- [`themes/mpe/global-cpp-modern-light.less`](themes/mpe/global-cpp-modern-light.less)
-- [`themes/mpe/global-studio.less`](themes/mpe/global-studio.less) - recommended light peer
-- [`themes/mpe/global-lumina.less`](themes/mpe/global-lumina.less)
-- [`themes/mpe/global-lumina-light.less`](themes/mpe/global-lumina-light.less)
-- [`themes/mpe/global-lumina-v1-neon.less`](themes/mpe/global-lumina-v1-neon.less)
-- [`themes/mpe/global-lumina-v2-muted.less`](themes/mpe/global-lumina-v2-muted.less)
-- [`themes/mpe/global-lumina-v3-balanced.less`](themes/mpe/global-lumina-v3-balanced.less)
-- [`themes/mpe/global-lumina-v4-neon-blue.less`](themes/mpe/global-lumina-v4-neon-blue.less)
-- [`themes/mpe/global-graphite.less`](themes/mpe/global-graphite.less)
-- [`themes/mpe/global-graphite-light.less`](themes/mpe/global-graphite-light.less)
-- [`themes/mpe/global-graphite-code.less`](themes/mpe/global-graphite-code.less)
-- [`themes/mpe/global-graphite-code-light.less`](themes/mpe/global-graphite-code-light.less)
-- [`themes/mpe/global-meridian.less`](themes/mpe/global-meridian.less)
-- [`themes/mpe/global-meridian-light.less`](themes/mpe/global-meridian-light.less)
-- [`themes/mpe/global-blueprint.less`](themes/mpe/global-blueprint.less)
-- [`themes/mpe/global-blueprint-light.less`](themes/mpe/global-blueprint-light.less)
-- [`themes/mpe/global-phosphor.less`](themes/mpe/global-phosphor.less)
-- [`themes/mpe/global-phosphor-amber.less`](themes/mpe/global-phosphor-amber.less)
-- [`themes/mpe/global-matcha.less`](themes/mpe/global-matcha.less)
-- [`themes/mpe/global-matcha-light.less`](themes/mpe/global-matcha-light.less)
-- [`themes/mpe/global-beacon.less`](themes/mpe/global-beacon.less)
-- [`themes/mpe/global-beacon-light.less`](themes/mpe/global-beacon-light.less)
-- [`themes/mpe/global-cpp-modern-v1-syntax.less`](themes/mpe/global-cpp-modern-v1-syntax.less)
-- [`themes/mpe/global-cpp-modern-v2-readable.less`](themes/mpe/global-cpp-modern-v2-readable.less)
+- **Released:** [`themes/mpe/released/cpp-modern/`](themes/mpe/released/cpp-modern) — recommended dark C++ Modern (`style.less` + `mermaid-config.json`)
+- **Experimental:** [`themes/mpe/experimental/`](themes/mpe/experimental) — other families and variants (CSS only until promoted)
 
-Recommended family choices:
-
-- `C++ Modern` - balanced technical default
-- `Studio` - recommended light alternative (daylight / sapphire, not a recolor of C++ Modern)
-- `Lumina` - brighter neon style
-- `Graphite` - editorial, prose-first style
-- `Graphite Code` - Graphite styling with C++ Modern syntax colors
-- `Meridian` - structured docs and checklist style
-- `Blueprint` - cyanotype drafting style
-- `Phosphor` - green / amber CRT terminal style
-- `Matcha` - calm tea-garden serif style
-- `Beacon` - readability-first daily style with clear hierarchy and tempered code colors
+Full index: [`themes/mpe/README.md`](themes/mpe/README.md)
 
 ### Copy-Paste Install
 
 1. Open the Command Palette with `Ctrl+Shift+P`.
 2. Run `Markdown Preview Enhanced: Customize CSS (Global)`.
 3. VS Code or Cursor opens `%USERPROFILE%\.crossnote\style.less`.
-4. Select all, delete the existing content, and paste one full bundle from this repo.
-5. Save the file.
-6. Refresh the MPE preview.
-
-Full walkthrough: [`themes/mpe/README.md`](themes/mpe/README.md)
+4. Select all, delete the existing content, and paste [`themes/mpe/released/cpp-modern/style.less`](themes/mpe/released/cpp-modern/style.less).
+5. Merge [`mermaid-config.json`](themes/mpe/released/cpp-modern/mermaid-config.json) into Crossnote `mermaidConfig` (see MPE README).
+6. Save and refresh the MPE preview.
 
 ## Example Files
 

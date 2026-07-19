@@ -9,5 +9,5 @@ CRT terminal family. Headings lean monospace, lists use terminal bullets, and fe
 
 ## MPE Bundles
 
-- `themes/mpe/global-phosphor.less`
-- `themes/mpe/global-phosphor-amber.less`
+- `themes/mpe/experimental/phosphor/style.less`
+- `themes/mpe/experimental/phosphor-amber/style.less`

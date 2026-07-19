@@ -81,7 +81,7 @@ Client          API (C++)        PostgreSQL
 
 ## Sequence Diagram (Mermaid)
 
-Same flow as above, rendered by MPE when using a diagram-aware theme (for example `global-cpp-modern-v3-diagrams.less`).
+Same flow as above, rendered by MPE when using a diagram-aware theme (for example `themes/mpe/experimental/cpp-modern-v3-diagrams/style.less`).
 
 ```mermaid
 sequenceDiagram

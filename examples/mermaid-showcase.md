@@ -1,12 +1,12 @@
 # Mermaid Diagram Showcase
 
-A fixture for testing **C++ Modern v3 Diagrams** against the full range of Mermaid diagram types used in technical documentation.
+A fixture for testing **released C++ Modern** Mermaid theming against the full range of diagram types used in technical documentation.
 
 > **Note:** Diagrams render in **Markdown Preview Enhanced (MPE)** only. The browser workbench shows ```mermaid blocks as source code.
 
 ## Setup (MPE)
 
-1. Paste [`themes/mpe/global-cpp-modern-v3-diagrams.less`](../themes/mpe/global-cpp-modern-v3-diagrams.less) into `%USERPROFILE%\.crossnote\style.less`.
+1. Paste [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`.
 2. Add to `settings.json`:
 
 ```json
@@ -19,12 +19,12 @@ A fixture for testing **C++ Modern v3 Diagrams** against the full range of Merma
 Use `"default"`, not `"dark"` — the dark Mermaid CSS often restores light-gray edge-label backgrounds.
 
 3. Open **Markdown Preview Enhanced: Open Config Script (Global)** — this opens `%USERPROFILE%\.crossnote\config.js`.
-4. Inside `mermaidConfig`, keep `"startOnLoad": false` and merge in every field from [`themes/mpe/mermaid-config-cpp-modern.json`](../themes/mpe/mermaid-config-cpp-modern.json) (`theme`, `themeVariables`, `flowchart`, …). That JSON is the **contents** of `mermaidConfig`, not a replacement for the whole `config.js`.
+4. Inside `mermaidConfig`, keep `"startOnLoad": false` and merge in every field from [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) (`theme`, `themeVariables`, `flowchart`, …). That JSON is the **contents** of `mermaidConfig`, not a replacement for the whole `config.js`.
 5. Save `config.js` and refresh the MPE preview.
 
 Full copy-paste example and troubleshooting: [themes/mpe/README.md — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script).
 
-For the light variant use `global-cpp-modern-v3-diagrams-light.less` and set `"darkMode": false` in `themeVariables`.
+Optional experimental diagram CSS tokens: [`experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/). For light WIP, use [`experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) and set `"darkMode": false` in `themeVariables` when you add a Mermaid JSON.
 
 ---
 

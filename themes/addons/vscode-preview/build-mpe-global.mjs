@@ -1,5 +1,5 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { basename, dirname, join } from "node:path";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -16,152 +16,193 @@ const graphiteCodeRefine = readFileSync(
 ).trim();
 const graphiteCodeRefineMarker = "Graphite Code — stronger C++ Dark+";
 
+/** @typedef {"released" | "experimental"} Tier */
+
+/**
+ * @param {string} slug
+ * @param {Tier} tier
+ */
+const packageOut = (slug, tier) => join(mpeDir, tier, slug, "style.less");
+
+/**
+ * @param {string} slug
+ * @param {Tier} tier
+ */
+const packageRelPath = (slug, tier) => `themes/mpe/${tier}/${slug}/style.less`;
+
 const variants = [
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern.css"),
-    out: join(mpeDir, "global-cpp-modern.less"),
+    slug: "cpp-modern",
+    tier: "released",
     label: "C++ Modern",
   },
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-light.css"),
-    out: join(mpeDir, "global-cpp-modern-light.less"),
+    slug: "cpp-modern-light",
+    tier: "experimental",
     label: "C++ Modern Light",
   },
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v1-syntax.css"),
-    out: join(mpeDir, "global-cpp-modern-v1-syntax.less"),
+    slug: "cpp-modern-v1-syntax",
+    tier: "experimental",
     label: "C++ Modern v1 Syntax",
   },
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v2-readable.css"),
-    out: join(mpeDir, "global-cpp-modern-v2-readable.less"),
+    slug: "cpp-modern-v2-readable",
+    tier: "experimental",
     label: "C++ Modern v2 Readable",
   },
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v3-diagrams.css"),
-    out: join(mpeDir, "global-cpp-modern-v3-diagrams.less"),
+    slug: "cpp-modern-v3-diagrams",
+    tier: "experimental",
     label: "C++ Modern v3 Diagrams",
     appendDiagramTokens: true,
   },
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v3-diagrams-light.css"),
-    out: join(mpeDir, "global-cpp-modern-v3-diagrams-light.less"),
+    slug: "cpp-modern-v3-diagrams-light",
+    tier: "experimental",
     label: "C++ Modern v3 Diagrams Light",
     appendDiagramTokens: true,
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina.css"),
-    out: join(mpeDir, "global-lumina.less"),
+    slug: "lumina",
+    tier: "experimental",
     label: "Lumina",
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina-light.css"),
-    out: join(mpeDir, "global-lumina-light.less"),
+    slug: "lumina-light",
+    tier: "experimental",
     label: "Lumina Light",
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina-v1-neon.css"),
-    out: join(mpeDir, "global-lumina-v1-neon.less"),
+    slug: "lumina-v1-neon",
+    tier: "experimental",
     label: "Lumina v1 Neon",
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina-v2-muted.css"),
-    out: join(mpeDir, "global-lumina-v2-muted.less"),
+    slug: "lumina-v2-muted",
+    tier: "experimental",
     label: "Lumina v2 Muted",
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina-v3-balanced.css"),
-    out: join(mpeDir, "global-lumina-v3-balanced.less"),
+    slug: "lumina-v3-balanced",
+    tier: "experimental",
     label: "Lumina v3 Balanced",
   },
   {
     css: join(root, "original/lumina/vscode-preview-lumina-v4-neon-blue.css"),
-    out: join(mpeDir, "global-lumina-v4-neon-blue.less"),
+    slug: "lumina-v4-neon-blue",
+    tier: "experimental",
     label: "Lumina v4 Neon Blue",
   },
   {
     css: join(root, "original/graphite/vscode-preview-graphite.css"),
-    out: join(mpeDir, "global-graphite.less"),
+    slug: "graphite",
+    tier: "experimental",
     label: "Graphite",
   },
   {
     css: join(root, "original/graphite/vscode-preview-graphite-light.css"),
-    out: join(mpeDir, "global-graphite-light.less"),
+    slug: "graphite-light",
+    tier: "experimental",
     label: "Graphite Light",
   },
   {
     css: join(root, "original/graphite-code/vscode-preview-graphite-code.css"),
-    out: join(mpeDir, "global-graphite-code.less"),
+    slug: "graphite-code",
+    tier: "experimental",
     label: "Graphite Code",
     appendSyntaxRefine: true,
   },
   {
     css: join(root, "original/graphite-code/vscode-preview-graphite-code-light.css"),
-    out: join(mpeDir, "global-graphite-code-light.less"),
+    slug: "graphite-code-light",
+    tier: "experimental",
     label: "Graphite Code Light",
     appendSyntaxRefine: true,
   },
   {
     css: join(root, "original/meridian/vscode-preview-meridian.css"),
-    out: join(mpeDir, "global-meridian.less"),
+    slug: "meridian",
+    tier: "experimental",
     label: "Meridian",
   },
   {
     css: join(root, "original/meridian/vscode-preview-meridian-light.css"),
-    out: join(mpeDir, "global-meridian-light.less"),
+    slug: "meridian-light",
+    tier: "experimental",
     label: "Meridian Light",
   },
   {
     css: join(root, "original/blueprint/vscode-preview-blueprint.css"),
-    out: join(mpeDir, "global-blueprint.less"),
+    slug: "blueprint",
+    tier: "experimental",
     label: "Blueprint",
   },
   {
     css: join(root, "original/blueprint/vscode-preview-blueprint-light.css"),
-    out: join(mpeDir, "global-blueprint-light.less"),
+    slug: "blueprint-light",
+    tier: "experimental",
     label: "Blueprint Light",
   },
   {
     css: join(root, "original/phosphor/vscode-preview-phosphor.css"),
-    out: join(mpeDir, "global-phosphor.less"),
+    slug: "phosphor",
+    tier: "experimental",
     label: "Phosphor",
   },
   {
     css: join(root, "original/phosphor/vscode-preview-phosphor-amber.css"),
-    out: join(mpeDir, "global-phosphor-amber.less"),
+    slug: "phosphor-amber",
+    tier: "experimental",
     label: "Phosphor Amber",
   },
   {
     css: join(root, "original/matcha/vscode-preview-matcha.css"),
-    out: join(mpeDir, "global-matcha.less"),
+    slug: "matcha",
+    tier: "experimental",
     label: "Matcha",
   },
   {
     css: join(root, "original/matcha/vscode-preview-matcha-light.css"),
-    out: join(mpeDir, "global-matcha-light.less"),
+    slug: "matcha-light",
+    tier: "experimental",
     label: "Matcha Light",
   },
   {
     css: join(root, "original/beacon/vscode-preview-beacon.css"),
-    out: join(mpeDir, "global-beacon.less"),
+    slug: "beacon",
+    tier: "experimental",
     label: "Beacon",
     appendSyntaxRefine: true,
   },
   {
     css: join(root, "original/beacon/vscode-preview-beacon-light.css"),
-    out: join(mpeDir, "global-beacon-light.less"),
+    slug: "beacon-light",
+    tier: "experimental",
     label: "Beacon Light",
     appendSyntaxRefine: true,
   },
   {
     css: join(root, "original/studio/vscode-preview-studio.css"),
-    out: join(mpeDir, "global-studio.less"),
+    slug: "studio",
+    tier: "experimental",
     label: "Studio",
     appendSyntaxRefine: true,
   },
 ];
 
-const header = (label, filename) => `/* =============================================================================
+const header = (label, relPath) => `/* =============================================================================
  * Markdown Preview Enhanced — Global style.less (${label})
  * =============================================================================
  *
@@ -171,7 +212,7 @@ const header = (label, filename) => `/* ========================================
  * 3. VS Code opens: %USERPROFILE%\\.crossnote\\style.less
  * 4. Select ALL content in that file and DELETE it
  * 5. Paste THIS ENTIRE FILE from the repo:
- *    themes/mpe/${filename}
+ *    ${relPath}
  * 6. Save (Ctrl+S)
  * 7. Restart the editor if you just enabled "Previews Only"
  * 8. Open any .md file in MPE preview
@@ -184,9 +225,17 @@ const header = (label, filename) => `/* ========================================
 
 `;
 
-mkdirSync(mpeDir, { recursive: true });
+for (const {
+  css,
+  slug,
+  tier,
+  label,
+  appendSyntaxRefine = false,
+  appendDiagramTokens = false,
+} of variants) {
+  const out = packageOut(slug, tier);
+  mkdirSync(dirname(out), { recursive: true });
 
-for (const { css, out, label, appendSyntaxRefine = false, appendDiagramTokens = false } of variants) {
   let themeCss = readFileSync(css, "utf8").trim();
   if (!themeCss.includes(scopeMarker)) {
     themeCss = `${themeCss}\n\n${scopeRules}`;
@@ -217,7 +266,8 @@ for (const { css, out, label, appendSyntaxRefine = false, appendDiagramTokens = 
     themeCss = `${themeCss}\n\n${diagramRules}`;
   }
 
-  const bundle = `${header(label, basename(out))}\n${themeCss}\n`;
+  const relPath = packageRelPath(slug, tier);
+  const bundle = `${header(label, relPath)}\n${themeCss}\n`;
   writeFileSync(out, bundle, "utf8");
-  console.log(`wrote ${out}`);
+  console.log(`wrote [${tier}] ${relPath}`);
 }

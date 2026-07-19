@@ -16,5 +16,5 @@ Readability-first family for daily docs: calm slate/paper surfaces, clear hierar
 
 ## MPE Bundles
 
-- `themes/mpe/global-beacon.less`
-- `themes/mpe/global-beacon-light.less`
+- `themes/mpe/experimental/beacon/style.less`
+- `themes/mpe/experimental/beacon-light/style.less`

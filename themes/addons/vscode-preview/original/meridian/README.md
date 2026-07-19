@@ -9,8 +9,8 @@ An original navigation-oriented theme family with blue-green accents, crisp sepa
 
 ## MPE Bundles
 
-- `themes/mpe/global-meridian.less`
-- `themes/mpe/global-meridian-light.less`
+- `themes/mpe/experimental/meridian/style.less`
+- `themes/mpe/experimental/meridian-light/style.less`
 
 ## Notes
 

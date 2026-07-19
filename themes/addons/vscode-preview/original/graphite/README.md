@@ -9,8 +9,8 @@ An original documentation-first theme family focused on long-form readability, q
 
 ## MPE Bundles
 
-- `themes/mpe/global-graphite.less`
-- `themes/mpe/global-graphite-light.less`
+- `themes/mpe/experimental/graphite/style.less`
+- `themes/mpe/experimental/graphite-light/style.less`
 
 ## Notes
 
