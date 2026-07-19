@@ -1,0 +1,67 @@
+---
+description: Karpathy-style caution for MPE / markdown preview CSS — think first, minimal diffs, verify with fixtures
+alwaysApply: true
+---
+
+# Preview CSS guidelines (MPE-first)
+
+Behavioral guardrails for this repo, adapted from [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md). Default product is **Markdown Preview Enhanced** packages under `themes/mpe/`; vscode-preview CSS is the authoring source; cursor-inline is legacy.
+
+Bias: caution over speed. For trivial one-line tweaks, use judgment.
+
+## 1. Think before styling
+
+**Don't assume. Surface tradeoffs.**
+
+Before editing CSS or Mermaid config:
+
+- State assumptions (dark vs light, released vs experimental, prose vs code vs diagrams).
+- If the request is ambiguous (new family vs retune existing, CSS vs `mermaidConfig`), present options — don't pick silently.
+- Prefer the smaller path: retune variables in an existing family over inventing a parallel theme.
+- Unclear target (MPE package vs `markdown.styles` vs cursor-inline)? Stop and ask. Default answer: **MPE** via `original/` → build.
+
+## 2. Simplicity first
+
+**Minimum CSS that fixes the preview. Nothing speculative.**
+
+- No features beyond the ask (no extra variants, no cursor-inline, no new shared token files “for later”).
+- No new abstraction layers when a variable or a few selectors suffice.
+- Do not duplicate `_scope.css` / `_syntax-tokens.css` / `_diagram-tokens.css` into family files.
+- Do not fight Mermaid with huge preview CSS — prefer `mermaid-config.json` / `themeCSS` (see `style-mermaid-mpe`).
+- New work → `tier: "experimental"`; don't promote to released without Mermaid JSON.
+
+Ask: would a senior say this theme diff is overcomplicated? If yes, cut it.
+
+## 3. Surgical changes
+
+**Touch only what you must. Edit source, not generated output.**
+
+- Change `themes/addons/vscode-preview/original/<family>/…`, then rebuild. Do **not** hand-edit `themes/mpe/**/style.less` unless explicitly asked.
+- Don't restyle unrelated elements, rewrite whole families, or “cleanup” neighboring families.
+- Match the family's existing variable names, selector scope (`.markdown-body`, `.markdown-preview`, `body`), and comment style.
+- Unrelated dead CSS: mention it — don't delete unless asked. Remove only orphans **your** change created.
+
+Every changed line should map to the user's request.
+
+## 4. Goal-driven execution
+
+**Define success. Verify in preview fixtures.**
+
+Turn asks into checks:
+
+| Ask | Success check |
+| --- | ------------- |
+| New / retuned theme | Rebuild; paste/check against `examples/theme-preview.md` or `code-showcase.md` |
+| Code token colors | `examples/code-showcase.md` C++ fences |
+| Mermaid colors | `examples/mermaid-showcase.md` in **MPE** + merged `mermaidConfig` |
+| Promote to released | Package has `style.less` + `mermaid-config.json` + docs index updated |
+
+For multi-step work, keep a short plan with verify steps, e.g.:
+
+```
+1. Edit original CSS → rebuild
+2. Spot-check showcase md in MPE
+3. Update README touchpoints → commit (major unit)
+```
+
+Weak goal (“make it nicer”) → ask what to prioritize (contrast, hierarchy, code, diagrams).
