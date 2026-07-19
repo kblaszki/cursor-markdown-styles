@@ -74,7 +74,7 @@ Notes:
 
 Ready-to-paste packages live under [`themes/mpe/`](themes/mpe):
 
-- **Released:** [`themes/mpe/released/cpp-modern/`](themes/mpe/released/cpp-modern) — dark C++ Modern; [`themes/mpe/released/cpp-modern-light/`](themes/mpe/released/cpp-modern-light) — light peer (`style.less` + `config.js`)
+- **Released:** [`themes/mpe/released/cpp-modern/`](themes/mpe/released/cpp-modern) — dark C++ Modern; [`themes/mpe/released/cpp-modern-light/`](themes/mpe/released/cpp-modern-light) — light peer; [`themes/mpe/released/lumina-v5-aurora/`](themes/mpe/released/lumina-v5-aurora) / [`lumina-v5-aurora-light`](themes/mpe/released/lumina-v5-aurora-light) — Lumina Aurora (`style.less` + `config.js`)
 - **Experimental:** [`themes/mpe/experimental/`](themes/mpe/experimental) — other families and variants (CSS only until promoted)
 
 Full index: [`themes/mpe/README.md`](themes/mpe/README.md)

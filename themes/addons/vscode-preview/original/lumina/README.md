@@ -4,10 +4,11 @@ An original luminous blue theme family with gradient headings, bright links, and
 
 ## Primary Files
 
-- `vscode-preview-lumina.css` - dark neon variant (current recommended)
+- `vscode-preview-lumina-v5-aurora.css` / `-light.css` — **released** refined pair (recommended)
+- `vscode-preview-lumina.css` - dark neon variant (legacy recommended before v5)
 - `vscode-preview-lumina-light.css` - light icy variant (truncated legacy peer)
 
-## v5 Aurora (recommended next iteration)
+## v5 Aurora (released)
 
 Synthesizes lessons from all Lumina versions + `docs/mpe-theme-reference.md` §8:
 
@@ -19,8 +20,8 @@ Synthesizes lessons from all Lumina versions + `docs/mpe-theme-reference.md` §8
 
 | Mode | Source | MPE package |
 | ---- | ------ | ----------- |
-| Dark | `vscode-preview-lumina-v5-aurora.css` | `themes/mpe/experimental/lumina-v5-aurora/` (`style.less` + `config.js`) |
-| Light | `vscode-preview-lumina-v5-aurora-light.css` | `themes/mpe/experimental/lumina-v5-aurora-light/` (`style.less` + `config.js`) |
+| Dark | `vscode-preview-lumina-v5-aurora.css` | [`themes/mpe/released/lumina-v5-aurora/`](../../../mpe/released/lumina-v5-aurora/) (`style.less` + `config.js`) |
+| Light | `vscode-preview-lumina-v5-aurora-light.css` | [`themes/mpe/released/lumina-v5-aurora-light/`](../../../mpe/released/lumina-v5-aurora-light/) (`style.less` + `config.js`) |
 
 ## Legacy Variants (converted from cursor-inline)
 
@@ -31,19 +32,19 @@ Synthesizes lessons from all Lumina versions + `docs/mpe-theme-reference.md` §8
 
 ## MPE Bundles
 
+- `themes/mpe/released/lumina-v5-aurora/style.less` (+ `config.js`)
+- `themes/mpe/released/lumina-v5-aurora-light/style.less` (+ `config.js`)
 - `themes/mpe/experimental/lumina/style.less`
 - `themes/mpe/experimental/lumina-light/style.less`
 - `themes/mpe/experimental/lumina-v1-neon/style.less`
 - `themes/mpe/experimental/lumina-v2-muted/style.less`
 - `themes/mpe/experimental/lumina-v3-balanced/style.less`
 - `themes/mpe/experimental/lumina-v4-neon-blue/style.less`
-- `themes/mpe/experimental/lumina-v5-aurora/style.less`
-- `themes/mpe/experimental/lumina-v5-aurora-light/style.less`
 
 ## Notes
 
 - Lumina keeps its expressive blue identity in both primary modes.
-- Prefer **v5 Aurora** for new installs; keep older variants for comparison.
+- Prefer **released v5 Aurora** for new installs; keep older variants for comparison.
 - Legacy variants are kept for comparison and regenerated via `build-from-inline.mjs`.
 - The light variants are tuned manually for readability instead of being an automatic inversion of the dark palette.
 

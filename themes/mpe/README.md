@@ -43,12 +43,16 @@ Stable install packages. Each folder has `style.less` plus a full Crossnote [`co
 | ------- | ----- |
 | [released/cpp-modern/](released/cpp-modern/) | C++ Modern dark (recommended default) |
 | [released/cpp-modern-light/](released/cpp-modern-light/) | C++ Modern light |
+| [released/lumina-v5-aurora/](released/lumina-v5-aurora/) | Lumina v5 Aurora dark |
+| [released/lumina-v5-aurora-light/](released/lumina-v5-aurora-light/) | Lumina v5 Aurora light |
 
 Install dark: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then replace `%USERPROFILE%\.crossnote\config.js` with [`released/cpp-modern/config.js`](released/cpp-modern/config.js) (see [Configure Mermaid](#configure-mermaid-open-config-script)).
 
 Install light: same steps with [`released/cpp-modern-light/`](released/cpp-modern-light/) (`style.less` + `config.js`, `"darkMode": false`).
 
-Short package guides: [released/cpp-modern/README.md](released/cpp-modern/README.md), [released/cpp-modern-light/README.md](released/cpp-modern-light/README.md).
+Lumina Aurora: same steps with [`released/lumina-v5-aurora/`](released/lumina-v5-aurora/) or [`released/lumina-v5-aurora-light/`](released/lumina-v5-aurora-light/).
+
+Short package guides: [released/cpp-modern/README.md](released/cpp-modern/README.md), [released/cpp-modern-light/README.md](released/cpp-modern-light/README.md), [released/lumina-v5-aurora/README.md](released/lumina-v5-aurora/README.md), [released/lumina-v5-aurora-light/README.md](released/lumina-v5-aurora-light/README.md).
 
 ## Experimental
 
@@ -81,15 +85,13 @@ Work-in-progress variants and families. Paste `style.less`; add a package `confi
 | [experimental/lumina-v2-muted/](experimental/lumina-v2-muted/) | Lumina v2 Muted |
 | [experimental/lumina-v3-balanced/](experimental/lumina-v3-balanced/) | Lumina v3 Balanced |
 | [experimental/lumina-v4-neon-blue/](experimental/lumina-v4-neon-blue/) | Lumina v4 Neon Blue |
-| [experimental/lumina-v5-aurora/](experimental/lumina-v5-aurora/) | Lumina v5 Aurora (includes `config.js`) |
-| [experimental/lumina-v5-aurora-light/](experimental/lumina-v5-aurora-light/) | Lumina v5 Aurora Light (includes `config.js`) |
 
 ## Family Guide
 
 - **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling (both dark and light released)
 - **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid chrome (experimental)
 - **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
-- **Lumina** - brighter neon identity with gradient headings; **v5 Aurora** is the refined dark/light pair (blue core + restrained spectrum syntax)
+- **Lumina** - luminous blue identity; **released** [`lumina-v5-aurora`](released/lumina-v5-aurora/) / [`lumina-v5-aurora-light`](released/lumina-v5-aurora-light/); older neon/muted variants stay experimental
 - **Graphite** - editorial documentation theme with warm copper contrast
 - **Graphite Code** - Graphite visuals with Dark+ syntax colors plus a stronger C++ token refine layer
 - **Meridian** - blue-green structural theme for checklists, tables, and runbooks
@@ -119,6 +121,9 @@ For the **released** dark package, use:
 | ---- | ---- |
 | [released/cpp-modern/style.less](released/cpp-modern/style.less) | Preview theme |
 | [released/cpp-modern/config.js](released/cpp-modern/config.js) | Full Crossnote config — paste over `%USERPROFILE%\.crossnote\config.js` |
+| [released/cpp-modern-light/config.js](released/cpp-modern-light/config.js) | Light peer (`darkMode: false`) |
+| [released/lumina-v5-aurora/config.js](released/lumina-v5-aurora/config.js) | Lumina Aurora dark Mermaid |
+| [released/lumina-v5-aurora-light/config.js](released/lumina-v5-aurora-light/config.js) | Lumina Aurora light Mermaid |
 
 Optional experimental CSS overlay for `--md-diagram-*` tokens: [experimental/cpp-modern-v3-diagrams/](experimental/cpp-modern-v3-diagrams/) (pair with the released `config.js` until that variant is promoted).
 
@@ -157,7 +162,7 @@ C:\Users\<YourUser>\.crossnote\config.js
 
 #### 4. Replace the entire `config.js`
 
-[released/cpp-modern/config.js](released/cpp-modern/config.js) (dark) or [released/cpp-modern-light/config.js](released/cpp-modern-light/config.js) (light) is already a full Crossnote config script (`({ katexConfig, mathjaxConfig, mermaidConfig })` with `"startOnLoad": false`).
+[released/cpp-modern/config.js](released/cpp-modern/config.js) (dark) or [released/cpp-modern-light/config.js](released/cpp-modern-light/config.js) (light) is already a full Crossnote config script (`({ katexConfig, mathjaxConfig, mermaidConfig })` with `"startOnLoad": false`). Lumina Aurora: [released/lumina-v5-aurora/config.js](released/lumina-v5-aurora/config.js) / [released/lumina-v5-aurora-light/config.js](released/lumina-v5-aurora-light/config.js).
 
 1. Select all in `%USERPROFILE%\.crossnote\config.js` and delete.
 2. Paste the **entire** contents of the package `config.js` that matches your `style.less`.

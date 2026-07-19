@@ -50,6 +50,8 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | ----------- | ------------------ | ------ |
 | [../../mpe/released/cpp-modern](../../mpe/released/cpp-modern) | [original/cpp-modern/vscode-preview-cpp-modern.css](original/cpp-modern/vscode-preview-cpp-modern.css) | released |
 | [../../mpe/released/cpp-modern-light](../../mpe/released/cpp-modern-light) | [original/cpp-modern/vscode-preview-cpp-modern-light.css](original/cpp-modern/vscode-preview-cpp-modern-light.css) | released |
+| [../../mpe/released/lumina-v5-aurora](../../mpe/released/lumina-v5-aurora) | [original/lumina/vscode-preview-lumina-v5-aurora.css](original/lumina/vscode-preview-lumina-v5-aurora.css) | released |
+| [../../mpe/released/lumina-v5-aurora-light](../../mpe/released/lumina-v5-aurora-light) | [original/lumina/vscode-preview-lumina-v5-aurora-light.css](original/lumina/vscode-preview-lumina-v5-aurora-light.css) | released |
 | [../../mpe/experimental/studio](../../mpe/experimental/studio) | [original/studio/vscode-preview-studio.css](original/studio/vscode-preview-studio.css) | experimental |
 | [../../mpe/experimental/…](../../mpe/experimental) | matching `original/<family>/vscode-preview-*.css` | experimental |
 

@@ -27,6 +27,7 @@ Change `themes/mpe/released/<slug>/config.js` under `mermaidConfig`:
 
 - Dark: [`released/cpp-modern/config.js`](../../../themes/mpe/released/cpp-modern/config.js)
 - Light: [`released/cpp-modern-light/config.js`](../../../themes/mpe/released/cpp-modern-light/config.js)
+- Lumina Aurora: [`released/lumina-v5-aurora/config.js`](../../../themes/mpe/released/lumina-v5-aurora/config.js) / [`lumina-v5-aurora-light`](../../../themes/mpe/released/lumina-v5-aurora-light/config.js)
 
 On **promotion** from experimental → released, add a full Crossnote `config.js` next to the package `style.less` (adapt from the matching dark or light skeleton). Experimental packages may omit it until then.
 

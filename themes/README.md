@@ -23,6 +23,8 @@ Released now:
 
 - **C++ Modern** dark — [`mpe/released/cpp-modern/`](mpe/released/cpp-modern)
 - **C++ Modern** light — [`mpe/released/cpp-modern-light/`](mpe/released/cpp-modern-light)
+- **Lumina v5 Aurora** dark — [`mpe/released/lumina-v5-aurora/`](mpe/released/lumina-v5-aurora)
+- **Lumina v5 Aurora** light — [`mpe/released/lumina-v5-aurora-light/`](mpe/released/lumina-v5-aurora-light)
 
 Experimental families (and legacy variants) live under [`mpe/experimental/`](mpe/experimental).
 
@@ -41,6 +43,8 @@ Add-ons are **delivery channels**, not a second `released` / `experimental` tree
 | ----------- | ------------------ | ------ |
 | [`mpe/released/cpp-modern`](mpe/released/cpp-modern) | [`original/cpp-modern/vscode-preview-cpp-modern.css`](addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) | released |
 | [`mpe/released/cpp-modern-light`](mpe/released/cpp-modern-light) | [`original/cpp-modern/vscode-preview-cpp-modern-light.css`](addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) | released |
+| [`mpe/released/lumina-v5-aurora`](mpe/released/lumina-v5-aurora) | [`original/lumina/vscode-preview-lumina-v5-aurora.css`](addons/vscode-preview/original/lumina/vscode-preview-lumina-v5-aurora.css) | released |
+| [`mpe/released/lumina-v5-aurora-light`](mpe/released/lumina-v5-aurora-light) | [`original/lumina/vscode-preview-lumina-v5-aurora-light.css`](addons/vscode-preview/original/lumina/vscode-preview-lumina-v5-aurora-light.css) | released |
 | [`mpe/experimental/<slug>`](mpe/experimental) | matching `original/<family>/vscode-preview-*.css` | experimental |
 
 Use add-ons only when you specifically need built-in preview compatibility or the old Cursor inline path. Details: [`addons/README.md`](addons/README.md), [`addons/vscode-preview/README.md`](addons/vscode-preview/README.md), [`addons/cursor-inline/README.md`](addons/cursor-inline/README.md).

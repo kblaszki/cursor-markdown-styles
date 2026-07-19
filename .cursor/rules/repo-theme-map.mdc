@@ -34,7 +34,7 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 
 ## Mermaid
 
-- Config: `themes/mpe/released/cpp-modern/config.js` (dark) or `themes/mpe/released/cpp-modern-light/config.js` (light) → paste over `%USERPROFILE%\.crossnote\config.js` (same `({ … })` shape)
+- Config: `themes/mpe/released/cpp-modern/config.js` (dark) or `themes/mpe/released/cpp-modern-light/config.js` (light); Lumina Aurora: `released/lumina-v5-aurora/config.js` / `released/lumina-v5-aurora-light/config.js` → paste over `%USERPROFILE%\.crossnote\config.js` (same `({ … })` shape)
 - Deep dive: `docs/mermaid-styling.md`
 - Prefer config over fighting SVG with preview CSS alone
 

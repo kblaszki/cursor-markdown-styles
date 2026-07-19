@@ -174,6 +174,10 @@ const releasedCssBySlug = {
     "themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css",
   "cpp-modern-light":
     "themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css",
+  "lumina-v5-aurora":
+    "themes/addons/vscode-preview/original/lumina/vscode-preview-lumina-v5-aurora.css",
+  "lumina-v5-aurora-light":
+    "themes/addons/vscode-preview/original/lumina/vscode-preview-lumina-v5-aurora-light.css",
 };
 
 for (const slug of readdirSync(releasedRoot)) {

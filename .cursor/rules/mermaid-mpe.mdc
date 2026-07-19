@@ -18,6 +18,7 @@ alwaysApply: false
 
 - Dark: `themes/mpe/released/cpp-modern/config.js` (`darkMode: true`)
 - Light: `themes/mpe/released/cpp-modern-light/config.js` (`darkMode: false`)
+- Lumina Aurora dark/light: `themes/mpe/released/lumina-v5-aurora/config.js` / `lumina-v5-aurora-light/config.js`
 
 ## Critical fixes
 
