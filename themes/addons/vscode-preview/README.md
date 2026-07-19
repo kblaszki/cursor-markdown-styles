@@ -24,7 +24,7 @@ Tiering (`released` / `experimental`) applies to **MPE packages only**. This add
 
 1. Install **Markdown Preview Enhanced**.
 2. Set `markdown-preview-enhanced.previewMode` to `"Previews Only"`.
-3. Paste [`../../mpe/released/cpp-modern/style.less`](../../mpe/released/cpp-modern/style.less) into global `style.less` and replace `config.js` with its `config.json` wrapped as `({ … })`.
+3. Paste [`../../mpe/released/cpp-modern/style.less`](../../mpe/released/cpp-modern/style.less) into global `style.less` and replace `config.js` with its `config.js` (paste as-is).
 4. Use the built-in preview only when you specifically want `markdown.styles`.
 
 ## Install — Markdown Preview Enhanced (Global)
@@ -38,7 +38,7 @@ MPE **does not read** `markdown.styles`. Use a package from [`../../mpe/`](../..
 3. Select all (`Ctrl+A`) → delete
 4. Open `themes/mpe/released/cpp-modern/style.less` from this repo
 5. Copy the entire file → paste into `style.less` → save
-6. Replace `%USERPROFILE%\.crossnote\config.js` with `themes/mpe/released/cpp-modern/config.json` wrapped as `({ … })`
+6. Replace `%USERPROFILE%\.crossnote\config.js` with `themes/mpe/released/cpp-modern/config.js` (paste as-is)
 7. Restart the editor if you just enabled `Previews Only`
 8. Open any `.md`
 

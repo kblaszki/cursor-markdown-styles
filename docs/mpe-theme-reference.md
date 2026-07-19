@@ -6,7 +6,7 @@ Reference for building Markdown Preview Enhanced (MPE) themes. Canonical **relea
 | -------- | ---- |
 | Source CSS (edit here) | [`themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) |
 | Generated package CSS | [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) |
-| Crossnote config | [`themes/mpe/released/cpp-modern/config.json`](../themes/mpe/released/cpp-modern/config.json) → `%USERPROFILE%\.crossnote\config.js` as `({ … })` |
+| Crossnote config | [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) — paste over `%USERPROFILE%\.crossnote\config.js` |
 | Mermaid SVG deep dive | [`mermaid-styling.md`](mermaid-styling.md) |
 
 **Dark** is fully documented below. **Light** is a short stub (experimental peer only).
@@ -22,7 +22,7 @@ original/<family>/vscode-preview-*.css
         │  (+ _scope.css + _syntax-tokens.css [+ optional layers])
         ▼
 themes/mpe/<tier>/<slug>/style.less
-themes/mpe/released/<slug>/config.json   ← only for released
+themes/mpe/released/<slug>/config.js   ← only for released
 ```
 
 - Always style under **three scopes**: `.markdown-body` (built-in VS Code preview), `.markdown-preview` (MPE / Crossnote), `body` (iframe fallback). In this doc, “scope” means that triple unless noted.
@@ -32,7 +32,7 @@ themes/mpe/released/<slug>/config.json   ← only for released
 node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
 
-- Install: paste `style.less` into Crossnote global CSS; replace `config.js` with the package `config.json` wrapped as `({ … })`.
+- Install: paste `style.less` into Crossnote global CSS; replace `config.js` with the package `config.js` (paste as-is).
 
 ---
 
@@ -280,9 +280,9 @@ Optional build flags (not used by released cpp-modern dark): `appendDiagramToken
 
 ---
 
-## 6. Dark — Crossnote `config.json`
+## 6. Dark — Crossnote `config.js`
 
-Full object: [`config.json`](../themes/mpe/released/cpp-modern/config.json).
+Paste-ready script: [`config.js`](../themes/mpe/released/cpp-modern/config.js).
 
 ### Top level
 
@@ -292,7 +292,7 @@ Full object: [`config.json`](../themes/mpe/released/cpp-modern/config.json).
 | `mathjaxConfig` | MathJax tex/options/loader (enrichment off) |
 | `mermaidConfig` | All Mermaid theming + layout |
 
-Install: replace `%USERPROFILE%\.crossnote\config.js` with `({ …paste JSON object… })`. Keep `"startOnLoad": false` inside `mermaidConfig`. Settings: `"markdown-preview-enhanced.mermaidTheme": "default"` (not `"dark"`).
+Install: paste the package [`config.js`](../themes/mpe/released/cpp-modern/config.js) over `%USERPROFILE%\.crossnote\config.js`. Keep `"startOnLoad": false` inside `mermaidConfig`. Settings: `"markdown-preview-enhanced.mermaidTheme": "default"` (not `"dark"`).
 
 ### Preview ↔ Mermaid color map
 
@@ -335,7 +335,7 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 | ------ | ------ |
 | Package | Experimental only: [`themes/mpe/experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) |
 | Source | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
-| Crossnote | **No** released `config.json` yet |
+| Crossnote | **No** released `config.js` yet |
 
 ### Surface / accent contrast vs dark
 
@@ -352,7 +352,7 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 | `--cpp-link` | `#4daafc` | `#0f5fd7` |
 | Syntax | Dark+ on black | Dark+-like on paper (darker greens/blues) |
 
-Selector structure mirrors dark (same sections). When promoting light to released: add full `config.json` with `"darkMode": false` and light surfaces; expand this section to match dark’s depth.
+Selector structure mirrors dark (same sections). When promoting light to released: add full `config.js` with `"darkMode": false` and light surfaces; expand this section to match dark’s depth.
 
 ---
 
@@ -363,7 +363,7 @@ Selector structure mirrors dark (same sections). When promoting light to release
 3. **Align `--md-syntax-*`** to the new accent set (or keep Dark+ if the family is “same code, new chrome”).
 4. **Register** in `build-mpe-global.mjs` with `tier: "experimental"`; rebuild.
 5. **Check** `examples/theme-preview.md`, `code-showcase.md` (C++ fences), and lists/tables contrast.
-6. **Promote to released**: copy `released/cpp-modern/config.json`, set palette hex to match preview roles, keep transparent label backgrounds + ER `themeCSS` patterns; verify `examples/mermaid-showcase.md` in MPE.
+6. **Promote to released**: copy `released/cpp-modern/config.js`, set palette hex to match preview roles, keep transparent label backgrounds + ER `themeCSS` patterns; verify `examples/mermaid-showcase.md` in MPE.
 7. **Commit** the theme unit; update package / index READMEs.
 
-Do not invent parallel token systems or duplicate `_syntax-tokens.css` into the family file. Prefer `config.json` for Mermaid over fighting SVG from `style.less`.
+Do not invent parallel token systems or duplicate `_syntax-tokens.css` into the family file. Prefer `config.js` for Mermaid over fighting SVG from `style.less`.

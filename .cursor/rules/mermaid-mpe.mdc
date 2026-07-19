@@ -1,6 +1,6 @@
 ---
 description: Mermaid styling for MPE — config first, themeCSS pitfalls, ER zebra
-globs: "**/config.json,docs/mermaid*.md,examples/mermaid*.md,themes/addons/vscode-preview/_diagram-tokens.css,themes/mpe/released/**/config.json"
+globs: "**/config.js,docs/mermaid*.md,examples/mermaid*.md,themes/addons/vscode-preview/_diagram-tokens.css,themes/mpe/released/**/config.js"
 alwaysApply: false
 ---
 
@@ -12,7 +12,7 @@ alwaysApply: false
 2. VS Code: `"markdown-preview-enhanced.mermaidTheme": "default"` (not `"dark"`)
 3. Optional CSS overlay: experimental `cpp-modern-v3-diagrams` / `--md-diagram-*` — secondary to config
 
-`themes/mpe/released/<slug>/config.json` is a **full** Crossnote config (`katexConfig`, `mathjaxConfig`, `mermaidConfig`). Install by replacing `%USERPROFILE%\.crossnote\config.js` with `({ … })` wrapping that object. Keep `"startOnLoad": false` inside `mermaidConfig`. Released packages must ship this file.
+`themes/mpe/released/<slug>/config.js` is a **full** Crossnote config (`katexConfig`, `mathjaxConfig`, `mermaidConfig`). Install by pasting it over `%USERPROFILE%\.crossnote\config.js` (same file shape). Keep `"startOnLoad": false` inside `mermaidConfig`. Released packages must ship this file.
 
 ## Critical fixes
 
@@ -20,7 +20,7 @@ alwaysApply: false
 | ------- | --- |
 | Gray pills behind edge labels | `edgeLabelBackground` / `labelBackground` / state `labelBackgroundColor` → `transparent` |
 | ER white zebra rows | `themeCSS` on `.row-rect-odd>path:first-child` / `.row-rect-even>path:first-child` (not only `attributeBackgroundColor*`) |
-| Gantt / pie / mindmap / journey | Prefer vars in `released/*/config.json` → `mermaidConfig` + `themeCSS`; mindmap needs dark `.section-N` fills |
+| Gantt / pie / mindmap / journey | Prefer vars in `released/*/config.js` → `mermaidConfig` + `themeCSS`; mindmap needs dark `.section-N` fills |
 | Quadrant black labels | `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`) |
 
 ## Docs and fixtures
@@ -31,4 +31,4 @@ alwaysApply: false
 
 ## Commit
 
-After a substantive Mermaid config / docs fix (new diagram type tuning, ER/`themeCSS` fix, promote-ready JSON), **commit** that unit. See `repo-theme-map` — commit after major changes. Skip commits for trivial one-line typos mid-iteration.
+After a substantive Mermaid config / docs fix (new diagram type tuning, ER/`themeCSS` fix, promote-ready config.js), **commit** that unit. See `repo-theme-map` — commit after major changes. Skip commits for trivial one-line typos mid-iteration.

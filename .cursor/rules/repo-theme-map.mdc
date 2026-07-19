@@ -12,7 +12,7 @@ alwaysApply: true
 | Edit CSS here | `themes/addons/vscode-preview/original/<family>/vscode-preview-*.css` |
 | Build script | `themes/addons/vscode-preview/build-mpe-global.mjs` |
 | Generated packages | `themes/mpe/released/<slug>/style.less` or `themes/mpe/experimental/<slug>/style.less` |
-| Released Crossnote config | `themes/mpe/released/<slug>/config.json` (required for released; full katex/mathjax/mermaidConfig) |
+| Released Crossnote config | `themes/mpe/released/<slug>/config.js` (required for released; full katex/mathjax/mermaidConfig) |
 
 Do **not** hand-edit generated `style.less` unless the user explicitly asks. Change source CSS, then rebuild.
 
@@ -20,7 +20,7 @@ Do **not** hand-edit generated `style.less` unless the user explicitly asks. Cha
 node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
 
-New variants default to `tier: "experimental"`. Only promote to `released` with a package-local `config.json`.
+New variants default to `tier: "experimental"`. Only promote to `released` with a package-local `config.js`.
 
 ## Addons (not tier-split)
 
@@ -34,7 +34,7 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 
 ## Mermaid
 
-- Config: `themes/mpe/released/cpp-modern/config.json` → replace `%USERPROFILE%\.crossnote\config.js` as `({ … })` (full object, not merge-only)
+- Config: `themes/mpe/released/cpp-modern/config.js` → paste over `%USERPROFILE%\.crossnote\config.js` (same `({ … })` shape)
 - Deep dive: `docs/mermaid-styling.md`
 - Prefer config over fighting SVG with preview CSS alone
 
@@ -53,7 +53,7 @@ When finishing a **major** theme/Mermaid/docs unit of work in this repo, **creat
 
 - New family or named variant (CSS + registry + rebuild + README touchpoints)
 - Promote experimental → released (Mermaid JSON + tier flip + docs)
-- Substantial Mermaid / Crossnote `config.json` change (not a one-line typo)
+- Substantial Mermaid / Crossnote `config.js` change (not a one-line typo)
 - Package layout / build pipeline / install-path docs overhaul
 - New or rewritten Cursor skill / rule that changes agent workflow
 

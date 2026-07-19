@@ -9,7 +9,7 @@
 | Variant | `…/vscode-preview-<slug>-vN-<desc>.css` |
 | Registry | `themes/addons/vscode-preview/build-mpe-global.mjs` → `variants` |
 | Paste package | `themes/mpe/<tier>/<slug>/style.less` |
-| Released Crossnote config | `themes/mpe/released/<slug>/config.json` |
+| Released Crossnote config | `themes/mpe/released/<slug>/config.js` |
 | Always appended | `_scope.css`, `_syntax-tokens.css` |
 | Diagram tokens | `_diagram-tokens.css` when `appendDiagramTokens: true` |
 | C++ refine | `original/graphite-code/_cpp-syntax-refine.css` when `appendSyntaxRefine: true` |
@@ -53,7 +53,7 @@ Diagram overlay example:
 
 ## Promote to released
 
-1. Add `themes/mpe/released/<slug>/config.json` (full Crossnote skeleton adapted from `released/cpp-modern/config.json`; palette aligned to that family).
+1. Add `themes/mpe/released/<slug>/config.js` (full Crossnote skeleton adapted from `released/cpp-modern/config.js`; palette aligned to that family).
 2. Set `tier: "released"` (and matching `slug`) in `build-mpe-global.mjs`.
 3. Rebuild; add a short package `README.md`.
 4. Update `themes/mpe/README.md`, `themes/README.md`, root README, and vscode-preview mapping table.

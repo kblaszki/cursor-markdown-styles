@@ -1,4 +1,4 @@
-{
+({
   "katexConfig": {
     "macros": {}
   },
@@ -185,4 +185,4 @@
       "rotateCommitLabel": true
     }
   }
-}
+})

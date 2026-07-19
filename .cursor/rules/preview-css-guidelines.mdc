@@ -27,8 +27,8 @@ Before editing CSS or Mermaid config:
 - No features beyond the ask (no extra variants, no cursor-inline, no new shared token files “for later”).
 - No new abstraction layers when a variable or a few selectors suffice.
 - Do not duplicate `_scope.css` / `_syntax-tokens.css` / `_diagram-tokens.css` into family files.
-- Do not fight Mermaid with huge preview CSS — prefer package `config.json` / `themeCSS` (see `style-mermaid-mpe`).
-- New work → `tier: "experimental"`; don't promote to released without `config.json`.
+- Do not fight Mermaid with huge preview CSS — prefer package `config.js` / `themeCSS` (see `style-mermaid-mpe`).
+- New work → `tier: "experimental"`; don't promote to released without `config.js`.
 
 Ask: would a senior say this theme diff is overcomplicated? If yes, cut it.
 
@@ -53,8 +53,8 @@ Turn asks into checks:
 | --- | ------------- |
 | New / retuned theme | Rebuild; paste/check against `examples/theme-preview.md` or `code-showcase.md` |
 | Code token colors | `examples/code-showcase.md` C++ fences |
-| Mermaid colors | `examples/mermaid-showcase.md` in **MPE** + replaced `config.js` from package `config.json` |
-| Promote to released | Package has `style.less` + `config.json` + docs index updated |
+| Mermaid colors | `examples/mermaid-showcase.md` in **MPE** + replaced `config.js` from package `config.js` |
+| Promote to released | Package has `style.less` + `config.js` + docs index updated |
 
 For multi-step work, keep a short plan with verify steps, e.g.:
 

@@ -6,7 +6,7 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 
 1. Use **Markdown Preview Enhanced** for daily Markdown work.
 2. Paste a **released** package from [`mpe/released/`](mpe/released) into your global `style.less` (start with [`mpe/released/cpp-modern/`](mpe/released/cpp-modern)).
-3. Replace `%USERPROFILE%\.crossnote\config.js` with that package’s `config.json` wrapped as `({ … })`.
+3. Replace `%USERPROFILE%\.crossnote\config.js` with that package’s `config.js` (paste as-is).
 4. Use the browser workbench in [`../preview/`](../preview) to iterate on theme ideas.
 5. Keep built-in preview and Cursor inline themes only as secondary add-ons.
 
@@ -15,7 +15,7 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 ### MPE First
 
 - [`mpe/`](mpe) - install packages for Markdown Preview Enhanced
-- [`mpe/released/`](mpe/released) - stable packages (`style.less` + `config.json`)
+- [`mpe/released/`](mpe/released) - stable packages (`style.less` + `config.js`)
 - [`mpe/experimental/`](mpe/experimental) - WIP variants (CSS only until promoted)
 - [`mpe/README.md`](mpe/README.md) - full install and editing workflow
 
