@@ -81,13 +81,15 @@ Work-in-progress variants and families. Paste `style.less`; add a package `confi
 | [experimental/lumina-v2-muted/](experimental/lumina-v2-muted/) | Lumina v2 Muted |
 | [experimental/lumina-v3-balanced/](experimental/lumina-v3-balanced/) | Lumina v3 Balanced |
 | [experimental/lumina-v4-neon-blue/](experimental/lumina-v4-neon-blue/) | Lumina v4 Neon Blue |
+| [experimental/lumina-v5-aurora/](experimental/lumina-v5-aurora/) | Lumina v5 Aurora |
+| [experimental/lumina-v5-aurora-light/](experimental/lumina-v5-aurora-light/) | Lumina v5 Aurora Light |
 
 ## Family Guide
 
 - **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling (both dark and light released)
 - **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid chrome (experimental)
 - **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
-- **Lumina** - brighter neon identity with gradient headings and luminous accents
+- **Lumina** - brighter neon identity with gradient headings; **v5 Aurora** is the refined dark/light pair (blue core + restrained spectrum syntax)
 - **Graphite** - editorial documentation theme with warm copper contrast
 - **Graphite Code** - Graphite visuals with Dark+ syntax colors plus a stronger C++ token refine layer
 - **Meridian** - blue-green structural theme for checklists, tables, and runbooks

@@ -106,6 +106,18 @@ const variants = [
     label: "Lumina v4 Neon Blue",
   },
   {
+    css: join(root, "original/lumina/vscode-preview-lumina-v5-aurora.css"),
+    slug: "lumina-v5-aurora",
+    tier: "experimental",
+    label: "Lumina v5 Aurora",
+  },
+  {
+    css: join(root, "original/lumina/vscode-preview-lumina-v5-aurora-light.css"),
+    slug: "lumina-v5-aurora-light",
+    tier: "experimental",
+    label: "Lumina v5 Aurora Light",
+  },
+  {
     css: join(root, "original/graphite/vscode-preview-graphite.css"),
     slug: "graphite",
     tier: "experimental",
