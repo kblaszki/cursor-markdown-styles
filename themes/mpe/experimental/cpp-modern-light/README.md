@@ -73,41 +73,41 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 
 | Variable | Color |
 | -------- | ----- |
-| `activeTaskBkgColor` | `#0f766e` |
-| `activeTaskBorderColor` | `#115e59` |
+| `activeTaskBkgColor` | `#14b8a6` |
+| `activeTaskBorderColor` | `#0d9488` |
 | `actorBkg` | `#ffffff` |
-| `actorBorder` | `#1d4ed8` |
-| `actorLineColor` | `#0f766e` |
+| `actorBorder` | `#3b82f6` |
+| `actorLineColor` | `#14b8a6` |
 | `actorTextColor` | `#1f2937` |
-| `altSectionBkgColor` | `#eef2f7` |
+| `altSectionBkgColor` | `#f1f5f9` |
 | `arrowheadColor` | `#0f766e` |
 | `attributeBackgroundColorEven` | `#e2e8f0` |
 | `attributeBackgroundColorOdd` | `#ffffff` |
 | `background` | `#f7f9fc` |
 | `clusterBkg` | `#ecfdf5` |
-| `clusterBorder` | `#0f766e` |
+| `clusterBorder` | `#14b8a6` |
 | `commitLabelBackground` | `#eef2f7` |
 | `commitLabelColor` | `#1f2937` |
-| `critBkgColor` | `#b91c1c` |
-| `critBorderColor` | `#b91c1c` |
-| `cScale0` | `#1d4ed8` |
-| `cScale1` | `#0f766e` |
-| `cScale2` | `#3f6212` |
-| `cScale3` | `#9a3412` |
-| `cScale4` | `#7e22ce` |
-| `cScale5` | `#a16207` |
-| `cScale6` | `#166534` |
-| `cScale7` | `#0369a1` |
+| `critBkgColor` | `#ef4444` |
+| `critBorderColor` | `#dc2626` |
+| `cScale0` | `#3b82f6` |
+| `cScale1` | `#14b8a6` |
+| `cScale2` | `#65a30d` |
+| `cScale3` | `#f59e0b` |
+| `cScale4` | `#8b5cf6` |
+| `cScale5` | `#0ea5e9` |
+| `cScale6` | `#84cc16` |
+| `cScale7` | `#6366f1` |
 | `cScaleLabel0` | `#ffffff` |
 | `cScaleLabel1` | `#ffffff` |
 | `cScaleLabel2` | `#ffffff` |
-| `cScaleLabel3` | `#ffffff` |
+| `cScaleLabel3` | `#1f2937` |
 | `cScaleLabel4` | `#ffffff` |
 | `cScaleLabel5` | `#ffffff` |
-| `cScaleLabel6` | `#ffffff` |
+| `cScaleLabel6` | `#1f2937` |
 | `cScaleLabel7` | `#ffffff` |
 | `doneTaskBkgColor` | `#cbd5e1` |
-| `doneTaskBorderColor` | `#3f6212` |
+| `doneTaskBorderColor` | `#65a30d` |
 | `excludeBkgColor` | `#e2e8f0` |
 | `fillType0` | `#ffffff` |
 | `fillType1` | `#dbeafe` |
@@ -117,73 +117,73 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `fillType5` | `#f3e8ff` |
 | `fillType6` | `#eef2f7` |
 | `fillType7` | `#e2e8f0` |
-| `git0` | `#1d4ed8` |
-| `git1` | `#0f766e` |
-| `git2` | `#3f6212` |
-| `git3` | `#9a3412` |
+| `git0` | `#3b82f6` |
+| `git1` | `#14b8a6` |
+| `git2` | `#65a30d` |
+| `git3` | `#f59e0b` |
 | `gitBranchLabel0` | `#ffffff` |
 | `gitBranchLabel1` | `#ffffff` |
 | `gitBranchLabel2` | `#ffffff` |
-| `gitInv0` | `#0f766e` |
-| `gitInv1` | `#1d4ed8` |
+| `gitInv0` | `#14b8a6` |
+| `gitInv1` | `#3b82f6` |
 | `gridColor` | `#d0d7e2` |
 | `labelTextColor` | `#1f2937` |
 | `lineColor` | `#94a3b8` |
 | `mainBkg` | `#ffffff` |
-| `nodeBorder` | `#1d4ed8` |
+| `nodeBorder` | `#3b82f6` |
 | `nodeTextColor` | `#1f2937` |
-| `pie1` | `#1d4ed8` |
-| `pie2` | `#0f766e` |
-| `pie3` | `#3f6212` |
-| `pie4` | `#9a3412` |
-| `pie5` | `#166534` |
-| `pie6` | `#7e22ce` |
-| `pie7` | `#a16207` |
+| `pie1` | `#3b82f6` |
+| `pie2` | `#14b8a6` |
+| `pie3` | `#65a30d` |
+| `pie4` | `#f59e0b` |
+| `pie5` | `#8b5cf6` |
+| `pie6` | `#ec4899` |
+| `pie7` | `#0ea5e9` |
 | `pieLegendTextColor` | `#334155` |
 | `pieSectionTextColor` | `#ffffff` |
 | `pieStrokeColor` | `#f7f9fc` |
 | `pieTitleTextColor` | `#1f2937` |
-| `primaryBorderColor` | `#1d4ed8` |
+| `primaryBorderColor` | `#3b82f6` |
 | `primaryColor` | `#ffffff` |
 | `primaryTextColor` | `#1f2937` |
-| `quadrant1Fill` | `#ecfdf5` |
+| `quadrant1Fill` | `#eff6ff` |
 | `quadrant1TextFill` | `#1f2937` |
-| `quadrant2Fill` | `#eff6ff` |
+| `quadrant2Fill` | `#ecfdf5` |
 | `quadrant2TextFill` | `#1f2937` |
 | `quadrant3Fill` | `#f8fafc` |
 | `quadrant3TextFill` | `#1f2937` |
 | `quadrant4Fill` | `#f1f5f9` |
 | `quadrant4TextFill` | `#1f2937` |
 | `quadrantExternalBorderStrokeFill` | `#0f766e` |
-| `quadrantInternalBorderStrokeFill` | `#1d4ed8` |
+| `quadrantInternalBorderStrokeFill` | `#3b82f6` |
 | `quadrantPointFill` | `#0f766e` |
-| `quadrantPointTextFill` | `#ffffff` |
+| `quadrantPointTextFill` | `#1f2937` |
 | `quadrantTitleFill` | `#0f766e` |
 | `quadrantXAxisTextFill` | `#64748b` |
 | `quadrantYAxisTextFill` | `#64748b` |
 | `scaleLabelColor` | `#1f2937` |
-| `secondaryBorderColor` | `#1d4ed8` |
+| `secondaryBorderColor` | `#3b82f6` |
 | `secondaryColor` | `#eef2f7` |
 | `secondaryTextColor` | `#1f2937` |
 | `sectionBkgColor` | `#dbeafe` |
 | `sectionBkgColor2` | `#ccfbf1` |
-| `signalColor` | `#0f766e` |
+| `signalColor` | `#14b8a6` |
 | `signalTextColor` | `#1f2937` |
 | `stateBkg` | `#ffffff` |
-| `stateBorder` | `#1d4ed8` |
+| `stateBorder` | `#3b82f6` |
 | `stateLabelColor` | `#1f2937` |
-| `taskBkgColor` | `#1d4ed8` |
-| `taskBorderColor` | `#1e40af` |
+| `taskBkgColor` | `#3b82f6` |
+| `taskBorderColor` | `#2563eb` |
 | `taskTextColor` | `#ffffff` |
 | `taskTextDarkColor` | `#1f2937` |
 | `taskTextLightColor` | `#ffffff` |
 | `taskTextOutsideColor` | `#1f2937` |
-| `tertiaryBorderColor` | `#0f766e` |
+| `tertiaryBorderColor` | `#14b8a6` |
 | `tertiaryColor` | `#e2e8f0` |
 | `tertiaryTextColor` | `#1f2937` |
 | `textColor` | `#1f2937` |
 | `titleColor` | `#0f766e` |
-| `todayLineColor` | `#9a3412` |
+| `todayLineColor` | `#f59e0b` |
 | `transitionColor` | `#94a3b8` |
 | `transitionLabelColor` | `#1f2937` |
 
@@ -193,8 +193,10 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | ----- |
 | `#0284c7` |
 | `#0369a1` |
+| `#0d9488` |
+| `#0ea5e9` |
 | `#0f766e` |
-| `#115e59` |
+| `#14b8a6` |
 | `#15803d` |
 | `#166534` |
 | `#1d4ed8` |
@@ -203,21 +205,29 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#1f2937` |
 | `#2563eb` |
 | `#334155` |
+| `#3b82f6` |
 | `#3f6212` |
 | `#475569` |
 | `#4ec9b0` |
 | `#4fc1ff` |
 | `#569cd6` |
+| `#5eead4` |
+| `#6366f1` |
 | `#64748b` |
+| `#65a30d` |
 | `#6a9955` |
 | `#7e22ce` |
+| `#84cc16` |
 | `#89d185` |
+| `#8b5cf6` |
+| `#93c5fd` |
 | `#94a3b8` |
 | `#9a3412` |
 | `#9cdcfe` |
 | `#a16207` |
 | `#b5cea8` |
 | `#b91c1c` |
+| `#bef264` |
 | `#c586c0` |
 | `#cbd5e1` |
 | `#ccfbf1` |
@@ -225,17 +235,23 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#d0d7e2` |
 | `#d4d4d4` |
 | `#dbeafe` |
+| `#dc2626` |
 | `#dcdcaa` |
 | `#e2e8f0` |
+| `#ec4899` |
 | `#ecfccb` |
 | `#ecfdf5` |
 | `#eef2f7` |
+| `#ef4444` |
 | `#eff6ff` |
 | `#f1f5f9` |
 | `#f3e8ff` |
 | `#f44747` |
+| `#f59e0b` |
 | `#f7f9fc` |
 | `#f8fafc` |
+| `#fdba74` |
+| `#fef9c3` |
 | `#ffedd5` |
 | `#ffffff` |
 
