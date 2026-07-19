@@ -1,6 +1,6 @@
 # Markdown Preview Enhanced — packages
 
-Ready-to-paste **style.less** packages for **Markdown Preview Enhanced (MPE)**, split into **released** (install these) and **experimental** (WIP; may lack Mermaid config).
+Ready-to-paste **style.less** packages for **Markdown Preview Enhanced (MPE)**, split into **released** (install these) and **experimental** (WIP; may lack Crossnote `config.json`).
 
 Source CSS lives under [`../addons/vscode-preview/original/`](../addons/vscode-preview/original/). Rebuild after edits:
 
@@ -31,19 +31,19 @@ Recommended companion extensions are listed in the root [README.md](../../README
 
 ## Released
 
-Stable install packages. Each folder has `style.less` plus `mermaid-config.json` (merge into Crossnote `mermaidConfig`).
+Stable install packages. Each folder has `style.less` plus a full Crossnote [`config.json`](released/cpp-modern/config.json) (katex + mathjax + `mermaidConfig`).
 
 | Package | Theme |
 | ------- | ----- |
 | [released/cpp-modern/](released/cpp-modern/) | C++ Modern dark (recommended default) |
 
-Install: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then merge [`released/cpp-modern/mermaid-config.json`](released/cpp-modern/mermaid-config.json) into `config.js` (see [Configure Mermaid](#configure-mermaid-open-config-script)).
+Install: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then replace `%USERPROFILE%\.crossnote\config.js` with the object from [`released/cpp-modern/config.json`](released/cpp-modern/config.json) wrapped as `({ … })` (see [Configure Mermaid](#configure-mermaid-open-config-script)).
 
 Short package guide: [released/cpp-modern/README.md](released/cpp-modern/README.md).
 
 ## Experimental
 
-Work-in-progress variants and families. Paste `style.less` only; Mermaid config is added when a package is promoted to released.
+Work-in-progress variants and families. Paste `style.less` only; add a full `config.json` when promoting to released.
 
 | Package | Theme |
 | ------- | ----- |
@@ -108,9 +108,9 @@ For the **released** dark package, use:
 | File | Role |
 | ---- | ---- |
 | [released/cpp-modern/style.less](released/cpp-modern/style.less) | Preview theme |
-| [released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) | Fields to put inside `mermaidConfig` in `config.js` |
+| [released/cpp-modern/config.json](released/cpp-modern/config.json) | Full Crossnote config → paste into `config.js` as `({ … })` |
 
-Optional experimental CSS overlay for `--md-diagram-*` tokens: [experimental/cpp-modern-v3-diagrams/](experimental/cpp-modern-v3-diagrams/) (pair with the released Mermaid JSON until that variant is promoted).
+Optional experimental CSS overlay for `--md-diagram-*` tokens: [experimental/cpp-modern-v3-diagrams/](experimental/cpp-modern-v3-diagrams/) (pair with the released `config.json` until that variant is promoted).
 
 Best fixture: `examples/mermaid-showcase.md`. Deep dive: [`docs/mermaid-styling.md`](../../docs/mermaid-styling.md).
 
@@ -145,41 +145,25 @@ Use `"default"`, not `"dark"`. The built-in `mermaid.dark.css` theme often resto
 C:\Users\<YourUser>\.crossnote\config.js
 ```
 
-A fresh file looks like this — `mermaidConfig` only has `startOnLoad`:
+#### 4. Replace the entire `config.js`
+
+[released/cpp-modern/config.json](released/cpp-modern/config.json) is a **full** Crossnote config object (`katexConfig`, `mathjaxConfig`, `mermaidConfig` with `"startOnLoad": false`).
+
+Replace the whole file with:
 
 ```js
 ({
-  katexConfig: {
-    "macros": {}
-  },
-
-  mathjaxConfig: {
-    "tex": {},
-    "options": {
-      "enableEnrichment": false
-    },
-    "loader": {}
-  },
-
-  mermaidConfig: {
-    "startOnLoad": false
-  },
+  // Paste the entire object body from themes/mpe/released/cpp-modern/config.json
 })
 ```
 
-#### 4. Fill in `mermaidConfig`
-
-Do **not** replace the entire `config.js` with the JSON file.  
-[released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) is the **contents** of `mermaidConfig` only.
-
-Keep `startOnLoad: false`, then merge in every field from that JSON (`theme`, `themeVariables`, `flowchart`, …).
+Example shape (see the JSON file for the complete `mermaidConfig`):
 
 ```js
 ({
   katexConfig: {
     "macros": {}
   },
-
   mathjaxConfig: {
     "tex": {},
     "options": {
@@ -187,18 +171,19 @@ Keep `startOnLoad: false`, then merge in every field from that JSON (`theme`, `t
     },
     "loader": {}
   },
-
   mermaidConfig: {
     "startOnLoad": false,
-    // Paste every field from themes/mpe/released/cpp-modern/mermaid-config.json here
-    // (theme, themeVariables, themeCSS, flowchart, sequence, …)
-  },
+    "theme": "base",
+    "themeVariables": { /* … */ },
+    "themeCSS": "/* … */"
+    // flowchart, sequence, class, state, gantt, journey, pie, gitGraph
+  }
 })
 ```
 
-Keep the JSON as the single source of truth — copy its fields into `mermaidConfig` after `startOnLoad`.
+Keep [`config.json`](released/cpp-modern/config.json) as the single source of truth in the repo.
 
-For experimental light / v3 packages, adapt `themeVariables` (e.g. `"darkMode": false`) when you add a package-local Mermaid JSON on promotion.
+For experimental light / v3 packages, adapt `mermaidConfig.themeVariables` (e.g. `"darkMode": false`) when you add a package-local `config.json` on promotion.
 
 #### 5. Save and verify
 
@@ -211,18 +196,18 @@ For experimental light / v3 packages, adapt `themeVariables` (e.g. `"darkMode": 
 | Symptom | Fix |
 | ------- | --- |
 | Light-gray “glow” behind `yes` / `no` / `assign` | Confirm `theme: "base"`, `edgeLabelBackground: "transparent"`, and for state diagrams also `labelBackgroundColor: "transparent"` inside `mermaidConfig` |
-| ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `released/cpp-modern/mermaid-config.json`. |
+| ER attribute rows unreadable (white zebra stripes) | Newer Mermaid ER uses `.row-rect-odd` / `.row-rect-even` (not `.er.attributeBoxOdd`). Update `themeCSS` accordingly — see `released/cpp-modern/config.json`. |
 | Gantt purple bars / yellow sections | Set `taskBkgColor`, `sectionBkgColor*`, and matching `themeCSS` — see JSON |
 | Mindmap pastel nodes / white-on-yellow | Force dark `.section-N` fills + white labels via `cScale*` and `themeCSS` |
 | Quadrant names black | Use `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`); `themeCSS` `.quadrant text` |
 | Journey huge empty bottom | Mermaid reserves vertical score space for faces; config sets `bottomMarginAdj: 0`, `taskMargin: 25`, `todayMarker` off on gantt |
 | Config seems ignored | Re-open via **Open Config Script (Global)** — the live file is `%USERPROFILE%\.crossnote\config.js` |
 | Labels still light after CSS paste | Do not use `"markdown-preview-enhanced.mermaidTheme": "dark"` |
-| Only `startOnLoad: false` in `mermaidConfig` | Merge the full [released/cpp-modern/mermaid-config.json](released/cpp-modern/mermaid-config.json) fields into that object |
+| Only `startOnLoad: false` in `mermaidConfig` | Replace `config.js` with the full [released/cpp-modern/config.json](released/cpp-modern/config.json) wrapped as `({ … })` |
 
 ### Promote experimental → released
 
-1. Add `mermaid-config.json` next to that package’s `style.less` (adapt from cpp-modern; palette aligned to the family).
+1. Add `config.json` next to that package’s `style.less` (adapt from cpp-modern’s full Crossnote skeleton; palette aligned to the family).
 2. Set `tier: "released"` for that variant in [`build-mpe-global.mjs`](../addons/vscode-preview/build-mpe-global.mjs).
 3. Rebuild; add a short package `README.md`; update this index and the root theme docs.
 4. Remove the empty experimental folder if the path changed.

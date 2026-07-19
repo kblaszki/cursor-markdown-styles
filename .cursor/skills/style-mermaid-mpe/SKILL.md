@@ -1,10 +1,10 @@
 ---
 name: style-mermaid-mpe
 description: >-
-  Style Mermaid diagrams for Markdown Preview Enhanced using mermaidConfig
-  (themeVariables and themeCSS), not CSS-only fights. Use when fixing Mermaid
-  colors, edge labels, ER zebra rows, state transitions, pie/git palettes,
-  mermaid-config JSON, or dark-preview diagram contrast in MPE / Crossnote.
+  Style Mermaid diagrams for Markdown Preview Enhanced using Crossnote config.json
+  (mermaidConfig themeVariables and themeCSS), not CSS-only fights. Use when fixing
+  Mermaid colors, edge labels, ER zebra rows, state transitions, pie/git palettes,
+  package config.json, or dark-preview diagram contrast in MPE / Crossnote.
 ---
 
 # Style Mermaid for MPE
@@ -13,7 +13,7 @@ description: >-
 
 ```
 Mermaid progress:
-- [ ] 1. Edit package mermaid-config.json
+- [ ] 1. Edit package config.json → mermaidConfig
 - [ ] 2. Sync README snippets if needed
 - [ ] 3. User tests showcase in MPE
 - [ ] 4. themeCSS only for gaps variables miss
@@ -23,14 +23,15 @@ Mermaid progress:
 
 ### 1. Edit config (primary)
 
-Change `themes/mpe/released/<slug>/mermaid-config.json` (today: `released/cpp-modern/mermaid-config.json`).
+Change `themes/mpe/released/<slug>/config.json` (today: `released/cpp-modern/config.json`) under `mermaidConfig`.
 
-On **promotion** from experimental → released, add that file next to the package `style.less` (adapt palette from cpp-modern). Experimental packages may omit Mermaid until then.
+On **promotion** from experimental → released, add a full Crossnote `config.json` next to the package `style.less` (adapt from cpp-modern). Experimental packages may omit it until then.
 
-That file is the **object body** of Crossnote `mermaidConfig`. User merges it into `%USERPROFILE%\.crossnote\config.js` and keeps `"startOnLoad": false`.
+That file is the **full** Crossnote config object. User replaces `%USERPROFILE%\.crossnote\config.js` with `({ … })` wrapping it. Keep `"startOnLoad": false` inside `mermaidConfig`.
 
-Required shape:
+Required `mermaidConfig` shape:
 
+- `"startOnLoad": false`
 - `"theme": "base"`
 - `"themeVariables"` with `darkMode` and surfaces matching the preview theme
 - `"themeCSS"` for ER / label overrides Mermaid does not honor via variables alone
@@ -72,7 +73,7 @@ Do not replace a working config with CSS-only ER fixes.
 
 ### 5. Commit this Mermaid unit
 
-When the Mermaid change is a finished unit (config + any matching docs/showcase notes), **create a git commit** without waiting for the user. Examples: ER zebra fix, gantt/pie/mindmap palette pass, new released `mermaid-config.json`.
+When the Mermaid change is a finished unit (config + any matching docs/showcase notes), **create a git commit** without waiting for the user. Examples: ER zebra fix, gantt/pie/mindmap palette pass, new released `config.json`.
 
 Skip or batch tiny mid-iteration tweaks. Follow the repo git protocol (status/diff/log, HEREDOC message, no push unless asked). See `repo-theme-map` — commit after major changes.
 

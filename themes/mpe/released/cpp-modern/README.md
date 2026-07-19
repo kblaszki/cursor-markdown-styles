@@ -5,7 +5,14 @@ Ready-to-paste MPE package for the recommended dark C++ Modern theme.
 ## Install
 
 1. Paste the entire [`style.less`](style.less) into `%USERPROFILE%\.crossnote\style.less` via **Markdown Preview Enhanced: Customize CSS (Global)**.
-2. Merge every field from [`mermaid-config.json`](mermaid-config.json) into `mermaidConfig` in `%USERPROFILE%\.crossnote\config.js` (keep `"startOnLoad": false`). That JSON is the **contents** of `mermaidConfig`, not a whole `config.js`.
+2. Open **Markdown Preview Enhanced: Open Config Script (Global)** (`%USERPROFILE%\.crossnote\config.js`). Replace the **entire** file with the object from [`config.json`](config.json) wrapped as Crossnote expects:
+
+```js
+({
+  // paste the full contents of config.json here (katexConfig, mathjaxConfig, mermaidConfig)
+})
+```
+
 3. Optional settings:
 
 ```json

@@ -73,7 +73,7 @@ Do **not** commit half-finished color experiments; finish the checklist through 
 2. Replace `%USERPROFILE%\.crossnote\style.less` with the full package `style.less`
 3. Settings: `"markdown-preview-enhanced.previewTheme": "none.css"`, `"markdown-preview-enhanced.codeBlockTheme": "auto.css"`
 
-For Mermaid on **released** packages, use the `style-mermaid-mpe` skill / package `mermaid-config.json` — not CSS alone. Experimental packages may omit Mermaid until promotion.
+For Mermaid on **released** packages, use the `style-mermaid-mpe` skill / package `config.json` — not CSS alone. Experimental packages may omit Crossnote config until promotion.
 
 ## Promote to released
 

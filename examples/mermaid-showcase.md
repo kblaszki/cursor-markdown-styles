@@ -19,12 +19,12 @@ A fixture for testing **released C++ Modern** Mermaid theming against the full r
 Use `"default"`, not `"dark"` — the dark Mermaid CSS often restores light-gray edge-label backgrounds.
 
 3. Open **Markdown Preview Enhanced: Open Config Script (Global)** — this opens `%USERPROFILE%\.crossnote\config.js`.
-4. Inside `mermaidConfig`, keep `"startOnLoad": false` and merge in every field from [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) (`theme`, `themeVariables`, `flowchart`, …). That JSON is the **contents** of `mermaidConfig`, not a replacement for the whole `config.js`.
+4. Replace the **entire** file with the object from [`themes/mpe/released/cpp-modern/config.json`](../themes/mpe/released/cpp-modern/config.json) wrapped as `({ … })`. That JSON is a full Crossnote config (`katexConfig`, `mathjaxConfig`, `mermaidConfig`), not only Mermaid fields.
 5. Save `config.js` and refresh the MPE preview.
 
 Full copy-paste example and troubleshooting: [themes/mpe/README.md — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script).
 
-Optional experimental diagram CSS tokens: [`experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/). For light WIP, use [`experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) and set `"darkMode": false` in `themeVariables` when you add a Mermaid JSON.
+Optional experimental diagram CSS tokens: [`experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/). For light WIP, use [`experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) and set `"darkMode": false` in `mermaidConfig.themeVariables` when you add a package `config.json`.
 
 ---
 

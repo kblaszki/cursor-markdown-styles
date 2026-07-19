@@ -3,7 +3,7 @@
 How Markdown Preview Enhanced (MPE) / Crossnote paints Mermaid SVGs, what ends up in the DOM, and how to theme diagrams for dark previews (C++ Modern).
 
 Fixture: [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md)  
-Config source of truth: [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json)  
+Config source of truth: [`themes/mpe/released/cpp-modern/config.json`](../themes/mpe/released/cpp-modern/config.json)  
 Setup steps: [`themes/mpe/README.md` — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script)
 
 ## How MPE renders a diagram
@@ -143,7 +143,7 @@ Newer Mermaid does **not** paint attribute rows with `.er.attributeBoxOdd` / `Ev
 .edgeLabel .background{fill:#252526!important}
 ```
 
-That block is already in [`mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) as `themeCSS`.
+That block is already in [`config.json`](../themes/mpe/released/cpp-modern/config.json) under `mermaidConfig.themeCSS`.
 
 ### Pie / git / gantt / journey / mindmap / quadrant / block
 
@@ -167,27 +167,38 @@ That block is already in [`mermaid-config.json`](../themes/mpe/released/cpp-mode
    - a class rule in that `<style>`, or
    - an **inline** `fill="…"` / `stroke="…"` (needs `!important` in `themeCSS` or a variable Mermaid honors).
 
-## Minimal `mermaidConfig` shape
+## Minimal Crossnote `config.js` shape
 
-Do not replace whole `config.js`. Merge into `mermaidConfig` (keep `"startOnLoad": false`):
+Replace the whole `%USERPROFILE%\.crossnote\config.js` with the package object wrapped as `({ … })`. Source of truth: [`config.json`](../themes/mpe/released/cpp-modern/config.json).
 
 ```js
-mermaidConfig: {
-  startOnLoad: false,
-  theme: "base",
-  themeVariables: {
-    darkMode: true,
-    // …see themes/mpe/released/cpp-modern/mermaid-config.json
+({
+  katexConfig: {
+    "macros": {}
   },
-  themeCSS: "/* ER + edge label overrides */",
-  flowchart: { htmlLabels: false, padding: 12 },
-  // sequence, class, state, …
-}
+  mathjaxConfig: {
+    "tex": {},
+    "options": {
+      "enableEnrichment": false
+    },
+    "loader": {}
+  },
+  mermaidConfig: {
+    "startOnLoad": false,
+    "theme": "base",
+    "themeVariables": {
+      "darkMode": true
+      // …see themes/mpe/released/cpp-modern/config.json → mermaidConfig
+    },
+    "themeCSS": "/* ER + edge label overrides */"
+    // flowchart, sequence, class, state, gantt, journey, pie, gitGraph
+  }
+})
 ```
 
-Full paste-ready object: [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json).
+Full paste-ready object: [`themes/mpe/released/cpp-modern/config.json`](../themes/mpe/released/cpp-modern/config.json).
 
-Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/experimental/); set `"darkMode": false` (and light surfaces) in `themeVariables` when promoting a light package.
+Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/experimental/); set `"darkMode": false` (and light surfaces) in `mermaidConfig.themeVariables` when promoting a light package.
 
 ## CSS vs config (what we learned)
 
@@ -204,7 +215,7 @@ Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/
 | ------- | --- |
 | Gray boxes behind `yes` / `no` / `assign` | `edgeLabelBackground` / `labelBackground` / (state) `labelBackgroundColor` → `transparent`; `mermaidTheme: "default"` |
 | ER rows white / unreadable | Update `themeCSS` for `.row-rect-odd/even>path:first-child` |
-| Gantt / pie / mindmap off-palette | Re-merge latest `released/cpp-modern/mermaid-config.json` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
+| Gantt / pie / mindmap off-palette | Re-merge latest `released/cpp-modern/config.json` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
 | Quadrant names black | `quadrant1TextFill`…`4` + `.quadrant text{fill:#e8e8e8!important}` |
 | Journey large empty bottom | Expected score-face band; reduce `taskMargin` / `bottomMarginAdj` |
 | Config ignored | Edit via **Open Config Script (Global)** → `%USERPROFILE%\.crossnote\config.js`, then refresh preview |
@@ -215,7 +226,7 @@ Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/
 
 | Path | Role |
 | ---- | ---- |
-| [`themes/mpe/released/cpp-modern/mermaid-config.json`](../themes/mpe/released/cpp-modern/mermaid-config.json) | Copy into `mermaidConfig` |
+| [`themes/mpe/released/cpp-modern/config.json`](../themes/mpe/released/cpp-modern/config.json) | Full Crossnote config → `config.js` as `({ … })` |
 | [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) | Primary preview theme |
 | [`themes/mpe/experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/) | Optional CSS token overlay for diagrams |
 | [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md) | Visual regression fixture |

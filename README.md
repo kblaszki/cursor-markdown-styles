@@ -74,7 +74,7 @@ Notes:
 
 Ready-to-paste packages live under [`themes/mpe/`](themes/mpe):
 
-- **Released:** [`themes/mpe/released/cpp-modern/`](themes/mpe/released/cpp-modern) — recommended dark C++ Modern (`style.less` + `mermaid-config.json`)
+- **Released:** [`themes/mpe/released/cpp-modern/`](themes/mpe/released/cpp-modern) — recommended dark C++ Modern (`style.less` + `config.json`)
 - **Experimental:** [`themes/mpe/experimental/`](themes/mpe/experimental) — other families and variants (CSS only until promoted)
 
 Full index: [`themes/mpe/README.md`](themes/mpe/README.md)
@@ -85,7 +85,7 @@ Full index: [`themes/mpe/README.md`](themes/mpe/README.md)
 2. Run `Markdown Preview Enhanced: Customize CSS (Global)`.
 3. VS Code or Cursor opens `%USERPROFILE%\.crossnote\style.less`.
 4. Select all, delete the existing content, and paste [`themes/mpe/released/cpp-modern/style.less`](themes/mpe/released/cpp-modern/style.less).
-5. Merge [`mermaid-config.json`](themes/mpe/released/cpp-modern/mermaid-config.json) into Crossnote `mermaidConfig` (see MPE README).
+5. Replace [`config.js`](themes/mpe/released/cpp-modern/config.json) via **Open Config Script (Global)** — wrap the package `config.json` as `({ … })` (see MPE README).
 6. Save and refresh the MPE preview.
 
 ## Example Files
