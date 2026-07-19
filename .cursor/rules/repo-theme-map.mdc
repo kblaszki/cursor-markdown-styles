@@ -43,6 +43,7 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 - Markdown: `examples/mermaid-showcase.md`, `examples/code-showcase.md`
 - Browser workbench: `preview/` — iterate UI, then hand off CSS into `original/`
 - Install docs: `themes/mpe/README.md`, `themes/README.md`
+- Theme anatomy (tokens / selectors / config): `docs/mpe-theme-reference.md`
 
 ## Commit after major changes
 

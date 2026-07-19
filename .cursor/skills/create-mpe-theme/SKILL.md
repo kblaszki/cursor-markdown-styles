@@ -10,6 +10,8 @@ description: >-
 
 # Create MPE theme
 
+Before authoring a new family, read [`docs/mpe-theme-reference.md`](../../../docs/mpe-theme-reference.md) (dark C++ Modern token and selector inventory).
+
 ## Workflow
 
 Copy this checklist and track progress:
