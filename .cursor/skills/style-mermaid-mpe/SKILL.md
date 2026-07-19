@@ -13,16 +13,19 @@ description: >-
 
 ```
 Mermaid progress:
-- [ ] 1. Edit mermaid-config JSON
+- [ ] 1. Edit package mermaid-config.json
 - [ ] 2. Sync README snippets if needed
 - [ ] 3. User tests showcase in MPE
 - [ ] 4. themeCSS only for gaps variables miss
 - [ ] 5. Optional v3 CSS overlay if requested
+- [ ] 6. Commit this Mermaid unit
 ```
 
 ### 1. Edit config (primary)
 
-Change `themes/mpe/mermaid-config-cpp-modern.json`, or add `themes/mpe/mermaid-config-<slug>.json` for a separate palette.
+Change `themes/mpe/released/<slug>/mermaid-config.json` (today: `released/cpp-modern/mermaid-config.json`).
+
+On **promotion** from experimental → released, add that file next to the package `style.less` (adapt palette from cpp-modern). Experimental packages may omit Mermaid until then.
 
 That file is the **object body** of Crossnote `mermaidConfig`. User merges it into `%USERPROFILE%\.crossnote\config.js` and keeps `"startOnLoad": false`.
 
@@ -60,12 +63,18 @@ If README copy-paste blocks drift from the JSON, update `themes/mpe/README.md`.
 
 ### 4. CSS overlay (secondary)
 
-Only when the user wants v3 diagram LESS / `--md-diagram-*`:
+Only when the user wants experimental v3 diagram LESS / `--md-diagram-*`:
 
 - Source with `appendDiagramTokens: true` in `build-mpe-global.mjs`
 - Still keep `mermaidConfig` for paint-at-generation colors
 
 Do not replace a working config with CSS-only ER fixes.
+
+### 5. Commit this Mermaid unit
+
+When the Mermaid change is a finished unit (config + any matching docs/showcase notes), **create a git commit** without waiting for the user. Examples: ER zebra fix, gantt/pie/mindmap palette pass, new released `mermaid-config.json`.
+
+Skip or batch tiny mid-iteration tweaks. Follow the repo git protocol (status/diff/log, HEREDOC message, no push unless asked). See `repo-theme-map` — commit after major changes.
 
 ## Related
 

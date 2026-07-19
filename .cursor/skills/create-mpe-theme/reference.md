@@ -8,7 +8,8 @@
 | Light peer | `…/vscode-preview-<slug>-light.css` |
 | Variant | `…/vscode-preview-<slug>-vN-<desc>.css` |
 | Registry | `themes/addons/vscode-preview/build-mpe-global.mjs` → `variants` |
-| Paste target | `themes/mpe/global-<slug>.less` |
+| Paste package | `themes/mpe/<tier>/<slug>/style.less` |
+| Released Mermaid | `themes/mpe/released/<slug>/mermaid-config.json` |
 | Always appended | `_scope.css`, `_syntax-tokens.css` |
 | Diagram tokens | `_diagram-tokens.css` when `appendDiagramTokens: true` |
 | C++ refine | `original/graphite-code/_cpp-syntax-refine.css` when `appendSyntaxRefine: true` |
@@ -18,12 +19,14 @@
 ```js
 {
   css: join(root, "original/my-theme/vscode-preview-my-theme.css"),
-  out: join(mpeDir, "global-my-theme.less"),
+  slug: "my-theme",
+  tier: "experimental",
   label: "My Theme",
 },
 {
   css: join(root, "original/my-theme/vscode-preview-my-theme-light.css"),
-  out: join(mpeDir, "global-my-theme-light.less"),
+  slug: "my-theme-light",
+  tier: "experimental",
   label: "My Theme Light",
 },
 ```
@@ -33,7 +36,8 @@ Diagram overlay example:
 ```js
 {
   css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-v3-diagrams.css"),
-  out: join(mpeDir, "global-cpp-modern-v3-diagrams.less"),
+  slug: "cpp-modern-v3-diagrams",
+  tier: "experimental",
   label: "C++ Modern v3 Diagrams",
   appendDiagramTokens: true,
 },
@@ -43,18 +47,27 @@ Diagram overlay example:
 
 | Family | Note |
 | ------ | ---- |
-| Studio | Light-only → `global-studio.less` (no `-light` suffix) |
+| Studio | Light-only → slug `studio` (no `-light` suffix) |
 | Phosphor | Dark green + `phosphor-amber` as warm sibling |
 | cpp-modern / lumina | Multiple `-vN-` experimental variants allowed |
 
+## Promote to released
+
+1. Add `themes/mpe/released/<slug>/mermaid-config.json` (adapt from `released/cpp-modern/mermaid-config.json`; palette aligned to that family).
+2. Set `tier: "released"` (and matching `slug`) in `build-mpe-global.mjs`.
+3. Rebuild; add a short package `README.md`.
+4. Update `themes/mpe/README.md`, `themes/README.md`, root README, and vscode-preview mapping table.
+5. Remove the empty `experimental/<slug>/` folder if the path moved.
+6. **Commit** the promotion (separate commit from unrelated WIP).
+
 ## Legacy path
 
-`build-from-inline.mjs` only for older cpp-modern / lumina paths from `cursor-inline`. Prefer `original/` + `build-mpe-global.mjs` for new work.
+`build-from-inline.mjs` and `themes/addons/cursor-inline/` only for older cpp-modern / lumina. Prefer `original/` + `build-mpe-global.mjs` for new work. Do not add cursor-inline for new families unless asked.
 
 ## README touchpoints
 
 After a new family:
 
-1. List the theme in `themes/README.md` (MPE table)
-2. List paste files in `themes/mpe/README.md`
+1. List under experimental in `themes/mpe/README.md`
+2. Point family README at `themes/mpe/experimental/<slug>/style.less`
 3. Short family blurb in `original/<family>/README.md`

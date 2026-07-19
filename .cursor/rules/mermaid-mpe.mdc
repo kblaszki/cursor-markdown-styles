@@ -1,6 +1,6 @@
 ---
 description: Mermaid styling for MPE — config first, themeCSS pitfalls, ER zebra
-globs: "**/mermaid*.json,docs/mermaid*.md,examples/mermaid*.md,themes/addons/vscode-preview/_diagram-tokens.css"
+globs: "**/mermaid*.json,docs/mermaid*.md,examples/mermaid*.md,themes/addons/vscode-preview/_diagram-tokens.css,themes/mpe/released/**/mermaid-config.json"
 alwaysApply: false
 ---
 
@@ -10,9 +10,9 @@ alwaysApply: false
 
 1. `theme: "base"` + `themeVariables` + `themeCSS` in `mermaidConfig`
 2. VS Code: `"markdown-preview-enhanced.mermaidTheme": "default"` (not `"dark"`)
-3. Optional CSS overlay: v3 `global-*-v3-diagrams.less` / `--md-diagram-*` — secondary to config
+3. Optional CSS overlay: experimental `cpp-modern-v3-diagrams` / `--md-diagram-*` — secondary to config
 
-JSON files like `themes/mpe/mermaid-config-cpp-modern.json` are the **contents** of `mermaidConfig`, not a full Crossnote `config.js`. Keep `"startOnLoad": false`.
+JSON like `themes/mpe/released/<slug>/mermaid-config.json` is the **contents** of `mermaidConfig`, not a full Crossnote `config.js`. Keep `"startOnLoad": false`. Released packages must ship this file.
 
 ## Critical fixes
 
@@ -20,7 +20,7 @@ JSON files like `themes/mpe/mermaid-config-cpp-modern.json` are the **contents**
 | ------- | --- |
 | Gray pills behind edge labels | `edgeLabelBackground` / `labelBackground` / state `labelBackgroundColor` → `transparent` |
 | ER white zebra rows | `themeCSS` on `.row-rect-odd>path:first-child` / `.row-rect-even>path:first-child` (not only `attributeBackgroundColor*`) |
-| Gantt / pie / mindmap / journey | Prefer vars in `mermaid-config-cpp-modern.json` + `themeCSS` overrides; mindmap needs dark `.section-N` fills |
+| Gantt / pie / mindmap / journey | Prefer vars in `released/*/mermaid-config.json` + `themeCSS` overrides; mindmap needs dark `.section-N` fills |
 | Quadrant black labels | `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`) |
 
 ## Docs and fixtures
@@ -28,3 +28,7 @@ JSON files like `themes/mpe/mermaid-config-cpp-modern.json` are the **contents**
 - Deep dive: `docs/mermaid-styling.md`
 - Visual check: `examples/mermaid-showcase.md` in MPE preview
 - Setup walkthrough: `themes/mpe/README.md` — Configure Mermaid
+
+## Commit
+
+After a substantive Mermaid config / docs fix (new diagram type tuning, ER/`themeCSS` fix, promote-ready JSON), **commit** that unit. See `repo-theme-map` — commit after major changes. Skip commits for trivial one-line typos mid-iteration.

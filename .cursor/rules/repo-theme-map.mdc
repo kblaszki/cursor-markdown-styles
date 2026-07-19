@@ -11,13 +11,21 @@ alwaysApply: true
 | ---- | ---- |
 | Edit CSS here | `themes/addons/vscode-preview/original/<family>/vscode-preview-*.css` |
 | Build script | `themes/addons/vscode-preview/build-mpe-global.mjs` |
-| Generated paste targets | `themes/mpe/global-*.less` |
+| Generated packages | `themes/mpe/released/<slug>/style.less` or `themes/mpe/experimental/<slug>/style.less` |
+| Released Mermaid | `themes/mpe/released/<slug>/mermaid-config.json` (required for released) |
 
-Do **not** hand-edit `themes/mpe/global-*.less` unless the user explicitly asks. Change source CSS, then rebuild.
+Do **not** hand-edit generated `style.less` unless the user explicitly asks. Change source CSS, then rebuild.
 
 ```bash
 node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
+
+New variants default to `tier: "experimental"`. Only promote to `released` with a package-local `mermaid-config.json`.
+
+## Addons (not tier-split)
+
+- `themes/addons/vscode-preview/` — shared authoring + optional `markdown.styles`
+- `themes/addons/cursor-inline/` — legacy; prefer MPE released; do not create for new themes unless asked
 
 ## Shared CSS appended by build
 
@@ -26,7 +34,7 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 
 ## Mermaid
 
-- Config: `themes/mpe/mermaid-config-cpp-modern.json` → merge into Crossnote `mermaidConfig` (not whole `config.js`)
+- Config: `themes/mpe/released/cpp-modern/mermaid-config.json` → merge into Crossnote `mermaidConfig` (not whole `config.js`)
 - Deep dive: `docs/mermaid-styling.md`
 - Prefer config over fighting SVG with preview CSS alone
 
@@ -35,3 +43,19 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 - Markdown: `examples/mermaid-showcase.md`, `examples/code-showcase.md`
 - Browser workbench: `preview/` — iterate UI, then hand off CSS into `original/`
 - Install docs: `themes/mpe/README.md`, `themes/README.md`
+
+## Commit after major changes
+
+When finishing a **major** theme/Mermaid/docs unit of work in this repo, **create a git commit** (do not wait for the user to ask). This overrides the usual “only commit when asked” default for this project.
+
+**Major** (commit once the unit is done):
+
+- New family or named variant (CSS + registry + rebuild + README touchpoints)
+- Promote experimental → released (Mermaid JSON + tier flip + docs)
+- Substantial Mermaid config / `themeCSS` change (not a one-line typo)
+- Package layout / build pipeline / install-path docs overhaul
+- New or rewritten Cursor skill / rule that changes agent workflow
+
+**Not major** (batch or skip): tiny typo fixes, drive-by comment edits, mid-iteration WIP while still iterating colors.
+
+**How:** follow the repo git commit protocol (`git status` / `diff` / `log` style, stage relevant files only, HEREDOC message focused on why, no `--no-verify`, no amend unless rules allow, **do not push** unless the user asks). One logical change → one commit; if several majors land in one session, prefer separate commits per unit.

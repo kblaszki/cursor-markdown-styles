@@ -1,6 +1,6 @@
 ---
 description: Conventions for authoring and building MPE / vscode-preview theme CSS
-globs: themes/addons/vscode-preview/**/*.css,themes/mpe/**/*.less
+globs: themes/addons/vscode-preview/**/*.css,themes/mpe/released/**,themes/mpe/experimental/**
 alwaysApply: false
 ---
 
@@ -8,24 +8,25 @@ alwaysApply: false
 
 ## Selectors
 
-Target `.markdown-body`, `.markdown-preview`, and `body`. Bundles are fully inlined (no `@import` in output).
+Target `.markdown-body`, `.markdown-preview`, and `body`. Packages are fully inlined (no `@import` in output).
 
 ## Naming
 
 | Layer | Pattern | Example |
 | ----- | ------- | ------- |
 | Source | `vscode-preview-<slug>[-light\|-vN-desc].css` | `vscode-preview-beacon-light.css` |
-| Output | `global-<slug>….less` | `global-beacon-light.less` |
+| Package | `themes/mpe/<tier>/<slug>/style.less` | `experimental/beacon-light/style.less` |
 | Family folder | kebab-case | `graphite-code`, `cpp-modern` |
 
-Dark = no suffix; light = `-light`. Exceptions: Studio (light-only `global-studio.less`), Phosphor amber as light sibling.
+Dark = no suffix; light = `-light`. Exceptions: Studio (light-only `studio`), Phosphor amber as warm sibling. Register `tier: "released" | "experimental"` in the build registry (new work → experimental).
 
 ## New family or variant
 
 1. Add CSS under `themes/addons/vscode-preview/original/<family>/`
-2. Register in `variants` in `build-mpe-global.mjs`
+2. Register in `variants` in `build-mpe-global.mjs` with `slug`, `tier: "experimental"`, `label`
 3. Run `node themes/addons/vscode-preview/build-mpe-global.mjs`
 4. Update `themes/README.md`, `themes/mpe/README.md`, and the family `README.md`
+5. **Commit** that unit (see `repo-theme-map` — commit after major changes)
 
 ## Shared tokens
 
@@ -35,4 +36,4 @@ Dark = no suffix; light = `-light`. Exceptions: Studio (light-only `global-studi
 
 ## After every source CSS change
 
-Rebuild MPE globals. Prefer editing `original/`, not generated `themes/mpe/global-*.less`.
+Rebuild MPE packages. Prefer editing `original/`, not generated `themes/mpe/**/style.less`. When the change is a finished family/variant (not mid-tweak), commit.
