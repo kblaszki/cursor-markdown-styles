@@ -49,11 +49,11 @@ Short package guide: [released/cpp-modern/README.md](released/cpp-modern/README.
 
 ## Experimental
 
-Work-in-progress variants and families. Paste `style.less` only; add a full `config.js` when promoting to released.
+Work-in-progress variants and families. Paste `style.less`; use a package `config.js` when present (today: [experimental/cpp-modern-light/config.js](experimental/cpp-modern-light/config.js)).
 
 | Package | Theme |
 | ------- | ----- |
-| [experimental/cpp-modern-light/](experimental/cpp-modern-light/) | C++ Modern light |
+| [experimental/cpp-modern-light/](experimental/cpp-modern-light/) | C++ Modern light (+ light `config.js`) |
 | [experimental/studio/](experimental/studio/) | Studio light |
 | [experimental/lumina/](experimental/lumina/) | Lumina dark |
 | [experimental/lumina-light/](experimental/lumina-light/) | Lumina light |
@@ -161,7 +161,7 @@ C:\Users\<YourUser>\.crossnote\config.js
 
 Keep the package file as the single source of truth in the repo.
 
-For experimental light / v3 packages, adapt `mermaidConfig.themeVariables` (e.g. `"darkMode": false`) when you add a package-local `config.js` on promotion.
+For light Mermaid with experimental C++ Modern Light, paste [experimental/cpp-modern-light/config.js](experimental/cpp-modern-light/config.js) the same way (`"darkMode": false`). Other experimental packages still adapt `themeVariables` when you add a package-local `config.js` on promotion.
 
 #### 5. Save and verify
 

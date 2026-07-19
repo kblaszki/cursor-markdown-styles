@@ -203,20 +203,37 @@ for (const slug of readdirSync(expRoot)) {
   const lessPath = join(dir, "style.less");
   if (!existsSync(lessPath)) continue;
   const { tokens, hexOnly } = extractHexFromCss(readFileSync(lessPath, "utf8"));
+  const configPath = join(dir, "config.js");
+  const parts = [
+    "Extracted literal hex tokens from generated `style.less`" +
+      (existsSync(configPath) ? " (+ Mermaid hex from `config.js`)" : "") +
+      ".\n",
+    tokenTable(tokens, "Tokens (literal hex)"),
+  ];
+  if (existsSync(configPath)) {
+    const { hexOnly: mermaidHex, keyed } = extractHexFromConfigJs(
+      readFileSync(configPath, "utf8"),
+    );
+    const mermaidRows = [...keyed.entries()]
+      .filter(([, v]) => v.startsWith("#"))
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([k, v]) => `| \`${k}\` | ${swatch(v)} |`)
+      .join("\n");
+    if (mermaidRows) {
+      parts.push(
+        `### Mermaid \`themeVariables\` (hex)\n\n| Variable | Color |\n| -------- | ----- |\n${mermaidRows}\n`,
+      );
+    }
+    for (const hex of mermaidHex) hexOnly.add(hex);
+  }
+  parts.push(uniqueHexTable(hexOnly, "Unique hex values"));
   const readme = join(dir, "README.md");
   if (!existsSync(readme)) {
     writeFileSync(
       readme,
-      `# ${slug} (experimental)\n\nPaste [\`style.less\`](style.less) into Crossnote global CSS. No released \`config.js\` yet.\n\n`,
+      `# ${slug} (experimental)\n\nPaste [\`style.less\`](style.less) into Crossnote global CSS.\n\n`,
     );
   }
-  upsertPaletteSection(
-    readme,
-    [
-      "Extracted literal hex tokens from generated `style.less`.\n",
-      tokenTable(tokens, "Tokens (literal hex)"),
-      uniqueHexTable(hexOnly, "Unique hex values"),
-    ].join("\n"),
-  );
+  upsertPaletteSection(readme, parts.join("\n"));
   console.log("updated", readme);
 }

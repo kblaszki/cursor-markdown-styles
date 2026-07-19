@@ -3,7 +3,8 @@
 How Markdown Preview Enhanced (MPE) / Crossnote paints Mermaid SVGs, what ends up in the DOM, and how to theme diagrams for dark previews (C++ Modern).
 
 Fixture: [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md)  
-Config source of truth: [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js)  
+Config source of truth (dark): [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js)  
+Light peer: [`themes/mpe/experimental/cpp-modern-light/config.js`](../themes/mpe/experimental/cpp-modern-light/config.js) (`darkMode: false`)  
 Setup steps: [`themes/mpe/README.md` — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script)
 
 ## How MPE renders a diagram

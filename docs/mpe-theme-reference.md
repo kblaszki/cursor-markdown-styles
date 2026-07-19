@@ -337,7 +337,7 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 | ------ | ------ |
 | Package | Experimental: [`themes/mpe/experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) |
 | Source | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
-| Crossnote | **No** released `config.js` yet (`darkMode: false` when promoting) |
+| Crossnote | Package-local [`config.js`](../themes/mpe/experimental/cpp-modern-light/config.js) (`darkMode: false`, paper Mermaid surfaces) — experimental peer of released dark config |
 
 Same selector / role inventory as dark (§2–§5). Hex values are **hardcoded** for paper contrast — do **not** bind `--cpp-bg` / `--cpp-fg` to `--vscode-editor-*`, or a dark IDE theme produces a dark page with light panels (illegible blockquotes and inline code).
 
