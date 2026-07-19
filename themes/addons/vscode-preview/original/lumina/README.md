@@ -19,8 +19,8 @@ Synthesizes lessons from all Lumina versions + `docs/mpe-theme-reference.md` §8
 
 | Mode | Source | MPE package |
 | ---- | ------ | ----------- |
-| Dark | `vscode-preview-lumina-v5-aurora.css` | `themes/mpe/experimental/lumina-v5-aurora/style.less` |
-| Light | `vscode-preview-lumina-v5-aurora-light.css` | `themes/mpe/experimental/lumina-v5-aurora-light/style.less` |
+| Dark | `vscode-preview-lumina-v5-aurora.css` | `themes/mpe/experimental/lumina-v5-aurora/` (`style.less` + `config.js`) |
+| Light | `vscode-preview-lumina-v5-aurora-light.css` | `themes/mpe/experimental/lumina-v5-aurora-light/` (`style.less` + `config.js`) |
 
 ## Legacy Variants (converted from cursor-inline)
 

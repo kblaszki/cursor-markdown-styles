@@ -81,8 +81,8 @@ Work-in-progress variants and families. Paste `style.less`; add a package `confi
 | [experimental/lumina-v2-muted/](experimental/lumina-v2-muted/) | Lumina v2 Muted |
 | [experimental/lumina-v3-balanced/](experimental/lumina-v3-balanced/) | Lumina v3 Balanced |
 | [experimental/lumina-v4-neon-blue/](experimental/lumina-v4-neon-blue/) | Lumina v4 Neon Blue |
-| [experimental/lumina-v5-aurora/](experimental/lumina-v5-aurora/) | Lumina v5 Aurora |
-| [experimental/lumina-v5-aurora-light/](experimental/lumina-v5-aurora-light/) | Lumina v5 Aurora Light |
+| [experimental/lumina-v5-aurora/](experimental/lumina-v5-aurora/) | Lumina v5 Aurora (includes `config.js`) |
+| [experimental/lumina-v5-aurora-light/](experimental/lumina-v5-aurora-light/) | Lumina v5 Aurora Light (includes `config.js`) |
 
 ## Family Guide
 

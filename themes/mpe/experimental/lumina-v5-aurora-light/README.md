@@ -2,6 +2,8 @@
 
 Paste [`style.less`](style.less) into Crossnote global CSS.
 
+Mermaid / Crossnote: paste [`config.js`](config.js) over `%USERPROFILE%\.crossnote\config.js` (`darkMode: false`, paper Aurora palette). Pair with this package’s `style.less`.
+
 <!-- palette:start -->
 ## Color palette
 
