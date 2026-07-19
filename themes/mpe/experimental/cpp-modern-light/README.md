@@ -73,23 +73,23 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 
 | Variable | Color |
 | -------- | ----- |
-| `activeTaskBkgColor` | `#14b8a6` |
-| `activeTaskBorderColor` | `#0d9488` |
+| `activeTaskBkgColor` | `#0f766e` |
+| `activeTaskBorderColor` | `#115e59` |
 | `actorBkg` | `#ffffff` |
 | `actorBorder` | `#3b82f6` |
 | `actorLineColor` | `#14b8a6` |
 | `actorTextColor` | `#1f2937` |
-| `altSectionBkgColor` | `#f1f5f9` |
+| `altSectionBkgColor` | `#f8fafc` |
 | `arrowheadColor` | `#0f766e` |
-| `attributeBackgroundColorEven` | `#e2e8f0` |
-| `attributeBackgroundColorOdd` | `#ffffff` |
+| `attributeBackgroundColorEven` | `#ffffff` |
+| `attributeBackgroundColorOdd` | `#e2e8f0` |
 | `background` | `#f7f9fc` |
 | `clusterBkg` | `#ecfdf5` |
 | `clusterBorder` | `#14b8a6` |
 | `commitLabelBackground` | `#eef2f7` |
 | `commitLabelColor` | `#1f2937` |
-| `critBkgColor` | `#ef4444` |
-| `critBorderColor` | `#dc2626` |
+| `critBkgColor` | `#dc2626` |
+| `critBorderColor` | `#b91c1c` |
 | `cScale0` | `#3b82f6` |
 | `cScale1` | `#14b8a6` |
 | `cScale2` | `#65a30d` |
@@ -106,8 +106,8 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `cScaleLabel5` | `#ffffff` |
 | `cScaleLabel6` | `#1f2937` |
 | `cScaleLabel7` | `#ffffff` |
-| `doneTaskBkgColor` | `#cbd5e1` |
-| `doneTaskBorderColor` | `#65a30d` |
+| `doneTaskBkgColor` | `#64748b` |
+| `doneTaskBorderColor` | `#475569` |
 | `excludeBkgColor` | `#e2e8f0` |
 | `fillType0` | `#ffffff` |
 | `fillType1` | `#dbeafe` |
@@ -126,7 +126,7 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `gitBranchLabel2` | `#ffffff` |
 | `gitInv0` | `#14b8a6` |
 | `gitInv1` | `#3b82f6` |
-| `gridColor` | `#d0d7e2` |
+| `gridColor` | `#cbd5e1` |
 | `labelTextColor` | `#1f2937` |
 | `lineColor` | `#94a3b8` |
 | `mainBkg` | `#ffffff` |
@@ -165,15 +165,15 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `secondaryBorderColor` | `#3b82f6` |
 | `secondaryColor` | `#eef2f7` |
 | `secondaryTextColor` | `#1f2937` |
-| `sectionBkgColor` | `#dbeafe` |
-| `sectionBkgColor2` | `#ccfbf1` |
+| `sectionBkgColor` | `#bfdbfe` |
+| `sectionBkgColor2` | `#99f6e4` |
 | `signalColor` | `#14b8a6` |
 | `signalTextColor` | `#1f2937` |
 | `stateBkg` | `#ffffff` |
 | `stateBorder` | `#3b82f6` |
 | `stateLabelColor` | `#1f2937` |
-| `taskBkgColor` | `#3b82f6` |
-| `taskBorderColor` | `#2563eb` |
+| `taskBkgColor` | `#1d4ed8` |
+| `taskBorderColor` | `#1e3a8a` |
 | `taskTextColor` | `#ffffff` |
 | `taskTextDarkColor` | `#1f2937` |
 | `taskTextLightColor` | `#ffffff` |
@@ -183,7 +183,7 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `tertiaryTextColor` | `#1f2937` |
 | `textColor` | `#1f2937` |
 | `titleColor` | `#0f766e` |
-| `todayLineColor` | `#f59e0b` |
+| `todayLineColor` | `#ea580c` |
 | `transitionColor` | `#94a3b8` |
 | `transitionLabelColor` | `#1f2937` |
 
@@ -196,11 +196,13 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#0d9488` |
 | `#0ea5e9` |
 | `#0f766e` |
+| `#115e59` |
 | `#14b8a6` |
 | `#15803d` |
 | `#166534` |
 | `#1d4ed8` |
 | `#1e293b` |
+| `#1e3a8a` |
 | `#1e40af` |
 | `#1f2937` |
 | `#2563eb` |
@@ -222,12 +224,14 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#8b5cf6` |
 | `#93c5fd` |
 | `#94a3b8` |
+| `#99f6e4` |
 | `#9a3412` |
 | `#9cdcfe` |
 | `#a16207` |
 | `#b5cea8` |
 | `#b91c1c` |
 | `#bef264` |
+| `#bfdbfe` |
 | `#c586c0` |
 | `#cbd5e1` |
 | `#ccfbf1` |
@@ -238,11 +242,11 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#dc2626` |
 | `#dcdcaa` |
 | `#e2e8f0` |
+| `#ea580c` |
 | `#ec4899` |
 | `#ecfccb` |
 | `#ecfdf5` |
 | `#eef2f7` |
-| `#ef4444` |
 | `#eff6ff` |
 | `#f1f5f9` |
 | `#f3e8ff` |
