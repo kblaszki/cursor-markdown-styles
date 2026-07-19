@@ -10,6 +10,12 @@ node themes/addons/vscode-preview/build-mpe-global.mjs
 
 Do **not** hand-edit generated `style.less` files.
 
+Each package README includes a **Color palette** table (CSS tokens + unique hex). Regenerate after token changes:
+
+```bash
+node scripts/update-palette-readmes.mjs
+```
+
 ## Recommended Preview Mode
 
 Set this in your **user** `settings.json`:

@@ -65,6 +65,8 @@ Readability rules used by this family:
 | Diagram node fill | `#2d2d30` | Mermaid `primaryColor`, `mainBkg`, … |
 | Diagram alt surface | `#252526` | Mermaid `tertiaryColor`, ER even rows |
 
+Exhaustive token + Mermaid hex tables (including every unique color): [`themes/mpe/released/cpp-modern/README.md`](../themes/mpe/released/cpp-modern/README.md). Other families: README under each `original/<family>/` and each MPE package folder. Regenerate with `node scripts/update-palette-readmes.mjs`.
+
 ---
 
 ## 3. Dark — CSS custom properties catalog

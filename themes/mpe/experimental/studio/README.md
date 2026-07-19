@@ -1,34 +1,11 @@
-# Studio
+# studio (experimental)
 
-Light-first daily theme meant to sit beside **C++ Modern** dark as an equally polished peer — not a recolor of it.
-
-## Why it exists
-
-`C++ Modern` is strongest in dark. Studio is built as a **daylight** alternative with the same craft:
-
-- custom list markers and numbered lists
-- clear heading hierarchy (sapphire H2, teal H3)
-- separated code fences with tempered Light+ tokens
-- shared C++ syntax refine layer (boolean ≠ number, macros, types…)
-
-## Identity
-
-- soft stone paper, ink body text
-- sapphire structure + soft teal secondary
-- vivid but non-glaring syntax colors
-
-## Files
-
-- `vscode-preview-studio.css` - light (primary)
-
-## MPE Bundle
-
-- `themes/mpe/experimental/studio/style.less`
+Paste [`style.less`](style.less) into Crossnote global CSS. No released `config.js` yet.
 
 <!-- palette:start -->
 ## Color palette
 
-Source: `vscode-preview-studio.css`.
+Extracted literal hex tokens from generated `style.less`.
 
 ### Tokens (literal hex)
 
@@ -86,24 +63,43 @@ Source: `vscode-preview-studio.css`.
 | `#1a56b8` |
 | `#1c2330` |
 | `#1d5fd0` |
+| `#2b2b2b` |
 | `#2f6fed` |
 | `#2f7340` |
 | `#334155` |
+| `#3c3c3c` |
 | `#3d7340` |
 | `#475569` |
+| `#4ec9b0` |
+| `#4fc1ff` |
+| `#569cd6` |
 | `#5b7aa0` |
 | `#5c6778` |
 | `#64748b` |
+| `#6a9955` |
 | `#7a5a00` |
+| `#89d185` |
 | `#8a2f8a` |
 | `#9a6700` |
+| `#9cdcfe` |
+| `#9d9d9d` |
+| `#a0a0a0` |
 | `#b03f18` |
 | `#b42318` |
+| `#b5cea8` |
 | `#b8c4d4` |
+| `#c586c0` |
+| `#c8c8c8` |
 | `#c9d1dc` |
+| `#cccccc` |
+| `#ce9178` |
+| `#d4d4d4` |
+| `#d7ba7d` |
+| `#dcdcaa` |
 | `#e4eaf3` |
 | `#e9edf3` |
 | `#eef2f7` |
+| `#f44747` |
 | `#f5d76e` |
 | `#f5f6f8` |
 | `#ffffff` |
