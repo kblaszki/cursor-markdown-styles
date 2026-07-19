@@ -14,6 +14,11 @@ alwaysApply: false
 
 `themes/mpe/released/<slug>/config.js` is a **full** Crossnote config (`katexConfig`, `mathjaxConfig`, `mermaidConfig`). Install by pasting it over `%USERPROFILE%\.crossnote\config.js` (same file shape). Keep `"startOnLoad": false` inside `mermaidConfig`. Released packages must ship this file.
 
+## Config paths
+
+- Dark: `themes/mpe/released/cpp-modern/config.js` (`darkMode: true`)
+- Light: `themes/mpe/released/cpp-modern-light/config.js` (`darkMode: false`)
+
 ## Critical fixes
 
 | Symptom | Fix |
@@ -23,9 +28,20 @@ alwaysApply: false
 | Gantt / pie / mindmap / journey | Prefer vars in `released/*/config.js` → `mermaidConfig` + `themeCSS`; mindmap needs dark `.section-N` fills |
 | Quadrant black labels | `quadrant1TextFill`…`quadrant4TextFill` (not `quadrantLabelFill`) |
 
+## Light pitfalls
+
+| Symptom | Fix |
+| ------- | --- |
+| Quadrant point labels invisible | Dark `quadrantPointTextFill` + `.data-point text` |
+| Journey faces muddy | `.face` pale fill + dark stroke |
+| Mindmap root unreadable | White text on root; override after `.mindmap-node` |
+| ER zebra wrong / washed | Vars **and** `.row-rect-*` in `themeCSS` |
+| Gantt bars blend into bands | Deeper task fills than section bands |
+
 ## Docs and fixtures
 
-- Deep dive: `docs/mermaid-styling.md`
+- Deep dive: `docs/mermaid-styling.md` (includes Light checklist)
+- Contrast: rule `mpe-contrast`, `docs/mpe-theme-reference.md` §8
 - Visual check: `examples/mermaid-showcase.md` in MPE preview
 - Setup walkthrough: `themes/mpe/README.md` — Configure Mermaid
 

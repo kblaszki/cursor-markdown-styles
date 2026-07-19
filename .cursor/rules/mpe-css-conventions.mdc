@@ -10,6 +10,12 @@ alwaysApply: false
 
 Target `.markdown-body`, `.markdown-preview`, and `body`. Packages are fully inlined (no `@import` in output).
 
+## Light peers
+
+- Light surfaces / prose: **hardcode** `--*-bg` / `--*-fg` / `--*-muted` — never bind to `--vscode-editor-*` (dark IDE would paint a dark page with light panels).
+- Light peer CSS = **full** dark selector structure + retuned tokens only; truncated peers miss GFM tasks / front-matter / fence strips.
+- Contrast bans: rule `mpe-contrast`; lessons: `docs/mpe-theme-reference.md` §8. Workflow: skill `create-mpe-light-peer`.
+
 ## Naming
 
 | Layer | Pattern | Example |

@@ -1,15 +1,17 @@
 # MPE theme style reference
 
-Reference for building Markdown Preview Enhanced (MPE) themes. Canonical **released dark** baseline: [C++ Modern](../themes/mpe/released/cpp-modern/).
+Reference for building Markdown Preview Enhanced (MPE) themes. Canonical baselines: [C++ Modern dark](../themes/mpe/released/cpp-modern/) and [C++ Modern light](../themes/mpe/released/cpp-modern-light/).
 
 | Artifact | Path |
 | -------- | ---- |
-| Source CSS (edit here) | [`themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) |
-| Generated package CSS | [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) |
-| Crossnote config | [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) — paste over `%USERPROFILE%\.crossnote\config.js` |
+| Source CSS (dark) | [`vscode-preview-cpp-modern.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) |
+| Source CSS (light) | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
+| Generated packages | [`released/cpp-modern/`](../themes/mpe/released/cpp-modern/), [`released/cpp-modern-light/`](../themes/mpe/released/cpp-modern-light/) |
+| Crossnote config | Package `config.js` — paste over `%USERPROFILE%\.crossnote\config.js` |
 | Mermaid SVG deep dive | [`mermaid-styling.md`](mermaid-styling.md) |
+| Dark vs light lessons | [§8](#8-dark-vs-light--lessons-and-authoring-checklist) |
 
-**Dark** is fully documented below. **Light** is the released peer with the same selector inventory and role map (paper hex) — see §7.
+**Dark** is fully documented in §2–§6. **Light** peer anatomy is §7; shared lessons and contrast checklist are §8.
 
 ---
 
@@ -337,9 +339,18 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 | ------ | ------ |
 | Package | Released: [`themes/mpe/released/cpp-modern-light/`](../themes/mpe/released/cpp-modern-light/) |
 | Source | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
-| Crossnote | [`config.js`](../themes/mpe/released/cpp-modern-light/config.js) (`darkMode: false`, paper Mermaid surfaces) — light peer of released dark config |
+| Generated CSS | [`style.less`](../themes/mpe/released/cpp-modern-light/style.less) |
+| Crossnote | [`config.js`](../themes/mpe/released/cpp-modern-light/config.js) — `"darkMode": false`, paper Mermaid surfaces |
 
-Same selector / role inventory as dark (§2–§5). Hex values are **hardcoded** for paper contrast — do **not** bind `--cpp-bg` / `--cpp-fg` to `--vscode-editor-*`, or a dark IDE theme produces a dark page with light panels (illegible blockquotes and inline code).
+Same **selector inventory and role jobs** as dark (§2–§5). Author by copying the dark CSS file structure, then retuning tokens only — do not ship a truncated light stylesheet (missing lists / task lists / front-matter / fence chip strips).
+
+### Hardcoded surfaces (critical)
+
+Light **must not** bind `--cpp-bg`, `--cpp-fg`, or `--cpp-muted` to `--vscode-editor-background` / `--vscode-editor-foreground` / `--vscode-descriptionForeground`.
+
+In a dark IDE those variables resolve to dark page + light prose. Family panels stay hardcoded light (`#eef2f7`, `#ffffff`) → **light text on light panels** (blockquote, inline code, tables). Dark may keep `var(--vscode-editor-*, #fallback)`; light hardcodes paper hex.
+
+Fonts may still use `--vscode-font-family` / `--vscode-editor-font-family`.
 
 ### Role → hex (light)
 
@@ -359,18 +370,57 @@ Same selector / role inventory as dark (§2–§5). Hex values are **hardcoded**
 | Fenced code default text | `#1e293b` | `--cpp-code-fg` |
 | Inline code chip bg | `#e2e8f0` | `--cpp-code-bg` |
 
-Exhaustive tables: package / family README (regen: `node scripts/update-palette-readmes.mjs`).
+### Dark role → light hex (same jobs)
+
+| Role | Dark | Light |
+| ---- | ---- | ----- |
+| Page bg | `#1f1f1f` | `#f7f9fc` |
+| Body text | `#cccccc` | `#1f2937` |
+| Panel | `#2b2b2b` | `#eef2f7` |
+| Primary (teal) | `#4ec9b0` | `#0f766e` (deeper for paper) |
+| Secondary (blue) | `#569cd6` | `#1d4ed8` |
+| Link | `#4daafc` | `#1d4ed8` |
+| Inline code | `#9cdcfe` on `#3c3c3c` | `#1d4ed8` on `#e2e8f0` |
+
+Syntax (`--md-syntax-*`): reuse Dark+ **hues** but deepen for paper (e.g. keyword `#1d4ed8`, string `#9a3412`, comment `#3f6212`). Never put gray chip backgrounds on tokens — `_scope.css` strips them.
+
+Exhaustive token + Mermaid tables: [`themes/mpe/released/cpp-modern-light/README.md`](../themes/mpe/released/cpp-modern-light/README.md) (regen: `node scripts/update-palette-readmes.mjs`). Mermaid light checklist: [`mermaid-styling.md`](mermaid-styling.md).
 
 ---
 
-## 8. Recipe: new theme from this reference
+## 8. Dark vs light — lessons and authoring checklist
 
-1. **Copy** nearest family under `original/<family>/` (cpp-modern for technical dark).
-2. **Retune roles, not random hex**: change `--cpp-*` surfaces/accents first; keep the same jobs (primary = hierarchy, secondary = secondary chrome, link = links only).
-3. **Align `--md-syntax-*`** to the new accent set (or keep Dark+ if the family is “same code, new chrome”).
-4. **Register** in `build-mpe-global.mjs` with `tier: "experimental"`; rebuild.
-5. **Check** `examples/theme-preview.md`, `code-showcase.md` (C++ fences), and lists/tables contrast.
-6. **Promote to released**: copy `released/cpp-modern/config.js`, set palette hex to match preview roles, keep transparent label backgrounds + ER `themeCSS` patterns; verify `examples/mermaid-showcase.md` in MPE.
-7. **Commit** the theme unit; update package / index READMEs.
+Hard rules distilled from shipping released dark and light C++ Modern. Cursor rule [`mpe-contrast`](../.cursor/rules/mpe-contrast.mdc) enforces the short form on CSS/`config.js` edits.
+
+| Topic | Lesson |
+| ----- | ------ |
+| Roles, not random hex | Primary = hierarchy / bullets / code bar; secondary = chrome / borders; link = links only — same jobs in both modes |
+| Light text contrast | Dark fg (`#1f2937`) on paper and panels; **never** light/gray text on `#eef2f7` / white panels |
+| Dark text contrast | Muted body (`#cccccc`); pure `#ffffff` for diagram labels / strong chrome only; panels darker than page |
+| Light ≠ inverted dark | Swapping bg/fg is not enough — deepen accents and syntax for paper |
+| VS Code CSS vars | Dark: `var(--vscode-editor-*, fallback)` OK; **light: hardcode** surfaces and prose |
+| Selector parity | Light peer = full copy of dark CSS + retuned tokens; truncated light misses GFM tasks / front-matter / fence strips |
+| Mermaid package | Own `config.js`; `"darkMode": true\|false`; transparent edge/label backgrounds; `themeCSS` for ER / gantt / mindmap gaps |
+| Mermaid light traps | Dark `quadrantPointTextFill` + `.data-point text`; journey `.face` = light fill + dark stroke; mindmap root white text (override `.mindmap-node`); ER odd/even + `.row-rect-*`; gantt bars clearly darker than section bands |
+| Verify | `examples/theme-preview.md`, `code-showcase.md`, `mermaid-showcase.md` in **MPE** after pasting **both** `style.less` and package `config.js` |
+
+### Quick contrast audit
+
+1. Pick every surface (page, panel, raised, code chip, Mermaid node fill).
+2. Confirm foreground on that surface is the opposite luminance band (dark-on-light or light-on-dark).
+3. Check blockquote, inline `code`, table header, and Mermaid labels specifically — they failed first when vscode vars mixed with hardcoded panels.
+
+---
+
+## 9. Recipe: new theme from this reference
+
+1. **Copy** nearest family under `original/<family>/` (cpp-modern for technical dark; for a light peer of an existing dark, use skill `create-mpe-light-peer` / copy `vscode-preview-*-light.css` pattern from cpp-modern-light).
+2. **Retune roles, not random hex**: change `--cpp-*` surfaces/accents first; keep the same jobs (primary / secondary / link).
+3. **Align `--md-syntax-*`** to the new accent set (or keep Dark+ hues deepened for light).
+4. **Register** in `build-mpe-global.mjs` with `tier: "experimental"`; rebuild; run `node scripts/update-palette-readmes.mjs`.
+5. **Check** `examples/theme-preview.md`, `code-showcase.md`, and §8 contrast audit.
+6. **Mermaid**: adapt `released/cpp-modern/config.js` (dark) or `released/cpp-modern-light/config.js` (light); keep transparent label backgrounds + ER `themeCSS`; verify `examples/mermaid-showcase.md` in MPE.
+7. **Promote to released**: `tier: "released"`, package-local `config.js`, move out of `experimental/`, update indexes; **commit** that unit separately.
+8. **Commit** the theme unit; update package / index READMEs.
 
 Do not invent parallel token systems or duplicate `_syntax-tokens.css` into the family file. Prefer `config.js` for Mermaid over fighting SVG from `style.less`.

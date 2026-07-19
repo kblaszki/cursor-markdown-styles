@@ -53,9 +53,12 @@ Diagram overlay example:
 
 ## Promote to released
 
-1. Add `themes/mpe/released/<slug>/config.js` (full Crossnote skeleton adapted from `released/cpp-modern/config.js`; palette aligned to that family).
+1. Add `themes/mpe/released/<slug>/config.js` (full Crossnote skeleton):
+   - Dark → adapt [`released/cpp-modern/config.js`](../../../themes/mpe/released/cpp-modern/config.js) (`darkMode: true`)
+   - Light → adapt [`released/cpp-modern-light/config.js`](../../../themes/mpe/released/cpp-modern-light/config.js) (`darkMode: false`, paper surfaces)
+   - Align Mermaid hex to preview roles; keep transparent label backgrounds + ER `themeCSS` (see [`mpe-theme-reference.md` §8](../../../docs/mpe-theme-reference.md#8-dark-vs-light--lessons-and-authoring-checklist))
 2. Set `tier: "released"` (and matching `slug`) in `build-mpe-global.mjs`.
-3. Rebuild; add a short package `README.md`.
+3. Rebuild; add a short package `README.md`; run `node scripts/update-palette-readmes.mjs`.
 4. Update `themes/mpe/README.md`, `themes/README.md`, root README, and vscode-preview mapping table.
 5. Remove the empty `experimental/<slug>/` folder if the path moved.
 6. **Commit** the promotion (separate commit from unrelated WIP).

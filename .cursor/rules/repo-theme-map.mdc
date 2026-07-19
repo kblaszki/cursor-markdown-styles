@@ -44,6 +44,7 @@ Optional: `_diagram-tokens.css` (`appendDiagramTokens: true`), graphite refine (
 - Browser workbench: `preview/` — iterate UI, then hand off CSS into `original/`
 - Install docs: `themes/mpe/README.md`, `themes/README.md`
 - Theme anatomy (tokens / selectors / config): `docs/mpe-theme-reference.md`
+- Dark vs light lessons / contrast checklist: `docs/mpe-theme-reference.md` §8
 
 ## Commit after major changes
 

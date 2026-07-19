@@ -52,6 +52,7 @@ Turn asks into checks:
 | Ask | Success check |
 | --- | ------------- |
 | New / retuned theme | Rebuild; paste/check against `examples/theme-preview.md` or `code-showcase.md` |
+| Light peer / light retune | Same fixtures **plus** §8 contrast audit (no light-on-light panels/chips; hardcoded surfaces) |
 | Code token colors | `examples/code-showcase.md` C++ fences |
 | Mermaid colors | `examples/mermaid-showcase.md` in **MPE** + replaced `config.js` from package `config.js` |
 | Promote to released | Package has `style.less` + `config.js` + docs index updated |

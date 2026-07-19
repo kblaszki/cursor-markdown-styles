@@ -4,7 +4,7 @@ description: >-
   Style Mermaid diagrams for Markdown Preview Enhanced using Crossnote config.js
   (mermaidConfig themeVariables and themeCSS), not CSS-only fights. Use when fixing
   Mermaid colors, edge labels, ER zebra rows, state transitions, pie/git palettes,
-  package config.js, or dark-preview diagram contrast in MPE / Crossnote.
+  package config.js, dark or light preview diagram contrast in MPE / Crossnote.
 ---
 
 # Style Mermaid for MPE
@@ -23,9 +23,12 @@ Mermaid progress:
 
 ### 1. Edit config (primary)
 
-Change `themes/mpe/released/<slug>/config.js` (today: `released/cpp-modern/config.js`) under `mermaidConfig`.
+Change `themes/mpe/released/<slug>/config.js` under `mermaidConfig`:
 
-On **promotion** from experimental → released, add a full Crossnote `config.js` next to the package `style.less` (adapt from cpp-modern). Experimental packages may omit it until then.
+- Dark: [`released/cpp-modern/config.js`](../../../themes/mpe/released/cpp-modern/config.js)
+- Light: [`released/cpp-modern-light/config.js`](../../../themes/mpe/released/cpp-modern-light/config.js)
+
+On **promotion** from experimental → released, add a full Crossnote `config.js` next to the package `style.less` (adapt from the matching dark or light skeleton). Experimental packages may omit it until then.
 
 That file is the **full** Crossnote config script (`({ … })`). User pastes it over `%USERPROFILE%\.crossnote\config.js`. Keep `"startOnLoad": false` inside `mermaidConfig`.
 
@@ -45,6 +48,18 @@ VS Code / Cursor:
 ```
 
 Never recommend `"dark"` — it restores light edge-label backgrounds.
+
+### Light contrast traps
+
+| Problem | Fix |
+| ------- | --- |
+| Quadrant point labels invisible | Dark `quadrantPointTextFill` + `.data-point text{fill:#1f2937}` |
+| Journey smileys muddy | `.face` light fill + dark stroke (not brown-on-brown) |
+| Mindmap root unreadable | White text on root; dark text on pastel sections; override `.section-root .nodeLabel` after `.mindmap-node` |
+| ER zebra wrong / washed out | Vars **and** `.row-rect-odd/even` in `themeCSS` |
+| Gantt bars blend into chart | Deeper `taskBkgColor` / `.task0` than section bands |
+
+Full light checklist: [`docs/mermaid-styling.md`](../../../docs/mermaid-styling.md) — Light checklist. Broader lessons: [`mpe-theme-reference.md` §8](../../../docs/mpe-theme-reference.md#8-dark-vs-light--lessons-and-authoring-checklist).
 
 ### 2. Known gaps → `themeCSS`
 
@@ -81,4 +96,5 @@ Skip or batch tiny mid-iteration tweaks. Follow the repo git protocol (status/di
 
 - `docs/mermaid-styling.md`
 - `themes/mpe/README.md` — Configure Mermaid
-- Skill `create-mpe-theme` for the preview chrome around diagrams
+- Skill `create-mpe-theme` / `create-mpe-light-peer` for preview chrome around diagrams
+- Rule `mpe-contrast` for text-on-fill bans

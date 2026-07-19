@@ -1,11 +1,12 @@
 # Mermaid diagram styling
 
-How Markdown Preview Enhanced (MPE) / Crossnote paints Mermaid SVGs, what ends up in the DOM, and how to theme diagrams for dark previews (C++ Modern).
+How Markdown Preview Enhanced (MPE) / Crossnote paints Mermaid SVGs, what ends up in the DOM, and how to theme diagrams for **dark and light** previews (C++ Modern).
 
 Fixture: [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md)  
 Config source of truth (dark): [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js)  
 Light peer: [`themes/mpe/released/cpp-modern-light/config.js`](../themes/mpe/released/cpp-modern-light/config.js) (`darkMode: false`)  
-Setup steps: [`themes/mpe/README.md` — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script)
+Setup steps: [`themes/mpe/README.md` — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script)  
+Contrast lessons (preview + Mermaid): [`mpe-theme-reference.md` §8](mpe-theme-reference.md#8-dark-vs-light--lessons-and-authoring-checklist)
 
 ## How MPE renders a diagram
 
@@ -158,6 +159,24 @@ That block is already in [`config.js`](../themes/mpe/released/cpp-modern/config.
 | Quadrant | `quadrant1TextFill`…`quadrant4TextFill` for quadrant names (not `quadrantLabelFill`); axis uses `quadrantXAxisTextFill` / `quadrantYAxisTextFill`; backup `themeCSS` `.quadrant text` |
 | Block | Same node/edge variables as flowchart (block reuses flowchart-like CSS) |
 
+## Light checklist
+
+Source of truth: [`released/cpp-modern-light/config.js`](../themes/mpe/released/cpp-modern-light/config.js).
+
+| Check | Light expectation |
+| ----- | ----------------- |
+| Mode | `"darkMode": false`; paper `background` (e.g. `#f7f9fc`) |
+| Nodes / actors | Light or white fills; **dark** `primaryTextColor` / `nodeTextColor` / `labelTextColor` |
+| Edge labels | Transparent label backgrounds (same as dark) |
+| Quadrant | Dark `quadrantPointTextFill` + `.data-point text{fill:#1f2937}` — white labels vanish on paper |
+| Journey faces | `.face` = light fill (e.g. `#fef9c3`) + dark stroke; muddy brown fills hide smileys |
+| Mindmap | Root: white text on saturated blue; section nodes: dark text on pastels; override `.section-root .nodeLabel` after `.mindmap-node` |
+| ER zebra | Set `attributeBackgroundColorOdd/Even` **and** `themeCSS` `.row-rect-odd/even` to match; pick which row is the slate strip intentionally |
+| Gantt | Task bars clearly darker/more saturated than section bands and chart background |
+| Pie | Slice fills deep enough for white `%` text, or switch section text dark on pale slices |
+
+Also see [`mpe-theme-reference.md` §8](mpe-theme-reference.md#8-dark-vs-light--lessons-and-authoring-checklist).
+
 ## Inspecting a live diagram
 
 1. Open the MPE preview of `examples/mermaid-showcase.md`.
@@ -216,8 +235,9 @@ Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/
 | ------- | --- |
 | Gray boxes behind `yes` / `no` / `assign` | `edgeLabelBackground` / `labelBackground` / (state) `labelBackgroundColor` → `transparent`; `mermaidTheme: "default"` |
 | ER rows white / unreadable | Update `themeCSS` for `.row-rect-odd/even>path:first-child` |
-| Gantt / pie / mindmap off-palette | Re-merge latest `released/cpp-modern/config.js` (gantt task vars, pie opacity, mindmap `cScale` + `themeCSS`) |
-| Quadrant names black | `quadrant1TextFill`…`4` + `.quadrant text{fill:#e8e8e8!important}` |
+| Gantt / pie / mindmap off-palette | Re-merge latest matching released `config.js` (dark or light) |
+| Quadrant names / point labels wrong | Dark: light fills on dark bg; Light: dark `quadrantPointTextFill` + `.data-point text` |
+| Journey faces unreadable | Light: pale `.face` fill + dark stroke (not muddy brown) |
 | Journey large empty bottom | Expected score-face band; reduce `taskMargin` / `bottomMarginAdj` |
 | Config ignored | Edit via **Open Config Script (Global)** → `%USERPROFILE%\.crossnote\config.js`, then refresh preview |
 | Diagrams only show as code | MPE only — browser workbench does not run Mermaid |
@@ -227,8 +247,10 @@ Light / v3 CSS overlays remain under [`themes/mpe/experimental/`](../themes/mpe/
 
 | Path | Role |
 | ---- | ---- |
-| [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) | Full Crossnote config → `config.js` as `({ … })` |
-| [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) | Primary preview theme |
+| [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) | Full Crossnote config (dark) |
+| [`themes/mpe/released/cpp-modern-light/config.js`](../themes/mpe/released/cpp-modern-light/config.js) | Full Crossnote config (light) |
+| [`themes/mpe/released/cpp-modern/style.less`](../themes/mpe/released/cpp-modern/style.less) | Dark preview theme |
+| [`themes/mpe/released/cpp-modern-light/style.less`](../themes/mpe/released/cpp-modern-light/style.less) | Light preview theme |
 | [`themes/mpe/experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/) | Optional CSS token overlay for diagrams |
 | [`examples/mermaid-showcase.md`](../examples/mermaid-showcase.md) | Visual regression fixture |
 | [`themes/mpe/README.md`](../themes/mpe/README.md) | Install + full config walkthrough |

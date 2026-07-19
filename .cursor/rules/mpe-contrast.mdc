@@ -1,0 +1,15 @@
+---
+description: Hard contrast bans for MPE preview CSS and Mermaid config (light and dark)
+globs: themes/addons/vscode-preview/original/**/*.css,themes/mpe/**/config.js,themes/mpe/**/style.less
+alwaysApply: false
+---
+
+# MPE contrast
+
+Hard bans when editing preview surfaces or Mermaid paint:
+
+- Never light text on light backgrounds, or dark text on dark backgrounds (prose, panels, code chips, Mermaid labels).
+- **Light:** do not bind `--*-bg` / `--*-fg` / `--*-muted` to `--vscode-editor-*` — hardcode paper surfaces.
+- **Light Mermaid:** dark `quadrantPointTextFill` and `.data-point text`; journey `.face` = pale fill + dark stroke; mindmap root = white text; ER zebra via vars **and** `themeCSS`; Gantt bars darker than section bands.
+- **Dark:** reserve pure white for diagram labels, not body prose (muted body on dark page).
+- Lessons + checklist: `docs/mpe-theme-reference.md` §8; Mermaid light list: `docs/mermaid-styling.md`.
