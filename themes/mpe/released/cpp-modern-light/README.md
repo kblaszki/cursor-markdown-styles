@@ -1,11 +1,11 @@
-# C++ Modern Light (experimental)
+# C++ Modern Light (released)
 
-Light peer of released [C++ Modern](../../released/cpp-modern/): same selector inventory and accent jobs (teal primary, blue secondary, link blue), hex tuned for paper surfaces.
+Ready-to-paste MPE package for the light peer of C++ Modern (paper surfaces, blue-teal accents).
 
 ## Install
 
 1. Paste the entire [`style.less`](style.less) into `%USERPROFILE%\.crossnote\style.less` via **Markdown Preview Enhanced: Customize CSS (Global)**.
-2. Open **Markdown Preview Enhanced: Open Config Script (Global)** and replace the entire `%USERPROFILE%\.crossnote\config.js` with [`config.js`](config.js) from this package (paste as-is — Crossnote `({ … })` form, `"darkMode": false`).
+2. Open **Markdown Preview Enhanced: Open Config Script (Global)** and replace the **entire** `%USERPROFILE%\.crossnote\config.js` with [`config.js`](config.js) from this package (paste as-is — Crossnote `({ … })` form, `"darkMode": false`).
 3. Optional settings:
 
 ```json
@@ -16,24 +16,24 @@ Light peer of released [C++ Modern](../../released/cpp-modern/): same selector i
 }
 ```
 
-Verify diagrams with [`examples/mermaid-showcase.md`](../../../../examples/mermaid-showcase.md).
+Full steps: [themes/mpe/README.md](../../README.md). Mermaid deep dive: [docs/mermaid-styling.md](../../../../docs/mermaid-styling.md). Dark peer: [../cpp-modern/](../cpp-modern/).
 
 ## Source
 
-[`addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css`](../../../addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css)
+Author CSS in [`addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css`](../../../addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css), then rebuild:
 
 ```bash
 node themes/addons/vscode-preview/build-mpe-global.mjs
 ```
 
-Role map: [docs/mpe-theme-reference.md](../../../../docs/mpe-theme-reference.md) §7. Mermaid: same jobs as dark `config.js`, paper hex.
+Do not hand-edit generated `style.less`. Role map: [docs/mpe-theme-reference.md](../../../../docs/mpe-theme-reference.md) §7.
 
 <!-- palette:start -->
 ## Color palette
 
-Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `config.js`).
+Full palette for the released `cpp-modern-light` package (preview CSS + Mermaid in `config.js`). See also [`docs/mpe-theme-reference.md`](../../../../docs/mpe-theme-reference.md).
 
-### Tokens (literal hex)
+### Preview CSS tokens
 
 | Token | Color | Role |
 | ----- | ----- | ---- |
@@ -187,7 +187,7 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `transitionColor` | `#94a3b8` |
 | `transitionLabelColor` | `#1f2937` |
 
-### Unique hex values
+### Complete unique hex set (preview + Mermaid)
 
 | Color |
 | ----- |
@@ -210,37 +210,26 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#3b82f6` |
 | `#3f6212` |
 | `#475569` |
-| `#4ec9b0` |
-| `#4fc1ff` |
-| `#569cd6` |
 | `#5eead4` |
 | `#6366f1` |
 | `#64748b` |
 | `#65a30d` |
-| `#6a9955` |
 | `#7e22ce` |
 | `#84cc16` |
-| `#89d185` |
 | `#8b5cf6` |
 | `#93c5fd` |
 | `#94a3b8` |
 | `#99f6e4` |
 | `#9a3412` |
-| `#9cdcfe` |
 | `#a16207` |
-| `#b5cea8` |
 | `#b91c1c` |
 | `#bef264` |
 | `#bfdbfe` |
-| `#c586c0` |
 | `#cbd5e1` |
 | `#ccfbf1` |
-| `#ce9178` |
 | `#d0d7e2` |
-| `#d4d4d4` |
 | `#dbeafe` |
 | `#dc2626` |
-| `#dcdcaa` |
 | `#e2e8f0` |
 | `#ea580c` |
 | `#ec4899` |
@@ -250,7 +239,6 @@ Extracted literal hex tokens from generated `style.less` (+ Mermaid hex from `co
 | `#eff6ff` |
 | `#f1f5f9` |
 | `#f3e8ff` |
-| `#f44747` |
 | `#f59e0b` |
 | `#f7f9fc` |
 | `#f8fafc` |

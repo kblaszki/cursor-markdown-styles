@@ -31,7 +31,7 @@ Do not hand-edit generated `style.less`.
 <!-- palette:start -->
 ## Color palette
 
-Full palette for the released dark package (preview CSS + Mermaid in `config.js`). See also [`docs/mpe-theme-reference.md`](../../../../docs/mpe-theme-reference.md).
+Full palette for the released `cpp-modern` package (preview CSS + Mermaid in `config.js`). See also [`docs/mpe-theme-reference.md`](../../../../docs/mpe-theme-reference.md).
 
 ### Preview CSS tokens
 

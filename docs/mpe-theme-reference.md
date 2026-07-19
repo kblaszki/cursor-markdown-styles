@@ -9,7 +9,7 @@ Reference for building Markdown Preview Enhanced (MPE) themes. Canonical **relea
 | Crossnote config | [`themes/mpe/released/cpp-modern/config.js`](../themes/mpe/released/cpp-modern/config.js) — paste over `%USERPROFILE%\.crossnote\config.js` |
 | Mermaid SVG deep dive | [`mermaid-styling.md`](mermaid-styling.md) |
 
-**Dark** is fully documented below. **Light** is the experimental peer with the same selector inventory and role map (paper hex) — see §7.
+**Dark** is fully documented below. **Light** is the released peer with the same selector inventory and role map (paper hex) — see §7.
 
 ---
 
@@ -335,9 +335,9 @@ Layout tweaks (not colors): `flowchart.htmlLabels: false`, spacing; `gantt.today
 
 | Status | Detail |
 | ------ | ------ |
-| Package | Experimental: [`themes/mpe/experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) |
+| Package | Released: [`themes/mpe/released/cpp-modern-light/`](../themes/mpe/released/cpp-modern-light/) |
 | Source | [`vscode-preview-cpp-modern-light.css`](../themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) |
-| Crossnote | Package-local [`config.js`](../themes/mpe/experimental/cpp-modern-light/config.js) (`darkMode: false`, paper Mermaid surfaces) — experimental peer of released dark config |
+| Crossnote | [`config.js`](../themes/mpe/released/cpp-modern-light/config.js) (`darkMode: false`, paper Mermaid surfaces) — light peer of released dark config |
 
 Same selector / role inventory as dark (§2–§5). Hex values are **hardcoded** for paper contrast — do **not** bind `--cpp-bg` / `--cpp-fg` to `--vscode-editor-*`, or a dark IDE theme produces a dark page with light panels (illegible blockquotes and inline code).
 

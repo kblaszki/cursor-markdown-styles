@@ -167,32 +167,53 @@ for (const fam of readdirSync(originalRoot)) {
   console.log("updated", readme);
 }
 
-// --- released cpp-modern ---
-{
-  const pkg = "themes/mpe/released/cpp-modern";
-  const css = readFileSync(
+// --- released packages (style.less CSS source + config.js when present) ---
+const releasedRoot = "themes/mpe/released";
+const releasedCssBySlug = {
+  "cpp-modern":
     "themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css",
-    "utf8",
-  );
-  const { tokens, hexOnly } = extractHexFromCss(css);
-  const config = readFileSync(join(pkg, "config.js"), "utf8");
-  const { hexOnly: mermaidHex, keyed } = extractHexFromConfigJs(config);
-  const allHex = new Set([...hexOnly, ...mermaidHex]);
+  "cpp-modern-light":
+    "themes/addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css",
+};
 
-  const mermaidRows = [...keyed.entries()]
-    .filter(([, v]) => v.startsWith("#"))
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([k, v]) => `| \`${k}\` | ${swatch(v)} |`)
-    .join("\n");
-
+for (const slug of readdirSync(releasedRoot)) {
+  const dir = join(releasedRoot, slug);
+  if (!statSync(dir).isDirectory()) continue;
+  const cssPath = releasedCssBySlug[slug];
+  if (!cssPath || !existsSync(cssPath)) continue;
+  const { tokens, hexOnly } = extractHexFromCss(readFileSync(cssPath, "utf8"));
+  const configPath = join(dir, "config.js");
   const parts = [
-    "Full palette for the released dark package (preview CSS + Mermaid in `config.js`). See also [`docs/mpe-theme-reference.md`](../../../../docs/mpe-theme-reference.md).\n",
+    `Full palette for the released \`${slug}\` package (preview CSS` +
+      (existsSync(configPath) ? " + Mermaid in `config.js`" : "") +
+      "). See also [`docs/mpe-theme-reference.md`](../../../../docs/mpe-theme-reference.md).\n",
     tokenTable(tokens, "Preview CSS tokens"),
-    `### Mermaid \`themeVariables\` (hex)\n\n| Variable | Color |\n| -------- | ----- |\n${mermaidRows}\n`,
-    uniqueHexTable(allHex, "Complete unique hex set (preview + Mermaid)"),
   ];
-  upsertPaletteSection(join(pkg, "README.md"), parts.join("\n"));
-  console.log("updated", join(pkg, "README.md"));
+  if (existsSync(configPath)) {
+    const { hexOnly: mermaidHex, keyed } = extractHexFromConfigJs(
+      readFileSync(configPath, "utf8"),
+    );
+    const mermaidRows = [...keyed.entries()]
+      .filter(([, v]) => v.startsWith("#"))
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([k, v]) => `| \`${k}\` | ${swatch(v)} |`)
+      .join("\n");
+    if (mermaidRows) {
+      parts.push(
+        `### Mermaid \`themeVariables\` (hex)\n\n| Variable | Color |\n| -------- | ----- |\n${mermaidRows}\n`,
+      );
+    }
+    for (const hex of mermaidHex) hexOnly.add(hex);
+  }
+  parts.push(
+    uniqueHexTable(hexOnly, "Complete unique hex set (preview + Mermaid)"),
+  );
+  const readme = join(dir, "README.md");
+  if (!existsSync(readme)) {
+    writeFileSync(readme, `# ${slug} (released)\n\n`);
+  }
+  upsertPaletteSection(readme, parts.join("\n"));
+  console.log("updated", readme);
 }
 
 // --- experimental packages: ensure README with palette from style.less ---

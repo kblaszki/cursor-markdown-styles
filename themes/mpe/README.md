@@ -42,18 +42,20 @@ Stable install packages. Each folder has `style.less` plus a full Crossnote [`co
 | Package | Theme |
 | ------- | ----- |
 | [released/cpp-modern/](released/cpp-modern/) | C++ Modern dark (recommended default) |
+| [released/cpp-modern-light/](released/cpp-modern-light/) | C++ Modern light |
 
-Install: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then replace `%USERPROFILE%\.crossnote\config.js` with [`released/cpp-modern/config.js`](released/cpp-modern/config.js) (see [Configure Mermaid](#configure-mermaid-open-config-script)).
+Install dark: paste [`released/cpp-modern/style.less`](released/cpp-modern/style.less) into `%USERPROFILE%\.crossnote\style.less`, then replace `%USERPROFILE%\.crossnote\config.js` with [`released/cpp-modern/config.js`](released/cpp-modern/config.js) (see [Configure Mermaid](#configure-mermaid-open-config-script)).
 
-Short package guide: [released/cpp-modern/README.md](released/cpp-modern/README.md).
+Install light: same steps with [`released/cpp-modern-light/`](released/cpp-modern-light/) (`style.less` + `config.js`, `"darkMode": false`).
+
+Short package guides: [released/cpp-modern/README.md](released/cpp-modern/README.md), [released/cpp-modern-light/README.md](released/cpp-modern-light/README.md).
 
 ## Experimental
 
-Work-in-progress variants and families. Paste `style.less`; use a package `config.js` when present (today: [experimental/cpp-modern-light/config.js](experimental/cpp-modern-light/config.js)).
+Work-in-progress variants and families. Paste `style.less`; add a package `config.js` when promoting to released.
 
 | Package | Theme |
 | ------- | ----- |
-| [experimental/cpp-modern-light/](experimental/cpp-modern-light/) | C++ Modern light (+ light `config.js`) |
 | [experimental/studio/](experimental/studio/) | Studio light |
 | [experimental/lumina/](experimental/lumina/) | Lumina dark |
 | [experimental/lumina-light/](experimental/lumina-light/) | Lumina light |
@@ -82,7 +84,7 @@ Work-in-progress variants and families. Paste `style.less`; use a package `confi
 
 ## Family Guide
 
-- **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling (dark = released)
+- **C++ Modern** - balanced technical dark/light theme with blue-teal hierarchy and restrained code styling (both dark and light released)
 - **C++ Modern v3 Diagrams** - same prose/code as C++ Modern plus `--md-diagram-*` Mermaid chrome (experimental)
 - **Studio** - light-first peer to C++ Modern: daylight paper, sapphire hierarchy, tempered Light+ code
 - **Lumina** - brighter neon identity with gradient headings and luminous accents
@@ -153,15 +155,15 @@ C:\Users\<YourUser>\.crossnote\config.js
 
 #### 4. Replace the entire `config.js`
 
-[released/cpp-modern/config.js](released/cpp-modern/config.js) is already a full Crossnote config script (`({ katexConfig, mathjaxConfig, mermaidConfig })` with `"startOnLoad": false`).
+[released/cpp-modern/config.js](released/cpp-modern/config.js) (dark) or [released/cpp-modern-light/config.js](released/cpp-modern-light/config.js) (light) is already a full Crossnote config script (`({ katexConfig, mathjaxConfig, mermaidConfig })` with `"startOnLoad": false`).
 
 1. Select all in `%USERPROFILE%\.crossnote\config.js` and delete.
-2. Paste the **entire** contents of [`released/cpp-modern/config.js`](released/cpp-modern/config.js).
+2. Paste the **entire** contents of the package `config.js` that matches your `style.less`.
 3. Save.
 
 Keep the package file as the single source of truth in the repo.
 
-For light Mermaid with experimental C++ Modern Light, paste [experimental/cpp-modern-light/config.js](experimental/cpp-modern-light/config.js) the same way (`"darkMode": false`). Other experimental packages still adapt `themeVariables` when you add a package-local `config.js` on promotion.
+For other experimental packages, adapt `themeVariables` when you add a package-local `config.js` on promotion.
 
 #### 5. Save and verify
 

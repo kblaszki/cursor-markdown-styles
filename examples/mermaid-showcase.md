@@ -24,7 +24,7 @@ Use `"default"`, not `"dark"` — the dark Mermaid CSS often restores light-gray
 
 Full copy-paste example and troubleshooting: [themes/mpe/README.md — Configure Mermaid](../themes/mpe/README.md#configure-mermaid-open-config-script).
 
-Optional experimental diagram CSS tokens: [`experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/). For light WIP, use [`experimental/cpp-modern-light/`](../themes/mpe/experimental/cpp-modern-light/) and set `"darkMode": false` in `mermaidConfig.themeVariables` when you add a package `config.js`.
+Optional experimental diagram CSS tokens: [`experimental/cpp-modern-v3-diagrams/`](../themes/mpe/experimental/cpp-modern-v3-diagrams/). For the light theme, use [`released/cpp-modern-light/`](../themes/mpe/released/cpp-modern-light/) (`style.less` + `config.js` with `"darkMode": false`).
 
 ---
 

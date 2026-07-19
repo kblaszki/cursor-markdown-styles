@@ -40,7 +40,7 @@ const variants = [
   {
     css: join(root, "original/cpp-modern/vscode-preview-cpp-modern-light.css"),
     slug: "cpp-modern-light",
-    tier: "experimental",
+    tier: "released",
     label: "C++ Modern Light",
   },
   {

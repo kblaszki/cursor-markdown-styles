@@ -49,7 +49,7 @@ Full walkthrough: [../../mpe/README.md](../../mpe/README.md)
 | MPE package | vscode-preview CSS | Status |
 | ----------- | ------------------ | ------ |
 | [../../mpe/released/cpp-modern](../../mpe/released/cpp-modern) | [original/cpp-modern/vscode-preview-cpp-modern.css](original/cpp-modern/vscode-preview-cpp-modern.css) | released |
-| [../../mpe/experimental/cpp-modern-light](../../mpe/experimental/cpp-modern-light) | [original/cpp-modern/vscode-preview-cpp-modern-light.css](original/cpp-modern/vscode-preview-cpp-modern-light.css) | experimental |
+| [../../mpe/released/cpp-modern-light](../../mpe/released/cpp-modern-light) | [original/cpp-modern/vscode-preview-cpp-modern-light.css](original/cpp-modern/vscode-preview-cpp-modern-light.css) | released |
 | [../../mpe/experimental/studio](../../mpe/experimental/studio) | [original/studio/vscode-preview-studio.css](original/studio/vscode-preview-studio.css) | experimental |
 | [../../mpe/experimental/…](../../mpe/experimental) | matching `original/<family>/vscode-preview-*.css` | experimental |
 

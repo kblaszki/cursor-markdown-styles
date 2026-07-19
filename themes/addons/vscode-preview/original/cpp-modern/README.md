@@ -5,7 +5,7 @@ VS Code / Cursor side-preview port of the C++ Modern inline theme family.
 ## Files
 
 - `vscode-preview-cpp-modern.css` — recommended dark (released MPE package)
-- `vscode-preview-cpp-modern-light.css` — light peer (same selectors/roles; experimental MPE)
+- `vscode-preview-cpp-modern-light.css` — light peer (same selectors/roles; released MPE)
 - `vscode-preview-cpp-modern-v1-syntax.css` — syntax-token variant (headings mapped to C++ colors)
 - `vscode-preview-cpp-modern-v2-readable.css` — historical readable variant kept for comparison
 
@@ -29,7 +29,7 @@ Set `markdown.preview.frontMatter` to `"show"` if you want YAML front matter ren
 ### Markdown Preview Enhanced (global)
 
 - Dark (released): paste [themes/mpe/released/cpp-modern/style.less](../../../../mpe/released/cpp-modern/style.less) (+ package `config.js`)
-- Light (experimental): paste [themes/mpe/experimental/cpp-modern-light/style.less](../../../../mpe/experimental/cpp-modern-light/style.less)
+- Light (released): paste [themes/mpe/released/cpp-modern-light/style.less](../../../../mpe/released/cpp-modern-light/style.less) (+ package `config.js`)
 
 See [themes/mpe/README.md](../../../../mpe/README.md).
 

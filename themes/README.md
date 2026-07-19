@@ -22,8 +22,9 @@ This repository is organized around **Markdown Preview Enhanced (MPE)** as the p
 Released now:
 
 - **C++ Modern** dark — [`mpe/released/cpp-modern/`](mpe/released/cpp-modern)
+- **C++ Modern** light — [`mpe/released/cpp-modern-light/`](mpe/released/cpp-modern-light)
 
-Experimental families (and light / legacy variants) live under [`mpe/experimental/`](mpe/experimental).
+Experimental families (and legacy variants) live under [`mpe/experimental/`](mpe/experimental).
 
 ### Add-ons And Legacy
 
@@ -39,6 +40,7 @@ Add-ons are **delivery channels**, not a second `released` / `experimental` tree
 | MPE package | vscode-preview CSS | Status |
 | ----------- | ------------------ | ------ |
 | [`mpe/released/cpp-modern`](mpe/released/cpp-modern) | [`original/cpp-modern/vscode-preview-cpp-modern.css`](addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern.css) | released |
+| [`mpe/released/cpp-modern-light`](mpe/released/cpp-modern-light) | [`original/cpp-modern/vscode-preview-cpp-modern-light.css`](addons/vscode-preview/original/cpp-modern/vscode-preview-cpp-modern-light.css) | released |
 | [`mpe/experimental/<slug>`](mpe/experimental) | matching `original/<family>/vscode-preview-*.css` | experimental |
 
 Use add-ons only when you specifically need built-in preview compatibility or the old Cursor inline path. Details: [`addons/README.md`](addons/README.md), [`addons/vscode-preview/README.md`](addons/vscode-preview/README.md), [`addons/cursor-inline/README.md`](addons/cursor-inline/README.md).
